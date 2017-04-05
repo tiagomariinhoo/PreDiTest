@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MeuPreDi</string>
+    <string name="title_activity_cadastro">Cadastro</string>
+    <string name="title_activity_edicao">Edicao</string>
+    <string name="title_activity_status">Status</string>
+    <string name="acitivity_criar_conta">CRIAR NOVA CONTA</string>
+
+</resources>
