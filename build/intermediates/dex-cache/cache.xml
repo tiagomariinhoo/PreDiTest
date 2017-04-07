@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/leandro/Downloads/PreDiTest/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/home/leandro/Downloads/PreDiTest/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_2eb48c260ee2ec24ca84281cee0b4ad0f1e3227f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/leandro/Downloads/PreDiTest/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1185a35ea8bf729030b941df476bd91d34170a09">
+        <dex dex="/home/leandro/Downloads/PreDiTest/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_1d9b90963e2fec5256882ad7e159840bb2493d29/classes.dex" />
+    </item>
+
+</items>

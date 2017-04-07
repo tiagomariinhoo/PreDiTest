@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E0FFFF"
+    android:id="@+id/tela_criar_conta"
     tools:context="app.com.example.wagner.meupredi.CriarConta"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">

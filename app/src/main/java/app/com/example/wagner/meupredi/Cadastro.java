@@ -43,7 +43,7 @@ public class Cadastro extends AppCompatActivity {
                 DatabaseHandler crud;
                 crud = new DatabaseHandler(Cadastro.this);
 
-                Paciente paciente = new Paciente(0, nomeString, Integer.parseInt(idadeString), Double.parseDouble(pesoString),Double.parseDouble(circString));
+                Paciente paciente = new Paciente(0, nomeString, "", "", Integer.parseInt(idadeString), Double.parseDouble(pesoString),Double.parseDouble(circString));
                 String retorno = crud.addPaciente(paciente);
 
                 Toast.makeText(getApplicationContext(), retorno, Toast.LENGTH_LONG).show();
