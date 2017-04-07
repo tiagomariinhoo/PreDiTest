@@ -24,8 +24,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // COLUNAS DO BANCO
     private static final String KEY_ID = "id";
     private static final String KEY_NOME = "nome";
+    private static final String KEY_SENHA = "senha";
+    private static final String KEY_EMAIL = "email";
     private static final String KEY_IDADE = "idade";
-    private static final String KEY_CIRCUNFERENCIA = "circunferencia";;
+    private static final String KEY_CIRCUNFERENCIA = "circunferencia";
     private static final String KEY_PESO = "peso";
 
     public DatabaseHandler(Context context) {
@@ -39,6 +41,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + "("
                 + KEY_ID + " INTEGER PRIMARY KEY,"
                 + KEY_NOME + " TEXT,"
+                + KEY_SENHA + " TEXT,"
+                + KEY_EMAIL + " TEXT,"
                 + KEY_IDADE + " INTEGER,"
                 + KEY_CIRCUNFERENCIA + " REAL,"
                 + KEY_PESO + " REAL"
@@ -61,6 +65,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(KEY_NOME, paciente.get_nome());
+        values.put(KEY_SENHA, paciente.get_senha());
+        values.put(KEY_EMAIL, paciente.get_email());
         values.put(KEY_IDADE, paciente.get_idade());
         values.put(KEY_CIRCUNFERENCIA, paciente.get_circunferencia());
         values.put(KEY_PESO, paciente.get_peso());
@@ -84,21 +90,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 TABLE_PACIENTES, new String[]{
                         KEY_ID,
                         KEY_NOME,
+                        KEY_SENHA,
+                        KEY_EMAIL,
                         KEY_IDADE,
                         KEY_CIRCUNFERENCIA,
                         KEY_PESO}, KEY_ID + "=?",
-                        new String[]{ String.valueOf(id)},
-                        null, null, null, null);
+                new String[]{ String.valueOf(id)},
+                null, null, null, null);
 
-                    if(cursor!= null) {
-                        cursor.moveToFirst();
-                    }
-
-                    Paciente paciente = new Paciente(Integer.parseInt(cursor.getString(0)), cursor.getString(1),
-                            Integer.parseInt(cursor.getString(2)), Double.parseDouble(cursor.getString(3)), Double.parseDouble(cursor.getString(4)));
-
-                return paciente;
+        if(cursor!= null) {
+            cursor.moveToFirst();
         }
+
+        Paciente paciente = new Paciente(
+                Integer.parseInt(cursor.getString(0)), // ID
+                cursor.getString(1), // NOME
+                cursor.getString(2), // SENHA
+                cursor.getString(3), // EMAIL
+                Integer.parseInt(cursor.getString(4)), // IDADE
+                Double.parseDouble(cursor.getString(5)), // PESO
+                Double.parseDouble(cursor.getString(6)) // CIRCUNFERENCIA
+        );
+
+        return paciente;
+    }
 
     public List<Paciente> getAllPacientes(){
 
@@ -114,9 +129,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 Paciente paciente = new Paciente();
                 paciente.set_id(Integer.parseInt(cursor.getString(0)));
                 paciente.set_nome(cursor.getString(1));
-                paciente.set_idade(Integer.parseInt(cursor.getString(2)));
-                paciente.set_circunferencia(Integer.parseInt(cursor.getString(3)));
-                paciente.set_peso(Integer.parseInt(cursor.getString(4)));
+                paciente.set_senha(cursor.getString(2));
+                paciente.set_email(cursor.getString(3));
+                paciente.set_idade(Integer.parseInt(cursor.getString(4)));
+                paciente.set_circunferencia(Integer.parseInt(cursor.getString(5)));
+                paciente.set_peso(Integer.parseInt(cursor.getString(6)));
 
                 pacientesList.add(paciente);
 

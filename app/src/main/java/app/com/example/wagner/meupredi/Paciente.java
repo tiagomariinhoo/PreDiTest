@@ -8,6 +8,8 @@ public class Paciente {
 
     int _id;
     String _nome;
+    String _senha;
+    String _email;
     int _idade;
     double _circunferencia;
     double _peso;
@@ -17,9 +19,11 @@ public class Paciente {
 
     }
 
-    public Paciente(int id, String nome, int idade, double circunferencia, double peso){
+    public Paciente(int id, String nome, String senha, String email, int idade, double circunferencia, double peso){
         this._id = id;
         this._nome = nome;
+        this._senha = senha;
+        this._email = email;
         this._idade = idade;
         this._circunferencia = circunferencia;
         this._peso = peso;
@@ -39,6 +43,22 @@ public class Paciente {
 
     public void set_nome(String _nome) {
         this._nome = _nome;
+    }
+
+    public String get_senha() {
+        return _senha;
+    }
+
+    public void set_senha(String _senha) {
+        this._senha = _senha;
+    }
+
+    public String get_email() {
+        return _email;
+    }
+
+    public void set_email(String _email) {
+        this._email = _email;
     }
 
     public int get_idade() {

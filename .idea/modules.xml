@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/CrudSQLiteAndroid-master.iml" filepath="$PROJECT_DIR$/CrudSQLiteAndroid-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/MeuPreDi.iml" filepath="$PROJECT_DIR$/MeuPreDi.iml" />
       <module fileurl="file://$PROJECT_DIR$/PreDiTest.iml" filepath="$PROJECT_DIR$/PreDiTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PreDiTeste.iml" filepath="$PROJECT_DIR$/PreDiTeste.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
