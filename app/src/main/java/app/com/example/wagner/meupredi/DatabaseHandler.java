@@ -98,21 +98,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[]{ String.valueOf(id)},
                 null, null, null, null);
 
-        if(cursor!= null) {
-            cursor.moveToFirst();
-        }
+                    if(cursor!= null) {
+                        cursor.moveToFirst();
+                    }
 
-        Paciente paciente = new Paciente(
-                Integer.parseInt(cursor.getString(0)), // ID
-                cursor.getString(1), // NOME
-                cursor.getString(2), // SENHA
-                cursor.getString(3), // EMAIL
-                Integer.parseInt(cursor.getString(4)), // IDADE
-                Double.parseDouble(cursor.getString(5)), // PESO
-                Double.parseDouble(cursor.getString(6)) // CIRCUNFERENCIA
-        );
+                    Paciente paciente = new Paciente(
+                            Integer.parseInt(cursor.getString(0)), // ID
+                            cursor.getString(1), // NOME
+                            cursor.getString(2), // SENHA
+                            cursor.getString(3), // EMAIL
+                            Integer.parseInt(cursor.getString(4)), // IDADE
+                            Double.parseDouble(cursor.getString(5)), // PESO
+                            Double.parseDouble(cursor.getString(6)) // CIRCUNFERENCIA
+                    );
 
-        return paciente;
+                return paciente;
     }
 
     public List<Paciente> getAllPacientes(){
