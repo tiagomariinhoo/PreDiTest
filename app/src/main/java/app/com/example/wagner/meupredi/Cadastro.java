@@ -29,7 +29,6 @@ public class Cadastro extends AppCompatActivity {
         peso = (EditText) findViewById(R.id.edit_text_peso);
         circunferencia = (EditText) findViewById(R.id.edit_text_circunferencia);
 
-
         btnConfirmar = (Button) findViewById(R.id.btConfirmar);
 
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
