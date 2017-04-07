@@ -96,7 +96,7 @@ public class CriarConta extends AppCompatActivity {
                 if(senhaCadastro.length()==0){
                     Toast.makeText(getApplicationContext(),"Insira uma senha válida!", Toast.LENGTH_LONG ).show();
                 }
-                if(senhaCadastro.equals(conSenhaCadastro)){
+                else if(senhaCadastro.equals(conSenhaCadastro)){
                     Toast.makeText(getApplicationContext(),"Usuário cadastrado com sucesso!", Toast.LENGTH_LONG ).show();
 
                     Intent voltaLogin = new Intent(CriarConta.this, TelaLogin.class);
