@@ -62,13 +62,9 @@ public class TelaLogin extends AppCompatActivity {
         textCriar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent abreCriarConta = new Intent(TelaLogin.this, CriarConta.class);
-
                 startActivity(abreCriarConta);
-
             }
         });
-
     }
 }

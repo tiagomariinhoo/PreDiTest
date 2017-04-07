@@ -1,5 +1,6 @@
 package app.com.example.wagner.meupredi;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
@@ -38,6 +39,7 @@ public class CriarConta extends AppCompatActivity {
         email = (EditText) findViewById(R.id.edit_endereco_email);
         senha = (EditText) findViewById(R.id.edit_senha_cadastro);
         conSenha = (EditText) findViewById(R.id.edit_novamente_senha);
+
         criarConta = (Button) findViewById(R.id.btn_criar_nova_conta);
         cancelar = (Button) findViewById(R.id.btn_cancelar);
         tela = (ConstraintLayout) findViewById(R.id.tela_criar_conta);
@@ -82,6 +84,7 @@ public class CriarConta extends AppCompatActivity {
 
 
         });
+
 
         criarConta.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -95,8 +95,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         KEY_IDADE,
                         KEY_CIRCUNFERENCIA,
                         KEY_PESO}, KEY_ID + "=?",
-                        new String[]{ String.valueOf(id)},
-                        null, null, null, null);
+                new String[]{ String.valueOf(id)},
+                null, null, null, null);
 
                     if(cursor!= null) {
                         cursor.moveToFirst();
@@ -113,7 +113,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     );
 
                 return paciente;
-        }
+    }
 
     public List<Paciente> getAllPacientes(){
 
