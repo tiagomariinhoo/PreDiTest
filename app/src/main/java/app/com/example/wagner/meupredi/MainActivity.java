@@ -24,11 +24,11 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseHandler db = new DatabaseHandler(this);
 
-        //db.deleteAllPacientes();
+        db.deleteAllPacientes();
 
         // INSERIR PACIENTES
         Log.d("Insert: ", "Inserting...");
-        //db.addPaciente(new Paciente(0, "Amand", 13, 11, 9));
+        db.addPaciente(new Paciente(0, "Amand","Amanda@gmail.com" , "1234" , 13, 11, 9));
         //db.addPaciente(new Paciente(0, "Laura", 13, 11, 9));
         //db.addPaciente(new Paciente(0, "Shelly", 15, 12, 3));
 
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
     }
 }

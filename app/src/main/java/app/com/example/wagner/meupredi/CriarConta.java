@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,6 +17,8 @@ import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class CriarConta extends AppCompatActivity {
 
@@ -57,8 +60,10 @@ public class CriarConta extends AppCompatActivity {
             }
         });
 
-        String nomeCompleto = nome.getText().toString();
-        String emailCadastro = email.getText().toString();
+
+        //final String senhaCadastro = senha.getText().toString();
+        //final String conSenhaCadastro = conSenha.getText().toString();
+
         boxSenha.setChecked(false);
 
         conSenha.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -90,19 +95,28 @@ public class CriarConta extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String senhaCadastro = senha.getText().toString();
-                String conSenhaCadastro = conSenha.getText().toString();
+                final String nomeCompleto = nome.getText().toString();
+                final String emailCadastro = email.getText().toString();
+                final String senhaCadastro = senha.getText().toString();
+                final String conSenhaCadastro = conSenha.getText().toString();
 
-                if(senhaCadastro.length()==0){
-                    Toast.makeText(getApplicationContext(),"Insira uma senha válida!", Toast.LENGTH_LONG ).show();
-                }
-                else if(senhaCadastro.equals(conSenhaCadastro)){
-                    Toast.makeText(getApplicationContext(),"Usuário cadastrado com sucesso!", Toast.LENGTH_LONG ).show();
+                if (senhaCadastro.length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Insira uma senha válida!", Toast.LENGTH_LONG).show();
+                } else if (senhaCadastro.equals(conSenhaCadastro)) {
+                    Toast.makeText(getApplicationContext(), "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
+
+                    DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                    //Paciente(int id, String nome, String senha, String email, int idade, double circunferencia, double peso)
+
+                    Paciente paciente = new Paciente (0, nomeCompleto, senhaCadastro, emailCadastro, 0, 0 , 0);
+
+                    String msg = db.addPaciente(paciente);
+                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
 
                     Intent voltaLogin = new Intent(CriarConta.this, TelaLogin.class);
                     startActivity(voltaLogin);
                 } else {
-                    Toast.makeText(getApplicationContext(),"Insira senhas iguais!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Insira senhas iguais!", Toast.LENGTH_LONG).show();
                 }
             }
         });

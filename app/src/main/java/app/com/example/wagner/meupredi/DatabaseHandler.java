@@ -22,7 +22,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_PACIENTES = "pacientes";
 
     // COLUNAS DO BANCO
-    private static final String KEY_ID = "id";
+    private static final String KEY_ID = "idAccount";
     private static final String KEY_NOME = "nome";
     private static final String KEY_SENHA = "senha";
     private static final String KEY_EMAIL = "email";
@@ -36,7 +36,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String  CREATE_PACIENTES_TABLE = "CREATE TABLE IF NOT EXIST "
+        String  CREATE_PACIENTES_TABLE = "CREATE TABLE IF NOT EXISTS "
                 + TABLE_PACIENTES
                 + "("
                 + KEY_ID + " INTEGER PRIMARY KEY,"
@@ -53,7 +53,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PACIENTES);
+        db.execSQL("DROP TABLE IF EXIST " + TABLE_PACIENTES);
 
         onCreate(db);
     }
@@ -101,9 +101,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     if(cursor!= null) {
                         cursor.moveToFirst();
                     }
-
+                    //Integer.parseInt(cursor.getString(0))
                     Paciente paciente = new Paciente(
-                            Integer.parseInt(cursor.getString(0)), // ID
+                            cursor.getInt(cursor.getColumnIndex(KEY_ID)), // ID
                             cursor.getString(1), // NOME
                             cursor.getString(2), // SENHA
                             cursor.getString(3), // EMAIL
@@ -140,6 +140,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             }while(cursor.moveToNext());
         }
         return pacientesList;
+    }
+
+    public boolean verificarLogin(String email, String senha){
+
+        String selectQuery = "SELECT * FROM " + TABLE_PACIENTES;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                if(cursor.getString(3).equals(email) && cursor.getString(2).equals(senha)){
+                    return true;
+                }
+
+            }while(cursor.moveToNext());
+
+        }
+
+
+        return false;
     }
 
     public void deletePaciente(Paciente paciente){

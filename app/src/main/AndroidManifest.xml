@@ -45,6 +45,7 @@
         </activity>
         <activity android:name=".TelaLogin" />
         <activity android:name=".CriarConta"></activity>
+        <activity android:name=".PosLogin" />
     </application>
 
 </manifest>
