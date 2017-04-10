@@ -47,9 +47,20 @@ public class EsqueceuSenha extends AppCompatActivity {
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //enviar email
+                String sender = email.getText().toString().trim();
+                String subject = "MeuPreDi: recuperar senha";
+                String message = "Sua senha: abc";
+
+                //Creating SendMail object
+                SendMail sm = new SendMail(getApplicationContext(), sender, subject, message);
+
+                //Executing sendmail to send email
+                sm.execute();
 
                 //mostrar toast
+                Toast.makeText(getApplicationContext(), "Email de recuperação de senha enviado!", Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(EsqueceuSenha.this, TelaLogin.class);
                 startActivity(intent);
