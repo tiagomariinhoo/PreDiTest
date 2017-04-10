@@ -27,6 +27,7 @@ public class TelaLogin extends AppCompatActivity {
     TextView textCriar;
     CheckBox mostrarSenha;
     ConstraintLayout tela;
+    TextView esqueceuSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class TelaLogin extends AppCompatActivity {
         textCriar = (TextView) findViewById(R.id.text_criar_conta);
         mostrarSenha = (CheckBox) findViewById(R.id.checkBox_senha_login);
         tela = (ConstraintLayout) findViewById(R.id.tela_login);
+        esqueceuSenha = (TextView) findViewById(R.id.text_esqueceu_senha_login);
 
         findViewById(R.id.tela_login).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +101,15 @@ public class TelaLogin extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Insira um usuário válido!", Toast.LENGTH_LONG).show();
                 }
+
+            }
+        });
+
+        esqueceuSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TelaLogin.this, EsqueceuSenha.class);
+                startActivity(intent);
 
             }
         });

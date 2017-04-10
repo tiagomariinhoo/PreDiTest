@@ -46,6 +46,7 @@
         <activity android:name=".TelaLogin" />
         <activity android:name=".CriarConta"></activity>
         <activity android:name=".PosLogin" />
+        <activity android:name=".EsqueceuSenha"/>
     </application>
 
 </manifest>

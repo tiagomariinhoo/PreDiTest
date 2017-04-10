@@ -6,19 +6,14 @@ import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.List;
 
 public class CriarConta extends AppCompatActivity {
 
@@ -38,12 +33,12 @@ public class CriarConta extends AppCompatActivity {
         setContentView(R.layout.activity_criar_conta);
 
         boxSenha = (CheckBox) findViewById(R.id.checkedConSenha);
-        nome = (EditText) findViewById(R.id.edit_nome_completo);
+        nome = (EditText) findViewById(R.id.edit_email_esqueceu);
         email = (EditText) findViewById(R.id.edit_endereco_email);
         senha = (EditText) findViewById(R.id.edit_senha_cadastro);
         conSenha = (EditText) findViewById(R.id.edit_novamente_senha);
 
-        criarConta = (Button) findViewById(R.id.btn_criar_nova_conta);
+        criarConta = (Button) findViewById(R.id.btn_enviar_esqueceu);
         cancelar = (Button) findViewById(R.id.btn_cancelar);
         tela = (ConstraintLayout) findViewById(R.id.tela_criar_conta);
 
