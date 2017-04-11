@@ -29,6 +29,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_IDADE = "idade";
     private static final String KEY_CIRCUNFERENCIA = "circunferencia";
     private static final String KEY_PESO = "peso";
+    private static final String KEY_ALTURA = "altura";
+
 
     public DatabaseHandler(Context context) {
         super(context, DATABA_NAME, null, DATABASE_VERSION);
@@ -45,7 +47,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_EMAIL + " TEXT,"
                 + KEY_IDADE + " INTEGER,"
                 + KEY_CIRCUNFERENCIA + " REAL,"
-                + KEY_PESO + " REAL"
+                + KEY_PESO + " REAL,"
+                + KEY_ALTURA + " REAL"
                 + ")";
         db.execSQL(CREATE_PACIENTES_TABLE);
     }
@@ -70,12 +73,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_IDADE, paciente.get_idade());
         values.put(KEY_CIRCUNFERENCIA, paciente.get_circunferencia());
         values.put(KEY_PESO, paciente.get_peso());
+        values.put(KEY_ALTURA, paciente.get_altura());
 
         long retorno;
         retorno = db.insert(TABLE_PACIENTES, null, values);
         db.close();
 
-        if(retorno==-1){
+        if(retorno == -1){
             return "Erro ao inserir o registro!";
         } else {
             return "Registro inserido com sucesso!";
@@ -94,7 +98,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         KEY_EMAIL,
                         KEY_IDADE,
                         KEY_CIRCUNFERENCIA,
-                        KEY_PESO}, KEY_ID + "=?",
+                        KEY_PESO,
+                        KEY_ALTURA}, KEY_ID + "=?",
                 new String[]{ String.valueOf(id)},
                 null, null, null, null);
 
@@ -109,11 +114,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                             cursor.getString(3), // EMAIL
                             Integer.parseInt(cursor.getString(4)), // IDADE
                             Double.parseDouble(cursor.getString(5)), // PESO
-                            Double.parseDouble(cursor.getString(6)) // CIRCUNFERENCIA
+                            Double.parseDouble(cursor.getString(6)), // CIRCUNFERENCIA
+                            Double.parseDouble(cursor.getString(7)) // ALTURA
                     );
 
                 return paciente;
     }
+
+    public SQLiteDatabase abrirBanco(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        return db;
+
+    }
+
+
 
     public List<Paciente> getAllPacientes(){
 
@@ -132,8 +147,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 paciente.set_senha(cursor.getString(2));
                 paciente.set_email(cursor.getString(3));
                 paciente.set_idade(Integer.parseInt(cursor.getString(4)));
-                paciente.set_circunferencia(Integer.parseInt(cursor.getString(5)));
-                paciente.set_peso(Integer.parseInt(cursor.getString(6)));
+                paciente.set_circunferencia(Double.parseDouble(cursor.getString(5)));
+                paciente.set_peso(Double.parseDouble(cursor.getString(6)));
+                paciente.set_altura(Double.parseDouble(cursor.getString(7)));
 
                 pacientesList.add(paciente);
 

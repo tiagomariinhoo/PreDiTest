@@ -13,13 +13,14 @@ public class Paciente {
     int _idade;
     double _circunferencia;
     double _peso;
+    double _altura;
 
     // CONSTRUTOR VAZIO
     public Paciente(){
 
     }
 
-    public Paciente(int id, String nome, String senha, String email, int idade, double circunferencia, double peso){
+    public Paciente(int id, String nome, String senha, String email, int idade, double circunferencia, double peso, double altura){
         this._id = id;
         this._nome = nome;
         this._senha = senha;
@@ -27,6 +28,7 @@ public class Paciente {
         this._idade = idade;
         this._circunferencia = circunferencia;
         this._peso = peso;
+        this._altura = altura;
     }
 
     public int get_id() {
@@ -83,5 +85,13 @@ public class Paciente {
 
     public void set_peso(double _peso) {
         this._peso = _peso;
+    }
+
+    public double get_altura() {
+        return _altura;
+    }
+
+    public void set_altura(double _altura) {
+        this._altura = _altura;
     }
 }

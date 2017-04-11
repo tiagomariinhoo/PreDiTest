@@ -77,17 +77,16 @@ public class TelaLogin extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 
+                List<Paciente> pacList = new ArrayList<Paciente> ();
+                pacList = db.getAllPacientes();
 
-                List<Paciente> pacientesList = new ArrayList<Paciente>();
-                pacientesList = db.getAllPacientes();
-
-                for(int i=0;i<pacientesList.size();i++){
-                    Log.d(pacientesList.get(i).get_nome()," -> Nome do paciente");
-                    Log.d(pacientesList.get(i).get_email()," -> Email do paciente");
-                    Log.d(pacientesList.get(i).get_senha(), " -> Senha do paciente");
-
+                for(int i=0;i<pacList.size();i++){
+                    Log.d(pacList.get(i).get_nome()," -> Nome do paciente");
+                    Log.d(pacList.get(i).get_email()," -> Email do paciente");
+                    Log.d(pacList.get(i).get_senha(), " -> Senha do paciente");
                 }
 
                 String user,pass;

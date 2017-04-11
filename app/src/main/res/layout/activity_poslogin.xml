@@ -15,8 +15,13 @@
                 android:layout_height="wrap_content"
                 android:text="Seja Bem vindo!"
                 android:textSize="30dp"
-                tools:layout_editor_absoluteX="86dp"
-                tools:layout_editor_absoluteY="16dp"/>
+                tools:layout_constraintTop_creator="1"
+                tools:layout_constraintRight_creator="1"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="16dp"
+                tools:layout_constraintLeft_creator="1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/mensagem_pos_login"
@@ -24,59 +29,98 @@
                 android:layout_height="wrap_content"
                 android:text="  Falta pouco para você utilizar o nosso aplicativo,
     por favor conclua os dados de registro:"
-                tools:layout_editor_absoluteY="97dp"
-                tools:layout_editor_absoluteX="37dp" />
+                tools:layout_constraintTop_creator="1"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="14dp"
+                app:layout_constraintTop_toBottomOf="@+id/text_nome_usuario_poslogin"
+                tools:layout_constraintLeft_creator="1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="38dp" />
 
-            <EditText
-                android:id="@+id/edit_idade_poslogin"
-                android:layout_width="120dp"
-                android:layout_height="45dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteY="169dp"
-                tools:layout_editor_absoluteX="37dp" />
+    <EditText
+        android:id="@+id/edit_idade_poslogin"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="82dp"
+        android:layout_marginTop="83dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_peso_poslogin"
+        app:layout_constraintLeft_toLeftOf="@+id/text_idade_poslogin"
+        app:layout_constraintTop_toBottomOf="@+id/text_nome_usuario_poslogin"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/text_idade_poslogin"
                 android:layout_width="wrap_content"
-                android:layout_height="17dp"
+                android:layout_height="0dp"
                 android:text="Idade"
-                tools:layout_editor_absoluteY="145dp"
-                tools:layout_editor_absoluteX="37dp" />
+                tools:layout_constraintTop_creator="1"
+                tools:layout_constraintBottom_creator="1"
+                app:layout_constraintBottom_toBottomOf="@+id/text_altura_poslogin"
+                tools:layout_constraintLeft_creator="1"
+                app:layout_constraintLeft_toLeftOf="@+id/mensagem_pos_login"
+                app:layout_constraintTop_toTopOf="@+id/text_altura_poslogin" />
 
             <TextView
                 android:id="@+id/text_peso_poslogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Peso"
-                tools:layout_editor_absoluteY="227dp"
-                tools:layout_editor_absoluteX="37dp" />
+                tools:layout_constraintBottom_creator="1"
+                app:layout_constraintBottom_toTopOf="@+id/edit_peso_poslogin"
+                tools:layout_constraintLeft_creator="1"
+                android:layout_marginBottom="7dp"
+                app:layout_constraintLeft_toLeftOf="@+id/edit_idade_poslogin"
+                android:layout_marginLeft="0dp" />
 
-            <EditText
-                android:id="@+id/edit_peso_poslogin"
-                android:layout_width="136dp"
-                android:layout_height="45dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteY="251dp"
-                tools:layout_editor_absoluteX="37dp" />
+    <EditText
+        android:id="@+id/edit_peso_poslogin"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-9dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_circunferencia_poslogin"
+        app:layout_constraintLeft_toLeftOf="@+id/text_peso_poslogin"
+        app:layout_constraintTop_toTopOf="@+id/edit_circunferencia_poslogin"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
             <TextView
                 android:id="@+id/text_circunferencia_poslogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Circunferência"
-                tools:layout_editor_absoluteY="227dp"
-                tools:layout_editor_absoluteX="199dp" />
+                tools:layout_constraintBottom_creator="1"
+                app:layout_constraintBottom_toTopOf="@+id/edit_circunferencia_poslogin"
+                tools:layout_constraintLeft_creator="1"
+                android:layout_marginBottom="7dp"
+                app:layout_constraintLeft_toLeftOf="@+id/edit_circunferencia_poslogin" />
 
-            <EditText
-                android:id="@+id/edit_circunferencia_poslogin"
-                android:layout_width="126dp"
-                android:layout_height="45dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteY="251dp"
-                tools:layout_editor_absoluteX="199dp" />
+    <EditText
+        android:id="@+id/edit_circunferencia_poslogin"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="104dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="106dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/btn_concluir_poslogin"
+        app:layout_constraintLeft_toRightOf="@+id/edit_peso_poslogin"
+        app:layout_constraintTop_toTopOf="@+id/text_altura_poslogin"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
             <TextView
                 android:id="@+id/text_nome_usuario_poslogin"
@@ -84,8 +128,13 @@
                 android:layout_height="wrap_content"
                 android:text="Sr Fulano"
                 android:textSize="20sp"
-                tools:layout_editor_absoluteY="62dp"
-                tools:layout_editor_absoluteX="38dp" />
+                tools:layout_constraintTop_creator="1"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/text_bem_vindo_poslogin"
+                tools:layout_constraintLeft_creator="1"
+                app:layout_constraintLeft_toLeftOf="@+id/mensagem_pos_login"
+                android:layout_marginLeft="0dp" />
 
             <Button
                 android:id="@+id/btn_concluir_poslogin"
@@ -93,8 +142,14 @@
                 android:layout_height="wrap_content"
                 android:text="CONCLUIR"
                 android:background="@color/colorConfirm"
-                tools:layout_editor_absoluteY="400dp"
-                tools:layout_editor_absoluteX="260dp" />
+                tools:layout_constraintTop_creator="1"
+                tools:layout_constraintRight_creator="1"
+                tools:layout_constraintBottom_creator="1"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_cancelar_poslogin"
+                android:layout_marginEnd="36dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_cancelar_poslogin"
+                android:layout_marginRight="36dp" />
 
             <Button
                 android:id="@+id/btn_cancelar_poslogin"
@@ -102,42 +157,46 @@
                 android:layout_height="wrap_content"
                 android:text="CANCELAR"
                 android:background="@color/colorPrimary"
-                tools:layout_editor_absoluteY="400dp"
-                tools:layout_editor_absoluteX="40dp" />
+                tools:layout_constraintBottom_creator="1"
+                android:layout_marginStart="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_constraintLeft_creator="1"
+                android:layout_marginBottom="63dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="40dp" />
 
             <TextView
                 android:id="@+id/text_altura_poslogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Altura"
-                tools:layout_editor_absoluteX="199dp"
-                tools:layout_editor_absoluteY="145dp" />
+                tools:layout_constraintTop_creator="1"
+                android:layout_marginTop="15dp"
+                app:layout_constraintTop_toBottomOf="@+id/mensagem_pos_login"
+                tools:layout_constraintLeft_creator="1"
+                app:layout_constraintLeft_toLeftOf="@+id/edit_altura_poslogin" />
 
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="162dp"
-                android:layout_height="44dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteY="169dp"
-                tools:layout_editor_absoluteX="199dp" />
-
-            <TextView
-                android:id="@+id/text_medicamento_poslogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Medciamento"
-                tools:layout_editor_absoluteX="38dp"
-                tools:layout_editor_absoluteY="535dp" />
-
-            <EditText
-                android:id="@+id/edit_medicamento_poslogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteY="551dp"
-                tools:layout_editor_absoluteX="38dp" />
-            />
+    <EditText
+        android:id="@+id/edit_altura_poslogin"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="83dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="83dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_circunferencia_poslogin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/edit_peso_poslogin"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_nome_usuario_poslogin"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

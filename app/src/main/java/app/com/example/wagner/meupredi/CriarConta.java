@@ -103,7 +103,7 @@ public class CriarConta extends AppCompatActivity {
                     DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                     //Paciente(int id, String nome, String senha, String email, int idade, double circunferencia, double peso)
 
-                    Paciente paciente = new Paciente (0, nomeCompleto, senhaCadastro, emailCadastro, 0, 0 , 0);
+                    Paciente paciente = new Paciente (0, nomeCompleto, senhaCadastro, emailCadastro, 0, 0 , 0, 0);
 
                     String msg = db.addPaciente(paciente);
                     Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();

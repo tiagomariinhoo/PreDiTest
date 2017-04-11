@@ -43,13 +43,13 @@ public class Cadastro extends AppCompatActivity {
                 DatabaseHandler crud;
                 crud = new DatabaseHandler(Cadastro.this);
 
-                Paciente paciente = new Paciente(0, nomeString, "", "", Integer.parseInt(idadeString), Double.parseDouble(pesoString),Double.parseDouble(circString));
-                String retorno = crud.addPaciente(paciente);
+                //Paciente paciente = new Paciente(0, nomeString, "", "", Integer.parseInt(idadeString), Double.parseDouble(pesoString),Double.parseDouble(circString), Double.parseDouble(alturaString));
+                //String retorno = crud.addPaciente(paciente);
 
-                Toast.makeText(getApplicationContext(), retorno, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), retorno, Toast.LENGTH_LONG).show();
 
-                Intent it = new Intent(Cadastro.this, MainActivity.class);
-                startActivity(it);
+               // Intent it = new Intent(Cadastro.this, MainActivity.class);
+                //startActivity(it);
 
             }
         });
