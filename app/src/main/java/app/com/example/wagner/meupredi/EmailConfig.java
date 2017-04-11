@@ -6,6 +6,6 @@ package app.com.example.wagner.meupredi;
 
 public class EmailConfig {
 
-    public static final String EMAIL ="YOUR GMAIL USERNAME";
-    public static final String PASSWORD ="YOUR GMAIL PASSWORD";
+    public static final String EMAIL ="prediteste@gmail.com";
+    public static final String PASSWORD ="teste123456";
 }
