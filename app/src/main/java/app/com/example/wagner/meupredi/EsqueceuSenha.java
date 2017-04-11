@@ -48,10 +48,10 @@ public class EsqueceuSenha extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //enviar email
+                //setando dados da mensagem
                 String sender = email.getText().toString().trim();
                 String subject = "MeuPreDi: recuperar senha";
-                String message = "Sua senha: abc";
+                String message = "Sua senha: ";
 
                 //Creating SendMail object
                 SendMail sm = new SendMail(getApplicationContext(), sender, subject, message);

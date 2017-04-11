@@ -3,6 +3,7 @@ package app.com.example.wagner.meupredi;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.Properties;
@@ -42,17 +43,11 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        //Showing progress dialog while sending email
-        progressDialog = ProgressDialog.show(context,"Sending message","Please wait...",false,false);
     }
 
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        //Dismissing the progress dialog
-        progressDialog.dismiss();
-        //Showing a success message
-        Toast.makeText(context,"Message Sent",Toast.LENGTH_LONG).show();
     }
 
     @Override
