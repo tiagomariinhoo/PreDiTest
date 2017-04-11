@@ -1,14 +1,143 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:background="#E0FFFF"
+    android:id="@+id/tela_pos_login"
+    tools:context="app.com.example.wagner.meupredi.PosLogin"
+    tools:layout_editor_absoluteY="0dp"
+    tools:layout_editor_absoluteX="0dp">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.08"
-        android:text="TELA PÓS LOGIN"
-        android:textSize="20sp" />
-</LinearLayout>
+            <TextView
+                android:id="@+id/text_bem_vindo_poslogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seja Bem vindo!"
+                android:textSize="30dp"
+                tools:layout_editor_absoluteX="86dp"
+                tools:layout_editor_absoluteY="16dp"/>
+
+            <TextView
+                android:id="@+id/mensagem_pos_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  Falta pouco para você utilizar o nosso aplicativo,
+    por favor conclua os dados de registro:"
+                tools:layout_editor_absoluteY="97dp"
+                tools:layout_editor_absoluteX="37dp" />
+
+            <EditText
+                android:id="@+id/edit_idade_poslogin"
+                android:layout_width="120dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteY="169dp"
+                tools:layout_editor_absoluteX="37dp" />
+
+            <TextView
+                android:id="@+id/text_idade_poslogin"
+                android:layout_width="wrap_content"
+                android:layout_height="17dp"
+                android:text="Idade"
+                tools:layout_editor_absoluteY="145dp"
+                tools:layout_editor_absoluteX="37dp" />
+
+            <TextView
+                android:id="@+id/text_peso_poslogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Peso"
+                tools:layout_editor_absoluteY="227dp"
+                tools:layout_editor_absoluteX="37dp" />
+
+            <EditText
+                android:id="@+id/edit_peso_poslogin"
+                android:layout_width="136dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteY="251dp"
+                tools:layout_editor_absoluteX="37dp" />
+
+            <TextView
+                android:id="@+id/text_circunferencia_poslogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Circunferência"
+                tools:layout_editor_absoluteY="227dp"
+                tools:layout_editor_absoluteX="199dp" />
+
+            <EditText
+                android:id="@+id/edit_circunferencia_poslogin"
+                android:layout_width="126dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteY="251dp"
+                tools:layout_editor_absoluteX="199dp" />
+
+            <TextView
+                android:id="@+id/text_nome_usuario_poslogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sr Fulano"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteY="62dp"
+                tools:layout_editor_absoluteX="38dp" />
+
+            <Button
+                android:id="@+id/btn_concluir_poslogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CONCLUIR"
+                android:background="@color/colorConfirm"
+                tools:layout_editor_absoluteY="400dp"
+                tools:layout_editor_absoluteX="260dp" />
+
+            <Button
+                android:id="@+id/btn_cancelar_poslogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CANCELAR"
+                android:background="@color/colorPrimary"
+                tools:layout_editor_absoluteY="400dp"
+                tools:layout_editor_absoluteX="40dp" />
+
+            <TextView
+                android:id="@+id/text_altura_poslogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Altura"
+                tools:layout_editor_absoluteX="199dp"
+                tools:layout_editor_absoluteY="145dp" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="162dp"
+                android:layout_height="44dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteY="169dp"
+                tools:layout_editor_absoluteX="199dp" />
+
+            <TextView
+                android:id="@+id/text_medicamento_poslogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medciamento"
+                tools:layout_editor_absoluteX="38dp"
+                tools:layout_editor_absoluteY="535dp" />
+
+            <EditText
+                android:id="@+id/edit_medicamento_poslogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteY="551dp"
+                tools:layout_editor_absoluteX="38dp" />
+            />
+
+</android.support.constraint.ConstraintLayout>

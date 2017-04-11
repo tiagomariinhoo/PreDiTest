@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.com.example.wagner.meupredi">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -46,9 +46,10 @@
                 android:value="app.com.example.wagner.meupredi.MainActivity" />
         </activity>
         <activity android:name=".TelaLogin" />
-        <activity android:name=".CriarConta"></activity>
+        <activity android:name=".CriarConta" />
         <activity android:name=".PosLogin" />
-        <activity android:name=".EsqueceuSenha"/>
+        <activity android:name=".EsqueceuSenha" />
+        <activity android:name=".MenuPrincipal"></activity>
     </application>
 
 </manifest>

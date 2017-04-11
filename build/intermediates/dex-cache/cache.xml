@@ -2,22 +2,40 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="C:\Users\LeandroDias1\.gradle\caches\modules-2\files-2.1\com.sun.mail\android-activation\1.5.5\5442d5e05808145434b750c9f8a0c3f537383c5a\android-activation-1.5.5.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="5442d5e05808145434b750c9f8a0c3f537383c5a">
-        <dex dex="C:\Tiago\PreDiTest\app\build\intermediates\pre-dexed\debug\android-activation-1.5.5_9c43ca84f3391b04a5deea8c0bbbc95ae62016be.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\LeandroDias1\.gradle\caches\modules-2\files-2.1\com.sun.mail\android-mail\1.5.5\53a2f927b235acb565dbe9314ececfb7e6d43020\android-mail-1.5.5.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\wagne\.gradle\caches\modules-2\files-2.1\com.sun.mail\android-mail\1.5.5\53a2f927b235acb565dbe9314ececfb7e6d43020\android-mail-1.5.5.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="53a2f927b235acb565dbe9314ececfb7e6d43020">
-        <dex dex="C:\Tiago\PreDiTest\app\build\intermediates\pre-dexed\debug\android-mail-1.5.5_9c621cd7345cd071a9b56ec77a7f16b3e3adb33f.jar" />
+        <dex dex="C:\Users\wagne\AndroidStudioProjects\PIBIC\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\android-mail-1.5.5_a5f579c2fc5c6be0617ced2a89c78af2afcd0663\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\wagne\.gradle\caches\modules-2\files-2.1\com.sun.mail\android-activation\1.5.5\5442d5e05808145434b750c9f8a0c3f537383c5a\android-activation-1.5.5.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5442d5e05808145434b750c9f8a0c3f537383c5a">
+        <dex dex="C:\Users\wagne\AndroidStudioProjects\PIBIC\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\android-activation-1.5.5_a8397c83a07d3b219dc12e30170c7fc888b84ad4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\wagne\AndroidStudioProjects\PIBIC\PreDiTest\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b0daaacdd1b302bfc933eb7ec6ee638bb5935344">
+        <dex dex="C:\Users\wagne\AndroidStudioProjects\PIBIC\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_58e31168d472af84293a364142e927c6c205c853\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\wagne\AndroidStudioProjects\PIBIC\PreDiTest\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="C:\Users\wagne\AndroidStudioProjects\PIBIC\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_5b2be020ffe6b836fb266c4ac70f6b8fba3baf85\classes.dex" />
     </item>
 
 </items>
