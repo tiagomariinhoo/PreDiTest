@@ -1,10 +1,7 @@
 package app.com.example.wagner.meupredi;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -83,7 +80,11 @@ public class PosLogin extends AppCompatActivity {
                 Log.d("Nome : ", pac.get(0).get_nome());
                 Log.d("Idade : ", Integer.toString(pac.get(0).get_idade()));
                 Log.d("Email : ",  pac.get(0).get_email());
+
+                Intent intent = new Intent(PosLogin.this, MenuPrincipal.class);
+                startActivity(intent);
             }
+
         });
 
         cancelar.setOnClickListener(new View.OnClickListener() {

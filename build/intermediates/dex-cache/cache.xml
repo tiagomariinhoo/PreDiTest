@@ -3,39 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi\PreDiTest\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\wagne\AndroidStudioProjects\PIBIC\PreDiTest\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="9f8b68a04c0b12944951cd8300133aa1cb052a49">
-        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_e300b896c42ee8e79848594cb3efaec44eb78685\classes.dex" />
+        sha1="0fb267b6b543562b5b2208ec932731e8667a2442">
+        <dex dex="C:\Users\wagne\AndroidStudioProjects\PIBIC\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_58e31168d472af84293a364142e927c6c205c853\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Pichau\.gradle\caches\modules-2\files-2.1\com.sun.mail\android-mail\1.5.5\53a2f927b235acb565dbe9314ececfb7e6d43020\android-mail-1.5.5.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="53a2f927b235acb565dbe9314ececfb7e6d43020">
-        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\android-mail-1.5.5_7cffd055a8e210e6feaacfdb0832359322213861\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Pichau\.gradle\caches\modules-2\files-2.1\com.sun.mail\android-activation\1.5.5\5442d5e05808145434b750c9f8a0c3f537383c5a\android-activation-1.5.5.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="5442d5e05808145434b750c9f8a0c3f537383c5a">
-        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\android-activation-1.5.5_d666eb469f5b4fcfc080a62ffd7ceb832b47b7bc\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi\PreDiTest\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\wagne\AndroidStudioProjects\PIBIC\PreDiTest\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_2e60af927f9000b00a850983ecd9c165210491c8\classes.dex" />
+        <dex dex="C:\Users\wagne\AndroidStudioProjects\PIBIC\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_5b2be020ffe6b836fb266c4ac70f6b8fba3baf85\classes.dex" />
     </item>
 
 </items>
