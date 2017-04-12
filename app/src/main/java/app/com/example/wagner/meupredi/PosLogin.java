@@ -69,18 +69,13 @@ public class PosLogin extends AppCompatActivity {
 
                 DatabaseHandler bancoController = new DatabaseHandler(getApplicationContext());
 
-                SQLiteDatabase db = bancoController.abrirBanco();
-
-                ContentValues args = new ContentValues();
-
-                args.put("email", "amanda@ic.com");
-                args.put("idade", "20");
-
-                db.update("pacientes", args, "idAccount" + "=" + 0, null);
-
-                String selectQuery = "SELECT * FROM " + "pacientes";
-
-                Cursor cursor = db.rawQuery(selectQuery, null);
+                if(bancoController.editarBanco()){
+                    Toast.makeText(getApplicationContext(),"Sucesso ao editar!",Toast.LENGTH_LONG).show();
+                    Log.d("Sucesso"," Sucesso");
+                } else {
+                    Toast.makeText(getApplicationContext(),"Erro ao editar!",Toast.LENGTH_LONG).show();
+                    Log.d("Erro"," Erro");
+                }
 
                 List<Paciente> pac = new ArrayList<Paciente>();
                 pac = bancoController.getAllPacientes();
