@@ -3,6 +3,7 @@ package app.com.example.wagner.meupredi;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -22,6 +23,7 @@ import java.util.List;
 
 public class PosLogin extends AppCompatActivity {
 
+    public static final String PREFS_NAME = "Preferences";
     private TextView nomeUsuario;
     private EditText idade;
     private EditText altura;

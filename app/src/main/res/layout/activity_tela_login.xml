@@ -79,7 +79,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox_senha_login"
-        app:layout_constraintVertical_bias="0.115"
+        app:layout_constraintVertical_bias="0.267"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
 
@@ -98,7 +98,8 @@
         app:layout_constraintTop_toBottomOf="@+id/text_esqueceu_senha_login"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1" />
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintVertical_bias="1.0" />
 
     <CheckBox
         android:id="@+id/checkBox_senha_login"
@@ -134,5 +135,21 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login"
         app:layout_constraintVertical_bias="0.875" />
+
+    <CheckBox
+        android:id="@+id/checkBox_manter_conectado_login"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Manter conectado"
+        app:layout_constraintBottom_toTopOf="@+id/btn_login"
+        app:layout_constraintHorizontal_bias="0.348"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_senha_login"
+        app:layout_constraintVertical_bias="0.16000003" />
 
 </android.support.constraint.ConstraintLayout>

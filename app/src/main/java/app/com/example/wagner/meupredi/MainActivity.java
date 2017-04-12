@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_tela_login);
 
         DatabaseHandler db = new DatabaseHandler(this);
 
@@ -21,16 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
         // INSERIR PACIENTES
         Log.d("Insert: ", "Inserting...");
-        db.addPaciente(new Paciente(0, "Amanda", "1234", "amanda@gmail.com", 13, 11, 9,1));
+        db.addPaciente(new Paciente(0, "Amanda", "1234", "a", 13, 11, 9,1));
+        //db.addPaciente(new Paciente(0, "Laura", 13, 11, 9));
+        //db.addPaciente(new Paciente(0, "Shelly", 15, 12, 3));
 
         Log.d("Reading: ", "Reading all contacts..");
 
-
-        Intent intent1 = new Intent(this, TelaLogin.class);
-        startActivity(intent1);
-
-
-
-
+        Intent intent = new Intent(MainActivity.this, TelaLogin.class);
+        startActivity(intent);
     }
 }

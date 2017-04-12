@@ -2,6 +2,8 @@ package app.com.example.wagner.meupredi;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,10 +24,11 @@ import java.util.List;
 
 public class TelaLogin extends AppCompatActivity {
 
+    public static final String PREFS_NAME = "Preferences";
     EditText usuario, senha;
     Button btnLogin;
     TextView textCriar;
-    CheckBox mostrarSenha;
+    CheckBox mostrarSenha, manterConectado;
     ConstraintLayout tela;
     TextView esqueceuSenha;
 
@@ -37,11 +40,27 @@ public class TelaLogin extends AppCompatActivity {
 
         usuario = (EditText) findViewById(R.id.edit_usuario_login);
         senha = (EditText) findViewById(R.id.edit_senha_login);
+        manterConectado = (CheckBox) findViewById(R.id.checkBox_manter_conectado_login);
         btnLogin = (Button) findViewById(R.id.btn_login);
         textCriar = (TextView) findViewById(R.id.text_criar_conta);
         mostrarSenha = (CheckBox) findViewById(R.id.checkBox_senha_login);
         tela = (ConstraintLayout) findViewById(R.id.tela_login);
         esqueceuSenha = (TextView) findViewById(R.id.text_esqueceu_senha_login);
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        usuario.setText(settings.getString("PrefUsuario", ""));
+        senha.setText(settings.getString("PrefSenha", ""));
+        manterConectado.setChecked(false);
+
+        if(usuario.getText().length() > 0 && senha.getText().length() > 0) {
+
+            btnLogin.post(new Runnable() {
+                @Override
+                public void run() {
+                    btnLogin.performClick();
+                }
+            });
+        }
 
         findViewById(R.id.tela_login).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +98,8 @@ public class TelaLogin extends AppCompatActivity {
             public void onClick(View v) {
 
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+                SharedPreferences.Editor editor = settings.edit();
 
                 List<Paciente> pacList = new ArrayList<Paciente> ();
                 pacList = db.getAllPacientes();
@@ -87,6 +108,16 @@ public class TelaLogin extends AppCompatActivity {
                     Log.d(pacList.get(i).get_nome()," -> Nome do paciente");
                     Log.d(pacList.get(i).get_email()," -> Email do paciente");
                     Log.d(pacList.get(i).get_senha(), " -> Senha do paciente");
+                }
+
+                if(manterConectado.isChecked()) {
+                    editor.putString("PrefUsuario", usuario.getText().toString());
+                    editor.putString("PrefSenha", senha.getText().toString());
+
+                    editor.commit();
+                } else {
+                    editor.clear();
+                    editor.commit();
                 }
 
                 String user,pass;
@@ -109,8 +140,20 @@ public class TelaLogin extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TelaLogin.this, EsqueceuSenha.class);
                 startActivity(intent);
-
             }
         });
+    }
+
+    //@Override
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+
+        if(!manterConectado.isChecked()) {
+            editor.clear();
+            editor.commit();
+        }
     }
 }
