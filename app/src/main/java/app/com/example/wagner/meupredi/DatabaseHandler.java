@@ -192,4 +192,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(selectQuery);
         db.close();
     }
+
+    public boolean editarBanco(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues args = new ContentValues();
+
+        args.put("email", "amanda@ic.com");
+        args.put("idade", "20");
+
+        return db.update("pacientes", args, "idAccount" + "=" + 1, null) > 0;
+
+    }
 }
