@@ -1,5 +1,6 @@
 package app.com.example.wagner.meupredi;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -59,14 +60,34 @@ public class PosLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final String idadeCadastro = idade.getText().toString();
-                final String alturaCadastro = altura.getText().toString();
-                final String pesoCadastro = peso.getText().toString();
-                final String circunferenciaCadastro = circunferecia.getText().toString();
+                 String idadeCadastro = idade.getText().toString();
+                 String alturaCadastro = altura.getText().toString();
+                 String pesoCadastro = peso.getText().toString();
+                 String circunferenciaCadastro = circunferecia.getText().toString();
 
                 DatabaseHandler bancoController = new DatabaseHandler(getApplicationContext());
 
-                if(bancoController.editarBanco()){
+                List<Paciente> pac = new ArrayList<Paciente>();
+
+
+                ContentValues args = new ContentValues();
+
+                if(idadeCadastro.length()==0){
+                    idadeCadastro = "-1";
+                } if (alturaCadastro.length()==0){
+                    alturaCadastro = "-1";
+                } if (pesoCadastro.length()==0){
+                    pesoCadastro = "-1";
+                } if (circunferenciaCadastro.length()==0){
+                    circunferenciaCadastro = "-1";
+                }
+
+                args.put("idade", idadeCadastro);
+                args.put("altura", alturaCadastro);
+                args.put("peso", pesoCadastro);
+                args.put("circunferencia", circunferenciaCadastro);
+
+                if(bancoController.editarBanco(args)){
                     Toast.makeText(getApplicationContext(),"Sucesso ao editar!",Toast.LENGTH_LONG).show();
                     Log.d("Sucesso"," Sucesso");
                 } else {
@@ -74,12 +95,14 @@ public class PosLogin extends AppCompatActivity {
                     Log.d("Erro"," Erro");
                 }
 
-                List<Paciente> pac = new ArrayList<Paciente>();
+
                 pac = bancoController.getAllPacientes();
 
                 Log.d("Nome : ", pac.get(0).get_nome());
                 Log.d("Idade : ", Integer.toString(pac.get(0).get_idade()));
-                Log.d("Email : ",  pac.get(0).get_email());
+                Log.d("Altura : ", String.valueOf(pac.get(0).get_altura()));
+                Log.d("Peso : ", String.valueOf(pac.get(0).get_peso()));
+                Log.d("Circ : ", String.valueOf(pac.get(0).get_circunferencia()));
 
                 Intent intent = new Intent(PosLogin.this, MenuPrincipal.class);
                 startActivity(intent);

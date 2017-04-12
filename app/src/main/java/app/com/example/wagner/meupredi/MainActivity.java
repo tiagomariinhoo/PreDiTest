@@ -9,18 +9,11 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnCadastro;
-    private Button btnEdicao;
-    private Button btnStatus;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Intent intent1 = new Intent(this, TelaLogin.class);
-        startActivity(intent1);
+        //setContentView(R.layout.activity_main);
 
         DatabaseHandler db = new DatabaseHandler(this);
 
@@ -29,46 +22,14 @@ public class MainActivity extends AppCompatActivity {
         // INSERIR PACIENTES
         Log.d("Insert: ", "Inserting...");
         db.addPaciente(new Paciente(0, "Amanda", "1234", "amanda@gmail.com", 13, 11, 9,1));
-        //db.addPaciente(new Paciente(0, "Laura", 13, 11, 9));
-        //db.addPaciente(new Paciente(0, "Shelly", 15, 12, 3));
 
         Log.d("Reading: ", "Reading all contacts..");
 
-        btnCadastro = (Button) findViewById(R.id.btn_cadastro);
 
-        btnCadastro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // SAIR DA MAIN PRA TELA DE CADASTRO
-                Intent intent = new Intent(MainActivity.this, Cadastro.class);
-                // CHAMAR A TELA DE CADASTRO
-                startActivity(intent);
-            }
-        });
+        Intent intent1 = new Intent(this, TelaLogin.class);
+        startActivity(intent1);
 
-        btnEdicao = (Button) findViewById(R.id.btn_edicao);
 
-        btnEdicao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // SAIR DA MAIN PRA TELA DE CADASTRO
-                Intent intent = new Intent(MainActivity.this, Edicao.class);
-                // CHAMAR A TELA DE CADASTRO
-                startActivity(intent);
-            }
-        });
-
-        btnStatus = (Button) findViewById(R.id.btn_status);
-
-        btnStatus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // SAIR DA MAIN PRA TELA DE CADASTRO
-                Intent intent = new Intent(MainActivity.this, Status.class);
-                // CHAMAR A TELA DE CADASTRO
-                startActivity(intent);
-            }
-        });
 
 
     }

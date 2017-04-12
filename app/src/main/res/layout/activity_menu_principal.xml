@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/menuPrincipaLayout"
+    android:background="#E0FFFF"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="app.com.example.wagner.meupredi.MenuPrincipal">
 
@@ -26,7 +27,7 @@
 
     <android.support.design.widget.NavigationView
         android:layout_height="match_parent"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         app:menu="@menu/navigation_menu"
         android:layout_gravity="start">
 

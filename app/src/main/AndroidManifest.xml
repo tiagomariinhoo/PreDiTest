@@ -18,33 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Cadastro"
-            android:label="@string/title_activity_cadastro"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="app.com.example.wagner.meupredi.MainActivity" />
-        </activity>
-        <activity
-            android:name=".Edicao"
-            android:label="@string/title_activity_edicao"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="app.com.example.wagner.meupredi.MainActivity" />
-        </activity>
-        <activity
-            android:name=".Status"
-            android:label="@string/title_activity_status"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="app.com.example.wagner.meupredi.MainActivity" />
-        </activity>
         <activity android:name=".TelaLogin" />
         <activity android:name=".CriarConta" />
         <activity android:name=".PosLogin" />
