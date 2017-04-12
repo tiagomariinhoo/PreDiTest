@@ -110,6 +110,7 @@ public class CriarConta extends AppCompatActivity {
 
                     Intent voltaLogin = new Intent(CriarConta.this, TelaLogin.class);
                     startActivity(voltaLogin);
+
                 } else {
                     Toast.makeText(getApplicationContext(), "Insira senhas iguais!", Toast.LENGTH_LONG).show();
                 }

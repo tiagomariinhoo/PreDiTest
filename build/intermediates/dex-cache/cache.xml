@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/home/leandro/Downloads/PIBIC/PreDiTest/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="C:\Users\wagne\AndroidStudioProjects\PIBIC\PreDiTest\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b0daaacdd1b302bfc933eb7ec6ee638bb5935344">
+        <dex dex="C:\Users\wagne\AndroidStudioProjects\PIBIC\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_58e31168d472af84293a364142e927c6c205c853\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\wagne\AndroidStudioProjects\PIBIC\PreDiTest\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="/home/leandro/Downloads/PIBIC/PreDiTest/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_d6bcb5c930bb39be10c9053bdfa57f2928acc407/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/leandro/Downloads/PIBIC/PreDiTest/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c3d4c8a2490ad05dfab15365480b3d01c3ad38da">
-        <dex dex="/home/leandro/Downloads/PIBIC/PreDiTest/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_b791b56abaecd42f6abea7997933cf49fe65da7b/classes.dex" />
+        <dex dex="C:\Users\wagne\AndroidStudioProjects\PIBIC\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_5b2be020ffe6b836fb266c4ac70f6b8fba3baf85\classes.dex" />
     </item>
 
 </items>
