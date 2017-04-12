@@ -10,7 +10,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7d6493b-b395-4f3b-93b0-f23b596df878" name="Default" comment=" - Atualização Banco De Dados (senha, email);&#10; - Icone&#10; - Tela de login guardando o keyboard">
+    <list default="true" id="a7d6493b-b395-4f3b-93b0-f23b596df878" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="4385e3bb-72b3-4e80-a922-74126f89c0e4" name="Failed commit: Default" comment=" - Atualização Banco De Dados (senha, email);&#10; - Icone&#10; - Tela de login guardando o keyboard" />
@@ -2485,7 +2485,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491964247174</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary=" - Atualização Banco De Dados (senha, email);&#10; - Icone&#10; - Tela de login guardando o keyboard">
+      <created>1491964550084</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1491964550084</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
