@@ -3,7 +3,6 @@ package app.com.example.wagner.meupredi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -115,9 +114,6 @@ public class TelaLogin extends AppCompatActivity {
                     editor.putString("PrefSenha", senha.getText().toString());
 
                     editor.commit();
-                } else {
-                    editor.clear();
-                    editor.commit();
                 }
 
                 String user,pass;
@@ -142,18 +138,5 @@ public class TelaLogin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    //@Override
-    protected void onStop() {
-        super.onStop();
-
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        SharedPreferences.Editor editor = settings.edit();
-
-        if(!manterConectado.isChecked()) {
-            editor.clear();
-            editor.commit();
-        }
     }
 }
