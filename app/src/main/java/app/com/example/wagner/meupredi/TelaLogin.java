@@ -47,12 +47,13 @@ public class TelaLogin extends AppCompatActivity {
         esqueceuSenha = (TextView) findViewById(R.id.text_esqueceu_senha_login);
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
         usuario.setText(settings.getString("PrefUsuario", ""));
         senha.setText(settings.getString("PrefSenha", ""));
+
         manterConectado.setChecked(false);
 
         if(usuario.getText().length() > 0 && senha.getText().length() > 0) {
-
             btnLogin.post(new Runnable() {
                 @Override
                 public void run() {
@@ -120,10 +121,12 @@ public class TelaLogin extends AppCompatActivity {
                 user = usuario.getText().toString();
                 pass = senha.getText().toString();
 
-                if(db.verificarLogin(user,pass)){
+                Paciente paciente = new Paciente();
+                paciente = db.verificarLogin(user,pass);
+
+                if(paciente.get_id() != -1){
                     Intent it = new Intent(TelaLogin.this, PosLogin.class);
                     startActivity(it);
-
                 } else {
                     Toast.makeText(getApplicationContext(), "Insira um usuário válido!", Toast.LENGTH_LONG).show();
                 }

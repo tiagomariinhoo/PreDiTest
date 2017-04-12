@@ -46,6 +46,11 @@ public class PosLogin extends AppCompatActivity {
         cancelar = (Button) findViewById(R.id.btn_cancelar_poslogin);
         concluir = (Button) findViewById(R.id.btn_concluir_poslogin);
 
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+
+        nomeUsuario.setText(settings.getString("PrefUsuario", ""));
+
         findViewById(R.id.tela_pos_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +75,6 @@ public class PosLogin extends AppCompatActivity {
                 DatabaseHandler bancoController = new DatabaseHandler(getApplicationContext());
 
                 List<Paciente> pac = new ArrayList<Paciente>();
-
 
                 ContentValues args = new ContentValues();
 

@@ -2,6 +2,7 @@ package app.com.example.wagner.meupredi;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -128,8 +129,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-
-
     public List<Paciente> getAllPacientes(){
 
         List<Paciente> pacientesList = new ArrayList<Paciente> ();
@@ -158,24 +157,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return pacientesList;
     }
 
-    public boolean verificarLogin(String email, String senha){
+    public Paciente verificarLogin(String email, String senha){
 
         String selectQuery = "SELECT * FROM " + TABLE_PACIENTES;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
+        Paciente paciente = new Paciente();
+
         if(cursor.moveToFirst()){
             do{
                 if(cursor.getString(3).equals(email) && cursor.getString(2).equals(senha)){
-                    return true;
+                    paciente.set_id(Integer.parseInt(cursor.getString(0)));
+                    paciente.set_nome(cursor.getString(1));
+                    paciente.set_senha(cursor.getString(2));
+                    paciente.set_email(cursor.getString(3));
+                    paciente.set_idade(Integer.parseInt(cursor.getString(4)));
+                    paciente.set_circunferencia(Double.parseDouble(cursor.getString(5)));
+                    paciente.set_peso(Double.parseDouble(cursor.getString(6)));
+                    paciente.set_altura(Double.parseDouble(cursor.getString(7)));
+                    return paciente;
                 }
 
             }while(cursor.moveToNext());
 
         }
 
-
-        return false;
+        paciente.set_id(-1);
+        return paciente;
     }
 
     public void deletePaciente(Paciente paciente){
@@ -199,4 +208,5 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return db.update("pacientes", args, "idAccount" + "=" + 1, null) > 0;
     }
+
 }
