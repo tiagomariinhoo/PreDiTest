@@ -52,7 +52,6 @@ public class PosLogin extends AppCompatActivity {
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
-        //nomeUsuario.setText(settings.getString("PrefUsuario", ""));
         nomeUsuario.setText(paciente.get_nome());
 
         findViewById(R.id.tela_pos_login).setOnClickListener(new View.OnClickListener() {
@@ -115,6 +114,7 @@ public class PosLogin extends AppCompatActivity {
                 Log.d("Circ : ", String.valueOf(pac.get(0).get_circunferencia()));
 
                 Intent intent = new Intent(PosLogin.this, MenuPrincipal.class);
+                intent.putExtra("Paciente", paciente);
                 startActivity(intent);
             }
 
