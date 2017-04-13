@@ -90,12 +90,18 @@ public class CriarConta extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                /*TODO: verificar email ao cadastrar (enviar email de confirmacao)*/
+
                 final String nomeCompleto = nome.getText().toString();
                 final String emailCadastro = email.getText().toString();
                 final String senhaCadastro = senha.getText().toString();
                 final String conSenhaCadastro = conSenha.getText().toString();
 
-                if (senhaCadastro.length() == 0) {
+                if(nomeCompleto.length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Insira um nome válido!", Toast.LENGTH_LONG).show();
+                } else if(emailCadastro.length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Insira um email válido!", Toast.LENGTH_LONG).show();
+                } else if (senhaCadastro.length() == 0) {
                     Toast.makeText(getApplicationContext(), "Insira uma senha válida!", Toast.LENGTH_LONG).show();
                 } else if (senhaCadastro.equals(conSenhaCadastro)) {
                     Toast.makeText(getApplicationContext(), "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();

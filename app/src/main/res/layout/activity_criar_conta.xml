@@ -27,15 +27,16 @@
         android:id="@+id/edit_email_esqueceu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_constraintTop_creator="1"
+        android:layout_marginLeft="8dp"
         android:layout_marginStart="7dp"
         android:layout_marginTop="8dp"
+        android:drawableBottom="@color/colorPrimary"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_digite_email_esqueceu"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="8dp" />
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/text_endereco_email"
@@ -54,15 +55,16 @@
         android:id="@+id/edit_endereco_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:drawableBottom="@color/colorPrimary"
         android:ems="10"
         android:inputType="textPersonName"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_endereco_email"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/text_senha"
@@ -83,6 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:drawableBottom="@color/colorPrimary"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -160,7 +163,7 @@
         android:layout_marginTop="8dp"
         android:checked="false"
         app:layout_constraintBottom_toTopOf="@+id/btn_enviar_esqueceu"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintLeft_toRightOf="@+id/edit_novamente_senha"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
