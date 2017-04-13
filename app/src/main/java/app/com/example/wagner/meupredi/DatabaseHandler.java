@@ -209,4 +209,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return db.update("pacientes", args, "idAccount" + "=" + 1, null) > 0;
     }
 
+    public void atualizarPaciente(Paciente paciente){
+
+    }
+
 }

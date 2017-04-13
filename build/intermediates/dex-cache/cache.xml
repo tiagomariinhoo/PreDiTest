@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/home/leandro/Downloads/PIBIC/PreDiTest/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi\PreDiTest\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="de60b544e5f48efe6720bf1c5431c00b809b3e6d">
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_e300b896c42ee8e79848594cb3efaec44eb78685\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi\PreDiTest\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="/home/leandro/Downloads/PIBIC/PreDiTest/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_d6bcb5c930bb39be10c9053bdfa57f2928acc407/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/leandro/Downloads/PIBIC/PreDiTest/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3efb062d9132c3f0d68265f0ea37fadd6411a991">
-        <dex dex="/home/leandro/Downloads/PIBIC/PreDiTest/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_b791b56abaecd42f6abea7997933cf49fe65da7b/classes.dex" />
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_2e60af927f9000b00a850983ecd9c165210491c8\classes.dex" />
     </item>
 
 </items>

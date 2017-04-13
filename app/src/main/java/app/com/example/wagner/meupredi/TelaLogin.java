@@ -126,6 +126,7 @@ public class TelaLogin extends AppCompatActivity {
 
                 if(paciente.get_id() != -1){
                     Intent it = new Intent(TelaLogin.this, PosLogin.class);
+                    it.putExtra("Paciente", paciente);
                     startActivity(it);
                 } else {
                     Toast.makeText(getApplicationContext(), "Insira um usuário válido!", Toast.LENGTH_LONG).show();

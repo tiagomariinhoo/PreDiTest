@@ -31,6 +31,7 @@ public class PosLogin extends AppCompatActivity {
     private EditText circunferecia;
     private Button cancelar;
     private Button concluir;
+    private Paciente paciente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,10 @@ public class PosLogin extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
 
-        nomeUsuario.setText(settings.getString("PrefUsuario", ""));
+        paciente = (Paciente) getIntent().getExtras().get("Paciente");
+
+        //nomeUsuario.setText(settings.getString("PrefUsuario", ""));
+        nomeUsuario.setText(paciente.get_nome());
 
         findViewById(R.id.tela_pos_login).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,10 +1,12 @@
 package app.com.example.wagner.meupredi;
 
+import java.io.Serializable;
+
 /**
  * Created by wagne on 31/03/2017.
  */
 
-public class Paciente {
+public class Paciente implements Serializable{
 
     int _id;
     String _nome;
