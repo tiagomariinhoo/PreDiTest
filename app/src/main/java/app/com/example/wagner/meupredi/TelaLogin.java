@@ -138,6 +138,7 @@ public class TelaLogin extends AppCompatActivity {
         esqueceuSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(TelaLogin.this, EsqueceuSenha.class);
                 startActivity(intent);
             }

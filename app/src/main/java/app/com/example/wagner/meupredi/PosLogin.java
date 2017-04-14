@@ -47,8 +47,8 @@ public class PosLogin extends AppCompatActivity {
         cancelar = (Button) findViewById(R.id.btn_cancelar_poslogin);
         concluir = (Button) findViewById(R.id.btn_concluir_poslogin);
 
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        SharedPreferences.Editor editor = settings.edit();
+        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        final SharedPreferences.Editor editor = settings.edit();
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
