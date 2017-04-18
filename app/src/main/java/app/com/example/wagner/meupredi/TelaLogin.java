@@ -53,6 +53,7 @@ public class TelaLogin extends AppCompatActivity {
 
         manterConectado.setChecked(false);
 
+        //(usuario.getText().length() > 0 && senha.getText().length() > 0)
         if(usuario.getText().length() > 0 && senha.getText().length() > 0) {
             btnLogin.post(new Runnable() {
                 @Override
@@ -138,7 +139,6 @@ public class TelaLogin extends AppCompatActivity {
         esqueceuSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(TelaLogin.this, EsqueceuSenha.class);
                 startActivity(intent);
             }
