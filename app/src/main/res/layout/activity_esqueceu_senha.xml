@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E0FFFF"
+
     android:id="@+id/tela_esqueceu_senha"
     tools:context="app.com.example.wagner.meupredi.EsqueceuSenha"
     tools:layout_editor_absoluteY="81dp"

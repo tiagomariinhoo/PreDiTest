@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -41,9 +42,13 @@ public class PosLogin extends AppCompatActivity {
 
         nomeUsuario = (TextView) findViewById(R.id.text_nome_usuario_poslogin);
         idade = (EditText) findViewById(R.id.edit_idade_poslogin);
+        idade.setRawInputType(Configuration.KEYBOARD_QWERTY);
         altura = (EditText) findViewById(R.id.edit_altura_poslogin);
+        altura.setRawInputType(Configuration.KEYBOARD_QWERTY);
         peso = (EditText) findViewById(R.id.edit_peso_poslogin);
+        peso.setRawInputType(Configuration.KEYBOARD_QWERTY);
         circunferecia = (EditText) findViewById(R.id.edit_circunferencia_poslogin);
+        circunferecia.setRawInputType(Configuration.KEYBOARD_QWERTY);
         cancelar = (Button) findViewById(R.id.btn_cancelar_poslogin);
         concluir = (Button) findViewById(R.id.btn_concluir_poslogin);
 

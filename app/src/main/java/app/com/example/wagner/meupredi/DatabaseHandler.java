@@ -138,6 +138,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
+        //TODO: tratar NumberFormatException
+
         if(cursor.moveToFirst()){
             do{
                 Paciente paciente = new Paciente();

@@ -7,5 +7,11 @@
     <string name="activity_pos_login">Falta pouco para você utilizar o nosso aplicativo. Por favor, preencha os dados de registro:</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="title_activity_menu_principal">MenuPrincipal</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Configurações</string>
 
 </resources>

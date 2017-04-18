@@ -1,66 +1,122 @@
 package app.com.example.wagner.meupredi;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-public class MenuPrincipal extends AppCompatActivity {
-
-    public static final String PREFS_NAME = "Preferences";
-    private DrawerLayout menuPrincipalTela;
-    private ActionBarDrawerToggle mToggle;
-    private Paciente paciente;
-    private TextView nomeUsuario;
-    private TextView idadeUsuario;
-    private TextView alturaUsuario;
-    private TextView pesoUsuario;
-    private TextView circUsuario;
+public class MenuPrincipal extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        menuPrincipalTela = (DrawerLayout) findViewById(R.id.menuPrincipaLayout);
-        mToggle = new ActionBarDrawerToggle(this, menuPrincipalTela, R.string.open, R.string.close);
 
-        menuPrincipalTela.addDrawerListener(mToggle);
-        mToggle.syncState();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
 
-        nomeUsuario = (TextView) findViewById(R.id.text_nome_usuario_menu_principal);
-        idadeUsuario = (TextView) findViewById(R.id.text_idade_usuario_menu_principal);
-        alturaUsuario = (TextView) findViewById(R.id.text_altura_usuario_menu_principal);
-        pesoUsuario = (TextView) findViewById(R.id.text_peso_usuario_menu_principal);
-        circUsuario = (TextView) findViewById(R.id.text_circ_usuario_menu_principal);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        SharedPreferences.Editor editor = settings.edit();
+        //add this line to display menu1 when the activity is loaded
+        displaySelectedScreen(R.id.nav_perfil);
+    }
 
-        paciente = (Paciente) getIntent().getExtras().get("Paciente");
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
-        nomeUsuario.setText(paciente.get_nome());
-        /*idadeUsuario.setText(paciente.get_idade());
-        alturaUsuario.setText((int) paciente.get_altura());
-        pesoUsuario.setText((int) paciente.get_peso());
-        circUsuario.setText((int) paciente.get_circunferencia());*/
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_principal, menu);
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
 
-        if(mToggle.onOptionsItemSelected(item)){
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+
+        //calling the method displayselectedscreen and passing the id of selected menu
+        displaySelectedScreen(item.getItemId());
+        //make this method blank
+        return true;
+    }
+
+    private void displaySelectedScreen(int itemId) {
+
+        //creating fragment object
+        Fragment fragment = null;
+
+        //initializing the fragment object which is selected
+        switch (itemId) {
+            case R.id.nav_perfil:
+                fragment = new Perfil();
+                break;
+            case R.id.nav_exames:
+                fragment = new Exames();
+                break;
+            case R.id.nav_consultas:
+                fragment = new Consultas();
+                break;
+            case R.id.nav_exercicios:
+                fragment = new Exercicios();
+                break;
+            case R.id.nav_medicamentos:
+                fragment = new Medicamentos();
+                break;
+            case R.id.nav_sair:
+                fragment = new Sair();
+                break;
+        }
+
+        //replacing the fragment
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.commit();
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
     }
 }
