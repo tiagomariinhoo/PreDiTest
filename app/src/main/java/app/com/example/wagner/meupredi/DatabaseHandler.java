@@ -30,7 +30,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_IDADE = "idade";
     private static final String KEY_CIRCUNFERENCIA = "circunferencia";
     private static final String KEY_PESO = "peso";
+    private static final String KEY_PESOATUAL = "pesoatual";
     private static final String KEY_ALTURA = "altura";
+    private static final String KEY_IMC = "imc";
+    private static final String KEY_HBA1C = "hba1c";
+    private static final String KEY_GLICOSEJEJUM = "glicosejejum";
+    private static final String KEY_GLICOSE75G = "glicoes75g";
 
 
     public DatabaseHandler(Context context) {
@@ -49,6 +54,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_IDADE + " INTEGER,"
                 + KEY_CIRCUNFERENCIA + " REAL,"
                 + KEY_PESO + " REAL,"
+                + KEY_PESOATUAL + " REAL,"
+                + KEY_IMC + " REAL,"
+                + KEY_HBA1C + " REAL,"
+                + KEY_GLICOSEJEJUM + " REAL,"
+                + KEY_GLICOSE75G + " REAL,"
                 + KEY_ALTURA + " REAL"
                 + ")";
         db.execSQL(CREATE_PACIENTES_TABLE);
@@ -75,6 +85,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_CIRCUNFERENCIA, paciente.get_circunferencia());
         values.put(KEY_PESO, paciente.get_peso());
         values.put(KEY_ALTURA, paciente.get_altura());
+
+
 
         long retorno;
         retorno = db.insert(TABLE_PACIENTES, null, values);

@@ -16,6 +16,11 @@ public class Paciente implements Serializable{
     double _circunferencia;
     double _peso;
     double _altura;
+    double _imc;
+    double _hba1c;
+    double _glicosejejum;
+    double _glicose75g;
+    double _glicosecasual;
 
     // CONSTRUTOR VAZIO
     public Paciente(){
@@ -31,6 +36,12 @@ public class Paciente implements Serializable{
         this._circunferencia = circunferencia;
         this._peso = peso;
         this._altura = altura;
+        this._imc = peso/(altura*altura);
+        this._hba1c = 0;
+        this._glicose75g = 0;
+        this._glicosejejum = 0;
+        this._glicosecasual = 0;
+
     }
 
     public int get_id() {
