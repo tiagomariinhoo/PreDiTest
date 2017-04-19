@@ -3,6 +3,7 @@ package app.com.example.wagner.meupredi;
 
 import android.content.Context;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -97,29 +98,40 @@ public class CriarConta extends AppCompatActivity {
                 final String senhaCadastro = senha.getText().toString();
                 final String conSenhaCadastro = conSenha.getText().toString();
 
-                if(nomeCompleto.length() == 0) {
-                    Toast.makeText(getApplicationContext(), "Insira um nome válido!", Toast.LENGTH_LONG).show();
-                } else if(emailCadastro.length() == 0) {
-                    Toast.makeText(getApplicationContext(), "Insira um email válido!", Toast.LENGTH_LONG).show();
-                } else if (senhaCadastro.length() == 0) {
-                    Toast.makeText(getApplicationContext(), "Insira uma senha válida!", Toast.LENGTH_LONG).show();
-                } else if (senhaCadastro.equals(conSenhaCadastro)) {
-                    Toast.makeText(getApplicationContext(), "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
+                //verificando se email ja foi cadastrado
+                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                Paciente tempPaciente = new Paciente();
 
-                    DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                    //Paciente(int id, String nome, String senha, String email, int idade, double circunferencia, double peso)
+                tempPaciente = db.verificarEmail(emailCadastro);
 
-                    Paciente paciente = new Paciente (0, nomeCompleto, senhaCadastro, emailCadastro, 0, 0 , 0, 0);
+                if(tempPaciente.get_id() == -1) {
+                    if(nomeCompleto.length() == 0) {
+                        Toast.makeText(getApplicationContext(), "Insira um nome válido!", Toast.LENGTH_LONG).show();
+                    } else if(emailCadastro.length() == 0) {
+                        Toast.makeText(getApplicationContext(), "Insira um email válido!", Toast.LENGTH_LONG).show();
+                    } else if (senhaCadastro.length() == 0) {
+                        Toast.makeText(getApplicationContext(), "Insira uma senha válida!", Toast.LENGTH_LONG).show();
+                    } else if (senhaCadastro.equals(conSenhaCadastro)) {
+                        Toast.makeText(getApplicationContext(), "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
 
-                    String msg = db.addPaciente(paciente);
-                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                        //Paciente(int id, String nome, String senha, String email, int idade, double circunferencia, double peso)
 
-                    Intent voltaLogin = new Intent(CriarConta.this, TelaLogin.class);
-                    startActivity(voltaLogin);
+                        Paciente paciente = new Paciente (0, nomeCompleto, senhaCadastro, emailCadastro, 0, 0 , 0, 0);
 
+                        String msg = db.addPaciente(paciente);
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+
+                        Intent voltaLogin = new Intent(CriarConta.this, TelaLogin.class);
+                        startActivity(voltaLogin);
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Insira senhas iguais!", Toast.LENGTH_LONG).show();
+                    }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Insira senhas iguais!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Email já cadastrado!", Toast.LENGTH_LONG).show();
                 }
+
+
             }
         });
 
