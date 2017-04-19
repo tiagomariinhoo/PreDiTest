@@ -54,12 +54,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_IDADE + " INTEGER,"
                 + KEY_CIRCUNFERENCIA + " REAL,"
                 + KEY_PESO + " REAL,"
+                + KEY_ALTURA + " REAL"
                 + KEY_PESOATUAL + " REAL,"
                 + KEY_IMC + " REAL,"
                 + KEY_HBA1C + " REAL,"
                 + KEY_GLICOSEJEJUM + " REAL,"
                 + KEY_GLICOSE75G + " REAL,"
-                + KEY_ALTURA + " REAL"
                 + ")";
         db.execSQL(CREATE_PACIENTES_TABLE);
     }
@@ -85,8 +85,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_CIRCUNFERENCIA, paciente.get_circunferencia());
         values.put(KEY_PESO, paciente.get_peso());
         values.put(KEY_ALTURA, paciente.get_altura());
-
-
+        values.put(KEY_PESOATUAL, paciente.get_pesoAtual());
+        values.put(KEY_HBA1C, paciente.get_hba1c());
+        values.put(KEY_IMC, paciente.get_imc());
+        values.put(KEY_GLICOSEJEJUM, paciente.get_glicosejejum());
+        values.put(KEY_GLICOSE75G, paciente.get_glicose75g());
 
         long retorno;
         retorno = db.insert(TABLE_PACIENTES, null, values);
@@ -163,6 +166,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 paciente.set_circunferencia(Double.parseDouble(cursor.getString(5)));
                 paciente.set_peso(Double.parseDouble(cursor.getString(6)));
                 paciente.set_altura(Double.parseDouble(cursor.getString(7)));
+                paciente.set_pesoAtual(Double.parseDouble(cursor.getString(8)));
+                paciente.set_hba1c(Double.parseDouble(cursor.getString(9)));
+                paciente.set_imc(Double.parseDouble(cursor.getString(10)));
+                paciente.set_glicosejejum(Double.parseDouble(cursor.getString(11)));
+                paciente.set_glicose75g(Double.parseDouble(cursor.getString(12)));
 
                 pacientesList.add(paciente);
 
@@ -190,6 +198,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     paciente.set_circunferencia(Double.parseDouble(cursor.getString(5)));
                     paciente.set_peso(Double.parseDouble(cursor.getString(6)));
                     paciente.set_altura(Double.parseDouble(cursor.getString(7)));
+                    paciente.set_pesoAtual(Double.parseDouble(cursor.getString(8)));
+                    paciente.set_hba1c(Double.parseDouble(cursor.getString(9)));
+                    paciente.set_imc(Double.parseDouble(cursor.getString(10)));
+                    paciente.set_glicosejejum(Double.parseDouble(cursor.getString(11)));
+                    paciente.set_glicose75g(Double.parseDouble(cursor.getString(12)));
+
                     return paciente;
                 }
 
@@ -255,6 +269,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public void atualizarPaciente(Paciente paciente){
 
+        String email = paciente.get_email();
     }
 
 }

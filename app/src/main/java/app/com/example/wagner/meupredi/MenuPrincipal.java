@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -23,6 +24,8 @@ import static app.com.example.wagner.meupredi.PosLogin.PREFS_NAME;
 public class MenuPrincipal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private Paciente paciente;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +39,21 @@ public class MenuPrincipal extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        paciente = (Paciente) getIntent().getExtras().get("Paciente");
+
+        Log.d("Nome : ", paciente.get_nome());
+        Log.d("Peso : ", String.valueOf(paciente.get_peso()));
+        Log.d("Altura : ", String.valueOf(paciente.get_altura()));
+        Log.d("IMC : ", String.valueOf(paciente.get_imc()));
+        Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
+        Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+        Log.d("GlicoseCasual : ", String.valueOf(paciente.get_glicosecasual()));
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         //add this line to display menu1 when the activity is loaded
         displaySelectedScreen(R.id.nav_perfil);
-
     }
 
     @Override

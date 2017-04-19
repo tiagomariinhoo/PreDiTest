@@ -52,12 +52,23 @@ public class PosLogin extends AppCompatActivity {
         pular = (Button) findViewById(R.id.btn_pular_poslogin);
         concluir = (Button) findViewById(R.id.btn_concluir_poslogin);
 
-        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        final SharedPreferences.Editor editor = settings.edit();
-
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
         nomeUsuario.setText(paciente.get_nome());
+
+        if(paciente.get_idade() > 0) {
+            Log.d("Nome : ", paciente.get_nome());
+            Log.d("Peso : ", String.valueOf(paciente.get_peso()));
+            Log.d("Altura : ", String.valueOf(paciente.get_altura()));
+            Log.d("IMC : ", String.valueOf(paciente.get_imc()));
+            Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
+            Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+            Log.d("GlicoseCasual : ", String.valueOf(paciente.get_glicosecasual()));
+
+            Intent intent = new Intent(PosLogin.this, MenuPrincipal.class);
+            intent.putExtra("Paciente", paciente);
+            startActivity(intent);
+        }
 
         findViewById(R.id.tela_pos_login).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +90,16 @@ public class PosLogin extends AppCompatActivity {
                 String alturaCadastro = altura.getText().toString();
                 String pesoCadastro = peso.getText().toString();
                 String circunferenciaCadastro = circunferecia.getText().toString();
+
+                paciente.set_idade(Integer.parseInt(idadeCadastro));
+                paciente.set_altura(Double.parseDouble(alturaCadastro));
+                paciente.set_peso(Double.parseDouble(pesoCadastro));
+                paciente.set_circunferencia(Double.parseDouble(circunferenciaCadastro));
+                double imc = paciente.get_peso()/(((paciente.get_altura()/100)*((paciente.get_altura())/100)));
+                paciente.set_imc(imc);
+                paciente.set_glicosejejum(1);
+                paciente.set_glicose75g(2);
+                paciente.set_glicosecasual(3);
 
                 DatabaseHandler bancoController = new DatabaseHandler(getApplicationContext());
 

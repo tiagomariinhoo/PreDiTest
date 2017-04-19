@@ -16,6 +16,7 @@ public class Paciente implements Serializable{
     double _circunferencia;
     double _peso;
     double _altura;
+    double _pesoAtual;
     double _imc;
     double _hba1c;
     double _glicosejejum;
@@ -24,6 +25,7 @@ public class Paciente implements Serializable{
 
     // CONSTRUTOR VAZIO
     public Paciente(){
+
 
     }
 
@@ -36,12 +38,60 @@ public class Paciente implements Serializable{
         this._circunferencia = circunferencia;
         this._peso = peso;
         this._altura = altura;
-        this._imc = peso/(altura*altura);
+        this._imc = 20;
         this._hba1c = 0;
         this._glicose75g = 0;
         this._glicosejejum = 0;
         this._glicosecasual = 0;
 
+    }
+
+    public double get_pesoAtual() {
+        return _pesoAtual;
+    }
+
+    public void set_pesoAtual(double _pesoAtual) {
+        this._pesoAtual = _pesoAtual;
+    }
+
+    public double get_imc() {
+        return _imc;
+    }
+
+    public void set_imc(double _imc) {
+        this._imc = _imc;
+    }
+
+    public double get_hba1c() {
+        return _hba1c;
+    }
+
+    public void set_hba1c(double _hba1c) {
+        this._hba1c = _hba1c;
+    }
+
+    public double get_glicosejejum() {
+        return _glicosejejum;
+    }
+
+    public void set_glicosejejum(double _glicosejejum) {
+        this._glicosejejum = _glicosejejum;
+    }
+
+    public double get_glicose75g() {
+        return _glicose75g;
+    }
+
+    public void set_glicose75g(double _glicose75g) {
+        this._glicose75g = _glicose75g;
+    }
+
+    public double get_glicosecasual() {
+        return _glicosecasual;
+    }
+
+    public void set_glicosecasual(double _glicosecasual) {
+        this._glicosecasual = _glicosecasual;
     }
 
     public int get_id() {
