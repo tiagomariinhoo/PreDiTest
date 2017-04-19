@@ -189,6 +189,36 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return paciente;
     }
 
+    public Paciente verificarEmail(String email) {
+
+        String selectQuery = "SELECT * FROM " + TABLE_PACIENTES;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        Paciente paciente = new Paciente();
+
+        if(cursor.moveToFirst()){
+            do{
+                if(cursor.getString(3).equals(email)){
+                    paciente.set_id(Integer.parseInt(cursor.getString(0)));
+                    paciente.set_nome(cursor.getString(1));
+                    paciente.set_senha(cursor.getString(2));
+                    paciente.set_email(cursor.getString(3));
+                    paciente.set_idade(Integer.parseInt(cursor.getString(4)));
+                    paciente.set_circunferencia(Double.parseDouble(cursor.getString(5)));
+                    paciente.set_peso(Double.parseDouble(cursor.getString(6)));
+                    paciente.set_altura(Double.parseDouble(cursor.getString(7)));
+                    return paciente;
+                }
+
+            }while(cursor.moveToNext());
+
+        }
+
+        paciente.set_id(-1);
+        return paciente;
+    }
+
     public void deletePaciente(Paciente paciente){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_PACIENTES, KEY_ID + " = ?",

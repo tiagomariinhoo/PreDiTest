@@ -2,10 +2,10 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tela_criar_conta"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E0FFFF"
-    android:id="@+id/tela_criar_conta"
+    android:background=""
     tools:context="app.com.example.wagner.meupredi.CriarConta"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">

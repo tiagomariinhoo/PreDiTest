@@ -30,7 +30,7 @@ public class PosLogin extends AppCompatActivity {
     private EditText altura;
     private EditText peso;
     private EditText circunferecia;
-    private Button cancelar;
+    private Button pular;
     private Button concluir;
     private Paciente paciente;
 
@@ -49,7 +49,7 @@ public class PosLogin extends AppCompatActivity {
         peso.setRawInputType(Configuration.KEYBOARD_QWERTY);
         circunferecia = (EditText) findViewById(R.id.edit_circunferencia_poslogin);
         circunferecia.setRawInputType(Configuration.KEYBOARD_QWERTY);
-        cancelar = (Button) findViewById(R.id.btn_cancelar_poslogin);
+        pular = (Button) findViewById(R.id.btn_pular_poslogin);
         concluir = (Button) findViewById(R.id.btn_concluir_poslogin);
 
         final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
@@ -75,10 +75,10 @@ public class PosLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                 String idadeCadastro = idade.getText().toString();
-                 String alturaCadastro = altura.getText().toString();
-                 String pesoCadastro = peso.getText().toString();
-                 String circunferenciaCadastro = circunferecia.getText().toString();
+                String idadeCadastro = idade.getText().toString();
+                String alturaCadastro = altura.getText().toString();
+                String pesoCadastro = peso.getText().toString();
+                String circunferenciaCadastro = circunferecia.getText().toString();
 
                 DatabaseHandler bancoController = new DatabaseHandler(getApplicationContext());
 
@@ -109,7 +109,6 @@ public class PosLogin extends AppCompatActivity {
                     Log.d("Erro"," Erro");
                 }
 
-
                 pac = bancoController.getAllPacientes();
 
                 Log.d("Nome : ", pac.get(0).get_nome());
@@ -125,11 +124,11 @@ public class PosLogin extends AppCompatActivity {
 
         });
 
-        cancelar.setOnClickListener(new View.OnClickListener() {
+        pular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent voltaLogin = new Intent(PosLogin.this, TelaLogin.class);
-                startActivity(voltaLogin);
+                Intent pulaCadastro = new Intent(PosLogin.this, MenuPrincipal.class);
+                startActivity(pulaCadastro);
             }
         });
 

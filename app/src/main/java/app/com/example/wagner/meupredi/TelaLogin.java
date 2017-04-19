@@ -132,7 +132,6 @@ public class TelaLogin extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Insira um usuário válido!", Toast.LENGTH_LONG).show();
                 }
-
             }
         });
 

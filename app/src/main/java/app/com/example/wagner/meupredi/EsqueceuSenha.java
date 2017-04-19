@@ -48,22 +48,38 @@ public class EsqueceuSenha extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //setando dados da mensagem
-                String sender = email.getText().toString().trim();
-                String subject = "MeuPreDi: recuperar senha";
-                String message = "Sua senha: ";
+                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                Paciente paciente = new Paciente();
 
-                //Creating SendMail object
-                SendMail sm = new SendMail(getApplicationContext(), sender, subject, message);
+                paciente = db.verificarEmail(email.getText().toString().trim());
 
-                //Executing sendmail to send email
-                sm.execute();
+                //verificando existencia do email no banco de dados
+                if(paciente.get_id() != -1){
+                    //setando dados da mensagem
+                    String sender = email.getText().toString().trim();
+                    String subject = "MeuPreDi: recuperar senha";
+                    String message = "Sr(a) " + paciente.get_nome().toString()
+                                             + ", a opção de reenvio de senha foi solicitada com seu email. "
+                                             + "Se você não fez essa solicitação, desconsidere esta mensagem.\n\n"
+                                             + "Senha: " + paciente.get_senha().toString()
+                                             + "\n\nEquipe MeuPreDi";
 
-                //mostrar toast
-                Toast.makeText(getApplicationContext(), "Email de recuperação de senha enviado!", Toast.LENGTH_LONG).show();
+                    //Creating SendMail object
+                    SendMail sm = new SendMail(getApplicationContext(), sender, subject, message);
 
-                Intent intent = new Intent(EsqueceuSenha.this, TelaLogin.class);
-                startActivity(intent);
+                    //Executing sendmail to send email
+                    sm.execute();
+
+                    //mostrar toast
+                    Toast.makeText(getApplicationContext(), "Email de recuperação de senha enviado!", Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(EsqueceuSenha.this, TelaLogin.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Email não cadatrado ou inválido!", Toast.LENGTH_LONG).show();
+                }
+
+
             }
         });
 
