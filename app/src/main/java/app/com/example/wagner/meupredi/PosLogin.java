@@ -120,7 +120,13 @@ public class PosLogin extends AppCompatActivity {
 
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 
-                db.atualizarPaciente(paciente);
+                if(db.atualizarPaciente(paciente)){
+                    Toast.makeText(getApplicationContext(),"Sucesso ao editar!",Toast.LENGTH_LONG).show();
+                    Log.d("Sucesso"," Sucesso");
+                } else {
+                    Toast.makeText(getApplicationContext(),"Erro ao editar!",Toast.LENGTH_LONG).show();
+                    Log.d("Erro"," Erro");
+                }
 
                 /*ContentValues args = new ContentValues();
 

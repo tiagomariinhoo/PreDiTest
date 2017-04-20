@@ -285,7 +285,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void atualizarPaciente(Paciente paciente){
+    public boolean atualizarPaciente(Paciente paciente){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values;
@@ -306,8 +306,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_GLICOSEJEJUM, paciente.get_glicosejejum());
         values.put(KEY_GLICOSE75G, paciente.get_glicose75g());
 
-        db.update(this.TABLE_PACIENTES, values, where, null);
-        db.close();
+        return db.update(this.TABLE_PACIENTES, values, where, null) > 0;
+       // db.close();
 
     }
 
