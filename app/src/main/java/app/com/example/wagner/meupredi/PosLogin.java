@@ -57,13 +57,19 @@ public class PosLogin extends AppCompatActivity {
         nomeUsuario.setText(paciente.get_nome());
 
         if(paciente.get_idade() > 0) {
+            Log.d("Primeira impressao: ", "poslogin");
             Log.d("Nome : ", paciente.get_nome());
+            Log.d("Senha : ", paciente.get_senha());
+            Log.d("Email: ", paciente.get_email());
+            Log.d("Idade : ", String.valueOf(paciente.get_idade()));
+            Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
             Log.d("Peso : ", String.valueOf(paciente.get_peso()));
             Log.d("Altura : ", String.valueOf(paciente.get_altura()));
+            Log.d("Peso atual: ", String.valueOf(paciente.get_pesoAtual()));
             Log.d("IMC : ", String.valueOf(paciente.get_imc()));
+            Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
             Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
             Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
-            Log.d("GlicoseCasual : ", String.valueOf(paciente.get_glicosecasual()));
 
             Intent intent = new Intent(PosLogin.this, MenuPrincipal.class);
             intent.putExtra("Paciente", paciente);
@@ -95,11 +101,10 @@ public class PosLogin extends AppCompatActivity {
                 paciente.set_altura(Double.parseDouble(alturaCadastro));
                 paciente.set_peso(Double.parseDouble(pesoCadastro));
                 paciente.set_circunferencia(Double.parseDouble(circunferenciaCadastro));
-                double imc = paciente.get_peso()/(((paciente.get_altura()/100)*((paciente.get_altura())/100)));
+                double imc = (paciente.get_peso()/(((paciente.get_altura()/100)*((paciente.get_altura())/100))));
                 paciente.set_imc(imc);
-                paciente.set_glicosejejum(1);
-                paciente.set_glicose75g(2);
-                paciente.set_glicosecasual(3);
+                //paciente.set_glicosejejum(1);
+                //paciente.set_glicose75g(2);
 
                 DatabaseHandler bancoController = new DatabaseHandler(getApplicationContext());
 
@@ -132,11 +137,19 @@ public class PosLogin extends AppCompatActivity {
 
                 pac = bancoController.getAllPacientes();
 
-                Log.d("Nome : ", pac.get(0).get_nome());
-                Log.d("Idade : ", Integer.toString(pac.get(0).get_idade()));
-                Log.d("Altura : ", String.valueOf(pac.get(0).get_altura()));
-                Log.d("Peso : ", String.valueOf(pac.get(0).get_peso()));
-                Log.d("Circ : ", String.valueOf(pac.get(0).get_circunferencia()));
+                Log.d("Segunda impressao: ", "poslogin");
+                Log.d("Nome : ", paciente.get_nome());
+                Log.d("Senha : ", paciente.get_senha());
+                Log.d("Email: ", paciente.get_email());
+                Log.d("Idade : ", String.valueOf(paciente.get_idade()));
+                Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
+                Log.d("Peso : ", String.valueOf(paciente.get_peso()));
+                Log.d("Altura : ", String.valueOf(paciente.get_altura()));
+                Log.d("Peso atual: ", String.valueOf(paciente.get_pesoAtual()));
+                Log.d("IMC : ", String.valueOf(paciente.get_imc()));
+                Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
+                Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
+                Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
 
                 Intent intent = new Intent(PosLogin.this, MenuPrincipal.class);
                 intent.putExtra("Paciente", paciente);

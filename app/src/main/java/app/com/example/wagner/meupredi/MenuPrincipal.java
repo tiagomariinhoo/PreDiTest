@@ -41,13 +41,19 @@ public class MenuPrincipal extends AppCompatActivity
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
+        Log.d("Terceira impressao: ", "menu principal");
         Log.d("Nome : ", paciente.get_nome());
+        Log.d("Senha : ", paciente.get_senha());
+        Log.d("Email: ", paciente.get_email());
+        Log.d("Idade : ", String.valueOf(paciente.get_idade()));
+        Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
         Log.d("Peso : ", String.valueOf(paciente.get_peso()));
         Log.d("Altura : ", String.valueOf(paciente.get_altura()));
+        Log.d("Peso atual: ", String.valueOf(paciente.get_pesoAtual()));
         Log.d("IMC : ", String.valueOf(paciente.get_imc()));
+        Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
         Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
         Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
-        Log.d("GlicoseCasual : ", String.valueOf(paciente.get_glicosecasual()));
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);

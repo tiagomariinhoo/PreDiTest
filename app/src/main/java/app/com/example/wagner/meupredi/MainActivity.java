@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         final String PREFS_NAME = "Preferences";
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
-        editor.clear();
-        editor.commit();
+        //editor.clear();
+        //editor.commit();
 
         // INSERIR PACIENTES
         Log.d("Insert: ", "Inserting...");

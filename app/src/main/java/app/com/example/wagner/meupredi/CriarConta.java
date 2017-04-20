@@ -7,6 +7,7 @@ import android.provider.ContactsContract;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -118,7 +119,22 @@ public class CriarConta extends AppCompatActivity {
 
                         Paciente paciente = new Paciente (0, nomeCompleto, senhaCadastro, emailCadastro, 0, 0 , 0, 0);
 
+                        Log.d("Impressao: ", "criar conta");
+                        Log.d("Nome : ", paciente.get_nome());
+                        Log.d("Senha : ", paciente.get_senha());
+                        Log.d("Email: ", paciente.get_email());
+                        Log.d("Idade : ", String.valueOf(paciente.get_idade()));
+                        Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
+                        Log.d("Peso : ", String.valueOf(paciente.get_peso()));
+                        Log.d("Altura : ", String.valueOf(paciente.get_altura()));
+                        Log.d("Peso atual: ", String.valueOf(paciente.get_pesoAtual()));
+                        Log.d("IMC : ", String.valueOf(paciente.get_imc()));
+                        Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
+                        Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
+                        Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+
                         String msg = db.addPaciente(paciente);
+
                         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
 
                         Intent voltaLogin = new Intent(CriarConta.this, TelaLogin.class);

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,12 +55,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_IDADE + " INTEGER,"
                 + KEY_CIRCUNFERENCIA + " REAL,"
                 + KEY_PESO + " REAL,"
-                + KEY_ALTURA + " REAL"
+                + KEY_ALTURA + " REAL,"
                 + KEY_PESOATUAL + " REAL,"
                 + KEY_IMC + " REAL,"
                 + KEY_HBA1C + " REAL,"
                 + KEY_GLICOSEJEJUM + " REAL,"
-                + KEY_GLICOSE75G + " REAL,"
+                + KEY_GLICOSE75G + " REAL"
                 + ")";
         db.execSQL(CREATE_PACIENTES_TABLE);
     }
@@ -78,6 +79,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
 
+        Log.d("Impressao: ", "adicionar paciente");
+        Log.d("Nome : ", paciente.get_nome());
+        Log.d("Senha : ", paciente.get_senha());
+        Log.d("Email: ", paciente.get_email());
+        Log.d("Idade : ", String.valueOf(paciente.get_idade()));
+        Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
+        Log.d("Peso : ", String.valueOf(paciente.get_peso()));
+        Log.d("Altura : ", String.valueOf(paciente.get_altura()));
+        Log.d("Peso atual: ", String.valueOf(paciente.get_pesoAtual()));
+        Log.d("IMC : ", String.valueOf(paciente.get_imc()));
+        Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
+        Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
+        Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+
         values.put(KEY_NOME, paciente.get_nome());
         values.put(KEY_SENHA, paciente.get_senha());
         values.put(KEY_EMAIL, paciente.get_email());
@@ -86,8 +101,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_PESO, paciente.get_peso());
         values.put(KEY_ALTURA, paciente.get_altura());
         values.put(KEY_PESOATUAL, paciente.get_pesoAtual());
-        values.put(KEY_HBA1C, paciente.get_hba1c());
         values.put(KEY_IMC, paciente.get_imc());
+        values.put(KEY_HBA1C, paciente.get_hba1c());
         values.put(KEY_GLICOSEJEJUM, paciente.get_glicosejejum());
         values.put(KEY_GLICOSE75G, paciente.get_glicose75g());
 
@@ -150,7 +165,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         String selectQuery = "SELECT * FROM " + TABLE_PACIENTES;
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         //TODO: tratar NumberFormatException
@@ -167,8 +182,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 paciente.set_peso(Double.parseDouble(cursor.getString(6)));
                 paciente.set_altura(Double.parseDouble(cursor.getString(7)));
                 paciente.set_pesoAtual(Double.parseDouble(cursor.getString(8)));
-                paciente.set_hba1c(Double.parseDouble(cursor.getString(9)));
-                paciente.set_imc(Double.parseDouble(cursor.getString(10)));
+                paciente.set_imc(Double.parseDouble(cursor.getString(9)));
+                paciente.set_hba1c(Double.parseDouble(cursor.getString(10)));
                 paciente.set_glicosejejum(Double.parseDouble(cursor.getString(11)));
                 paciente.set_glicose75g(Double.parseDouble(cursor.getString(12)));
 
@@ -182,7 +197,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public Paciente verificarLogin(String email, String senha){
 
         String selectQuery = "SELECT * FROM " + TABLE_PACIENTES;
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         Paciente paciente = new Paciente();
@@ -199,10 +214,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     paciente.set_peso(Double.parseDouble(cursor.getString(6)));
                     paciente.set_altura(Double.parseDouble(cursor.getString(7)));
                     paciente.set_pesoAtual(Double.parseDouble(cursor.getString(8)));
-                    paciente.set_hba1c(Double.parseDouble(cursor.getString(9)));
-                    paciente.set_imc(Double.parseDouble(cursor.getString(10)));
+                    paciente.set_imc(Double.parseDouble(cursor.getString(9)));
+                    paciente.set_hba1c(Double.parseDouble(cursor.getString(10)));
                     paciente.set_glicosejejum(Double.parseDouble(cursor.getString(11)));
                     paciente.set_glicose75g(Double.parseDouble(cursor.getString(12)));
+
+                    Log.d("Quarta impressao: ", "databasehandler");
+                    Log.d("Nome : ", paciente.get_nome());
+                    Log.d("Senha : ", paciente.get_senha());
+                    Log.d("Email: ", paciente.get_email());
+                    Log.d("Idade : ", String.valueOf(paciente.get_idade()));
+                    Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
+                    Log.d("Peso : ", String.valueOf(paciente.get_peso()));
+                    Log.d("Altura : ", String.valueOf(paciente.get_altura()));
+                    Log.d("Peso atual: ", String.valueOf(paciente.get_pesoAtual()));
+                    Log.d("IMC : ", String.valueOf(paciente.get_imc()));
+                    Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
+                    Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
+                    Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
 
                     return paciente;
                 }
@@ -218,7 +247,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public Paciente verificarEmail(String email) {
 
         String selectQuery = "SELECT * FROM " + TABLE_PACIENTES;
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         Paciente paciente = new Paciente();
@@ -229,11 +258,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     paciente.set_id(Integer.parseInt(cursor.getString(0)));
                     paciente.set_nome(cursor.getString(1));
                     paciente.set_senha(cursor.getString(2));
-                    paciente.set_email(cursor.getString(3));
-                    paciente.set_idade(Integer.parseInt(cursor.getString(4)));
-                    paciente.set_circunferencia(Double.parseDouble(cursor.getString(5)));
-                    paciente.set_peso(Double.parseDouble(cursor.getString(6)));
-                    paciente.set_altura(Double.parseDouble(cursor.getString(7)));
+
                     return paciente;
                 }
 
