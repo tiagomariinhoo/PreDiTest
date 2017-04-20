@@ -119,7 +119,7 @@ public class CriarConta extends AppCompatActivity {
 
                         Paciente paciente = new Paciente (0, nomeCompleto, senhaCadastro, emailCadastro, 0, 0 , 0, 0);
 
-                        Log.d("Impressao: ", "criar conta");
+                        Log.d("Criando: ", "criar conta");
                         Log.d("Nome : ", paciente.get_nome());
                         Log.d("Senha : ", paciente.get_senha());
                         Log.d("Email: ", paciente.get_email());

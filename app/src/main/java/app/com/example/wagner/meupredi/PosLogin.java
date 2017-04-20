@@ -57,7 +57,7 @@ public class PosLogin extends AppCompatActivity {
         nomeUsuario.setText(paciente.get_nome());
 
         if(paciente.get_idade() > 0) {
-            Log.d("Primeira impressao: ", "poslogin");
+            Log.d("Se ja existe: ", "poslogin");
             Log.d("Nome : ", paciente.get_nome());
             Log.d("Senha : ", paciente.get_senha());
             Log.d("Email: ", paciente.get_email());
@@ -106,38 +106,40 @@ public class PosLogin extends AppCompatActivity {
                 //paciente.set_glicosejejum(1);
                 //paciente.set_glicose75g(2);
 
-                DatabaseHandler bancoController = new DatabaseHandler(getApplicationContext());
-
                 List<Paciente> pac = new ArrayList<Paciente>();
 
-                ContentValues args = new ContentValues();
-
                 if(idadeCadastro.length()==0){
-                    idadeCadastro = "-1";
+                    paciente.set_idade(-1);
                 } if (alturaCadastro.length()==0){
-                    alturaCadastro = "-1";
+                    paciente.set_altura(-1);
                 } if (pesoCadastro.length()==0){
-                    pesoCadastro = "-1";
+                    paciente.set_peso(-1);
                 } if (circunferenciaCadastro.length()==0){
-                    circunferenciaCadastro = "-1";
+                    paciente.set_circunferencia(-1);
                 }
+
+                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+
+                db.atualizarPaciente(paciente);
+
+                /*ContentValues args = new ContentValues();
 
                 args.put("idade", idadeCadastro);
                 args.put("altura", alturaCadastro);
                 args.put("peso", pesoCadastro);
                 args.put("circunferencia", circunferenciaCadastro);
 
-                if(bancoController.editarBanco(args)){
+                if(db.editarBanco(args)){
                     Toast.makeText(getApplicationContext(),"Sucesso ao editar!",Toast.LENGTH_LONG).show();
                     Log.d("Sucesso"," Sucesso");
                 } else {
                     Toast.makeText(getApplicationContext(),"Erro ao editar!",Toast.LENGTH_LONG).show();
                     Log.d("Erro"," Erro");
-                }
+                }*/
 
-                pac = bancoController.getAllPacientes();
+                pac = db.getAllPacientes();
 
-                Log.d("Segunda impressao: ", "poslogin");
+                Log.d("Sincronizado: ", "poslogin");
                 Log.d("Nome : ", paciente.get_nome());
                 Log.d("Senha : ", paciente.get_senha());
                 Log.d("Email: ", paciente.get_email());

@@ -79,7 +79,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
 
-        Log.d("Impressao: ", "adicionar paciente");
+        Log.d("Adicionando: ", "adicionar paciente");
         Log.d("Nome : ", paciente.get_nome());
         Log.d("Senha : ", paciente.get_senha());
         Log.d("Email: ", paciente.get_email());
@@ -219,7 +219,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     paciente.set_glicosejejum(Double.parseDouble(cursor.getString(11)));
                     paciente.set_glicose75g(Double.parseDouble(cursor.getString(12)));
 
-                    Log.d("Quarta impressao: ", "databasehandler");
+                    Log.d("Infos do banco: ", "databasehandler");
                     Log.d("Nome : ", paciente.get_nome());
                     Log.d("Senha : ", paciente.get_senha());
                     Log.d("Email: ", paciente.get_email());
@@ -285,16 +285,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public boolean editarBanco(ContentValues args){
-
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        return db.update("pacientes", args, "idAccount" + "=" + 1, null) > 0;
-    }
-
     public void atualizarPaciente(Paciente paciente){
 
-        String email = paciente.get_email();
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values;
+        String where =  this.KEY_ID + "=" + String.valueOf(paciente.get_id());
+
+        values = new ContentValues();
+
+        values.put(KEY_NOME, paciente.get_nome());
+        values.put(KEY_SENHA, paciente.get_senha());
+        values.put(KEY_EMAIL, paciente.get_email());
+        values.put(KEY_IDADE, paciente.get_idade());
+        values.put(KEY_CIRCUNFERENCIA, paciente.get_circunferencia());
+        values.put(KEY_PESO, paciente.get_peso());
+        values.put(KEY_ALTURA, paciente.get_altura());
+        values.put(KEY_PESOATUAL, paciente.get_pesoAtual());
+        values.put(KEY_HBA1C, paciente.get_hba1c());
+        values.put(KEY_IMC, paciente.get_imc());
+        values.put(KEY_GLICOSEJEJUM, paciente.get_glicosejejum());
+        values.put(KEY_GLICOSE75G, paciente.get_glicose75g());
+
+        db.update(this.TABLE_PACIENTES, values, where, null);
+        db.close();
+
     }
 
 }

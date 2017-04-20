@@ -41,7 +41,7 @@ public class MenuPrincipal extends AppCompatActivity
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
-        Log.d("Terceira impressao: ", "menu principal");
+        Log.d("Infos finais: ", "menu principal");
         Log.d("Nome : ", paciente.get_nome());
         Log.d("Senha : ", paciente.get_senha());
         Log.d("Email: ", paciente.get_email());
