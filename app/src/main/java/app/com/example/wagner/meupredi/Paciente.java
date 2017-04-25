@@ -1,12 +1,14 @@
 package app.com.example.wagner.meupredi;
 
+import android.util.Log;
+
 import java.io.Serializable;
 
 /**
  * Created by wagne on 31/03/2017.
  */
 
-public class Paciente implements Serializable{
+public class Paciente implements Serializable {
 
     int _id;
     String _nome;
@@ -145,5 +147,37 @@ public class Paciente implements Serializable{
 
     public void set_glicose75g(double _glicose75g) {
         this._glicose75g = _glicose75g;
+    }
+
+    public void calculo_diabetes(){
+        Paciente paciente = new Paciente();
+
+        if(paciente.get_glicosejejum()>=100 && paciente.get_glicosejejum()<=125){
+            Log.d("TTG!","");
+            if(paciente.get_glicose75g()<140){
+                Log.d("GJA","");
+            } else if (paciente.get_glicose75g()>=140 && paciente.get_glicose75g()<199){
+                Log.d("TDG"," Pré Diabetes");
+                Log.d("MEV", "Por 6 meses");
+                boolean metas=false;
+                if(!metas){
+                    boolean risco=false;
+                    if(!risco){
+                        Log.d("Reforçar","MEV por 6 meses");
+                        boolean metas2=false;
+                        if(!metas2){
+                            Log.d("MEV+","Metformina");
+                        } else {
+                            Log.d("Acompanhamento","A cada 6 meses");
+                        }
+                    }
+                } else {
+                    Log.d("Acompanhamento", "A cada 6 meses com rastreamento anual");
+                }
+            } else if (paciente.get_glicose75g() >= 200){
+                Log.d("DM2 : ", "Avaliação e manejo do DM2");
+            }
+        }
+
     }
 }

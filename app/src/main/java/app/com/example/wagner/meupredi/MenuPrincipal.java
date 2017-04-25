@@ -18,6 +18,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import static app.com.example.wagner.meupredi.PosLogin.PREFS_NAME;
 
@@ -25,7 +27,7 @@ public class MenuPrincipal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Paciente paciente;
-
+    //TextView imc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +59,12 @@ public class MenuPrincipal extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        //imc = (TextView) findViewById(R.id.text_imc_valor_perfil);
+        //imc.setText(String.valueOf(paciente.get_imc()));
 
         //add this line to display menu1 when the activity is loaded
         displaySelectedScreen(R.id.nav_perfil);
+
     }
 
     @Override
@@ -135,6 +140,8 @@ public class MenuPrincipal extends AppCompatActivity
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);
+            Bundle arguments = new Bundle();
+
             ft.commit();
         }
 

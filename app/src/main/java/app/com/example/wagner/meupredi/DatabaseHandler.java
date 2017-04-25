@@ -36,7 +36,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_IMC = "imc";
     private static final String KEY_HBA1C = "hba1c";
     private static final String KEY_GLICOSEJEJUM = "glicosejejum";
-    private static final String KEY_GLICOSE75G = "glicoes75g";
+    private static final String KEY_GLICOSE75G = "glicose75g";
 
 
     public DatabaseHandler(Context context) {
@@ -307,8 +307,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_GLICOSE75G, paciente.get_glicose75g());
 
         return db.update(this.TABLE_PACIENTES, values, where, null) > 0;
-       // db.close();
-
+        // db.close();
     }
 
 }
