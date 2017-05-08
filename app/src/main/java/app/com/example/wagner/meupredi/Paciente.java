@@ -40,9 +40,9 @@ public class Paciente implements Serializable {
         this._altura = altura;
         this._pesoAtual = 0;
         this._imc = 0;
-        this._hba1c = 0;
-        this._glicose75g = 0;
-        this._glicosejejum = 0;
+        this._hba1c = 200;
+        this._glicose75g = 200;
+        this._glicosejejum = 200;
     }
 
     public int get_id() {
@@ -150,13 +150,13 @@ public class Paciente implements Serializable {
     }
 
     public void calculo_diabetes(){
-        Paciente paciente = new Paciente();
 
-        if(paciente.get_glicosejejum()>=100 && paciente.get_glicosejejum()<=125){
+    Log.d("Começando ", "O CALCULOO");
+        if(get_glicosejejum()>=100 && get_glicosejejum()<=125){
             Log.d("TTG!","");
-            if(paciente.get_glicose75g()<140){
+            if(get_glicose75g()<140){
                 Log.d("GJA","");
-            } else if (paciente.get_glicose75g()>=140 && paciente.get_glicose75g()<199){
+            } else if (get_glicose75g()>=140 && get_glicose75g()<199){
                 Log.d("TDG"," Pré Diabetes");
                 Log.d("MEV", "Por 6 meses");
                 boolean metas=false;
@@ -174,10 +174,11 @@ public class Paciente implements Serializable {
                 } else {
                     Log.d("Acompanhamento", "A cada 6 meses com rastreamento anual");
                 }
-            } else if (paciente.get_glicose75g() >= 200){
+            } else if (get_glicose75g() >= 200){
                 Log.d("DM2 : ", "Avaliação e manejo do DM2");
             }
         }
 
+    Log.d("glicose75 g : ", String.valueOf(get_glicose75g()));
     }
 }

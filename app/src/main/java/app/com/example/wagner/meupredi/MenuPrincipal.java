@@ -63,8 +63,9 @@ public class MenuPrincipal extends AppCompatActivity
         //imc.setText(String.valueOf(paciente.get_imc()));
 
         //add this line to display menu1 when the activity is loaded
+       /* android.app.Fragment frag = getFragmentManager().findFragmentById(R.id.nav_perfil);
+        ((TextView) frag.getView().findViewById(R.id.text_imc_valor_perfil)).setText("ha");*/
         displaySelectedScreen(R.id.nav_perfil);
-
     }
 
     @Override
@@ -147,5 +148,11 @@ public class MenuPrincipal extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+    }
+
+    public void pegarPacienteMenu(){
+        Log.d("Glicose75g menu : ", String.valueOf(paciente.get_glicose75g()));
+
+        paciente.calculo_diabetes();
     }
 }
