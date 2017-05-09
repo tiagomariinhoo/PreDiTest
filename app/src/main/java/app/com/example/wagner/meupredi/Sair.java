@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ import static app.com.example.wagner.meupredi.TelaLogin.PREFS_NAME;
 public class Sair extends Fragment  implements View.OnClickListener {
 
     CheckBox manterConectado;
+    Button sair;
+    Button voltar;
 
     @Nullable
     @Override
@@ -27,14 +30,26 @@ public class Sair extends Fragment  implements View.OnClickListener {
         //returning our layout file
         //change R.layout.yourlayoutfilename for each of your fragments
 
-        View view = inflater.inflate(R.layout.fragment_sair, container, false);
+        final View view = inflater.inflate(R.layout.fragment_sair, container, false);
         View telaLoginView = inflater.inflate(R.layout.activity_tela_login, container, false);
-        Button sair = (Button) view.findViewById(R.id.btn_sair_fragment);
+        sair = (Button) view.findViewById(R.id.btn_sair_sim_fragment);
+        voltar = (Button) view.findViewById(R.id.btn_sair_nao_fragment);
         manterConectado = (CheckBox) telaLoginView.findViewById(R.id.checkBox_manter_conectado_login);
         manterConectado.setChecked(false);
 
         final SharedPreferences settings = this.getActivity().getSharedPreferences(PREFS_NAME, 0);
         final SharedPreferences.Editor editor = settings.edit();
+
+        voltar.setOnClickListener(new View.OnClickListener()
+        {
+            //private Fragment fragment = new Perfil();
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(getActivity(), MenuPrincipal.class);
+                startActivity(intent);
+            }
+        });
 
         sair.setOnClickListener(new View.OnClickListener()
         {
@@ -46,7 +61,6 @@ public class Sair extends Fragment  implements View.OnClickListener {
 
                 Intent intent = new Intent(getActivity(), TelaLogin.class);
                 startActivity(intent);
-                // do something
             }
         });
 
