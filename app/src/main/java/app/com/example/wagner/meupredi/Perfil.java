@@ -16,6 +16,7 @@ import android.widget.TextView;
 public class Perfil extends Fragment {
 
     MenuPrincipal menu;
+    TextView imc;
 
     @Nullable
     @Override
@@ -23,11 +24,14 @@ public class Perfil extends Fragment {
         //returning our layout file
         //change R.layout.yourlayoutfilename for each of your fragments
 
-        Log.d("Começando ", "O 231231");
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
-        ((MenuPrincipal)getActivity()).pegarPacienteMenu();
 
-        Log.d("Começando ", "O CALCULOO123123");
+        Paciente paciente = new Paciente();
+        paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
+
+        imc = (TextView) view.findViewById(R.id.text_imc_valor_perfil);
+        imc.setText(String.valueOf(paciente.get_imc()));
+
         return view;
     }
 

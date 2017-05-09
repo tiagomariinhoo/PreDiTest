@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Pichau on 08/04/2017.
@@ -99,9 +100,11 @@ public class PosLogin extends AppCompatActivity {
 
                 paciente.set_idade(Integer.parseInt(idadeCadastro));
                 paciente.set_altura(Double.parseDouble(alturaCadastro));
-                paciente.set_peso(Double.parseDouble(pesoCadastro));
+                paciente.set_pesoAtual(Double.parseDouble(pesoCadastro));
                 paciente.set_circunferencia(Double.parseDouble(circunferenciaCadastro));
-                double imc = (paciente.get_peso()/(((paciente.get_altura()/100)*((paciente.get_altura())/100))));
+                double imc = (paciente.get_pesoAtual()/(((paciente.get_altura()/100)*((paciente.get_altura())/100))));
+                String imcFormatado = String.format(Locale.ENGLISH, "%.2f", imc);
+                imc = Double.parseDouble(imcFormatado);
                 paciente.set_imc(imc);
                 //paciente.set_glicosejejum(1);
                 //paciente.set_glicose75g(2);
@@ -113,7 +116,7 @@ public class PosLogin extends AppCompatActivity {
                 } if (alturaCadastro.length()==0){
                     paciente.set_altura(-1);
                 } if (pesoCadastro.length()==0){
-                    paciente.set_peso(-1);
+                    paciente.set_pesoAtual(-1);
                 } if (circunferenciaCadastro.length()==0){
                     paciente.set_circunferencia(-1);
                 }

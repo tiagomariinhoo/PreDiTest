@@ -1,6 +1,9 @@
 package app.com.example.wagner.meupredi;
 
+import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.Serializable;
 
@@ -8,7 +11,7 @@ import java.io.Serializable;
  * Created by wagne on 31/03/2017.
  */
 
-public class Paciente implements Serializable {
+public class Paciente extends AppCompatActivity implements Serializable {
 
     int _id;
     String _nome;
@@ -36,13 +39,13 @@ public class Paciente implements Serializable {
         this._email = email;
         this._idade = idade;
         this._circunferencia = circunferencia;
-        this._peso = peso;
+        this._peso = -1;
         this._altura = altura;
-        this._pesoAtual = 0;
-        this._imc = 0;
-        this._hba1c = 200;
-        this._glicose75g = 200;
-        this._glicosejejum = 200;
+        this._pesoAtual = peso;
+        this._imc = -1;
+        this._hba1c = -1;
+        this._glicose75g = -1;
+        this._glicosejejum = -1;
     }
 
     public int get_id() {
@@ -149,36 +152,70 @@ public class Paciente implements Serializable {
         this._glicose75g = _glicose75g;
     }
 
-    public void calculo_diabetes(){
+    public void calculo_diabetes(Context context){
 
     Log.d("Começando ", "O CALCULOO");
         if(get_glicosejejum()>=100 && get_glicosejejum()<=125){
-            Log.d("TTG!","");
+            //Log.d("TTG!","");
+            Toast.makeText(context,"TTG",Toast.LENGTH_LONG).show();
             if(get_glicose75g()<140){
-                Log.d("GJA","");
+                //Log.d("GJA","");
+                Toast.makeText(context,"GJA!",Toast.LENGTH_LONG).show();
             } else if (get_glicose75g()>=140 && get_glicose75g()<199){
-                Log.d("TDG"," Pré Diabetes");
-                Log.d("MEV", "Por 6 meses");
-                boolean metas=false;
-                if(!metas){
-                    boolean risco=false;
-                    if(!risco){
-                        Log.d("Reforçar","MEV por 6 meses");
-                        boolean metas2=false;
-                        if(!metas2){
-                            Log.d("MEV+","Metformina");
+                //Log.d("TDG"," Pré Diabetes");
+                //Log.d("MEV", "Por 6 meses");
+                Toast.makeText(context,"TDG Pré Diabetes, MEV por 6 meses!",Toast.LENGTH_LONG).show();
+
+                if(get_peso()!=-1 && get_imc()>=25){
+                    double pct = (get_pesoAtual()*100)/get_peso();
+                    pct = 100-pct;
+
+                    boolean metas;
+
+                    if(pct>5) metas = true;
+                    else metas = false;
+
+                    if(!metas){
+                        boolean risco=false;
+
+                        if(get_imc()>=25 && get_glicose75g()>=200 && get_glicosejejum()>=200) risco = true;
+
+                        if(!risco){
+                            Log.d("Reforçar","MEV por 6 meses");
+                            Toast.makeText(context,"Reforçar MEV por 6 meses",Toast.LENGTH_LONG).show();
+                            boolean metas2=false;
+
+                            // TODO: 09/05/2017 Verificar esse metas2 pois será a parte do paciente de risco
+                            if(!metas2){
+                                Log.d("MEV+","Metformina");
+                            } else {
+                                Log.d("Acompanhamento","A cada 6 meses");
+                            }
                         } else {
-                            Log.d("Acompanhamento","A cada 6 meses");
+                            Toast.makeText(context,"Você está correndo risco! Acompanhamento a cada 6 meses com medida do HbA1c",Toast.LENGTH_LONG).show();
                         }
+                    } else {
+                        //Log.d("Acompanhamento", "A cada 6 meses com rastreamento anual");
+                        Toast.makeText(context,"Parabéns por conseguir perder mais do que 5% do seu peso! A cada 6 meses com rastreamento anual!",Toast.LENGTH_LONG).show();
                     }
-                } else {
-                    Log.d("Acompanhamento", "A cada 6 meses com rastreamento anual");
+
                 }
+
             } else if (get_glicose75g() >= 200){
-                Log.d("DM2 : ", "Avaliação e manejo do DM2");
+                //Log.d("DM2 : ", "Avaliação e manejo do DM2");
+                Toast.makeText(context,"Sua glicose está muito alta! Avaliação e manejo do DM2",Toast.LENGTH_LONG).show();
             }
+        } else if (get_glicosejejum()>=126 || get_glicosejejum()>=200){
+            Toast.makeText(context,"Sua glicose está muito alta! Avaliação de manejo do DM2",Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(context,"Sua glicose está normal! Avaliação a cada 3 anos ou conforme o risco.",Toast.LENGTH_LONG).show();
         }
 
     Log.d("glicose75 g : ", String.valueOf(get_glicose75g()));
     }
+
+
+
+
+
 }

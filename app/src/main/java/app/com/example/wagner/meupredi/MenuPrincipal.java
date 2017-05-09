@@ -70,12 +70,10 @@ public class MenuPrincipal extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startMain);
     }
 
     @Override
@@ -150,9 +148,17 @@ public class MenuPrincipal extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
     }
 
-    public void pegarPacienteMenu(){
+    public void minimizeApp() {
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startMain);
+    }
+    public Paciente pegarPacienteMenu(){
         Log.d("Glicose75g menu : ", String.valueOf(paciente.get_glicose75g()));
 
-        paciente.calculo_diabetes();
+        paciente.calculo_diabetes(this
+        );
+        return paciente;
     }
 }
