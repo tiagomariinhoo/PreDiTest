@@ -14,9 +14,11 @@ import java.io.Serializable;
 public class Paciente extends AppCompatActivity implements Serializable {
 
     int _id;
+    char sexo;
     String _nome;
     String _senha;
     String _email;
+
     int _idade;
     double _circunferencia;
     double _peso;
@@ -58,6 +60,14 @@ public class Paciente extends AppCompatActivity implements Serializable {
 
     public String get_nome() {
         return _nome;
+    }
+
+    public char getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(char sexo) {
+        this.sexo = sexo;
     }
 
     public void set_nome(String _nome) {
