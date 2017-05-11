@@ -50,8 +50,8 @@ public class MenuPrincipal extends AppCompatActivity
         Log.d("Idade : ", String.valueOf(paciente.get_idade()));
         Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
         Log.d("Peso : ", String.valueOf(paciente.get_peso()));
+        Log.d("Peso anterior: ", String.valueOf(paciente.get_pesoAnterior()));
         Log.d("Altura : ", String.valueOf(paciente.get_altura()));
-        Log.d("Peso atual: ", String.valueOf(paciente.get_pesoAtual()));
         Log.d("IMC : ", String.valueOf(paciente.get_imc()));
         Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
         Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));

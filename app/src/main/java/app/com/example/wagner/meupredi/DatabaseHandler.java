@@ -18,16 +18,17 @@ import java.util.List;
 public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABA_NAME = "Banco";
+    private static final String DATABASE_NAME = "Banco";
 
-    // LINHAS DO BANCO
+    // BANCO DE PACIENTES
     private static final String TABLE_PACIENTES = "pacientes";
 
-    // COLUNAS DO BANCO
+    // COLUNAS DO BANCO DE PACIENTES
     private static final String KEY_ID = "idAccount";
     private static final String KEY_NOME = "nome";
     private static final String KEY_SENHA = "senha";
     private static final String KEY_EMAIL = "email";
+    private static final String KEY_SEXO = "sexo";
     private static final String KEY_IDADE = "idade";
     private static final String KEY_CIRCUNFERENCIA = "circunferencia";
     private static final String KEY_ALTURA = "altura";
@@ -36,7 +37,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_GLICOSEJEJUM = "glicosejejum";
     private static final String KEY_GLICOSE75G = "glicose75g";
 
+    // BANCO DE PESOS (LINKADO AO BANCO DE PACIENTES POR ID)
     private static final String TABLE_PESOS = "pesos";
+
+    // COLUNAS DO BANCO DE PESOS
     private static final String KEY_ID_PESO = "idPeso";
     private static final String KEY_PESO = "peso";
     private static final String KEY_DATA = "dataPeso";
@@ -44,7 +48,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
     public DatabaseHandler(Context context) {
-        super(context, DATABA_NAME, null, DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -56,6 +60,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_NOME + " TEXT,"
                 + KEY_SENHA + " TEXT,"
                 + KEY_EMAIL + " TEXT,"
+                + KEY_SEXO + " TEXT,"
                 + KEY_IDADE + " INTEGER,"
                 + KEY_CIRCUNFERENCIA + " REAL,"
                 + KEY_ALTURA + " REAL,"
@@ -80,6 +85,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+        // TODO: fazer método onUpgrade para a tabela de pesos
         db.execSQL("DROP TABLE IF EXIST " + TABLE_PACIENTES);
 
         onCreate(db);
@@ -91,27 +97,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
 
-        Log.d("Adicionando: ", "adicionar paciente");
+        Log.d("Adicionando: ", "método addPaciente");
         Log.d("Nome : ", paciente.get_nome());
         Log.d("Senha : ", paciente.get_senha());
         Log.d("Email: ", paciente.get_email());
+        Log.d("Sexo: ", String.valueOf(paciente.get_sexo()));
         Log.d("Idade : ", String.valueOf(paciente.get_idade()));
         Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
         Log.d("Peso : ", String.valueOf(paciente.get_peso()));
+        Log.d("Peso anterior: ", String.valueOf(paciente.get_pesoAnterior()));
         Log.d("Altura : ", String.valueOf(paciente.get_altura()));
-        Log.d("Peso atual: ", String.valueOf(paciente.get_pesoAtual()));
         Log.d("IMC : ", String.valueOf(paciente.get_imc()));
         Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
         Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
         Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
 
         // TODO: 10/05/2017 Lembrar de mudar todos os métodos para controle de peso
+        // TODO: 11/05/2017 Setar peso e pesoAnterior na tabela de pesos
+
         values.put(KEY_NOME, paciente.get_nome());
         values.put(KEY_SENHA, paciente.get_senha());
         values.put(KEY_EMAIL, paciente.get_email());
+        values.put(KEY_SEXO, paciente.get_sexo());
         values.put(KEY_IDADE, paciente.get_idade());
         values.put(KEY_CIRCUNFERENCIA, paciente.get_circunferencia());
-        values.put(KEY_PESO, paciente.get_peso());
         values.put(KEY_ALTURA, paciente.get_altura());
         values.put(KEY_IMC, paciente.get_imc());
         values.put(KEY_HBA1C, paciente.get_hba1c());
@@ -127,48 +136,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } else {
             return "Registro inserido com sucesso!";
         }
-    }
-
-    public Paciente getPacient(int id){
-
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.query(
-                TABLE_PACIENTES, new String[]{
-                        KEY_ID,
-                        KEY_NOME,
-                        KEY_SENHA,
-                        KEY_EMAIL,
-                        KEY_IDADE,
-                        KEY_CIRCUNFERENCIA,
-                        KEY_PESO,
-                        KEY_ALTURA}, KEY_ID + "=?",
-                new String[]{ String.valueOf(id)},
-                null, null, null, null);
-
-                    if(cursor!= null) {
-                        cursor.moveToFirst();
-                    }
-                    //Integer.parseInt(cursor.getString(0))
-                    Paciente paciente = new Paciente(
-                            cursor.getInt(cursor.getColumnIndex(KEY_ID)), // ID
-                            cursor.getString(1), // NOME
-                            cursor.getString(2), // SENHA
-                            cursor.getString(3), // EMAIL
-                            Integer.parseInt(cursor.getString(4)), // IDADE
-                            Double.parseDouble(cursor.getString(5)), // PESO
-                            Double.parseDouble(cursor.getString(6)), // CIRCUNFERENCIA
-                            Double.parseDouble(cursor.getString(7)) // ALTURA
-                    );
-
-                return paciente;
-    }
-
-    public SQLiteDatabase abrirBanco(){
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        return db;
-
     }
 
     public List<Paciente> getAllPacientes(){
@@ -189,15 +156,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 paciente.set_nome(cursor.getString(1));
                 paciente.set_senha(cursor.getString(2));
                 paciente.set_email(cursor.getString(3));
-                paciente.set_idade(Integer.parseInt(cursor.getString(4)));
-                paciente.set_circunferencia(Double.parseDouble(cursor.getString(5)));
-                paciente.set_peso(Double.parseDouble(cursor.getString(6)));
+                paciente.set_sexo(cursor.getString(4));
+                paciente.set_idade(Integer.parseInt(cursor.getString(5)));
+                paciente.set_circunferencia(Double.parseDouble(cursor.getString(6)));
                 paciente.set_altura(Double.parseDouble(cursor.getString(7)));
-                paciente.set_pesoAtual(Double.parseDouble(cursor.getString(8)));
-                paciente.set_imc(Double.parseDouble(cursor.getString(9)));
-                paciente.set_hba1c(Double.parseDouble(cursor.getString(10)));
-                paciente.set_glicosejejum(Double.parseDouble(cursor.getString(11)));
-                paciente.set_glicose75g(Double.parseDouble(cursor.getString(12)));
+                paciente.set_imc(Double.parseDouble(cursor.getString(8)));
+                paciente.set_hba1c(Double.parseDouble(cursor.getString(9)));
+                paciente.set_glicosejejum(Double.parseDouble(cursor.getString(10)));
+                paciente.set_glicose75g(Double.parseDouble(cursor.getString(11)));
+
+                //TODO: pegar pesos da tabela de pesos e setar no objeto paciente
 
                 pacientesList.add(paciente);
 
@@ -221,25 +189,27 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     paciente.set_nome(cursor.getString(1));
                     paciente.set_senha(cursor.getString(2));
                     paciente.set_email(cursor.getString(3));
-                    paciente.set_idade(Integer.parseInt(cursor.getString(4)));
-                    paciente.set_circunferencia(Double.parseDouble(cursor.getString(5)));
-                    paciente.set_peso(Double.parseDouble(cursor.getString(6)));
+                    paciente.set_sexo(cursor.getString(4));
+                    paciente.set_idade(Integer.parseInt(cursor.getString(5)));
+                    paciente.set_circunferencia(Double.parseDouble(cursor.getString(6)));
                     paciente.set_altura(Double.parseDouble(cursor.getString(7)));
-                    paciente.set_pesoAtual(Double.parseDouble(cursor.getString(8)));
-                    paciente.set_imc(Double.parseDouble(cursor.getString(9)));
-                    paciente.set_hba1c(Double.parseDouble(cursor.getString(10)));
-                    paciente.set_glicosejejum(Double.parseDouble(cursor.getString(11)));
-                    paciente.set_glicose75g(Double.parseDouble(cursor.getString(12)));
+                    paciente.set_imc(Double.parseDouble(cursor.getString(8)));
+                    paciente.set_hba1c(Double.parseDouble(cursor.getString(9)));
+                    paciente.set_glicosejejum(Double.parseDouble(cursor.getString(10)));
+                    paciente.set_glicose75g(Double.parseDouble(cursor.getString(11)));
+
+                    //TODO: pegar pesos da tabela de pesos e setar no objeto paciente
 
                     Log.d("Infos do banco: ", "databasehandler");
                     Log.d("Nome : ", paciente.get_nome());
                     Log.d("Senha : ", paciente.get_senha());
                     Log.d("Email: ", paciente.get_email());
+                    Log.d("Sexo: ", paciente.get_sexo());
                     Log.d("Idade : ", String.valueOf(paciente.get_idade()));
                     Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
                     Log.d("Peso : ", String.valueOf(paciente.get_peso()));
+                    Log.d("Peso anterior :", String.valueOf(paciente.get_pesoAnterior()));
                     Log.d("Altura : ", String.valueOf(paciente.get_altura()));
-                    Log.d("Peso atual: ", String.valueOf(paciente.get_pesoAtual()));
                     Log.d("IMC : ", String.valueOf(paciente.get_imc()));
                     Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
                     Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
@@ -282,13 +252,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return paciente;
     }
 
-    public void deletePaciente(Paciente paciente){
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_PACIENTES, KEY_ID + " = ?",
-                new String[]{ String.valueOf(paciente.get_id())});
-        db.close();
-    }
-
     public void deleteAllPacientes() {
         SQLiteDatabase db = this.getWritableDatabase();
         String selectQuery = "DELETE FROM " + TABLE_PACIENTES;
@@ -308,14 +271,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_NOME, paciente.get_nome());
         values.put(KEY_SENHA, paciente.get_senha());
         values.put(KEY_EMAIL, paciente.get_email());
+        values.put(KEY_SEXO, paciente.get_sexo());
         values.put(KEY_IDADE, paciente.get_idade());
         values.put(KEY_CIRCUNFERENCIA, paciente.get_circunferencia());
-        values.put(KEY_PESO, paciente.get_peso());
         values.put(KEY_ALTURA, paciente.get_altura());
-        values.put(KEY_HBA1C, paciente.get_hba1c());
         values.put(KEY_IMC, paciente.get_imc());
+        values.put(KEY_HBA1C, paciente.get_hba1c());
         values.put(KEY_GLICOSEJEJUM, paciente.get_glicosejejum());
         values.put(KEY_GLICOSE75G, paciente.get_glicose75g());
+
+        // TODO: dar put nos pesos do objeto, para atualizar a tabela de pesos
 
         return db.update(this.TABLE_PACIENTES, values, where, null) > 0;
         // db.close();

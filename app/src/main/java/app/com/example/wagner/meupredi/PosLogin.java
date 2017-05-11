@@ -1,9 +1,7 @@
 package app.com.example.wagner.meupredi;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -65,8 +63,8 @@ public class PosLogin extends AppCompatActivity {
             Log.d("Idade : ", String.valueOf(paciente.get_idade()));
             Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
             Log.d("Peso : ", String.valueOf(paciente.get_peso()));
+            Log.d("Peso anterior: ", String.valueOf(paciente.get_pesoAnterior()));
             Log.d("Altura : ", String.valueOf(paciente.get_altura()));
-            Log.d("Peso atual: ", String.valueOf(paciente.get_pesoAtual()));
             Log.d("IMC : ", String.valueOf(paciente.get_imc()));
             Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
             Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
@@ -100,23 +98,19 @@ public class PosLogin extends AppCompatActivity {
 
                 paciente.set_idade(Integer.parseInt(idadeCadastro));
                 paciente.set_altura(Double.parseDouble(alturaCadastro));
-                paciente.set_pesoAtual(Double.parseDouble(pesoCadastro));
+                paciente.set_peso(Double.parseDouble(pesoCadastro));
                 paciente.set_circunferencia(Double.parseDouble(circunferenciaCadastro));
-                double imc = (paciente.get_pesoAtual()/(((paciente.get_altura()/100)*((paciente.get_altura())/100))));
+                double imc = (paciente.get_peso()/(((paciente.get_altura()/100)*((paciente.get_altura())/100))));
                 String imcFormatado = String.format(Locale.ENGLISH, "%.2f", imc);
                 imc = Double.parseDouble(imcFormatado);
                 paciente.set_imc(imc);
-                //paciente.set_glicosejejum(1);
-                //paciente.set_glicose75g(2);
-
-                List<Paciente> pac = new ArrayList<Paciente>();
 
                 if(idadeCadastro.length()==0){
                     paciente.set_idade(-1);
                 } if (alturaCadastro.length()==0){
                     paciente.set_altura(-1);
                 } if (pesoCadastro.length()==0){
-                    paciente.set_pesoAtual(-1);
+                    paciente.set_peso(-1);
                 } if (circunferenciaCadastro.length()==0){
                     paciente.set_circunferencia(-1);
                 }
@@ -131,20 +125,7 @@ public class PosLogin extends AppCompatActivity {
                     Log.d("Erro"," Erro");
                 }
 
-                /*ContentValues args = new ContentValues();
-
-                args.put("idade", idadeCadastro);
-                args.put("altura", alturaCadastro);
-                args.put("peso", pesoCadastro);
-                args.put("circunferencia", circunferenciaCadastro);
-
-                if(db.editarBanco(args)){
-                    Toast.makeText(getApplicationContext(),"Sucesso ao editar!",Toast.LENGTH_LONG).show();
-                    Log.d("Sucesso"," Sucesso");
-                } else {
-                    Toast.makeText(getApplicationContext(),"Erro ao editar!",Toast.LENGTH_LONG).show();
-                    Log.d("Erro"," Erro");
-                }*/
+                List<Paciente> pac = new ArrayList<Paciente>();
 
                 pac = db.getAllPacientes();
 
@@ -155,8 +136,8 @@ public class PosLogin extends AppCompatActivity {
                 Log.d("Idade : ", String.valueOf(paciente.get_idade()));
                 Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
                 Log.d("Peso : ", String.valueOf(paciente.get_peso()));
+                Log.d("Peso anterior: ", String.valueOf(paciente.get_pesoAnterior()));
                 Log.d("Altura : ", String.valueOf(paciente.get_altura()));
-                Log.d("Peso atual: ", String.valueOf(paciente.get_pesoAtual()));
                 Log.d("IMC : ", String.valueOf(paciente.get_imc()));
                 Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
                 Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));

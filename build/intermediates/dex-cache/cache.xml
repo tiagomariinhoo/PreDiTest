@@ -2,31 +2,13 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="/home/leandro/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.0.2/5d4eb08a326bdbd7fbbddc769666898c9936b282/MPAndroidChart-v3.0.2.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\LeandroDias1\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v3.0.2\5d4eb08a326bdbd7fbbddc769666898c9936b282\MPAndroidChart-v3.0.2.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="5d4eb08a326bdbd7fbbddc769666898c9936b282">
-        <dex dex="/home/leandro/Downloads/pibic/PreDiTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/MPAndroidChart-v3.0.2_c4dacfb94aad11ea5fead9d753f4b01c4d7b7c0d/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/leandro/Downloads/pibic/PreDiTest/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="8a8e58de882f8fc88bc3340be9a63c5c279e6f15">
-        <dex dex="/home/leandro/Downloads/pibic/PreDiTest/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_a40ce370539d2d645bb1300a30e9576fe9626c47/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/leandro/Downloads/pibic/PreDiTest/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="/home/leandro/Downloads/pibic/PreDiTest/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_8fc643d480c0bd574c25fa48eedd061b7bd06a66/classes.dex" />
+        <dex dex="C:\Tiago\PreDiTest\app\build\intermediates\pre-dexed\debug\MPAndroidChart-v3.0.2_6330eeb8b54c53270a3429ef4d9edf97c6b5c952.jar" />
     </item>
 
 </items>

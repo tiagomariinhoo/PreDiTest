@@ -18,11 +18,12 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseHandler db = new DatabaseHandler(this);
 
-        //db.deleteAllPacientes();
-
         final String PREFS_NAME = "Preferences";
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
+
+        // RESETAR BANCO E SHAREDPREFERENCES
+        //db.deleteAllPacientes();
         //editor.clear();
         //editor.commit();
 

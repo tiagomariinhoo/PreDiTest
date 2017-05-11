@@ -1,6 +1,5 @@
 package app.com.example.wagner.meupredi;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.provider.ContactsContract;
@@ -56,10 +55,6 @@ public class CriarConta extends AppCompatActivity {
                 }
             }
         });
-
-
-        //final String senhaCadastro = senha.getText().toString();
-        //final String conSenhaCadastro = conSenha.getText().toString();
 
         boxSenha.setChecked(false);
 
@@ -117,7 +112,7 @@ public class CriarConta extends AppCompatActivity {
 
                         //Paciente(int id, String nome, String senha, String email, int idade, double circunferencia, double peso)
 
-                        Paciente paciente = new Paciente (0, nomeCompleto, senhaCadastro, emailCadastro, 0, 0 , 0, 0);
+                        Paciente paciente = new Paciente (0, nomeCompleto, senhaCadastro, emailCadastro, "M", 0 , 0, 0, 0);
 
                         Log.d("Criando: ", "criar conta");
                         Log.d("Nome : ", paciente.get_nome());
@@ -126,8 +121,8 @@ public class CriarConta extends AppCompatActivity {
                         Log.d("Idade : ", String.valueOf(paciente.get_idade()));
                         Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
                         Log.d("Peso : ", String.valueOf(paciente.get_peso()));
+                        Log.d("Peso anterior: ", String.valueOf(paciente.get_pesoAnterior()));
                         Log.d("Altura : ", String.valueOf(paciente.get_altura()));
-                        Log.d("Peso atual: ", String.valueOf(paciente.get_pesoAtual()));
                         Log.d("IMC : ", String.valueOf(paciente.get_imc()));
                         Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
                         Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
@@ -146,7 +141,6 @@ public class CriarConta extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Email já cadastrado!", Toast.LENGTH_LONG).show();
                 }
-
 
             }
         });

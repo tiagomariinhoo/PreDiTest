@@ -45,10 +45,10 @@ public class Perfil extends Fragment {
 
         imagemCentral = (ImageView) view.findViewById(R.id.image_central);
 
-        paciente.setSexo('M');
+        paciente.set_sexo("M");
         paciente.set_imc(22);
 
-        if(paciente.getSexo() == 'M'){
+        if(paciente.get_sexo() == "M"){
             if(paciente.get_imc() >= 20.7 && paciente.get_imc() <= 26.4){ // PESO NORMAL
                 imagemCentral.setImageResource(R.mipmap.happy_face);
             }
@@ -56,7 +56,7 @@ public class Perfil extends Fragment {
                 imagemCentral.setImageResource(R.mipmap.sad_face);
             }
         }
-        else if(paciente.getSexo() == 'F'){
+        else if(paciente.get_sexo() == "F"){
             if(paciente.get_imc() >= 19.1 && paciente.get_imc() <= 25.8){ // PESO NORMAL
 
             }
