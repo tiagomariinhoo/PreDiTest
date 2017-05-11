@@ -116,6 +116,7 @@ public class PosLogin extends AppCompatActivity {
                 }
 
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                db.atualizarPeso(paciente);
 
                 if(db.atualizarPaciente(paciente)){
                     Toast.makeText(getApplicationContext(),"Sucesso ao editar!",Toast.LENGTH_LONG).show();

@@ -126,6 +126,7 @@ public class TelaLogin extends AppCompatActivity {
                 paciente = db.verificarLogin(user,pass);
 
                 if(paciente.get_id() != -1){
+
                     Intent it = new Intent(TelaLogin.this, PosLogin.class);
                     it.putExtra("Paciente", paciente);
                     startActivity(it);

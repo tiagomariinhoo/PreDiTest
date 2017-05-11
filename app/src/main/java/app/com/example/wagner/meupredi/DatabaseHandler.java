@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,17 +77,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + "("
                 + KEY_ID_PESO + " INTEGER PRIMARY KEY,"
                 + KEY_PESO + " REAL,"
-                + KEY_DATA + " TEXT,"
-                + KEY_PAC + " INTEGER,"
-                + " FOREIGN KEY ("+KEY_PAC+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
+                + KEY_DATA + " DATETIME,"
+                /*+ KEY_PAC + " INTEGER,"
+                + " FOREIGN KEY("+KEY_PAC+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"))";*/
+                + KEY_PAC + " INTEGER"
+                + ")";
         db.execSQL(CREATE_PESOS_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        // TODO: fazer método onUpgrade para a tabela de pesos
         db.execSQL("DROP TABLE IF EXIST " + TABLE_PACIENTES);
+        db.execSQL("DROP TABLE IF EXIST " + TABLE_PESOS);
 
         onCreate(db);
     }
@@ -180,7 +183,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
+
         Paciente paciente = new Paciente();
+
+        boolean achou = false;
 
         if(cursor.moveToFirst()){
             do{
@@ -284,6 +290,64 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return db.update(this.TABLE_PACIENTES, values, where, null) > 0;
         // db.close();
+    }
+
+    public String atualizarPeso(Paciente paciente){
+
+        Log.d("Atualizando peso!", "Atualizando peso!");
+
+        long date = System.currentTimeMillis();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String dateString = sdf.format(date);
+        Log.d("Data : ", dateString);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values;
+
+        values = new ContentValues();
+        values.put(KEY_PESO, paciente.get_peso());
+        values.put(KEY_DATA, dateString);
+        values.put(KEY_PAC, paciente.get_id());
+
+        long retorno;
+        retorno = db.insert(TABLE_PESOS, null, values);
+        db.close();
+
+        if(retorno == -1){
+            return "Erro ao atualizar peso!";
+        } else {
+            return "Peso atualizado com sucesso!";
+        }
+
+    }
+
+    public String buscarPeso(Paciente paciente){
+
+        Log.d("Metodo : ", "Buscar peso");
+
+        String selectQuery = "SELECT MAX("+KEY_ID_PESO+") FROM " + TABLE_PESOS;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        String peso;
+
+        if(cursor.moveToFirst()){
+            do{
+                if(cursor.getString(3).equals(paciente.get_id())){
+                    peso = cursor.getString(1);
+
+                    Log.d("Peso do cursor : ", peso);
+                    Log.d("id : ", String.valueOf(paciente.get_id()));
+                    Log.d("Nome : ", paciente.get_nome());
+
+                    return peso;
+                }
+
+            }while(cursor.moveToNext());
+
+        }
+
+        return "";
     }
 
 }
