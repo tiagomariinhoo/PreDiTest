@@ -1,8 +1,7 @@
-package app.com.example.wagner.meupredi;
+package app.com.example.wagner.meupredi.BDMenuLogin;
 
 import android.content.Context;
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +14,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import app.com.example.wagner.meupredi.R;
 
 public class CriarConta extends AppCompatActivity {
 

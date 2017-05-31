@@ -1,17 +1,17 @@
-package app.com.example.wagner.meupredi;
+package app.com.example.wagner.meupredi.BDMenuLogin;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import app.com.example.wagner.meupredi.R;
 
 /**
  * Created by LeandroDias1 on 10/04/2017.

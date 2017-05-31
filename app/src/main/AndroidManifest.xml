@@ -11,19 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".BDMenuLogin.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TelaLogin" />
-        <activity android:name=".CriarConta" />
-        <activity android:name=".PosLogin" />
-        <activity android:name=".EsqueceuSenha" />
+        <activity android:name=".BDMenuLogin.TelaLogin" />
+        <activity android:name=".BDMenuLogin.CriarConta" />
+        <activity android:name=".BDMenuLogin.PosLogin" />
+        <activity android:name=".BDMenuLogin.EsqueceuSenha" />
         <activity
-            android:name=".MenuPrincipal"
+            android:name=".BDMenuLogin.MenuPrincipal"
             android:label="@string/title_activity_menu_principal"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

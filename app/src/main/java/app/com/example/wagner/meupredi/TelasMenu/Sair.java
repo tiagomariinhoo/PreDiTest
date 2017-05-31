@@ -1,18 +1,21 @@
-package app.com.example.wagner.meupredi;
+package app.com.example.wagner.meupredi.TelasMenu;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 
-import static app.com.example.wagner.meupredi.TelaLogin.PREFS_NAME;
+import app.com.example.wagner.meupredi.BDMenuLogin.MenuPrincipal;
+import app.com.example.wagner.meupredi.BDMenuLogin.TelaLogin;
+import app.com.example.wagner.meupredi.R;
+
+import static app.com.example.wagner.meupredi.BDMenuLogin.TelaLogin.PREFS_NAME;
 
 /**
  * Created by LeandroDias1 on 18/04/2017.

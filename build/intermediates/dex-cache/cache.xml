@@ -2,13 +2,31 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="C:\Users\LeandroDias1\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v3.0.2\5d4eb08a326bdbd7fbbddc769666898c9936b282\MPAndroidChart-v3.0.2.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi\PreDiTest\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9889fdfb18b590d1f5a4e593779ae6ac459945ef">
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_e300b896c42ee8e79848594cb3efaec44eb78685\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Pichau\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v3.0.2\5d4eb08a326bdbd7fbbddc769666898c9936b282\MPAndroidChart-v3.0.2.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="5d4eb08a326bdbd7fbbddc769666898c9936b282">
-        <dex dex="C:\Tiago\PreDiTest\app\build\intermediates\pre-dexed\debug\MPAndroidChart-v3.0.2_6330eeb8b54c53270a3429ef4d9edf97c6b5c952.jar" />
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\MPAndroidChart-v3.0.2_9aabdb3552986f101fe38d3d1cb36243bc1f2824\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi\PreDiTest\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_2e60af927f9000b00a850983ecd9c165210491c8\classes.dex" />
     </item>
 
 </items>

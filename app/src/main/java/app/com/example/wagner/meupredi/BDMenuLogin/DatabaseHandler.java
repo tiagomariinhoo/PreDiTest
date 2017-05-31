@@ -1,8 +1,7 @@
-package app.com.example.wagner.meupredi;
+package app.com.example.wagner.meupredi.BDMenuLogin;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -78,10 +77,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_ID_PESO + " INTEGER PRIMARY KEY,"
                 + KEY_PESO + " REAL,"
                 + KEY_DATA + " DATETIME,"
-                /*+ KEY_PAC + " INTEGER,"
-                + " FOREIGN KEY("+KEY_PAC+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"))";*/
-                + KEY_PAC + " INTEGER"
-                + ")";
+                + KEY_PAC + " INTEGER,"
+                + " FOREIGN KEY("+KEY_PAC+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
+                /*+ KEY_PAC + " INTEGER"
+                + ")";*/
         db.execSQL(CREATE_PESOS_TABLE);
     }
 
@@ -230,6 +229,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         paciente.set_id(-1);
         return paciente;
+    }
+
+    public double getPeso (int id){
+        double peso = 0;
+            String selectQuery = "SELECT * FROM " + TABLE_PESOS;
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery,null);
+
+            if(cursor.moveToFirst()){
+                do{
+                    if(cursor.getString(3).equals(String.valueOf(id))){
+                        Log.d("Achou !", "  aaa");
+                        peso = Double.parseDouble(cursor.getString(1));
+                        break;
+                    }
+
+                } while(cursor.moveToNext());
+            }
+
+            Log.d("Peso achado : ", String.valueOf(peso));
+
+
+
+        return peso;
     }
 
     public Paciente verificarEmail(String email) {

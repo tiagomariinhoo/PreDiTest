@@ -1,4 +1,4 @@
-package app.com.example.wagner.meupredi;
+package app.com.example.wagner.meupredi.BDMenuLogin;
 
 /**
  * Created by LeandroDias1 on 10/04/2017.

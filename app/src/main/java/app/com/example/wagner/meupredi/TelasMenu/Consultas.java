@@ -1,4 +1,4 @@
-package app.com.example.wagner.meupredi;
+package app.com.example.wagner.meupredi.TelasMenu;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,18 +7,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import app.com.example.wagner.meupredi.R;
+
 /**
  * Created by LeandroDias1 on 18/04/2017.
  */
 
-public class Exames extends Fragment {
+public class Consultas extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //returning our layout file
         //change R.layout.yourlayoutfilename for each of your fragments
-        return inflater.inflate(R.layout.fragment_exames, container, false);
+        return inflater.inflate(R.layout.fragment_consultas, container, false);
     }
 
 
@@ -26,6 +28,6 @@ public class Exames extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //you can set the title for your toolbar here for different fragments different titles
-        getActivity().setTitle("Exames");
+        getActivity().setTitle("Consultas");
     }
 }

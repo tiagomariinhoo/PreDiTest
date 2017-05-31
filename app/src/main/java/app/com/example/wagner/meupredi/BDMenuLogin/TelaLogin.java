@@ -1,4 +1,4 @@
-package app.com.example.wagner.meupredi;
+package app.com.example.wagner.meupredi.BDMenuLogin;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import app.com.example.wagner.meupredi.R;
 
 public class TelaLogin extends AppCompatActivity {
 
@@ -126,6 +128,9 @@ public class TelaLogin extends AppCompatActivity {
                 paciente = db.verificarLogin(user,pass);
 
                 if(paciente.get_id() != -1){
+
+                    double peso = db.getPeso(paciente.get_id());
+                    paciente.set_peso(peso);
 
                     Intent it = new Intent(TelaLogin.this, PosLogin.class);
                     it.putExtra("Paciente", paciente);

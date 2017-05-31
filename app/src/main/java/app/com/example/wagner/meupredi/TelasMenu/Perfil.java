@@ -1,9 +1,8 @@
-package app.com.example.wagner.meupredi;
+package app.com.example.wagner.meupredi.TelasMenu;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import app.com.example.wagner.meupredi.BDMenuLogin.MenuPrincipal;
+import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
+import app.com.example.wagner.meupredi.R;
 
 /**
  * Created by LeandroDias1 on 18/04/2017.
