@@ -13,8 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import app.com.example.wagner.meupredi.R;
@@ -57,7 +55,10 @@ public class PosLogin extends AppCompatActivity {
 
         nomeUsuario.setText(paciente.get_nome());
 
+        //se o usuario ja fez o cadastro dos dados, pula esta tela
         if(paciente.get_idade() > 0) {
+
+            //DEBUG: imprime dados do usuario pegos do banco
             Log.d("Se ja existe: ", "poslogin");
             Log.d("Nome : ", paciente.get_nome());
             Log.d("Senha : ", paciente.get_senha());
@@ -102,11 +103,15 @@ public class PosLogin extends AppCompatActivity {
                 paciente.set_altura(Double.parseDouble(alturaCadastro));
                 paciente.set_peso(Double.parseDouble(pesoCadastro));
                 paciente.set_circunferencia(Double.parseDouble(circunferenciaCadastro));
+
+                //calculo de IMC
                 double imc = (paciente.get_peso()/(((paciente.get_altura()/100)*((paciente.get_altura())/100))));
                 String imcFormatado = String.format(Locale.ENGLISH, "%.2f", imc);
                 imc = Double.parseDouble(imcFormatado);
                 paciente.set_imc(imc);
 
+                //se o usuario nao preencheu algum dado, coloca como -1
+                //TODO: criar tela para preencher os dados ausentes
                 if(idadeCadastro.length()==0){
                     paciente.set_idade(-1);
                 } if (alturaCadastro.length()==0){
@@ -117,9 +122,11 @@ public class PosLogin extends AppCompatActivity {
                     paciente.set_circunferencia(-1);
                 }
 
+                //pega peso cadastrado pelo paciente na tela e insere em sua respectiva tabela no banco
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                 db.atualizarPeso(paciente);
 
+                //TODO: ajeitar IF abaixo (esta chamando o metodo novamente)
                 if(db.atualizarPaciente(paciente)){
                     Toast.makeText(getApplicationContext(),"Sucesso ao editar!",Toast.LENGTH_LONG).show();
                     Log.d("Sucesso"," Sucesso");
@@ -128,10 +135,7 @@ public class PosLogin extends AppCompatActivity {
                     Log.d("Erro"," Erro");
                 }
 
-                List<Paciente> pac = new ArrayList<Paciente>();
-
-                pac = db.getAllPacientes();
-
+                //DEBUG: imprime os dados do paciente para verificar se estao corretos
                 Log.d("Sincronizado: ", "poslogin");
                 Log.d("Nome : ", paciente.get_nome());
                 Log.d("Senha : ", paciente.get_senha());

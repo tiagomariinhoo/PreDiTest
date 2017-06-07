@@ -65,6 +65,7 @@ public class CriarConta extends AppCompatActivity {
                 String senhaCadastro = senha.getText().toString();
                 String conSenhaCadastro = conSenha.getText().toString();
 
+                //verifica se as senhas sao iguais nos dois campos de cadastro
                 if(senhaCadastro.length()==0){
                     Toast.makeText(getApplicationContext(),"Insira uma senha válida!", Toast.LENGTH_LONG ).show();
                     boxSenha.setChecked(false);
@@ -83,7 +84,6 @@ public class CriarConta extends AppCompatActivity {
 
         });
 
-
         criarConta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,13 +95,16 @@ public class CriarConta extends AppCompatActivity {
                 final String senhaCadastro = senha.getText().toString();
                 final String conSenhaCadastro = conSenha.getText().toString();
 
-                //verificando se email ja foi cadastrado
+                //verificando se email ja foi cadastrado por outro usuario
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                 Paciente tempPaciente = new Paciente();
 
                 tempPaciente = db.verificarEmail(emailCadastro);
 
+                //se o id for -1, entao email nao foi cadastrado
                 if(tempPaciente.get_id() == -1) {
+
+                    //verifica se todos os campos estao preenchidos
                     if(nomeCompleto.length() == 0) {
                         Toast.makeText(getApplicationContext(), "Insira um nome válido!", Toast.LENGTH_LONG).show();
                     } else if(emailCadastro.length() == 0) {
@@ -111,10 +114,9 @@ public class CriarConta extends AppCompatActivity {
                     } else if (senhaCadastro.equals(conSenhaCadastro)) {
                         Toast.makeText(getApplicationContext(), "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
 
-                        //Paciente(int id, String nome, String senha, String email, int idade, double circunferencia, double peso)
-
                         Paciente paciente = new Paciente (0, nomeCompleto, senhaCadastro, emailCadastro, "M", 0 , 0, 0, 0);
 
+                        //DEBUG: imprime todos os dados do paciente
                         Log.d("Criando: ", "criar conta");
                         Log.d("Nome : ", paciente.get_nome());
                         Log.d("Senha : ", paciente.get_senha());
@@ -130,7 +132,6 @@ public class CriarConta extends AppCompatActivity {
                         Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
 
                         String msg = db.addPaciente(paciente);
-
                         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
 
                         Intent voltaLogin = new Intent(CriarConta.this, TelaLogin.class);

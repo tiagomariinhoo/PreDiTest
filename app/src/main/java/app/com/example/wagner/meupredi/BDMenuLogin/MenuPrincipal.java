@@ -26,7 +26,7 @@ public class MenuPrincipal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Paciente paciente;
-    //TextView imc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +42,7 @@ public class MenuPrincipal extends AppCompatActivity
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
+        //DEBUG: imprime informacoes do paciente, atualizadas, para verificar se estao corretas
         Log.d("Infos finais: ", "menu principal");
         Log.d("Nome : ", paciente.get_nome());
         Log.d("Senha : ", paciente.get_senha());
@@ -58,12 +59,7 @@ public class MenuPrincipal extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        //imc = (TextView) findViewById(R.id.text_imc_valor_perfil);
-        //imc.setText(String.valueOf(paciente.get_imc()));
 
-        //add this line to display menu1 when the activity is loaded
-       /* android.app.Fragment frag = getFragmentManager().findFragmentById(R.id.nav_perfil);
-        ((TextView) frag.getView().findViewById(R.id.text_imc_valor_perfil)).setText("ha");*/
         displaySelectedScreen(R.id.nav_perfil);
     }
 
@@ -77,19 +73,14 @@ public class MenuPrincipal extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_principal, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -100,19 +91,17 @@ public class MenuPrincipal extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-
-        //calling the method displayselectedscreen and passing the id of selected menu
+        //mostra a tela escolhida
         displaySelectedScreen(item.getItemId());
-        //make this method blank
         return true;
     }
 
     private void displaySelectedScreen(int itemId) {
 
-        //creating fragment object
+        //cria objeto fragmento
         Fragment fragment = null;
 
-        //initializing the fragment object which is selected
+        //inicializa o fragmento selecionado
         switch (itemId) {
             case R.id.nav_perfil:
                 fragment = new Perfil();
@@ -134,12 +123,10 @@ public class MenuPrincipal extends AppCompatActivity
                 break;
         }
 
-        //replacing the fragment
+        //substitui a tela atual
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);
-            Bundle arguments = new Bundle();
-
             ft.commit();
         }
 
@@ -153,11 +140,13 @@ public class MenuPrincipal extends AppCompatActivity
         startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(startMain);
     }
-    public Paciente pegarPacienteMenu(){
-        Log.d("Glicose75g menu : ", String.valueOf(paciente.get_glicose75g()));
 
-        paciente.calculo_diabetes(this
-        );
+    //metodo chamado nos fragmentos para retornar o objeto paciente
+    public Paciente pegarPacienteMenu(){
+
+        //faz o calculo da condicao do paciente
+        Log.d("Glicose75g menu : ", String.valueOf(paciente.get_glicose75g()));
+        paciente.calculo_diabetes(this);
         return paciente;
     }
 }

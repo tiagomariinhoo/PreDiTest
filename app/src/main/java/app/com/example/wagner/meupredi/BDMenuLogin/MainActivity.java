@@ -22,18 +22,25 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
 
-        // RESETAR BANCO E SHAREDPREFERENCES
-        //db.deleteAllPacientes();
-        //editor.clear();
-        //editor.commit();
+        //DEBUG: resetar banco e sharedpreferences
+        boolean debug = false;
 
-        // INSERIR PACIENTES
-        Log.d("Insert: ", "Inserting...");
-        //db.addPaciente(new Paciente(0, "Amanda", "1234", "a", 13, 11, 9,1));
-        //db.addPaciente(new Paciente(0, "Laura", 13, 11, 9));
-        //db.addPaciente(new Paciente(0, "Shelly", 15, 12, 3));
+        if(debug) {
+            db.deleteAllPacientes();
+            editor.clear();
+            editor.commit();
+        }
 
-        Log.d("Reading: ", "Reading all contacts..");
+        //DEBUG: inserir pacientes para testar banco
+        boolean inserir = false;
+
+        if(inserir) {
+            //TODO: consertar construtor abaixo
+            Log.d("Insert: ", "Inserting...");
+            //db.addPaciente(new Paciente(0, "Amanda", "1234", "a", 13, 11, 9,1));
+            //db.addPaciente(new Paciente(0, "Laura", 13, 11, 9));
+            //db.addPaciente(new Paciente(0, "Shelly", 15, 12, 3));
+        }
 
         Intent intent = new Intent(MainActivity.this, TelaLogin.class);
         startActivity(intent);

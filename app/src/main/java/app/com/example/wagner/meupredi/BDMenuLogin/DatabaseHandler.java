@@ -93,12 +93,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    //metodo chamado na classe CriarConta para adicionar um novo paciente ao banco
     String addPaciente(Paciente paciente){
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
+        //DEBUG: imprime dados do objeto paciente
         Log.d("Adicionando: ", "método addPaciente");
         Log.d("Nome : ", paciente.get_nome());
         Log.d("Senha : ", paciente.get_senha());
@@ -117,6 +119,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // TODO: 10/05/2017 Lembrar de mudar todos os métodos para controle de peso
         // TODO: 11/05/2017 Setar peso e pesoAnterior na tabela de pesos
 
+        //agrupa dados e insere no banco
         values.put(KEY_NOME, paciente.get_nome());
         values.put(KEY_SENHA, paciente.get_senha());
         values.put(KEY_EMAIL, paciente.get_email());
@@ -176,17 +179,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return pacientesList;
     }
 
+    //funcao chamada na classe TelaLogin para verificar as credenciais do usuario
     public Paciente verificarLogin(String email, String senha){
 
+        //pega todos os pacientes
         String selectQuery = "SELECT * FROM " + TABLE_PACIENTES;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-
         Paciente paciente = new Paciente();
 
-        boolean achou = false;
-
+        //verifica as credenciais
         if(cursor.moveToFirst()){
             do{
                 if(cursor.getString(3).equals(email) && cursor.getString(2).equals(senha)){
@@ -220,6 +223,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
                     Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
 
+                    //se encontrou o paciente correto, retorna objeto
                     return paciente;
                 }
 
@@ -231,30 +235,33 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return paciente;
     }
 
+    //funcao chamada na classe TelaLogin para pegar o peso atual do paciente
     public double getPeso (int id){
+
         double peso = 0;
-            String selectQuery = "SELECT * FROM " + TABLE_PESOS;
-            SQLiteDatabase db = this.getReadableDatabase();
-            Cursor cursor = db.rawQuery(selectQuery,null);
 
-            if(cursor.moveToFirst()){
-                do{
-                    if(cursor.getString(3).equals(String.valueOf(id))){
-                        Log.d("Achou !", "  aaa");
-                        peso = Double.parseDouble(cursor.getString(1));
-                        break;
-                    }
+        String selectQuery = "SELECT * FROM " + TABLE_PESOS;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery,null);
 
-                } while(cursor.moveToNext());
-            }
+        //procura o peso pelo id do paciente
+        if(cursor.moveToFirst()){
+            do{
+                if(cursor.getString(3).equals(String.valueOf(id))){
+                    Log.d("Achou !", "  aaa");
+                    peso = Double.parseDouble(cursor.getString(1));
+                    break;
+                }
+            } while(cursor.moveToNext());
+        }
 
-            Log.d("Peso achado : ", String.valueOf(peso));
+        Log.d("Peso achado : ", String.valueOf(peso));
 
-
-
+        //retorna peso atual (ou 0 se nao encontrou/ainda nao cadastrou)
         return peso;
     }
 
+    //metodo chamado na classe EsqueceuSenha para verificar existencia do email no banco
     public Paciente verificarEmail(String email) {
 
         String selectQuery = "SELECT * FROM " + TABLE_PACIENTES;
@@ -263,6 +270,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Paciente paciente = new Paciente();
 
+        //verifica se existe algum usuario com o mesmo email
         if(cursor.moveToFirst()){
             do{
                 if(cursor.getString(3).equals(email)){
@@ -270,13 +278,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     paciente.set_nome(cursor.getString(1));
                     paciente.set_senha(cursor.getString(2));
 
+                    //se existir, retorna id do mesmo
                     return paciente;
                 }
 
             }while(cursor.moveToNext());
-
         }
 
+        //se nao existir, retorna objeto com id igual a -1
         paciente.set_id(-1);
         return paciente;
     }
@@ -319,6 +328,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Log.d("Atualizando peso!", "Atualizando peso!");
 
+        //pega data atual
         long date = System.currentTimeMillis();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String dateString = sdf.format(date);
@@ -327,11 +337,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values;
 
+        //guarda dados do paciente (peso e data atual)
         values = new ContentValues();
         values.put(KEY_PESO, paciente.get_peso());
         values.put(KEY_DATA, dateString);
         values.put(KEY_PAC, paciente.get_id());
 
+        //insere dados no banco de pesos
         long retorno;
         retorno = db.insert(TABLE_PESOS, null, values);
         db.close();

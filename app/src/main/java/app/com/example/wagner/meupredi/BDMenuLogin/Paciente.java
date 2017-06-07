@@ -164,6 +164,7 @@ public class Paciente extends AppCompatActivity implements Serializable {
         this._glicose75g = _glicose75g;
     }
 
+    //metodo chamado na classe MenuPrincipal para verificar situacao do paciente
     public void calculo_diabetes(Context context){
 
         //TODO: ajustar este método para os novos atributos
