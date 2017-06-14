@@ -78,24 +78,33 @@ public class Peso extends AppCompatActivity {
                     String pesoFormatado = String.format(Locale.ENGLISH, "%.2f", pesoAtualizado);
                     Double pesoDoPaciente = Double.parseDouble(pesoFormatado);
 
-                    //atualiza valor na tela
-                    peso.setText(String.valueOf(pesoDoPaciente) + " kg");
+                    if(pesoDoPaciente > 0) {
+                        //atualiza valor na tela
+                        peso.setText(String.valueOf(pesoDoPaciente) + " kg");
 
-                    //atualiza peso no objeto
-                    paciente.set_peso(pesoDoPaciente);
+                        //atualiza peso no objeto
+                        paciente.set_peso(pesoDoPaciente);
 
-                    //recalcula imc
-                    double imc = (paciente.get_peso()/(((paciente.get_altura()/100)*((paciente.get_altura())/100))));
-                    String imcFormatado = String.format(Locale.ENGLISH, "%.2f", imc);
-                    imc = Double.parseDouble(imcFormatado);
-                    paciente.set_imc(imc);
+                        //recalcula imc
+                        if(paciente.get_peso() > 0 && paciente.get_altura() > 0) {
 
-                    //atualiza o peso e o imc do paciente no banco
-                    DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                    db.atualizarPeso(paciente);
-                    db.atualizarPaciente(paciente);
+                            double imc = (paciente.get_peso()/(((paciente.get_altura()/100)*((paciente.get_altura())/100))));
+                            String imcFormatado = String.format(Locale.ENGLISH, "%.2f", imc);
+                            imc = Double.parseDouble(imcFormatado);
+                            paciente.set_imc(imc);
+                        } else {
+                            paciente.set_imc(0);
+                        }
 
-                    Toast.makeText(getApplicationContext(),"Peso atualizado com sucesso!",Toast.LENGTH_SHORT).show();
+                        //atualiza o peso e o imc do paciente no banco
+                        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                        db.atualizarPeso(paciente);
+                        db.atualizarPaciente(paciente);
+
+                        Toast.makeText(getApplicationContext(),"Peso atualizado com sucesso!",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(),"Peso inválido!",Toast.LENGTH_SHORT).show();
+                    }
 
                     novoPeso.setText("");
 

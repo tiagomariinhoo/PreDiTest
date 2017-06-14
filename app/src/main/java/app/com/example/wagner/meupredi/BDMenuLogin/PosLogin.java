@@ -55,6 +55,8 @@ public class PosLogin extends AppCompatActivity {
 
         nomeUsuario.setText(paciente.get_nome());
 
+        //TODO: esconder teclado quando der enter
+
         //se o usuario ja fez o cadastro dos dados, pula esta tela
         if(paciente.get_idade() > 0) {
 
@@ -101,7 +103,7 @@ public class PosLogin extends AppCompatActivity {
                 String pesoCadastro = peso.getText().toString();
                 String circunferenciaCadastro = circunferecia.getText().toString();
 
-                //se o usuario nao preencheu algum dado, coloca como -1
+                //se o usuario nao preencheu algum dado, deixa como -1
                 //TODO: criar tela para preencher os dados ausentes
                 if(idadeCadastro.length()==0){
                     paciente.set_idade(-1);
@@ -126,7 +128,7 @@ public class PosLogin extends AppCompatActivity {
                 }
 
                 //calculo de IMC
-                if(paciente.get_peso() != -1 && paciente.get_altura() != -1) {
+                if(paciente.get_peso() > 0 && paciente.get_altura() > 0) {
 
                     double imc = (paciente.get_peso()/(((paciente.get_altura()/100)*((paciente.get_altura())/100))));
                     String imcFormatado = String.format(Locale.ENGLISH, "%.2f", imc);
