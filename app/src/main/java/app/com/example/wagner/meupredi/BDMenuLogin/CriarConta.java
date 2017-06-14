@@ -34,6 +34,8 @@ public class CriarConta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criar_conta);
 
+        //TODO: criar marcador para registrar sexo do paciente (M ou F)
+
         boxSenha = (CheckBox) findViewById(R.id.checkedConSenha);
         nome = (EditText) findViewById(R.id.edit_email_esqueceu);
         email = (EditText) findViewById(R.id.edit_endereco_email);

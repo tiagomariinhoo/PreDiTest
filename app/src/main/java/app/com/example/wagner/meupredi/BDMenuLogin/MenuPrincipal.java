@@ -144,6 +144,10 @@ public class MenuPrincipal extends AppCompatActivity
     //metodo chamado nos fragmentos para retornar o objeto paciente
     public Paciente pegarPacienteMenu(){
 
+        //pega dados atualizados do paciente no banco
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        paciente = db.getPaciente(paciente.get_email());
+
         //faz o calculo da condicao do paciente
         Log.d("Glicose75g menu : ", String.valueOf(paciente.get_glicose75g()));
         paciente.calculo_diabetes(this);

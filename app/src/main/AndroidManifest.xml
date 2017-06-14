@@ -14,7 +14,6 @@
         <activity android:name=".BDMenuLogin.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -22,6 +21,9 @@
         <activity android:name=".BDMenuLogin.CriarConta" />
         <activity android:name=".BDMenuLogin.PosLogin" />
         <activity android:name=".BDMenuLogin.EsqueceuSenha" />
+        <activity
+            android:name=".TelasMenu.Peso"
+            android:label="@string/title_activity_peso"></activity>
         <activity
             android:name=".BDMenuLogin.MenuPrincipal"
             android:label="@string/title_activity_menu_principal"

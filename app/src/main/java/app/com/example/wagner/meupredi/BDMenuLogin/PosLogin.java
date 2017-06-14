@@ -94,39 +94,63 @@ public class PosLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Boolean flag = false;
+
                 String idadeCadastro = idade.getText().toString();
                 String alturaCadastro = altura.getText().toString();
                 String pesoCadastro = peso.getText().toString();
                 String circunferenciaCadastro = circunferecia.getText().toString();
 
-                paciente.set_idade(Integer.parseInt(idadeCadastro));
-                paciente.set_altura(Double.parseDouble(alturaCadastro));
-                paciente.set_peso(Double.parseDouble(pesoCadastro));
-                paciente.set_circunferencia(Double.parseDouble(circunferenciaCadastro));
-
-                //calculo de IMC
-                double imc = (paciente.get_peso()/(((paciente.get_altura()/100)*((paciente.get_altura())/100))));
-                String imcFormatado = String.format(Locale.ENGLISH, "%.2f", imc);
-                imc = Double.parseDouble(imcFormatado);
-                paciente.set_imc(imc);
-
                 //se o usuario nao preencheu algum dado, coloca como -1
                 //TODO: criar tela para preencher os dados ausentes
                 if(idadeCadastro.length()==0){
                     paciente.set_idade(-1);
+                    flag = true;
+                } else {
+                    paciente.set_idade(Integer.parseInt(idadeCadastro));
                 } if (alturaCadastro.length()==0){
                     paciente.set_altura(-1);
+                    flag = true;
+                } else {
+                    paciente.set_altura(Double.parseDouble(alturaCadastro));
                 } if (pesoCadastro.length()==0){
                     paciente.set_peso(-1);
+                    flag = true;
+                } else {
+                    paciente.set_peso(Double.parseDouble(pesoCadastro));
                 } if (circunferenciaCadastro.length()==0){
                     paciente.set_circunferencia(-1);
+                    flag = true;
+                } else {
+                    paciente.set_circunferencia(Double.parseDouble(circunferenciaCadastro));
                 }
 
-                //pega peso cadastrado pelo paciente na tela e insere em sua respectiva tabela no banco
-                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                db.atualizarPeso(paciente);
+                //calculo de IMC
+                if(paciente.get_peso() != -1 && paciente.get_altura() != -1) {
 
-                //TODO: ajeitar IF abaixo (esta chamando o metodo novamente)
+                    double imc = (paciente.get_peso()/(((paciente.get_altura()/100)*((paciente.get_altura())/100))));
+                    String imcFormatado = String.format(Locale.ENGLISH, "%.2f", imc);
+                    imc = Double.parseDouble(imcFormatado);
+                    paciente.set_imc(imc);
+                } else {
+                    paciente.set_imc(0);
+                }
+
+                //se o usuario nao preencheu algum dos dados, avisa que ele pode preencher depois
+                if(flag) {
+                    Toast.makeText(getApplicationContext(),"Você pode completar" +
+                                                           " seus dados na tela de" +
+                                                           " configurações quando quiser.",Toast.LENGTH_LONG).show();
+                }
+
+                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+
+                //pega peso cadastrado pelo paciente na tela e insere em sua respectiva tabela no banco
+                if(pesoCadastro.length() != 0){
+                    db.atualizarPeso(paciente);
+                }
+
+                //atualiza dados do usuario no banco
                 if(db.atualizarPaciente(paciente)){
                     Toast.makeText(getApplicationContext(),"Sucesso ao editar!",Toast.LENGTH_LONG).show();
                     Log.d("Sucesso"," Sucesso");
@@ -160,8 +184,8 @@ public class PosLogin extends AppCompatActivity {
         pular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pulaCadastro = new Intent(PosLogin.this, MenuPrincipal.class);
-                startActivity(pulaCadastro);
+                Intent pularCadastro = new Intent(PosLogin.this, MenuPrincipal.class);
+                startActivity(pularCadastro);
             }
         });
 

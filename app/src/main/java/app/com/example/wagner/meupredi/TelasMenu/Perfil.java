@@ -1,8 +1,10 @@
 package app.com.example.wagner.meupredi.TelasMenu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 
+import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
 import app.com.example.wagner.meupredi.BDMenuLogin.MenuPrincipal;
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 import app.com.example.wagner.meupredi.R;
@@ -22,28 +25,33 @@ import app.com.example.wagner.meupredi.R;
 public class Perfil extends Fragment {
 
     MenuPrincipal menu;
-    TextView imc;
+    TextView imc, peso;
     BarChart barChart;
     ImageView imagemCentral;
+    Paciente paciente;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //returning our layout file
-        //change R.layout.yourlayoutfilename for each of your fragments
 
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
-        Paciente paciente = new Paciente();
+        DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
         paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
+
+        //pega o peso atualizado no banco para exibir na tela
+        paciente.set_peso(db.getPeso(paciente.get_id()));
 
         imc = (TextView) view.findViewById(R.id.text_imc_valor_perfil);
         imc.setText(String.valueOf(paciente.get_imc()));
 
+        peso = (TextView) view.findViewById(R.id.text_peso_valor_perfil);
+        peso.setText(String.valueOf(paciente.get_peso()));
+
         imagemCentral = (ImageView) view.findViewById(R.id.image_central);
 
         paciente.set_sexo("M");
-        paciente.set_imc(22);
+        //paciente.set_imc(22);
 
         if(paciente.get_sexo() == "M"){
             if(paciente.get_imc() >= 20.7 && paciente.get_imc() <= 26.4){ // PESO NORMAL
@@ -91,12 +99,59 @@ public class Perfil extends Fragment {
         return view;
     }
 
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //you can set the title for your toolbar here for different fragments different titles
         getActivity().setTitle("Perfil");
+
+        paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
+
+        peso.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), Peso.class);
+                intent.putExtra("Paciente", paciente);
+                startActivity(intent);
+            }
+
+        });
+
+    }
+
+    @Override
+    public void onResume() {
+
+        //esse metodo e usado para recarregar as informacoes 'dinamicas' da tela (peso, imc, imagem...)
+        super.onResume();
+
+        Log.d("Recarregando tela", "onResume");
+
+        paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
+
+        imc.setText(String.valueOf(paciente.get_imc()));
+        peso.setText(String.valueOf(paciente.get_peso()));
+
+        Log.d(paciente.get_sexo()," -> Sexo do paciente");
+
+        if(paciente.get_sexo().equals("M")){
+            if(paciente.get_imc() >= 20.7 && paciente.get_imc() <= 26.4){ // PESO NORMAL
+                imagemCentral.setImageResource(R.mipmap.happy_face);
+                Log.d("entrei", "happy");
+            }
+            else{
+                imagemCentral.setImageResource(R.mipmap.sad_face);
+                Log.d("entrei", "sad");
+            }
+        }
+        else if(paciente.get_sexo().equals("F")){
+            if(paciente.get_imc() >= 19.1 && paciente.get_imc() <= 25.8){ // PESO NORMAL
+                Log.d("entrei", "F");
+            }
+        } else {
+            Log.d("entrei", "nenhum");
+        }
     }
 
 }

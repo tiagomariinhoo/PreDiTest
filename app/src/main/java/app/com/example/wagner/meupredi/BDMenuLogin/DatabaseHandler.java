@@ -116,9 +116,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
         Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
 
-        // TODO: 10/05/2017 Lembrar de mudar todos os métodos para controle de peso
-        // TODO: 11/05/2017 Setar peso e pesoAnterior na tabela de pesos
-
         //agrupa dados e insere no banco
         values.put(KEY_NOME, paciente.get_nome());
         values.put(KEY_SENHA, paciente.get_senha());
@@ -143,17 +140,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
     }
 
+    //metodo chamado na classe TelaLogin para DEBUG
     public List<Paciente> getAllPacientes(){
 
         List<Paciente> pacientesList = new ArrayList<Paciente> ();
 
+        //pega todos os dados do banco de pacientes
         String selectQuery = "SELECT * FROM " + TABLE_PACIENTES;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        //TODO: tratar NumberFormatException
-
+        //adiciona, um por um, a uma lista
         if(cursor.moveToFirst()){
             do{
                 Paciente paciente = new Paciente();
@@ -170,7 +168,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 paciente.set_glicosejejum(Double.parseDouble(cursor.getString(10)));
                 paciente.set_glicose75g(Double.parseDouble(cursor.getString(11)));
 
-                //TODO: pegar pesos da tabela de pesos e setar no objeto paciente
+                //pega seu ultimo peso registrado
+                paciente.set_peso(getPeso(paciente.get_id()));
 
                 pacientesList.add(paciente);
 
@@ -179,7 +178,33 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return pacientesList;
     }
 
-    //funcao chamada na classe TelaLogin para verificar as credenciais do usuario
+    //metodo chamado na classe MenuPrincipal para manter o objeto 'paciente' sempre atualizado
+    public Paciente getPaciente(String email) {
+
+        //pega todos os pacientes
+        List<Paciente> pacientesList = getAllPacientes();
+        Paciente paciente = new Paciente();
+
+        //procura paciente desejado
+        for(int i = 0; i < pacientesList.size(); i++) {
+            if(email.equals(pacientesList.get(i).get_email())) {
+                paciente = pacientesList.get(i);
+                break;
+            }
+        }
+
+        return paciente;
+    }
+
+    public void deleteAllPacientes() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selectQuery = "DELETE FROM " + TABLE_PACIENTES;
+
+        db.execSQL(selectQuery);
+        db.close();
+    }
+
+    //metodo chamado na classe TelaLogin para verificar as credenciais do usuario
     public Paciente verificarLogin(String email, String senha){
 
         //pega todos os pacientes
@@ -235,32 +260,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return paciente;
     }
 
-    //funcao chamada na classe TelaLogin para pegar o peso atual do paciente
-    public double getPeso (int id){
-
-        double peso = 0;
-
-        String selectQuery = "SELECT * FROM " + TABLE_PESOS;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery,null);
-
-        //procura o peso pelo id do paciente
-        if(cursor.moveToFirst()){
-            do{
-                if(cursor.getString(3).equals(String.valueOf(id))){
-                    Log.d("Achou !", "  aaa");
-                    peso = Double.parseDouble(cursor.getString(1));
-                    break;
-                }
-            } while(cursor.moveToNext());
-        }
-
-        Log.d("Peso achado : ", String.valueOf(peso));
-
-        //retorna peso atual (ou 0 se nao encontrou/ainda nao cadastrou)
-        return peso;
-    }
-
     //metodo chamado na classe EsqueceuSenha para verificar existencia do email no banco
     public Paciente verificarEmail(String email) {
 
@@ -290,14 +289,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return paciente;
     }
 
-    public void deleteAllPacientes() {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String selectQuery = "DELETE FROM " + TABLE_PACIENTES;
-
-        db.execSQL(selectQuery);
-        db.close();
-    }
-
+    //metodo chamado na classe PosLogin para atualizar dados do paciente no banco
     public boolean atualizarPaciente(Paciente paciente){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -324,9 +316,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // db.close();
     }
 
-    public String atualizarPeso(Paciente paciente){
-
-        Log.d("Atualizando peso!", "Atualizando peso!");
+    //metodo chamado na classe PosLogin e Peso para registrar peso do paciente
+    //TODO: tirar retorno de string
+    public void atualizarPeso(Paciente paciente){
 
         //pega data atual
         long date = System.currentTimeMillis();
@@ -349,40 +341,33 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
 
         if(retorno == -1){
-            return "Erro ao atualizar peso!";
+            Log.d("Erro ao atualizar peso!", "DatabaseHandler");
         } else {
-            return "Peso atualizado com sucesso!";
+            Log.d("Peso atualizado!", "DatabaseHandler");
         }
-
     }
 
-    public String buscarPeso(Paciente paciente){
+    //metodo chamado na classe TelaLogin para pegar o peso atual do paciente
+    public double getPeso (int id){
 
-        Log.d("Metodo : ", "Buscar peso");
+        double peso = 0;
 
-        String selectQuery = "SELECT MAX("+KEY_ID_PESO+") FROM " + TABLE_PESOS;
+        String selectQuery = "SELECT * FROM " + TABLE_PESOS;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        Cursor cursor = db.rawQuery(selectQuery,null);
 
-        String peso;
-
+        //procura o peso pelo id do paciente
         if(cursor.moveToFirst()){
             do{
-                if(cursor.getString(3).equals(paciente.get_id())){
-                    peso = cursor.getString(1);
-
-                    Log.d("Peso do cursor : ", peso);
-                    Log.d("id : ", String.valueOf(paciente.get_id()));
-                    Log.d("Nome : ", paciente.get_nome());
-
-                    return peso;
+                if(cursor.getString(3).equals(String.valueOf(id))){
+                    peso = Double.parseDouble(cursor.getString(1));
+                    Log.d("Peso achado : ", String.valueOf(peso));
                 }
-
-            }while(cursor.moveToNext());
-
+            } while(cursor.moveToNext());
         }
 
-        return "";
+        //retorna peso atual (ou 0 se nao encontrou/ainda nao cadastrou)
+        return peso;
     }
 
 }
