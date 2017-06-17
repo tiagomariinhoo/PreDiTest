@@ -9,13 +9,26 @@
     tools:layout_editor_absoluteY="81dp">
 
     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="32dp"
+        android:text="Sexo"
+        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_peso_poslogin" />
+
+    <TextView
         android:id="@+id/text_bem_vindo_poslogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Seja Bem-Vindo!"
+        android:text="Seja bem-vindo!"
         android:textSize="30dp"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -45,9 +58,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="37dp"
         android:layout_marginStart="37dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="6dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:nextFocusDown="@+id/edit_altura_poslogin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_idade_poslogin" />
 
@@ -82,6 +96,7 @@
         android:layout_marginTop="7dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:nextFocusDown="@+id/edit_circunferencia_poslogin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_peso_poslogin" />
 
@@ -89,6 +104,7 @@
         android:id="@+id/text_circunferencia_poslogin"
         android:layout_width="91dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="76dp"
         android:layout_marginRight="76dp"
         android:layout_marginTop="32dp"
         android:text="Circunferência"
@@ -106,7 +122,6 @@
         android:inputType="textPersonName"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_circunferencia_poslogin"
-        tools:layout_constraintLeft_creator="1"
         tools:layout_constraintTop_creator="1" />
 
     <TextView
@@ -118,7 +133,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="32dp"
-        android:text="Sr Fulano"
+        android:text="Sr(a) Fulano"
         android:textSize="20sp"
         app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -127,32 +142,22 @@
 
     <Button
         android:id="@+id/btn_concluir_poslogin"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="CONCLUIR"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <Button
-        android:id="@+id/btn_pular_poslogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:text="PULAR"
+        android:layout_marginRight="16dp"
+        android:text="PRÓXIMO"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/text_altura_poslogin"
         android:layout_width="38dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="128dp"
-        android:layout_marginRight="127dp"
+        android:layout_marginRight="128dp"
         android:layout_marginTop="32dp"
         android:text="Altura"
         app:layout_constraintRight_toRightOf="parent"
@@ -164,10 +169,25 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="37dp"
         android:layout_marginRight="37dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="6dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:nextFocusDown="@+id/edit_peso_poslogin"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_altura_poslogin" />
+
+    <Spinner
+        android:id="@+id/spinner_sexo_postlogin"
+        android:layout_width="82dp"
+        android:layout_height="18dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_peso_poslogin" />
 
 </android.support.constraint.ConstraintLayout>

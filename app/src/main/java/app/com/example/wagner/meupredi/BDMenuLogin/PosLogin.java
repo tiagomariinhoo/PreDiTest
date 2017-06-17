@@ -6,13 +6,18 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import app.com.example.wagner.meupredi.R;
@@ -29,7 +34,7 @@ public class PosLogin extends AppCompatActivity {
     private EditText altura;
     private EditText peso;
     private EditText circunferecia;
-    private Button pular;
+    private Spinner sexo;
     private Button concluir;
     private Paciente paciente;
 
@@ -48,14 +53,23 @@ public class PosLogin extends AppCompatActivity {
         peso.setRawInputType(Configuration.KEYBOARD_QWERTY);
         circunferecia = (EditText) findViewById(R.id.edit_circunferencia_poslogin);
         circunferecia.setRawInputType(Configuration.KEYBOARD_QWERTY);
-        pular = (Button) findViewById(R.id.btn_pular_poslogin);
+        sexo = (Spinner) findViewById(R.id.spinner_sexo_postlogin);
         concluir = (Button) findViewById(R.id.btn_concluir_poslogin);
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
-        nomeUsuario.setText(paciente.get_nome());
+        nomeUsuario.setText("Sr(a)." + paciente.get_nome());
 
-        //TODO: esconder teclado quando der enter
+        //lista de opcoes de sexo
+        List<String> spinnerArray =  new ArrayList<String>();
+        spinnerArray.add("Masc.");
+        spinnerArray.add("Fem.");
+
+        //configura o spinner do sexo
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        sexo.setAdapter(adapter);
 
         //se o usuario ja fez o cadastro dos dados, pula esta tela
         if(paciente.get_idade() > 0) {
@@ -65,6 +79,7 @@ public class PosLogin extends AppCompatActivity {
             Log.d("Nome : ", paciente.get_nome());
             Log.d("Senha : ", paciente.get_senha());
             Log.d("Email: ", paciente.get_email());
+            Log.d("Sexo: ", String.valueOf(paciente.get_sexo()));
             Log.d("Idade : ", String.valueOf(paciente.get_idade()));
             Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
             Log.d("Peso : ", String.valueOf(paciente.get_peso()));
@@ -96,6 +111,7 @@ public class PosLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //TODO: verificar entrada dos dados (ex: altura em centimetros, peso em kg...)
                 Boolean flag = false;
 
                 String idadeCadastro = idade.getText().toString();
@@ -125,6 +141,14 @@ public class PosLogin extends AppCompatActivity {
                     flag = true;
                 } else {
                     paciente.set_circunferencia(Double.parseDouble(circunferenciaCadastro));
+                }
+
+                //verificar opcao de sexo selecionada
+                String selected = sexo.getSelectedItem().toString();
+                if (selected.equals("Masc.")) {
+                    paciente.set_sexo("M");
+                } else {
+                    paciente.set_sexo("F");
                 }
 
                 //calculo de IMC
@@ -166,6 +190,7 @@ public class PosLogin extends AppCompatActivity {
                 Log.d("Nome : ", paciente.get_nome());
                 Log.d("Senha : ", paciente.get_senha());
                 Log.d("Email: ", paciente.get_email());
+                Log.d("Sexo: ", String.valueOf(paciente.get_sexo()));
                 Log.d("Idade : ", String.valueOf(paciente.get_idade()));
                 Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
                 Log.d("Peso : ", String.valueOf(paciente.get_peso()));
@@ -182,14 +207,5 @@ public class PosLogin extends AppCompatActivity {
             }
 
         });
-
-        pular.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent pularCadastro = new Intent(PosLogin.this, MenuPrincipal.class);
-                startActivity(pularCadastro);
-            }
-        });
-
     }
 }

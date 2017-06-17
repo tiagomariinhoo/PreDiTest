@@ -47,6 +47,7 @@ public class MenuPrincipal extends AppCompatActivity
         Log.d("Nome : ", paciente.get_nome());
         Log.d("Senha : ", paciente.get_senha());
         Log.d("Email: ", paciente.get_email());
+        Log.d("Sexo: ", String.valueOf(paciente.get_sexo()));
         Log.d("Idade : ", String.valueOf(paciente.get_idade()));
         Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
         Log.d("Peso : ", String.valueOf(paciente.get_peso()));
