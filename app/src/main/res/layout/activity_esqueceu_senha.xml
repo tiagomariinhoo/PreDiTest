@@ -11,7 +11,7 @@
     android:id="@+id/tela_esqueceu_senha">
 
     <TextView
-        android:id="@+id/text_digite_email_esqueceu"
+        android:id="@+id/text_nome_completo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
