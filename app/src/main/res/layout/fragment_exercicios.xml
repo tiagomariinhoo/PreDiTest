@@ -47,7 +47,7 @@
         android:indeterminate="false"
         android:max="150"
         android:progress="80"
-        android:progressDrawable="@drawable/circular2"
+        android:progressDrawable="@drawable/circulardois"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
