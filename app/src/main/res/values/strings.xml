@@ -9,6 +9,8 @@
     <string name="close">Close</string>
     <string name="title_activity_menu_principal">MenuPrincipal</string>
 
+    <string name="mgdl">md/ld</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

@@ -3,7 +3,6 @@ package app.com.example.wagner.meupredi;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
-import java.util.ArrayList;
+import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 
 /**
  * Created by LeandroDias1 on 18/04/2017.
@@ -38,29 +33,12 @@ public class Perfil extends Fragment {
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
         Paciente paciente = new Paciente();
-        paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
+        //paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
 
-        imc = (TextView) view.findViewById(R.id.text_imc_valor_perfil);
-        imc.setText(String.valueOf(paciente.get_imc()));
+        //imc = (TextView) view.findViewById(R.id.text_imc_valor_perfil);
+        //imc.setText(String.valueOf(paciente.get_imc()));
 
-        imagemCentral = (ImageView) view.findViewById(R.id.image_central);
-
-        paciente.setSexo('M');
-        paciente.set_imc(22);
-
-        if(paciente.getSexo() == 'M'){
-            if(paciente.get_imc() >= 20.7 && paciente.get_imc() <= 26.4){ // PESO NORMAL
-                imagemCentral.setImageResource(R.mipmap.happy_face);
-            }
-            else{
-                imagemCentral.setImageResource(R.mipmap.sad_face);
-            }
-        }
-        else if(paciente.getSexo() == 'F'){
-            if(paciente.get_imc() >= 19.1 && paciente.get_imc() <= 25.8){ // PESO NORMAL
-
-            }
-        }
+        //imagemCentral = (ImageView) view.findViewById(R.id.image_central);
 
        /* barChart = (BarChart) view.findViewById(R.id.bargraph);
 

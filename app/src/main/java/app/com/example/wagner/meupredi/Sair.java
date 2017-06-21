@@ -5,12 +5,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import static app.com.example.wagner.meupredi.TelaLogin.PREFS_NAME;
 
@@ -22,7 +22,7 @@ public class Sair extends Fragment  implements View.OnClickListener {
 
     CheckBox manterConectado;
     Button sair;
-    Button voltar;
+    TextView voltar;
 
     @Nullable
     @Override
@@ -33,7 +33,7 @@ public class Sair extends Fragment  implements View.OnClickListener {
         final View view = inflater.inflate(R.layout.fragment_sair, container, false);
         View telaLoginView = inflater.inflate(R.layout.activity_tela_login, container, false);
         sair = (Button) view.findViewById(R.id.btn_sair_sim_fragment);
-        voltar = (Button) view.findViewById(R.id.btn_sair_nao_fragment);
+        voltar = (TextView) view.findViewById(R.id.btn_sair_nao_fragment);
         manterConectado = (CheckBox) telaLoginView.findViewById(R.id.checkBox_manter_conectado_login);
         manterConectado.setChecked(false);
 

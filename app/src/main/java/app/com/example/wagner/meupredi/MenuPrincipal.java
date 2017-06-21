@@ -1,27 +1,20 @@
 package app.com.example.wagner.meupredi;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
-import static app.com.example.wagner.meupredi.PosLogin.PREFS_NAME;
+import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 
 public class MenuPrincipal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -51,7 +44,6 @@ public class MenuPrincipal extends AppCompatActivity
         Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
         Log.d("Peso : ", String.valueOf(paciente.get_peso()));
         Log.d("Altura : ", String.valueOf(paciente.get_altura()));
-        Log.d("Peso atual: ", String.valueOf(paciente.get_pesoAtual()));
         Log.d("IMC : ", String.valueOf(paciente.get_imc()));
         Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
         Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));

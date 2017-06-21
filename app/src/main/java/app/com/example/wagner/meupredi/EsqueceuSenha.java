@@ -2,16 +2,17 @@ package app.com.example.wagner.meupredi;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 
 /**
  * Created by LeandroDias1 on 10/04/2017.
@@ -19,7 +20,8 @@ import android.widget.Toast;
 
 public class EsqueceuSenha extends AppCompatActivity {
 
-    private Button enviar, cancelar;
+    private Button enviar;
+    private TextView cancelar;
     private EditText email;
     private ConstraintLayout tela;
 
@@ -30,7 +32,7 @@ public class EsqueceuSenha extends AppCompatActivity {
         setContentView(R.layout.activity_esqueceu_senha);
 
         enviar = (Button) findViewById(R.id.btn_enviar_esqueceu);
-        cancelar = (Button) findViewById(R.id.btn_cancelar_esqueceu);
+        cancelar = (TextView) findViewById(R.id.btn_cancelar_esqueceu);
         email = (EditText) findViewById(R.id.edit_email_esqueceu);
         tela = (ConstraintLayout) findViewById(R.id.tela_esqueceu_senha);
 
