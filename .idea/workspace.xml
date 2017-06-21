@@ -16,10 +16,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7d6493b-b395-4f3b-93b0-f23b596df878" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circulardois.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_exercicios.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_exercicios.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_perfil.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_perfil.xml" />
     </list>
     <list id="4385e3bb-72b3-4e80-a922-74126f89c0e4" name="Failed commit: Default" comment=" - Atualização Banco De Dados (senha, email);&#10; - Icone&#10; - Tela de login guardando o keyboard" />
     <list id="f7eb3725-a01f-4571-8529-446a9a80205d" name="Failed commit: Default (2)" comment=" - Atualização Banco De Dados (senha, email);&#10; - Icone&#10; - Tela de login guardando o keyboard" />
@@ -2580,7 +2577,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498049143531</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Design das telas do aplicativo">
+      <created>1498050716733</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1498050716733</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
