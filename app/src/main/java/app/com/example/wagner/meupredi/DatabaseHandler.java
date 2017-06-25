@@ -177,9 +177,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 paciente.set_hba1c(Double.parseDouble(cursor.getString(9)));
                 paciente.set_glicosejejum(Double.parseDouble(cursor.getString(10)));
                 paciente.set_glicose75g(Double.parseDouble(cursor.getString(11)));
-                paciente.set_lipidograma(Double.parseDouble(cursor.getString(12)));
-                paciente.set_hemograma(Double.parseDouble(cursor.getString(13)));
-                paciente.set_tireoide(Double.parseDouble(cursor.getString(14)));
+                //paciente.set_lipidograma(Double.parseDouble(cursor.getString(12)));
+                //paciente.set_hemograma(Double.parseDouble(cursor.getString(13)));
+                //paciente.set_tireoide(Double.parseDouble(cursor.getString(14)));
 
                 //pega seu ultimo peso registrado
                 paciente.set_peso(getPeso(paciente.get_id()));
