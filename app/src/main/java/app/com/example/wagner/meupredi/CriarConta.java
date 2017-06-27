@@ -42,7 +42,7 @@ public class CriarConta extends AppCompatActivity {
         setContentView(R.layout.activity_criar_conta);
 
         boxSenha = (CheckBox) findViewById(R.id.checkedConSenha);
-        nome = (EditText) findViewById(R.id.edit_email_esqueceu);
+        nome = (EditText) findViewById(R.id.edit_nome_completo);
         email = (EditText) findViewById(R.id.edit_endereco_email);
         senha = (EditText) findViewById(R.id.edit_senha_cadastro);
         conSenha = (EditText) findViewById(R.id.edit_novamente_senha);

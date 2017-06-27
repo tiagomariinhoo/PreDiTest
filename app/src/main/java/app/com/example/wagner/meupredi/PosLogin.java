@@ -51,23 +51,11 @@ public class PosLogin extends AppCompatActivity {
         peso.setRawInputType(Configuration.KEYBOARD_QWERTY);
         circunferecia = (EditText) findViewById(R.id.edit_circunferencia_poslogin);
         circunferecia.setRawInputType(Configuration.KEYBOARD_QWERTY);
-        sexo = (Spinner) findViewById(R.id.spinner_sexo_postlogin);
         concluir = (Button) findViewById(R.id.btn_concluir_poslogin);
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
         nomeUsuario.setText("Sr(a)." + paciente.get_nome());
-
-        //lista de opcoes de sexo
-        List<String> spinnerArray =  new ArrayList<String>();
-        spinnerArray.add("Masc.");
-        spinnerArray.add("Fem.");
-
-        //configura o spinner do sexo
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        sexo.setAdapter(adapter);
 
         //se o usuario ja fez o cadastro dos dados, pula esta tela
         if(paciente.get_idade() > 0) {
@@ -139,14 +127,6 @@ public class PosLogin extends AppCompatActivity {
                     flag = true;
                 } else {
                     paciente.set_circunferencia(Double.parseDouble(circunferenciaCadastro));
-                }
-
-                //verificar opcao de sexo selecionada
-                String selected = sexo.getSelectedItem().toString();
-                if (selected.equals("Masc.")) {
-                    paciente.set_sexo("M");
-                } else {
-                    paciente.set_sexo("F");
                 }
 
                 //calculo de IMC

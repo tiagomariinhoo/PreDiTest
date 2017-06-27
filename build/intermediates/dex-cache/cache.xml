@@ -3,21 +3,120 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\wagne\AndroidStudioProjects\PreDiTest\PreDiTest\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\Pichau\.android\build-cache\a24967fbe08fdef6c09338e433e0d0e9ee4605eb\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="6391b1f38daa0f6722c7df3ba07bdde1d427bd72">
-        <dex dex="C:\Users\wagne\AndroidStudioProjects\PreDiTest\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f602e9ecf137fb84ae8a4f22c98e327ca532c9ef\classes.dex" />
+        sha1="a8c270e08ffcbea4df2fe4801d76815836118877">
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi Master\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_fb42335529b1108185a11045f288246f84542f54\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\wagne\AndroidStudioProjects\PreDiTest\PreDiTest\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\Pichau\.android\build-cache\045d898621e5dffff4ffcbb41b14ee487cb164c0\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi Master\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f1ab5f974aada200bdb3f36c274eccd1e84467c9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Pichau\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi Master\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.3.1_cdb215b0be5604215cbf7300cdf471f6df2c0040\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Pichau\.android\build-cache\ac445d0587b9b1d44281aaeaa70cacb0bf42bd84\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi Master\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_65aed43cdab1c85b016df4664fcc2ac19e44d296\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Pichau\.android\build-cache\d2832168d8746058c9e1467e4140a623c0e789c3\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi Master\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7749b2a49ccae7ec443582153331cefc952e39d4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Pichau\.android\build-cache\5b0dc40a822bc8e31caab6ca88e0eb8b8f80ad57\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi Master\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f8a015123deb9c6d8c2c0942dedc30c5a37b97a2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Pichau\.android\build-cache\1122b753a63533feed0dd599a305661773f00f92\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi Master\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3550518a78a5c8e6248708bd37d63742c23a6f2f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Pichau\.android\build-cache\ab8705ad1b6b7c54df4cdaf1d579bdc1e9bde2e6\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi Master\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_29e31fa39f4696f122abe687a456b4b61ab72332\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Pichau\.android\build-cache\64a925aea1762152b7b6b279268ad8068a21b407\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi Master\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cd94de253f71c47b7762e19b17e5100744a6af37\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Pichau\.android\build-cache\84a65df7b1cdff389693712e6c6d492a667ea59b\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi Master\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4de400949cd1dcde12fc53bc6fb49991a54b00e3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Pichau\.android\build-cache\e53c73ab429c0df0c2b6eccde013e392796835a3\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi Master\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_325b15d910aba8d5f47c4288f5f220327aaaef8e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi Master\PreDiTest\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="C:\Users\wagne\AndroidStudioProjects\PreDiTest\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_9cd4457e32bfe440ff78fa14c1cd58819703f2d0\classes.dex" />
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi Master\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_ab5050cf77d46e017ea3b07ef32aa49583a2db07\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi Master\PreDiTest\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c4dfd5704c2d3c9fe1000105022770693fc0399c">
+        <dex dex="C:\Users\Pichau\Desktop\CC\PIBIC\PreDi Master\PreDiTest\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_b2e1a2ec61039561d0ba769ec403794f1f848610\classes.dex" />
     </item>
 
 </items>
