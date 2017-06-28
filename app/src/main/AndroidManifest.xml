@@ -24,6 +24,9 @@
         <activity android:name=".EsqueceuSenha" />
         <activity android:name=".cadastroExame" />
         <activity
+            android:name=".Peso"
+            android:label="@string/title_activity_peso"></activity>
+        <activity
             android:name=".MenuPrincipal"
             android:label="@string/title_activity_menu_principal"
             android:theme="@style/AppTheme.NoActionBar"></activity>

@@ -67,18 +67,14 @@ public class CriarConta extends AppCompatActivity {
 
         //lista de opcoes de sexo
         List<String> spinnerArray =  new ArrayList<String>();
-        spinnerArray.add("Masc.");
-        spinnerArray.add("Fem.");
+        spinnerArray.add("M");
+        spinnerArray.add("F");
 
         //configura o spinner do sexo
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         sexo.setAdapter(adapter);
-
-
-        //final String senhaCadastro = senha.getText().toString();
-        //final String conSenhaCadastro = conSenha.getText().toString();
 
         boxSenha.setChecked(false);
 
@@ -88,11 +84,13 @@ public class CriarConta extends AppCompatActivity {
                 String senhaCadastro = senha.getText().toString();
                 String conSenhaCadastro = conSenha.getText().toString();
 
+                //verifica se as senhas sao iguais nos dois campos de cadastro
                 if(senhaCadastro.length()==0){
                     Toast.makeText(getApplicationContext(),"Insira uma senha válida!", Toast.LENGTH_LONG ).show();
                     boxSenha.setChecked(false);
                     return false;
                 }
+
                 if(senhaCadastro.equals(conSenhaCadastro)){
                     boxSenha.setChecked(true);
                     return true;
@@ -111,7 +109,7 @@ public class CriarConta extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                /*TODO: verificar email ao cadastrar (enviar email de confirmacao)*/
+                //TODO: verificar email ao cadastrar (enviar email de confirmacao)
 
                 final String nomeCompleto = nome.getText().toString();
                 final String emailCadastro = email.getText().toString();
@@ -124,7 +122,10 @@ public class CriarConta extends AppCompatActivity {
 
                 tempPaciente = db.verificarEmail(emailCadastro);
 
+                //se o id for -1, entao email nao foi cadastrado
                 if(tempPaciente.get_id() == -1) {
+
+                    //verifica se todos os campos estao preenchidos
                     if(nomeCompleto.length() == 0) {
                         Toast.makeText(getApplicationContext(), "Insira um nome válido!", Toast.LENGTH_LONG).show();
                     } else if(emailCadastro.length() == 0) {
@@ -134,23 +135,23 @@ public class CriarConta extends AppCompatActivity {
                     } else if (senhaCadastro.equals(conSenhaCadastro)) {
                         Toast.makeText(getApplicationContext(), "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
 
-
-                        //Paciente(int id, String nome, String senha, String email, int idade, double circunferencia, double peso)
+                        //configuracao padrao de usuario
                         Paciente paciente = new Paciente (0, nomeCompleto, senhaCadastro, emailCadastro, "M", 0, 0 , 0, 0);
 
-                        //verificar opcao de sexo selecionada
+                        //verifica opcao de sexo selecionada
                         String selected = sexo.getSelectedItem().toString();
-                        if (selected.equals("Masc.")) {
+                        if (selected.equals("M")) {
                             paciente.set_sexo("M");
                         } else {
                             paciente.set_sexo("F");
                         }
 
-
+                        //DEBUG: imprime todos os dados do paciente
                         Log.d("Criando: ", "criar conta");
                         Log.d("Nome : ", paciente.get_nome());
                         Log.d("Senha : ", paciente.get_senha());
                         Log.d("Email: ", paciente.get_email());
+                        Log.d("Sexo: ", String.valueOf(paciente.get_sexo()));
                         Log.d("Idade : ", String.valueOf(paciente.get_idade()));
                         Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
                         Log.d("Peso : ", String.valueOf(paciente.get_peso()));
@@ -159,6 +160,9 @@ public class CriarConta extends AppCompatActivity {
                         Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
                         Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
                         Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+                        Log.d("Lipidograma : ", String.valueOf(paciente.get_lipidograma()));
+                        Log.d("Hemograma : ", String.valueOf(paciente.get_hemograma()));
+                        Log.d("Tireoide : ", String.valueOf(paciente.get_tireoide()));
 
                         String msg = db.addPaciente(paciente);
 
@@ -173,7 +177,6 @@ public class CriarConta extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Email já cadastrado!", Toast.LENGTH_LONG).show();
                 }
-
 
             }
         });

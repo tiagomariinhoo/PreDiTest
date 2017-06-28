@@ -32,7 +32,6 @@ public class PosLogin extends AppCompatActivity {
     private EditText altura;
     private EditText peso;
     private EditText circunferecia;
-    private Spinner sexo;
     private Button concluir;
     private Paciente paciente;
 
@@ -55,7 +54,7 @@ public class PosLogin extends AppCompatActivity {
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
-        nomeUsuario.setText("Sr(a)." + paciente.get_nome());
+        nomeUsuario.setText("Sr(a). " + paciente.get_nome());
 
         //se o usuario ja fez o cadastro dos dados, pula esta tela
         if(paciente.get_idade() > 0) {
@@ -69,12 +68,14 @@ public class PosLogin extends AppCompatActivity {
             Log.d("Idade : ", String.valueOf(paciente.get_idade()));
             Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
             Log.d("Peso : ", String.valueOf(paciente.get_peso()));
-            Log.d("Peso anterior: ", String.valueOf(paciente.get_pesoAnterior()));
             Log.d("Altura : ", String.valueOf(paciente.get_altura()));
             Log.d("IMC : ", String.valueOf(paciente.get_imc()));
             Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
             Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
             Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+            Log.d("Lipidograma : ", String.valueOf(paciente.get_lipidograma()));
+            Log.d("Hemograma : ", String.valueOf(paciente.get_hemograma()));
+            Log.d("Tireoide : ", String.valueOf(paciente.get_tireoide()));
 
             Intent intent = new Intent(PosLogin.this, MenuPrincipal.class);
             intent.putExtra("Paciente", paciente);
@@ -142,9 +143,9 @@ public class PosLogin extends AppCompatActivity {
 
                 //se o usuario nao preencheu algum dos dados, avisa que ele pode preencher depois
                 if(flag) {
-                    Toast.makeText(getApplicationContext(),"Você pode completar" +
-                            " seus dados na tela de" +
-                            " configurações quando quiser.",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Você pode completar ou atualizar" +
+                            " esses dados em seu Perfil" +
+                            " quando quiser.",Toast.LENGTH_LONG).show();
                 }
 
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
@@ -172,12 +173,14 @@ public class PosLogin extends AppCompatActivity {
                 Log.d("Idade : ", String.valueOf(paciente.get_idade()));
                 Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
                 Log.d("Peso : ", String.valueOf(paciente.get_peso()));
-                Log.d("Peso anterior: ", String.valueOf(paciente.get_pesoAnterior()));
                 Log.d("Altura : ", String.valueOf(paciente.get_altura()));
                 Log.d("IMC : ", String.valueOf(paciente.get_imc()));
                 Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
                 Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
                 Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+                Log.d("Lipidograma : ", String.valueOf(paciente.get_lipidograma()));
+                Log.d("Hemograma : ", String.valueOf(paciente.get_hemograma()));
+                Log.d("Tireoide : ", String.valueOf(paciente.get_tireoide()));
 
                 Intent intent = new Intent(PosLogin.this, MenuPrincipal.class);
                 intent.putExtra("Paciente", paciente);

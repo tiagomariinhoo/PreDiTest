@@ -18,11 +18,9 @@ public class Paciente extends AppCompatActivity implements Serializable {
     String _senha;
     String _email;
     String _sexo;
-
     int _idade;
     double _circunferencia;
     double _peso;
-    double _pesoAnterior;
     double _altura;
     double _imc;
     double _hba1c;
@@ -32,12 +30,11 @@ public class Paciente extends AppCompatActivity implements Serializable {
     double _hemograma;
     double _tireoide;
 
-
-    public Paciente(){
+    public Paciente() {
 
     }
 
-    public Paciente(int id, String nome, String senha, String email, String sexo, int idade, double circunferencia, double peso, double altura){
+    public Paciente(int id, String nome, String senha, String email, String sexo, int idade, double circunferencia, double peso, double altura) {
 
         //valores com -1 serão setados ou calculados após o cadastro inicial
         this._id = id;
@@ -48,7 +45,6 @@ public class Paciente extends AppCompatActivity implements Serializable {
         this._idade = idade;
         this._circunferencia = circunferencia;
         this._peso = peso;
-        this._pesoAnterior = -1;
         this._altura = altura;
         this._imc = -1;
         this._hba1c = -1;
@@ -123,14 +119,6 @@ public class Paciente extends AppCompatActivity implements Serializable {
         this._peso = _peso;
     }
 
-    public double get_pesoAnterior() {
-        return _pesoAnterior;
-    }
-
-    public void set_pesoAnterior(double _pesoAnterior) {
-        this._peso = _pesoAnterior;
-    }
-
     public double get_altura() {
         return _altura;
     }
@@ -196,21 +184,21 @@ public class Paciente extends AppCompatActivity implements Serializable {
     }
 
     //metodo chamado na classe MenuPrincipal para verificar situacao do paciente
-    public void calculo_diabetes(Context context){
+    public void calculo_diabetes(Context context) {
 
         //TODO: ajustar este método para os novos atributos
 
-        Log.d("Começando ", "O CALCULOO");
-        if(get_glicosejejum()>=100 && get_glicosejejum()<=125){
+        /*Log.d("Começando ", "O CALCULOO");
+        if (get_glicosejejum() >= 100 && get_glicosejejum() <= 125) {
             //Log.d("TTG!","");
-            Toast.makeText(context,"TTG",Toast.LENGTH_LONG).show();
-            if(get_glicose75g()<140){
+            Toast.makeText(context, "TTG", Toast.LENGTH_LONG).show();
+            if (get_glicose75g() < 140) {
                 //Log.d("GJA","");
-                Toast.makeText(context,"GJA!",Toast.LENGTH_LONG).show();
-            } else if (get_glicose75g()>=140 && get_glicose75g()<199){
+                Toast.makeText(context, "GJA!", Toast.LENGTH_LONG).show();
+            } else if (get_glicose75g() >= 140 && get_glicose75g() < 199) {
                 //Log.d("TDG"," Pré Diabetes");
                 //Log.d("MEV", "Por 6 meses");
-                Toast.makeText(context,"TDG Pré Diabetes, MEV por 6 meses!",Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "TDG Pré Diabetes, MEV por 6 meses!", Toast.LENGTH_LONG).show();
 
                 if(get_pesoAnterior()!=-1 && get_imc()>=25){
                     double pct = (get_peso()*100)/get_pesoAnterior();
@@ -251,13 +239,15 @@ public class Paciente extends AppCompatActivity implements Serializable {
                 //Log.d("DM2 : ", "Avaliação e manejo do DM2");
                 Toast.makeText(context,"Sua glicose está muito alta! Avaliação e manejo do DM2",Toast.LENGTH_LONG).show();
             }
-        } else if (get_glicosejejum()>=126 || get_glicosejejum()>=200){
-            Toast.makeText(context,"Sua glicose está muito alta! Avaliação de manejo do DM2",Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(context,"Sua glicose está normal! Avaliação a cada 3 anos ou conforme o risco.",Toast.LENGTH_LONG).show();
-        }
+            } else if (get_glicosejejum() >= 126 || get_glicosejejum() >= 200) {
+                Toast.makeText(context, "Sua glicose está muito alta! Avaliação de manejo do DM2", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(context, "Sua glicose está normal! Avaliação a cada 3 anos ou conforme o risco.", Toast.LENGTH_LONG).show();
+            }
 
-        Log.d("glicose75 g : ", String.valueOf(get_glicose75g()));
+            Log.d("glicose75 g : ", String.valueOf(get_glicose75g()));
+        }*/
+
     }
 
 }

@@ -48,6 +48,7 @@ public class TelaLogin extends AppCompatActivity {
         tela = (ConstraintLayout) findViewById(R.id.tela_login);
         esqueceuSenha = (TextView) findViewById(R.id.text_esqueceu_senha_login);
 
+        //pega informacoes salvas no sharedpreferences
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
         usuario.setText(settings.getString("PrefUsuario", ""));
@@ -55,7 +56,7 @@ public class TelaLogin extends AppCompatActivity {
 
         manterConectado.setChecked(false);
 
-        //(usuario.getText().length() > 0 && senha.getText().length() > 0)
+        //se existirem informacoes salvas, tenta fazer login
         if(usuario.getText().length() > 0 && senha.getText().length() > 0) {
             btnLogin.post(new Runnable() {
                 @Override
@@ -100,10 +101,12 @@ public class TelaLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //abre o banco e o sharedpreferences para edicao
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                 SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
                 SharedPreferences.Editor editor = settings.edit();
 
+                //DEBUG: imprime lista de pacientes cadastrados
                 List<Paciente> pacList = new ArrayList<Paciente> ();
                 pacList = db.getAllPacientes();
 
@@ -113,6 +116,7 @@ public class TelaLogin extends AppCompatActivity {
                     Log.d(pacList.get(i).get_senha(), " -> Senha do paciente");
                 }
 
+                //salva dados no sharedpreferences
                 if(manterConectado.isChecked()) {
                     editor.putString("PrefUsuario", usuario.getText().toString());
                     editor.putString("PrefSenha", senha.getText().toString());
@@ -120,6 +124,7 @@ public class TelaLogin extends AppCompatActivity {
                     editor.commit();
                 }
 
+                //verifica credenciais do usuario
                 String user,pass;
                 user = usuario.getText().toString();
                 pass = senha.getText().toString();
@@ -127,7 +132,13 @@ public class TelaLogin extends AppCompatActivity {
                 Paciente paciente = new Paciente();
                 paciente = db.verificarLogin(user,pass);
 
+                //se estiverem corretas, faz o login
                 if(paciente.get_id() != -1){
+
+                    //pega peso atual do paciente na tabela correspondente
+                    double peso = db.getPeso(paciente.get_id());
+                    paciente.set_peso(peso);
+
                     Intent it = new Intent(TelaLogin.this, PosLogin.class);
                     it.putExtra("Paciente", paciente);
                     startActivity(it);

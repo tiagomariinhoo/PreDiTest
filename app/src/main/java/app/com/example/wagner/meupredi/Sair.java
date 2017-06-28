@@ -30,6 +30,7 @@ public class Sair extends Fragment  implements View.OnClickListener {
         //returning our layout file
         //change R.layout.yourlayoutfilename for each of your fragments
 
+        //TODO: quando clicar em 'nao', corrigir exception
         final View view = inflater.inflate(R.layout.fragment_sair, container, false);
         View telaLoginView = inflater.inflate(R.layout.activity_tela_login, container, false);
         sair = (Button) view.findViewById(R.id.btn_sair_sim_fragment);

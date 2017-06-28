@@ -53,10 +53,11 @@ public class EsqueceuSenha extends AppCompatActivity {
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                 Paciente paciente = new Paciente();
 
+                //verificando existencia do email no banco de dados
                 paciente = db.verificarEmail(email.getText().toString().trim());
 
-                //verificando existencia do email no banco de dados
                 if(paciente.get_id() != -1){
+
                     //setando dados da mensagem
                     String sender = email.getText().toString().trim();
                     String subject = "MeuPreDi: recuperar senha";
@@ -66,13 +67,12 @@ public class EsqueceuSenha extends AppCompatActivity {
                                              + "Senha: " + paciente.get_senha().toString()
                                              + "\n\nEquipe MeuPreDi";
 
-                    //Creating SendMail object
+                    //criando objeto do email
                     SendMail sm = new SendMail(getApplicationContext(), sender, subject, message);
 
-                    //Executing sendmail to send email
+                    //enviando email
                     sm.execute();
 
-                    //mostrar toast
                     Toast.makeText(getApplicationContext(), "Email de recuperação de senha enviado!", Toast.LENGTH_LONG).show();
 
                     Intent intent = new Intent(EsqueceuSenha.this, TelaLogin.class);
