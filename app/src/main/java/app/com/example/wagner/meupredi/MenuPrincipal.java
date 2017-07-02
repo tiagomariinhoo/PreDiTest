@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 
 public class MenuPrincipal extends AppCompatActivity

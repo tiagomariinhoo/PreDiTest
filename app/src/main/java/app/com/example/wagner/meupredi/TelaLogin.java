@@ -21,6 +21,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 
 public class TelaLogin extends AppCompatActivity {

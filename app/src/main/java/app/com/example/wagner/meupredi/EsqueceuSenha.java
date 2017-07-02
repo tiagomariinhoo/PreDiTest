@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 
 /**

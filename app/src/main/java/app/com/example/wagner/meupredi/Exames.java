@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
+
 /**
  * Created by LeandroDias1 on 18/04/2017.
  */
@@ -29,7 +31,10 @@ public class Exames extends Fragment{
         chamadaNovoExame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Paciente paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
+
                 Intent novoExame = new Intent(getActivity(), cadastroExame.class);
+                novoExame.putExtra("Paciente", paciente);
                 startActivity(novoExame);
             }
         });

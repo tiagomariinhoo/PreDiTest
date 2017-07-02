@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 
+import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 
 /**

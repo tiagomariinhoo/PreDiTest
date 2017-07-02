@@ -8,17 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
+import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 /**
  * Created by Pichau on 08/04/2017.
@@ -73,9 +70,6 @@ public class PosLogin extends AppCompatActivity {
             Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
             Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
             Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
-            Log.d("Lipidograma : ", String.valueOf(paciente.get_lipidograma()));
-            Log.d("Hemograma : ", String.valueOf(paciente.get_hemograma()));
-            Log.d("Tireoide : ", String.valueOf(paciente.get_tireoide()));
 
             Intent intent = new Intent(PosLogin.this, MenuPrincipal.class);
             intent.putExtra("Paciente", paciente);
@@ -178,9 +172,6 @@ public class PosLogin extends AppCompatActivity {
                 Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
                 Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
                 Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
-                Log.d("Lipidograma : ", String.valueOf(paciente.get_lipidograma()));
-                Log.d("Hemograma : ", String.valueOf(paciente.get_hemograma()));
-                Log.d("Tireoide : ", String.valueOf(paciente.get_tireoide()));
 
                 Intent intent = new Intent(PosLogin.this, MenuPrincipal.class);
                 intent.putExtra("Paciente", paciente);

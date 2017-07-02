@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 
 /**
