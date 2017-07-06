@@ -79,5 +79,4 @@
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1" />
 
-
 </android.support.constraint.ConstraintLayout>
