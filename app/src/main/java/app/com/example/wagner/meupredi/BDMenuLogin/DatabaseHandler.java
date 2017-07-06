@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
+import app.com.example.wagner.meupredi.ExercicioClass;
+
 /**
  * Created by wagne on 31/03/2017.
  */
@@ -55,6 +57,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_DATA_EXAME = "dataExame";
     private static final String KEY_PAC2 = "pac2";
 
+    //TABLE EXERCICIOS
+    private static final String TABLE_EXERCICIOS = "exercicios";
+
+    //COLUNAS DOS EXERCICIOS
+    private static final String KEY_ID_EXERCICIO = "idExercicio";
+    private static final String KEY_TEMPO = "tempo";
+    private static final String KEY_DATA_EXERCICIO = "dataExercicio";
+    private static final String KEY_PAC3 = "pac3";
+
+    /*
+        KEY_PAC -> Chave estrangeira da tabela PESOS
+        KEY_PAC2 -> Chave estrangeira da tabela EXAMES
+        KEY_PAC3 -> Chave estrangeira da tebal EXERCICIOS
+        Todas referenciando a tabela paciente.
+     */
+
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -96,6 +114,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_PAC2 + " INTEGER,"
                 + " FOREIGN KEY("+KEY_PAC2+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
         db.execSQL(CREATE_EXAMES_TABLE);
+
+        String CREATE_EXERCICIOS_TABLE = "CREATE TABLE IF NOT EXISTS "
+                + TABLE_EXERCICIOS
+                + "("
+                + KEY_ID_EXERCICIO + " INTEGER PRIMARY KEY,"
+                + KEY_TEMPO + " INTEGER,"
+                + KEY_DATA_EXERCICIO + " DATETIME,"
+                + KEY_PAC3 + " INTEGER,"
+                + " FOREIGN KEY ("+KEY_PAC3+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
+        db.execSQL(CREATE_EXERCICIOS_TABLE);
     }
 
     @Override
@@ -104,8 +132,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXIST " + TABLE_PACIENTES);
         db.execSQL("DROP TABLE IF EXIST " + TABLE_PESOS);
         db.execSQL("DROP TABLE IF EXIST " + TABLE_EXAMES);
+        db.execSQL("DROP TABLE IF EXIST " + TABLE_EXERCICIOS);
 
         onCreate(db);
+    }
+
+    public String addExercicio (int tempo, int idPaciente, String data){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        Log.d("Adicionando : " , "Exercicio");
+
+        values.put(KEY_TEMPO, tempo);
+        values.put(KEY_DATA_EXERCICIO, data);
+        values.put(KEY_PAC3, idPaciente);
+
+        long retorno;
+        retorno = db.insert(TABLE_EXERCICIOS, null, values);
+
+        if(retorno == -1){
+            return "Erro ao inserir o registro do exercício!";
+        } else {
+            return "Exercicio inserido com sucesso!";
+        }
     }
 
     public String addExame (ExameClass exame){
@@ -207,6 +257,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             }while(cursor.moveToNext());
         }
         return pacientesList;
+    }
+
+    public List<ExercicioClass> getAllExercicios (int idPaciente) throws ParseException {
+        List<ExercicioClass> exList = new ArrayList<>();
+
+        String selectQuery = "SELECT * FROM " + TABLE_EXERCICIOS;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                ExercicioClass exClass = new ExercicioClass();
+                exClass.setTempo(Integer.parseInt(cursor.getString(1)));
+                exClass.setData(cursor.getString(2));
+                exClass.setIdPaciente(Integer.parseInt(cursor.getString(3)));
+            }while(cursor.moveToNext());
+        }
+
+        return exList;
     }
 
     public List<ExameClass> getAllExames() throws ParseException {
