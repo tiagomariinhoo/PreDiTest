@@ -3,9 +3,12 @@ package app.com.example.wagner.meupredi;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -27,11 +30,8 @@ import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 public class CriarConta extends AppCompatActivity {
 
     private CheckBox boxSenha;
-    private EditText nome;
-    private EditText email;
+    private EditText nome, email, data, senha, conSenha;
     private Spinner sexo;
-    private EditText senha;
-    private EditText conSenha;
     private ConstraintLayout tela;
     private Button criarConta;
     private TextView cancelar;
@@ -48,6 +48,8 @@ public class CriarConta extends AppCompatActivity {
         boxSenha = (CheckBox) findViewById(R.id.checkedConSenha);
         nome = (EditText) findViewById(R.id.edit_nome_completo);
         email = (EditText) findViewById(R.id.edit_endereco_email);
+        data = (EditText) findViewById(R.id.edit_idade_criar);
+        data.setRawInputType(Configuration.KEYBOARD_QWERTY);
         senha = (EditText) findViewById(R.id.edit_senha_cadastro);
         conSenha = (EditText) findViewById(R.id.edit_novamente_senha);
 
@@ -63,6 +65,7 @@ public class CriarConta extends AppCompatActivity {
                     InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(nome.getWindowToken(), 0);
                     imm.hideSoftInputFromWindow(email.getWindowToken(), 0);
+                    imm.hideSoftInputFromWindow(data.getWindowToken(), 0);
                     imm.hideSoftInputFromWindow(senha.getWindowToken(), 0);
                     imm.hideSoftInputFromWindow(conSenha.getWindowToken(), 0);
                 }
@@ -81,6 +84,24 @@ public class CriarConta extends AppCompatActivity {
         sexo.setAdapter(adapter);
 
         boxSenha.setChecked(false);
+
+        data.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         conSenha.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
