@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/gradienterosa"
     android:id="@+id/tela_peso"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -13,6 +14,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="Peso atual:"
+        android:textColor="@color/colorBranco"
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,6 +27,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:text="val"
+        android:textColor="@color/colorBranco"
         android:textSize="30sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -36,6 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
+        android:textColor="@color/colorBranco"
         android:text="Meta:"
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -49,6 +53,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:text="val"
+        android:textColor="@color/colorBranco"
         android:textSize="30sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_pesoAtual_valor_peso"
@@ -61,6 +66,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="38dp"
         android:text="Registrar novo peso:"
+        android:textColor="@color/colorBranco"
         android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_meta_peso"
@@ -75,6 +81,7 @@
         android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="em kg"
+        android:textColor="@color/colorBranco"
         android:inputType="textPersonName"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@+id/text_registrar_peso"
@@ -86,14 +93,19 @@
     <Button
         android:id="@+id/btn_atualizar_peso"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
+        android:background="@color/colorConfirm"
+        android:textColor="@color/colorBranco"
         android:text="ATUALIZAR SEU PESO"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_registrar_peso"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
+
+
+
 </android.support.constraint.ConstraintLayout>
