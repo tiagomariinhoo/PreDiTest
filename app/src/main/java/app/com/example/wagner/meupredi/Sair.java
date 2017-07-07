@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
+
 import static app.com.example.wagner.meupredi.TelaLogin.PREFS_NAME;
 
 /**
@@ -23,14 +25,13 @@ public class Sair extends Fragment  implements View.OnClickListener {
     CheckBox manterConectado;
     Button sair;
     TextView voltar;
+    Paciente paciente;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //returning our layout file
         //change R.layout.yourlayoutfilename for each of your fragments
 
-        //TODO: quando clicar em 'nao', corrigir exception
         final View view = inflater.inflate(R.layout.fragment_sair, container, false);
         View telaLoginView = inflater.inflate(R.layout.activity_tela_login, container, false);
         sair = (Button) view.findViewById(R.id.btn_sair_sim_fragment);
@@ -48,6 +49,8 @@ public class Sair extends Fragment  implements View.OnClickListener {
             public void onClick(View v)
             {
                 Intent intent = new Intent(getActivity(), MenuPrincipal.class);
+                paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
+                intent.putExtra("Paciente", paciente);
                 startActivity(intent);
             }
         });
@@ -72,7 +75,6 @@ public class Sair extends Fragment  implements View.OnClickListener {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //you can set the title for your toolbar here for different fragments different titles
         getActivity().setTitle("Sair");
     }
 

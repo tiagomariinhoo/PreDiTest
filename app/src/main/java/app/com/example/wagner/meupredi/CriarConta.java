@@ -39,6 +39,9 @@ public class CriarConta extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        //TODO: esconder teclado ao dar enter na caixa de repetir senha
+        //TODO: verificar se data esta preenchida
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criar_conta);
 

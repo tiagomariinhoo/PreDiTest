@@ -25,11 +25,14 @@
         <activity android:name=".cadastroExame" />
         <activity
             android:name=".Peso"
-            android:label="@string/title_activity_peso"></activity>
+            android:label="@string/title_activity_peso" />
+        <activity
+            android:name=".Dados"
+            android:label="Dados de registro" />
         <activity
             android:name=".MenuPrincipal"
             android:label="@string/title_activity_menu_principal"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

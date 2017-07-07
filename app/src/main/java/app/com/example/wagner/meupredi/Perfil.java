@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,9 +24,10 @@ import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 public class Perfil extends Fragment {
 
     MenuPrincipal menu;
-    TextView imc, peso;
+    TextView nome, imc, peso;
     BarChart barChart;
     ImageView imagemCentral;
+    Button dados;
     Paciente paciente;
 
     @Nullable
@@ -37,8 +39,13 @@ public class Perfil extends Fragment {
         DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
         paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
 
+        dados = (Button) view.findViewById(R.id.btn_dados_perfil);
+
         //pega o peso atualizado no banco para exibir na tela
         paciente.set_peso(db.getPeso(paciente.get_id()));
+
+        nome = (TextView) view.findViewById(R.id.text_nome_perfil);
+        nome.setText(String.valueOf(paciente.get_nome()));
 
         imc = (TextView) view.findViewById(R.id.text_valor_imc);
         imc.setText(String.valueOf(paciente.get_imc()));
@@ -93,6 +100,17 @@ public class Perfil extends Fragment {
 
         paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
 
+        dados.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), Dados.class);
+                intent.putExtra("Paciente", paciente);
+                startActivity(intent);
+            }
+        });
+
         peso.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -109,16 +127,16 @@ public class Perfil extends Fragment {
     @Override
     public void onResume() {
 
-        //esse metodo e usado para recarregar as informacoes 'dinamicas' da tela (imc, peso, imagem...)
+        //esse metodo e usado para recarregar as informacoes 'dinamicas' da tela (nome, imc, peso)
         super.onResume();
 
         Log.d("Recarregando tela", "onResume");
 
         paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
 
+        nome.setText(String.valueOf(paciente.get_nome()));
         imc.setText(String.valueOf(paciente.get_imc()));
         peso.setText(String.valueOf(paciente.get_peso()));
-
     }
 
 }
