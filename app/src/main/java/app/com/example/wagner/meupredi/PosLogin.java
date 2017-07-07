@@ -35,8 +35,6 @@ public class PosLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        //TODO: tirar botao PULAR
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poslogin);
 
@@ -103,27 +101,59 @@ public class PosLogin extends AppCompatActivity {
                 String circunferenciaCadastro = circunferecia.getText().toString();
 
                 //se o usuario nao preencheu algum dado, deixa como -1
-                //TODO: criar tela para preencher os dados ausentes
                 if(idadeCadastro.length()==0){
                     paciente.set_idade(-1);
                     flag = true;
                 } else {
-                    paciente.set_idade(Integer.parseInt(idadeCadastro));
+                    try {
+                        paciente.set_idade(Integer.parseInt(idadeCadastro));
+                    } catch(NumberFormatException e) {
+                        Toast.makeText(getApplicationContext(),"Idade em formato incorreto!",Toast.LENGTH_SHORT).show();
+                    }
                 } if (alturaCadastro.length()==0){
                     paciente.set_altura(-1);
                     flag = true;
                 } else {
-                    paciente.set_altura(Double.parseDouble(alturaCadastro));
+
+                    //formata a string para transformar corretamente para double (substitui virgula por ponto e limita a duas casas decimais)
+                    alturaCadastro = alturaCadastro.replace(',', '.');
+                    Double alturaAtualizada = Double.parseDouble(alturaCadastro);
+
+                    //transforma em metros
+                    while(alturaAtualizada > 10) {
+                        alturaAtualizada /= 10;
+                    }
+
+                    String alturaFormatada = String.format(Locale.ENGLISH, "%.3f", alturaAtualizada);
+                    Double alturaDoPaciente = Double.parseDouble(alturaFormatada);
+
+                    //atualiza altura no objeto
+                    paciente.set_altura(alturaDoPaciente);
                 } if (pesoCadastro.length()==0){
                     paciente.set_peso(-1);
                     flag = true;
                 } else {
-                    paciente.set_peso(Double.parseDouble(pesoCadastro));
+
+                    //formata a string para transformar corretamente para double (substitui virgula por ponto e limita a uma casa decimal)
+                    pesoCadastro = pesoCadastro.replace(',', '.');
+                    Double pesoAtualizado = Double.parseDouble(pesoCadastro);
+                    String pesoFormatado = String.format(Locale.ENGLISH, "%.2f", pesoAtualizado);
+                    Double pesoDoPaciente = Double.parseDouble(pesoFormatado);
+
+                    paciente.set_altura(pesoDoPaciente);
                 } if (circunferenciaCadastro.length()==0){
                     paciente.set_circunferencia(-1);
                     flag = true;
                 } else {
-                    paciente.set_circunferencia(Double.parseDouble(circunferenciaCadastro));
+
+                    //formata a string para transformar corretamente para double (substitui virgula por ponto e limita a uma casa decimal)
+                    circunferenciaCadastro = circunferenciaCadastro.replace(',', '.');
+                    Double circunferenciaAtualizada = Double.parseDouble(circunferenciaCadastro);
+                    String circunferenciaFormatada = String.format(Locale.ENGLISH, "%.2f", circunferenciaAtualizada);
+                    Double circunferenciaDoPaciente = Double.parseDouble(circunferenciaFormatada);
+
+                    //atualiza circunferencia no objeto
+                    paciente.set_circunferencia(circunferenciaDoPaciente);
                 }
 
                 //calculo de IMC

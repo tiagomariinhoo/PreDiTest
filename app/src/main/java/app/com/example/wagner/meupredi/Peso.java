@@ -86,7 +86,7 @@ public class Peso extends AppCompatActivity{
                         //recalcula imc
                         if(paciente.get_peso() > 0 && paciente.get_altura() > 0) {
 
-                            double imc = (paciente.get_peso()/(((paciente.get_altura()/100)*((paciente.get_altura())/100))));
+                            double imc = (paciente.get_peso()/(paciente.get_altura()*paciente.get_altura()));
                             String imcFormatado = String.format(Locale.ENGLISH, "%.2f", imc);
                             imc = Double.parseDouble(imcFormatado);
                             paciente.set_imc(imc);
