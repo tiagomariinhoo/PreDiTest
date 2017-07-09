@@ -63,8 +63,6 @@ public class cadastroExame extends AppCompatActivity {
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
-
-
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

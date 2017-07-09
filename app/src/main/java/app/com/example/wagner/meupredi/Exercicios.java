@@ -1,5 +1,6 @@
 package app.com.example.wagner.meupredi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,27 +15,33 @@ import android.widget.TextView;
 
 public class Exercicios extends Fragment {
 
-    //CarouselPicker carouselMeta;
-    TextView chamadaDesempenho;
+    private TextView chamadaDesempenho;
+    private TextView chamadaGinasio;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //returning our layout file
-        //change R.layout.yourlayoutfilename for each of your fragments
+
         View view = inflater.inflate(R.layout.fragment_exercicios, container, false);
 
-  //      carouselMeta = (CarouselPicker) view.findViewById(R.id.carousel_meta);
+        chamadaGinasio = (TextView) view.findViewById(R.id.text_chamada_ginasio);
+        chamadaGinasio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent telaGinasio = new Intent(getActivity(), Ginasio.class);
+                startActivity(telaGinasio);
+            }
+        });
+
         chamadaDesempenho = (TextView) view.findViewById(R.id.text_veja_seu_desempenho);
+        chamadaDesempenho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent desempenho = new Intent(getActivity(), Desempenho.class);
+                startActivity(desempenho);
+            }
+        });
 
-/*        List<CarouselPicker.PickerItem> textItems = new ArrayList<>();
-        textItems.add(new CarouselPicker.TextItem("Meta Diária", 8)); // 8 é o tamanho da fonte
-        textItems.add(new CarouselPicker.TextItem("Meta Semanal", 8));
-        textItems.add(new CarouselPicker.TextItem("Meta Mensal", 8));
-
-        CarouselPicker.CarouselViewAdapter textAdapter = new CarouselPicker.CarouselViewAdapter(view.getContext(), textItems, 0);
-        carouselMeta.setAdapter(textAdapter);
-*/
         return view;
     }
 

@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/gradienterosa"
+    android:background="@drawable/gradiente_plano_de_fundo"
     android:id="@+id/tela_peso"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -96,7 +96,7 @@
         android:layout_height="50dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:background="@color/colorConfirm"
         android:textColor="@color/colorBranco"
         android:text="ATUALIZAR SEU PESO"
@@ -104,7 +104,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_registrar_peso"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 
 
 

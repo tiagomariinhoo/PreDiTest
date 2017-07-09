@@ -21,7 +21,7 @@
                 android:thickness="5dp"
                 android:useLevel="true">
                 android:type="sweep"
-                <solid android:color="#3498db"
+                <solid android:color="#f1c40f"
                     />
             </shape>
         </rotate>

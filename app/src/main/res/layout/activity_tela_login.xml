@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tela_login"
-    android:background="@color/colorBackground"
+    android:background="@drawable/gradiente_plano_de_fundo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="app.com.example.wagner.meupredi.TelaLogin"

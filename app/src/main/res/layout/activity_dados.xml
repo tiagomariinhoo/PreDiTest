@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tela_dados"
+    android:background="@drawable/gradiente_plano_de_fundo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="app.com.example.wagner.meupredi.Dados">
@@ -15,16 +16,18 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="Nome:"
+        android:textColor="@color/colorBranco"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_instrucoes_dados" />
 
     <EditText
         android:id="@+id/edit_nome_dados"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_height="40dp"
+        android:background="@color/colorBranco"
+        android:layout_marginLeft="16dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="0dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:nextFocusDown="@+id/edit_idade_dado"
@@ -34,7 +37,8 @@
     <EditText
         android:id="@+id/edit_circunferencia_dados"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:background="@color/colorBranco"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -48,10 +52,11 @@
         android:id="@+id/text_circunferencia_dado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:text="Circunferência (em centímetros):"
+        android:textColor="@color/colorBranco"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_altura_dados" />
 
@@ -63,13 +68,15 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="Altura (em metros):"
+        android:textColor="@color/colorBranco"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_idade_dados" />
 
     <EditText
         android:id="@+id/edit_altura_dados"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:background="@color/colorBranco"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -89,6 +96,7 @@
         android:layout_marginTop="16dp"
         android:text="Atualize seus dados preenchendo o campo correspondente e clicando em ''ATUALIZAR'':"
         android:textSize="16dp"
+        android:textColor="@color/colorBranco"
         app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -102,13 +110,15 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="Idade:"
+        android:textColor="@color/colorBranco"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_nome_dados" />
 
     <EditText
         android:id="@+id/edit_idade_dados"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:background="@color/colorBranco"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -128,5 +138,6 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
+        android:background="@color/colorConfirm"
         app:layout_constraintRight_toRightOf="parent" />
 </android.support.constraint.ConstraintLayout>

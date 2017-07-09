@@ -27,7 +27,7 @@ public class Exames extends Fragment{
 
         View view = inflater.inflate(R.layout.fragment_exames, container, false);
 
-        chamadaNovoExame = (ImageView) view.findViewById(R.id.image_novo_exame);
+        chamadaNovoExame = (ImageView) view.findViewById(R.id.image_nova_atividade);
         chamadaNovoExame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
