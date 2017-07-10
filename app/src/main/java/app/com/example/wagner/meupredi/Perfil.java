@@ -89,6 +89,8 @@ public class Perfil extends Fragment {
         barChart.setDragEnabled(true);
         barChart.setScaleEnabled(true);*/
 
+       //db.verificarData(paciente);
+
         return view;
     }
 

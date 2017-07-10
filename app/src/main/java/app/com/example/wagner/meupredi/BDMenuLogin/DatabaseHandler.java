@@ -10,6 +10,7 @@ import android.util.Log;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
@@ -37,6 +38,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_CIRCUNFERENCIA = "circunferencia";
     private static final String KEY_ALTURA = "altura";
     private static final String KEY_IMC = "imc";
+    private static final String KEY_DIA = "diaAtual";
+    private static final String KEY_DIA_INICIO = "diaInicio";
+    private static final String KEY_SEM_MAX = "semMax";
+
 
     // BANCO DE PESOS (LINKADO AO BANCO DE PACIENTES POR ID)
     private static final String TABLE_PESOS = "pesos";
@@ -64,6 +69,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_ID_EXERCICIO = "idExercicio";
     private static final String KEY_TEMPO = "tempo";
     private static final String KEY_DATA_EXERCICIO = "dataExercicio";
+    private static final String KEY_EX_TOTAL = "exTotal"; //Soma do exercicio ja feito com a atualização
     private static final String KEY_PAC3 = "pac3";
 
     /*
@@ -90,7 +96,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_IDADE + " INTEGER,"
                 + KEY_CIRCUNFERENCIA + " REAL,"
                 + KEY_ALTURA + " REAL,"
-                + KEY_IMC + " REAL"
+                + KEY_IMC + " REAL,"
+                + KEY_DIA + " INTEGER,"
+                + KEY_DIA_INICIO + " INTEGER,"
+                + KEY_SEM_MAX + " INTEGER"
                 + ")";
         db.execSQL(CREATE_PACIENTES_TABLE);
 
@@ -120,7 +129,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + "("
                 + KEY_ID_EXERCICIO + " INTEGER PRIMARY KEY,"
                 + KEY_TEMPO + " INTEGER,"
-                + KEY_DATA_EXERCICIO + " DATETIME,"
+                + KEY_DATA_EXERCICIO + " INTEGER,"
+                + KEY_EX_TOTAL + " INTEGER,"
                 + KEY_PAC3 + " INTEGER,"
                 + " FOREIGN KEY ("+KEY_PAC3+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
         db.execSQL(CREATE_EXERCICIOS_TABLE);
@@ -137,7 +147,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public String addExercicio (int tempo, int idPaciente, String data){
+    public String addExercicio (int tempo, int idPaciente, Paciente paciente){
+
+        GregorianCalendar calendar = new GregorianCalendar();
+        int dia =  calendar.get(GregorianCalendar.DAY_OF_YEAR);
+        Log.d("Dia do ano : ", String.valueOf(dia));
+
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -145,7 +160,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Log.d("Adicionando : " , "Exercicio");
 
         values.put(KEY_TEMPO, tempo);
-        values.put(KEY_DATA_EXERCICIO, data);
+        values.put(KEY_DATA_EXERCICIO, dia);
+        values.put(KEY_EX_TOTAL, paciente.get_exTotal());
         values.put(KEY_PAC3, idPaciente);
 
         long retorno;
@@ -156,6 +172,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } else {
             return "Exercicio inserido com sucesso!";
         }
+    }
+
+    public boolean verificarData(Paciente paciente){
+        GregorianCalendar calendar = new GregorianCalendar();
+        int dia = calendar.get(GregorianCalendar.DAY_OF_YEAR);
+
+        Log.d("Dia inicio do paciente (paciente.getDiaInicio()) : ", String.valueOf(paciente.getDiaInicio()));
+        Log.d("Dia atual do paciente (paciente.getDia()) : ", String.valueOf(paciente.getDia()));
+        Log.d("Dia atual (DAY_OF_YEAR) : ", String.valueOf(dia));
+
+        if(paciente.getDia()!= dia){ //Se for diferente é porque o dia já passou, então :
+
+            if(dia - paciente.getDiaInicio() >= 7){ //Fechou a semana ou já passou da semana, verificar se ele atingiu a meta total
+                //Criar metodo para verificar se atingiu a meta?
+            }
+            paciente.setDiaTotal(dia - paciente.getDiaInicio());
+            paciente.setDia(dia);
+            /*
+            paciente.setDiaTotal -> o calculo vai ser : o dia do ano que foi pego hoje - o dia do ano que o paciente começou o exercicio
+             */
+        }
+
+    return true;
     }
 
     public String addExame (ExameClass exame){
@@ -212,6 +251,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_CIRCUNFERENCIA, paciente.get_circunferencia());
         values.put(KEY_ALTURA, paciente.get_altura());
         values.put(KEY_IMC, paciente.get_imc());
+        values.put(KEY_DIA, paciente.getDia());
+        values.put(KEY_DIA_INICIO, paciente.getDiaInicio());
 
         long retorno;
         retorno = db.insert(TABLE_PACIENTES, null, values);
@@ -248,6 +289,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 paciente.set_circunferencia(Double.parseDouble(cursor.getString(6)));
                 paciente.set_altura(Double.parseDouble(cursor.getString(7)));
                 paciente.set_imc(Double.parseDouble(cursor.getString(8)));
+                paciente.setDia(Integer.parseInt(cursor.getString(9)));
+                paciente.setDiaInicio(Integer.parseInt(cursor.getString(10)));
 
                 //pega seu ultimo peso registrado
                 paciente.set_peso(getPeso(paciente.get_id()));

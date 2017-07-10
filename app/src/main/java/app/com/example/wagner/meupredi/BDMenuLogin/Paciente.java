@@ -19,6 +19,11 @@ public class Paciente extends AppCompatActivity implements Serializable {
     String _email;
     String _sexo;
     int _idade;
+    int _exTotal; //Total atual
+    int _exMax; //Meta da semana
+    int dia;
+    int diaInicio;
+    int diaTotal;
     double _circunferencia;
     double _peso;
     double _altura;
@@ -181,6 +186,46 @@ public class Paciente extends AppCompatActivity implements Serializable {
 
     public void set_tireoide(double _tireoide) {
         this._tireoide = _tireoide;
+    }
+
+    public int get_exTotal() {
+        return _exTotal;
+    }
+
+    public void set_exTotal(int _exTotal) {
+        this._exTotal = _exTotal;
+    }
+
+    public int getDia() {
+        return dia;
+    }
+
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+
+    public int getDiaInicio() {
+        return diaInicio;
+    }
+
+    public void setDiaInicio(int diaInicio) {
+        this.diaInicio = diaInicio;
+    }
+
+    public int getDiaTotal() {
+        return diaTotal;
+    }
+
+    public void setDiaTotal(int diaTotal) {
+        this.diaTotal = diaTotal;
+    }
+
+    public int get_exMax() {
+        return _exMax;
+    }
+
+    public void set_exMax(int _exMax) {
+        this._exMax = _exMax;
     }
 
     //metodo chamado na classe MenuPrincipal para verificar situacao do paciente

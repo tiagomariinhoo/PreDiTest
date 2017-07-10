@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
@@ -171,6 +172,14 @@ public class CriarConta extends AppCompatActivity {
                             paciente.set_sexo("F");
                         }
 
+                        GregorianCalendar calendar = new GregorianCalendar();
+                        int dia = calendar.get(GregorianCalendar.DAY_OF_YEAR);
+
+                        paciente.setDia(dia);
+                        paciente.setDiaTotal(-1);
+                        paciente.setDiaInicio(-1);
+                        paciente.set_exTotal(0);
+
                         //DEBUG: imprime todos os dados do paciente
                         Log.d("Criando: ", "criar conta");
                         Log.d("Nome : ", paciente.get_nome());
@@ -185,6 +194,8 @@ public class CriarConta extends AppCompatActivity {
                         Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
                         Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
                         Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+                        Log.d("Dia atual : " , String.valueOf(paciente.getDia()));
+                        Log.d("Dia inicio : " , String.valueOf(paciente.getDiaInicio()));
 
                         String msg = db.addPaciente(paciente);
 
