@@ -156,11 +156,11 @@
         android:text="Manter conectado"
         android:textColor="#fff"
         app:layout_constraintBottom_toTopOf="@+id/btn_login"
-        app:layout_constraintHorizontal_bias="0.348"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_senha_login"
-        app:layout_constraintVertical_bias="0.16000003" />
+        app:layout_constraintVertical_bias="0.222" />
 
     <ImageView
         android:id="@+id/imageView4"

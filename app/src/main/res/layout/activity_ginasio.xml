@@ -8,9 +8,17 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradiente_plano_de_fundo">
 
+    <ListView
+        android:id="@+id/lista_exercicios"
+        android:layout_width="0dp"
+        android:layout_height="425dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+    </ListView>
+
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:layout_marginTop="8dp"
         android:background="@color/colorBranco"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -51,7 +59,7 @@
         app:layout_constraintVertical_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/image_conquistas_ginasio"
         android:layout_marginLeft="8dp"
-        app:layout_constraintHorizontal_bias="0.5" />
+        android:layout_marginStart="8dp" />
 
     <ImageView
         android:id="@+id/image_conquistas_ginasio"
@@ -108,25 +116,5 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintHorizontal_bias="0.25" />
-
-    <ScrollView
-
-        android:id="@+id/scrollView2"
-        android:layout_width="344dp"
-        android:layout_height="400dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="10dp">
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:background="@color/colorBranco"
-            android:cacheColorHint="#000"
-            android:textAlignment="center"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="16dp" />
-
-    </ScrollView>
-
 
 </android.support.constraint.ConstraintLayout>

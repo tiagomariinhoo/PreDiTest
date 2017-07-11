@@ -302,7 +302,7 @@
         android:layout_marginTop="3dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_salvar_novo_exe"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
