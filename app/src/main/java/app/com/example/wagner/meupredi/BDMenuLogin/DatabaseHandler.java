@@ -69,7 +69,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_ID_EXERCICIO = "idExercicio";
     private static final String KEY_TEMPO = "tempo";
     private static final String KEY_DATA_EXERCICIO = "dataExercicio";
-    private static final String KEY_EX_TOTAL = "exTotal"; //Soma do exercicio ja feito com a atualização
     private static final String KEY_PAC3 = "pac3";
 
     /*
@@ -98,8 +97,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_ALTURA + " REAL,"
                 + KEY_IMC + " REAL,"
                 + KEY_DIA + " INTEGER,"
-                + KEY_DIA_INICIO + " INTEGER,"
-                + KEY_SEM_MAX + " INTEGER"
+                + KEY_DIA_INICIO + " INTEGER"
                 + ")";
         db.execSQL(CREATE_PACIENTES_TABLE);
 
@@ -130,7 +128,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_ID_EXERCICIO + " INTEGER PRIMARY KEY,"
                 + KEY_TEMPO + " INTEGER,"
                 + KEY_DATA_EXERCICIO + " INTEGER,"
-                + KEY_EX_TOTAL + " INTEGER,"
                 + KEY_PAC3 + " INTEGER,"
                 + " FOREIGN KEY ("+KEY_PAC3+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
         db.execSQL(CREATE_EXERCICIOS_TABLE);
@@ -161,7 +158,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         values.put(KEY_TEMPO, tempo);
         values.put(KEY_DATA_EXERCICIO, dia);
-        values.put(KEY_EX_TOTAL, paciente.get_exTotal());
         values.put(KEY_PAC3, idPaciente);
 
         long retorno;

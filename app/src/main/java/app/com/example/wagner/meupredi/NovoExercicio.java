@@ -72,8 +72,6 @@ public class NovoExercicio extends AppCompatActivity {
                     adicionarExercicio("Outra");
                 }
 
-
-
                 Intent intent = new Intent(NovoExercicio.this, Ginasio.class);
                 intent.putStringArrayListExtra("listaExercicios", listaExercicios);
                 startActivity(intent);
@@ -97,8 +95,6 @@ public class NovoExercicio extends AppCompatActivity {
         listView.setAdapter(adaptador);
 
         listaExercicios.add(novoExercicio);*/
-
-
     }
 
 }

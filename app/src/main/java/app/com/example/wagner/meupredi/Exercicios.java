@@ -13,6 +13,8 @@ import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
+
 /**
  * Created by LeandroDias1 on 18/04/2017.
  */
@@ -24,6 +26,7 @@ public class Exercicios extends Fragment {
     private Button start, reset, pause;
     private Chronometer cronometro;
     private long ultimaPausa;
+    private Paciente paciente;
 
     @Nullable
     @Override
@@ -81,6 +84,8 @@ public class Exercicios extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent telaGinasio = new Intent(getActivity(), Ginasio.class);
+                paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
+                telaGinasio.putExtra("Paciente", paciente);
                 startActivity(telaGinasio);
             }
         });
