@@ -48,7 +48,7 @@ public class Ginasio extends AppCompatActivity {
             adaptador = new ArrayAdapter<String>(this, R.layout.lista_item_exercicios, R.id.text_item_lista_exe, listaExercicios);
             listView.setAdapter(adaptador);
         }
-        
+
         chamadaNovoExercicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
