@@ -136,11 +136,13 @@ public class PosLogin extends AppCompatActivity {
 
                     //formata a string para transformar corretamente para double (substitui virgula por ponto e limita a uma casa decimal)
                     pesoCadastro = pesoCadastro.replace(',', '.');
-                    Double pesoAtualizado = Double.parseDouble(pesoCadastro);
+                    double pesoAtualizado = Double.parseDouble(pesoCadastro);
+                    Log.d("Peso atualizado : " , String.valueOf(pesoAtualizado));
                     String pesoFormatado = String.format(Locale.ENGLISH, "%.2f", pesoAtualizado);
-                    Double pesoDoPaciente = Double.parseDouble(pesoFormatado);
+                    double pesoDoPaciente = Double.parseDouble(pesoFormatado);
 
-                    paciente.set_altura(pesoDoPaciente);
+
+                    paciente.set_peso(pesoDoPaciente);
                 } if (circunferenciaCadastro.length()==0){
                     paciente.set_circunferencia(-1);
                     flag = true;
@@ -148,9 +150,9 @@ public class PosLogin extends AppCompatActivity {
 
                     //formata a string para transformar corretamente para double (substitui virgula por ponto e limita a uma casa decimal)
                     circunferenciaCadastro = circunferenciaCadastro.replace(',', '.');
-                    Double circunferenciaAtualizada = Double.parseDouble(circunferenciaCadastro);
+                    double circunferenciaAtualizada = Double.parseDouble(circunferenciaCadastro);
                     String circunferenciaFormatada = String.format(Locale.ENGLISH, "%.2f", circunferenciaAtualizada);
-                    Double circunferenciaDoPaciente = Double.parseDouble(circunferenciaFormatada);
+                    double circunferenciaDoPaciente = Double.parseDouble(circunferenciaFormatada);
 
                     //atualiza circunferencia no objeto
                     paciente.set_circunferencia(circunferenciaDoPaciente);

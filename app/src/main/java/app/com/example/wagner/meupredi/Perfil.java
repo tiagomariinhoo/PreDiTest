@@ -38,6 +38,8 @@ public class Perfil extends Fragment {
 
         DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
         paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
+        Log.d("Paciente nome : " , paciente.get_nome());
+        Log.d("Paciente peso : ", String.valueOf(paciente.get_peso()));
 
         dados = (Button) view.findViewById(R.id.btn_dados_perfil);
 
