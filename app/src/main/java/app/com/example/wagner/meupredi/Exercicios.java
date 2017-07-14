@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,8 +84,8 @@ public class Exercicios extends Fragment {
         chamadaGinasio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent telaGinasio = new Intent(getActivity(), Ginasio.class);
                 paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
+                Intent telaGinasio = new Intent(getActivity(), Ginasio.class);
                 telaGinasio.putExtra("Paciente", paciente);
                 startActivity(telaGinasio);
             }

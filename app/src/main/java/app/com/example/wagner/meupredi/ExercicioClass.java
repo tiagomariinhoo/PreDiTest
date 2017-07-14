@@ -9,9 +9,28 @@ import java.util.Date;
  */
 
 public class ExercicioClass {
+    String nome;
     int idPaciente;
-    Date data;
+    int data;
+
     int tempo;
+
+
+    public int getData() {
+        return data;
+    }
+
+    public void setData(int data) {
+        this.data = data;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public int getIdPaciente() {
         return idPaciente;
@@ -19,16 +38,6 @@ public class ExercicioClass {
 
     public void setIdPaciente(int idPaciente) {
         this.idPaciente = idPaciente;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(String data2) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        Date data = (Date) format.parse(data2);
-        this.data = data;
     }
 
     public int getTempo() {
