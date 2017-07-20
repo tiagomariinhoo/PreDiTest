@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textColor="@color/colorBackground"
+        android:drawableRight="@mipmap/ic_seta_direita"
         android:textSize="24dp"
         android:background="@color/colorBranco"
         android:textAlignment="center"

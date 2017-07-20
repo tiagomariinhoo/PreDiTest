@@ -136,6 +136,7 @@ public class MenuPrincipal extends AppCompatActivity
         startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(startMain);
     }
+
     public Paciente pegarPacienteMenu(){
 
         //pega dados atualizados do paciente no banco

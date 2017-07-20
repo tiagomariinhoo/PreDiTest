@@ -5,23 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground">
-
+    android:background="@drawable/gradiente_plano_de_fundo">
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginBottom="355dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:tint="@color/colorBranco"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:srcCompat="@mipmap/ic_shortcut_icons8_trainers_64"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:srcCompat="@mipmap/ic_shortcut_icons8_trainers_64" />
 
     <TextView
         android:id="@+id/text_corrida"
@@ -39,7 +39,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintVertical_bias="0.01999998"
+        app:layout_constraintVertical_bias="0.0"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 

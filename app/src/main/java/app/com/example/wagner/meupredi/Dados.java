@@ -50,7 +50,7 @@ public class Dados extends AppCompatActivity {
         }
 
         if(paciente.get_idade() != -1) {
-            idade.setHint(String.valueOf(paciente.get_idade()));
+            idade.setHint(String.valueOf(paciente.get_idade()) + " anos");
         } else {
             idade.setHint("idade não cadastrada");
         }

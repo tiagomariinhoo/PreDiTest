@@ -35,6 +35,8 @@ public class Exercicios extends Fragment {
     private long ultimaPausa;
     private TextView finalizar;
     private Paciente paciente;
+    private long tempoCorrido;
+    private int horas, minutos, segundos;
 
     @Nullable
     @Override
@@ -128,14 +130,14 @@ public class Exercicios extends Fragment {
                         }).show();
 
                 // PEGANDO O PROGRESSO DO PACIENTE AO FINALIZAR O TREINO
-                long timeElapsed = ultimaPausa - cronometro.getBase();
-                int hours = (int) (timeElapsed / 3600000);
-                int minutes = (int) (timeElapsed - hours * 3600000) / 60000;
-                int seconds = (int) (timeElapsed - hours * 3600000 - minutes * 60000) / 1000;
+                tempoCorrido = ultimaPausa - cronometro.getBase();
+                horas = (int) (tempoCorrido / 3600000);
+                minutos = (int) (tempoCorrido - horas * 3600000) / 60000;
+                segundos = (int) (tempoCorrido - horas * 3600000 - minutos * 60000) / 1000;
 
-                Log.d("hora: ",String.valueOf(hours));
-                Log.d("minutes: ",String.valueOf(minutes));
-                Log.d("seconds: ",String.valueOf(seconds));
+                Log.d("hora: ",String.valueOf(horas));
+                Log.d("minutos: ",String.valueOf(minutos));
+                Log.d("segundos: ",String.valueOf(segundos));
             }
         });
 
