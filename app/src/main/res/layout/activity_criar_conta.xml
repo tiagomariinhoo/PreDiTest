@@ -27,7 +27,7 @@
         app:layout_constraintLeft_toRightOf="@+id/image_perfil_criar"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.050000012" />
+        app:layout_constraintVertical_bias="0.088" />
 
     <EditText
         android:id="@+id/edit_nome_completo"
@@ -48,7 +48,7 @@
         app:layout_constraintLeft_toRightOf="@+id/image_perfil_criar"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_nome_completo"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/text_endereco_email"
@@ -97,16 +97,17 @@
         android:text="Senha"
         android:textColor="@color/colorBackground"
         app:layout_constraintBottom_toTopOf="@+id/edit_senha_cadastro"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_sexo_criar" />
+        app:layout_constraintTop_toBottomOf="@+id/text_sexo_criar"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/edit_senha_cadastro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="190dp"
+        android:layout_marginBottom="180dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -156,29 +157,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.74" />
-
-    <Button
-        android:id="@+id/btn_criar_conta"
-        android:layout_width="180dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorConfirm"
-        android:drawableRight="@mipmap/ic_seta_direita_branca"
-        android:text="CRIAR CONTA"
-        android:textColor="@color/colorBranco"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.769" />
 
     <CheckBox
         android:id="@+id/checkedConSenha"
@@ -196,7 +175,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.74" />
+        app:layout_constraintVertical_bias="0.768" />
 
     <ImageView
         android:id="@+id/image_perfil_criar"
@@ -251,12 +230,13 @@
     <TextView
         android:id="@+id/text_faca_todo_criar"
         android:layout_width="0dp"
-        android:layout_height="120dp"
+        android:layout_height="105dp"
         android:layout_marginTop="8dp"
         android:background="@color/colorBranco"
-        android:text="  Faça todo esforço valer a pena!"
+        android:text="Faça todo esforço valer a pena!"
+        android:textAlignment="center"
         android:textColor="@color/colorBackground"
-        android:textSize="30dp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -274,7 +254,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Se junte a nós!"
+        android:text="Junte-se a nós!"
         android:textColor="@color/colorBackground"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -295,7 +275,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="  Sexo"
+        android:text="Sexo"
         android:textAlignment="textStart"
         android:textColor="@color/colorBackground"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -316,11 +296,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintHorizontal_bias="0.03"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.415" />
+        app:layout_constraintVertical_bias="0.486" />
 
     <TextView
         android:id="@+id/text_idade_criar"
@@ -335,7 +315,7 @@
         android:text="Data de Nascimento"
         android:textColor="@color/colorBackground"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/text_sexo_criar"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_endereco_email"
@@ -343,41 +323,72 @@
 
     <EditText
         android:id="@+id/edit_idade_criar"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        android:hint="dd/mm/aaaa"
-        android:inputType="textPersonName"
-        android:nextFocusDown="@+id/edit_senha_cadastro"
-        android:textColor="@color/colorBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintLeft_toLeftOf="@+id/text_idade_criar"
-        app:layout_constraintRight_toRightOf="@+id/text_idade_criar"
-        app:layout_constraintTop_toTopOf="@+id/text_idade_criar"
-        app:layout_constraintVertical_bias="0.050000012" />
-
-
-    <TextView
-        android:id="@+id/btn_cancelar"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="CANCELAR"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:hint="ddmmaaaa"
+        android:maxLength="8"
+        android:inputType="textPersonName"
+        android:nextFocusDown="@+id/edit_senha_cadastro"
         android:textColor="@color/colorBackground"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_idade_criar"
+        app:layout_constraintVertical_bias="0.060000002" />
+
+
+    <Button
+        android:id="@+id/btn_criar_conta"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorConfirm"
+        android:drawableRight="@mipmap/ic_seta_direita_branca"
+        android:text="CONFIRMAR"
+        android:textAlignment="center"
+        android:textColor="@color/colorBranco"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btn_cancelar"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/colorCancel"
+        android:drawableLeft="@mipmap/ic_seta_direita_branca"
+        android:text="CANCELAR"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorBranco"
+        android:textSize="18dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

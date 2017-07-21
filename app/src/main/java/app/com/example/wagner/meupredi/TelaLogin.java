@@ -144,7 +144,7 @@ public class TelaLogin extends AppCompatActivity {
                     it.putExtra("Paciente", paciente);
                     startActivity(it);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Insira um usuário válido!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Usuário inválido!", Toast.LENGTH_LONG).show();
                 }
             }
         });

@@ -5,8 +5,9 @@
         import android.util.Log;
         import android.widget.Toast;
         import java.io.Serializable;
+        import java.util.GregorianCalendar;
 
-/**
+        /**
  * Created by wagne on 31/03/2017.
  */
 
@@ -18,6 +19,7 @@ public class Paciente extends AppCompatActivity implements Serializable {
     String _senha;
     String _email;
     String _sexo;
+    String _nascimento;
     int _idade;
     int _exTotal; //Total atual
     int _exMax; //Meta da semana
@@ -74,6 +76,14 @@ public class Paciente extends AppCompatActivity implements Serializable {
 
     public void set_sexo(String sexo) {
         this._sexo = sexo;
+    }
+
+    public String get_nascimento() {
+        return _nascimento;
+    }
+
+    public void set_nascimento(String nascimento) {
+        this._nascimento = nascimento;
     }
 
     public String get_nome() {

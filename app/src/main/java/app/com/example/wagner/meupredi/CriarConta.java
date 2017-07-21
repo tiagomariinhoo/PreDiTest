@@ -1,14 +1,11 @@
 package app.com.example.wagner.meupredi;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -34,14 +31,10 @@ public class CriarConta extends AppCompatActivity {
     private EditText nome, email, data, senha, conSenha;
     private Spinner sexo;
     private ConstraintLayout tela;
-    private Button criarConta;
-    private TextView cancelar;
+    private Button criarConta, cancelar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        //TODO: esconder teclado ao dar enter na caixa de repetir senha
-        //TODO: verificar se data esta preenchida
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criar_conta);
@@ -49,15 +42,15 @@ public class CriarConta extends AppCompatActivity {
         boxSenha = (CheckBox) findViewById(R.id.checkedConSenha);
         nome = (EditText) findViewById(R.id.edit_nome_completo);
         email = (EditText) findViewById(R.id.edit_endereco_email);
+        sexo = (Spinner) findViewById(R.id.spinner_sexo_postlogin);
         data = (EditText) findViewById(R.id.edit_idade_criar);
         data.setRawInputType(Configuration.KEYBOARD_QWERTY);
         senha = (EditText) findViewById(R.id.edit_senha_cadastro);
         conSenha = (EditText) findViewById(R.id.edit_novamente_senha);
 
         criarConta = (Button) findViewById(R.id.btn_criar_conta);
-        cancelar = (TextView) findViewById(R.id.btn_cancelar);
+        cancelar = (Button) findViewById(R.id.btn_cancelar);
         tela = (ConstraintLayout) findViewById(R.id.tela_criar_conta);
-        sexo = (Spinner) findViewById(R.id.spinner_sexo_postlogin);
 
         findViewById(R.id.tela_criar_conta).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,24 +79,6 @@ public class CriarConta extends AppCompatActivity {
 
         boxSenha.setChecked(false);
 
-        data.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
         conSenha.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -112,22 +87,29 @@ public class CriarConta extends AppCompatActivity {
 
                 //verifica se as senhas sao iguais nos dois campos de cadastro
                 if(senhaCadastro.length()==0){
-                    Toast.makeText(getApplicationContext(),"Insira uma senha válida!", Toast.LENGTH_LONG ).show();
+                    Toast.makeText(getApplicationContext(),"Insira uma senha válida!", Toast.LENGTH_SHORT).show();
                     boxSenha.setChecked(false);
                     return false;
                 }
 
                 if(senhaCadastro.equals(conSenhaCadastro)){
                     boxSenha.setChecked(true);
+
+                    //esconde teclado
+                    try {
+                        InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                    } catch(NullPointerException e) {
+                        //caso o teclado ja esteja escondido
+                    }
+
                     return true;
                 } else {
-                    Toast.makeText(getApplicationContext(),"Insira senhas iguais!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Insira senhas iguais!", Toast.LENGTH_SHORT).show();
                     boxSenha.setChecked(false);
                     return false;
                 }
             }
-
-
         });
 
 
@@ -137,10 +119,11 @@ public class CriarConta extends AppCompatActivity {
 
                 //TODO: verificar email ao cadastrar (enviar email de confirmacao)
 
-                final String nomeCompleto = nome.getText().toString();
-                final String emailCadastro = email.getText().toString();
-                final String senhaCadastro = senha.getText().toString();
-                final String conSenhaCadastro = conSenha.getText().toString();
+                String nomeCompleto = nome.getText().toString();
+                String emailCadastro = email.getText().toString();
+                String dataCadastro = data.getText().toString();
+                String senhaCadastro = senha.getText().toString();
+                String conSenhaCadastro = conSenha.getText().toString();
 
                 //verificando se email ja foi cadastrado
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
@@ -153,12 +136,15 @@ public class CriarConta extends AppCompatActivity {
 
                     //verifica se todos os campos estao preenchidos
                     if(nomeCompleto.length() == 0) {
-                        Toast.makeText(getApplicationContext(), "Insira um nome válido!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Insira um nome válido!", Toast.LENGTH_SHORT).show();
                     } else if(emailCadastro.length() == 0) {
-                        Toast.makeText(getApplicationContext(), "Insira um email válido!", Toast.LENGTH_LONG).show();
-                    } else if (senhaCadastro.length() == 0) {
-                        Toast.makeText(getApplicationContext(), "Insira uma senha válida!", Toast.LENGTH_LONG).show();
-                    } else if (senhaCadastro.equals(conSenhaCadastro)) {
+                        Toast.makeText(getApplicationContext(), "Insira um email válido!", Toast.LENGTH_SHORT).show();
+                    } else if(dataCadastro.length() == 0 || dataCadastro.length()!= 8){
+                        data.setText("");
+                        Toast.makeText(getApplicationContext(), "Data em formato inválido! Por favor, digite no formato ddmmaaaa.", Toast.LENGTH_SHORT).show();
+                    } else if(senhaCadastro.length() == 0) {
+                        Toast.makeText(getApplicationContext(), "Insira uma senha válida!", Toast.LENGTH_SHORT).show();
+                    } else if(senhaCadastro.equals(conSenhaCadastro)) {
                         Toast.makeText(getApplicationContext(), "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
 
                         //configuracao padrao de usuario
@@ -171,6 +157,9 @@ public class CriarConta extends AppCompatActivity {
                         } else {
                             paciente.set_sexo("F");
                         }
+
+                        dataCadastro = dataCadastro.substring(0, 2) + "/" + dataCadastro.substring(2, 4) + "/" + dataCadastro.substring(4, dataCadastro.length());
+                        paciente.set_nascimento(dataCadastro);
 
                         GregorianCalendar calendar = new GregorianCalendar();
                         int dia = calendar.get(GregorianCalendar.DAY_OF_YEAR);
@@ -186,6 +175,7 @@ public class CriarConta extends AppCompatActivity {
                         Log.d("Senha : ", paciente.get_senha());
                         Log.d("Email: ", paciente.get_email());
                         Log.d("Sexo: ", String.valueOf(paciente.get_sexo()));
+                        Log.d("Nascimento: ", paciente.get_nascimento());
                         Log.d("Idade : ", String.valueOf(paciente.get_idade()));
                         Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
                         Log.d("Peso : ", String.valueOf(paciente.get_peso()));

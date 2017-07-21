@@ -34,6 +34,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_SENHA = "senha";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_SEXO = "sexo";
+    private static final String KEY_NASCIMENTO = "nascimento";
     private static final String KEY_IDADE = "idade";
     private static final String KEY_CIRCUNFERENCIA = "circunferencia";
     private static final String KEY_ALTURA = "altura";
@@ -93,6 +94,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_SENHA + " TEXT,"
                 + KEY_EMAIL + " TEXT,"
                 + KEY_SEXO + " TEXT,"
+                + KEY_NASCIMENTO + " TEXT,"
                 + KEY_IDADE + " INTEGER,"
                 + KEY_CIRCUNFERENCIA + " REAL,"
                 + KEY_ALTURA + " REAL,"
@@ -261,17 +263,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Log.d("Senha : ", paciente.get_senha());
         Log.d("Email: ", paciente.get_email());
         Log.d("Sexo: ", String.valueOf(paciente.get_sexo()));
+        Log.d("Nascimento: ", paciente.get_nascimento());
         Log.d("Idade : ", String.valueOf(paciente.get_idade()));
         Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
         Log.d("Peso : ", String.valueOf(paciente.get_peso()));
         Log.d("Altura : ", String.valueOf(paciente.get_altura()));
         Log.d("IMC : ", String.valueOf(paciente.get_imc()));
+        Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
+        Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
+        Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
 
         //agrupa dados e insere no banco
         values.put(KEY_NOME, paciente.get_nome());
         values.put(KEY_SENHA, paciente.get_senha());
         values.put(KEY_EMAIL, paciente.get_email());
         values.put(KEY_SEXO, paciente.get_sexo());
+        values.put(KEY_NASCIMENTO, String.valueOf(paciente.get_nascimento()));
         values.put(KEY_IDADE, paciente.get_idade());
         values.put(KEY_CIRCUNFERENCIA, paciente.get_circunferencia());
         values.put(KEY_ALTURA, paciente.get_altura());
@@ -310,12 +317,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 paciente.set_senha(cursor.getString(2));
                 paciente.set_email(cursor.getString(3));
                 paciente.set_sexo(cursor.getString(4));
-                paciente.set_idade(Integer.parseInt(cursor.getString(5)));
-                paciente.set_circunferencia(Double.parseDouble(cursor.getString(6)));
-                paciente.set_altura(Double.parseDouble(cursor.getString(7)));
-                paciente.set_imc(Double.parseDouble(cursor.getString(8)));
-                paciente.setDia(Integer.parseInt(cursor.getString(9)));
-                paciente.setDiaInicio(Integer.parseInt(cursor.getString(10)));
+                paciente.set_nascimento(cursor.getString(5));
+                paciente.set_idade(Integer.parseInt(cursor.getString(6)));
+                paciente.set_circunferencia(Double.parseDouble(cursor.getString(7)));
+                paciente.set_altura(Double.parseDouble(cursor.getString(8)));
+                paciente.set_imc(Double.parseDouble(cursor.getString(9)));
+                paciente.setDia(Integer.parseInt(cursor.getString(10)));
+                paciente.setDiaInicio(Integer.parseInt(cursor.getString(11)));
 
                 //pega seu ultimo peso registrado
                 paciente.set_peso(getPeso(paciente.get_id()));
@@ -396,23 +404,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     paciente.set_senha(cursor.getString(2));
                     paciente.set_email(cursor.getString(3));
                     paciente.set_sexo(cursor.getString(4));
-                    paciente.set_idade(Integer.parseInt(cursor.getString(5)));
-                    paciente.set_circunferencia(Double.parseDouble(cursor.getString(6)));
-                    paciente.set_altura(Double.parseDouble(cursor.getString(7)));
-                    paciente.set_imc(Double.parseDouble(cursor.getString(8)));
+                    paciente.set_nascimento(cursor.getString(5));
+                    paciente.set_idade(Integer.parseInt(cursor.getString(6)));
+                    paciente.set_circunferencia(Double.parseDouble(cursor.getString(7)));
+                    paciente.set_altura(Double.parseDouble(cursor.getString(8)));
+                    paciente.set_imc(Double.parseDouble(cursor.getString(9)));
+                    paciente.setDia(Integer.parseInt(cursor.getString(10)));
+                    paciente.setDiaInicio(Integer.parseInt(cursor.getString(11)));
 
                     //DEBUG
-                    Log.d("Infos do banco: ", "databasehandler");
-                    Log.d("Adicionando: ", "método addPaciente");
+                    Log.d("Infos do banco: ", "verificarLogin");
                     Log.d("Nome : ", paciente.get_nome());
                     Log.d("Senha : ", paciente.get_senha());
                     Log.d("Email: ", paciente.get_email());
                     Log.d("Sexo: ", String.valueOf(paciente.get_sexo()));
+                    Log.d("Nascimento: ", paciente.get_nascimento());
                     Log.d("Idade : ", String.valueOf(paciente.get_idade()));
                     Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
                     Log.d("Peso : ", String.valueOf(paciente.get_peso()));
                     Log.d("Altura : ", String.valueOf(paciente.get_altura()));
                     Log.d("IMC : ", String.valueOf(paciente.get_imc()));
+                    Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
+                    Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
+                    Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+                    Log.d("Dia atual : " , String.valueOf(paciente.getDia()));
+                    Log.d("Dia inicio : " , String.valueOf(paciente.getDiaInicio()));
 
                     //se encontrou o paciente correto, retorna objeto
                     return paciente;
@@ -468,6 +484,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_SENHA, paciente.get_senha());
         values.put(KEY_EMAIL, paciente.get_email());
         values.put(KEY_SEXO, paciente.get_sexo());
+        values.put(KEY_NASCIMENTO, paciente.get_nascimento());
         values.put(KEY_IDADE, paciente.get_idade());
         values.put(KEY_CIRCUNFERENCIA, paciente.get_circunferencia());
         values.put(KEY_ALTURA, paciente.get_altura());
