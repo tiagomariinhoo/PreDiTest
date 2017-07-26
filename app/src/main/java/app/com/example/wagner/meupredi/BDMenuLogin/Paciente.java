@@ -33,6 +33,7 @@ public class Paciente extends AppCompatActivity implements Serializable {
     double _hba1c;
     double _glicosejejum;
     double _glicose75g;
+    double _colesterol;
     double _lipidograma;
     double _hemograma;
     double _tireoide;
@@ -57,9 +58,11 @@ public class Paciente extends AppCompatActivity implements Serializable {
         this._hba1c = -1;
         this._glicose75g = -1;
         this._glicosejejum = -1;
+        this._colesterol = -1;
         this._lipidograma = -1;
         this._hemograma = -1;
         this._tireoide = -1;
+
     }
 
     public int get_id() {
@@ -172,6 +175,14 @@ public class Paciente extends AppCompatActivity implements Serializable {
 
     public void set_glicose75g(double _glicose75g) {
         this._glicose75g = _glicose75g;
+    }
+
+    public double get_colesterol() {
+        return _colesterol;
+    }
+
+    public void set_colesterol(double _colesterol) {
+        this._colesterol = _colesterol;
     }
 
     public double get_lipidograma() {

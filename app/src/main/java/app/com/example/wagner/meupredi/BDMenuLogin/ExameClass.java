@@ -13,6 +13,7 @@ public class ExameClass {
     int idPac;
     double glicose75g;
     double glicoseJejum;
+    double colesterol;
     Date dataExame;
 
     public int getId() {
@@ -45,6 +46,18 @@ public class ExameClass {
 
     public void setGlicoseJejum(double glicoseJejum) {
         this.glicoseJejum = glicoseJejum;
+    }
+
+    public double getColesterol() {
+        return colesterol;
+    }
+
+    public void setColesterol(double colesterol) {
+        this.colesterol = colesterol;
+    }
+
+    public void setDataExame(Date dataExame) {
+        this.dataExame = dataExame;
     }
 
     public Date getDataExame() {

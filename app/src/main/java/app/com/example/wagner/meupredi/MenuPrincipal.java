@@ -52,6 +52,7 @@ public class MenuPrincipal extends AppCompatActivity
         Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
         Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
         Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+        Log.d("Colesterol : ", String.valueOf(paciente.get_colesterol()));
         Log.d("Lipidograma : ", String.valueOf(paciente.get_lipidograma()));
         Log.d("Hemograma : ", String.valueOf(paciente.get_hemograma()));
         Log.d("Tireoide : ", String.valueOf(paciente.get_tireoide()));

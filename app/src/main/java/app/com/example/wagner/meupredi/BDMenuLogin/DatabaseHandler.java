@@ -60,6 +60,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_ID_EXAME = "idExame";
     private static final String KEY_GLICOSEJEJUM = "glicosejejum";
     private static final String KEY_GLICOSE75G = "glicose75g";
+    private static final String KEY_COLESTEROL = "colesterol";
     private static final String KEY_DATA_EXAME = "dataExame";
     private static final String KEY_PAC2 = "pac2";
 
@@ -120,6 +121,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_ID_EXAME + " INTEGER PRIMARY KEY,"
                 + KEY_GLICOSE75G + " REAL,"
                 + KEY_GLICOSEJEJUM + " REAL,"
+                + KEY_COLESTEROL + " REAL,"
                 + KEY_DATA_EXAME + " DATETIME,"
                 + KEY_PAC2 + " INTEGER,"
                 + " FOREIGN KEY("+KEY_PAC2+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
@@ -232,9 +234,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Log.d("Adicionando : ", "Metodo addExame");
         Log.d("Glicose 75g : ", String.valueOf(exame.getGlicose75g()));
         Log.d("Glicose jejum : ", String.valueOf(exame.getGlicoseJejum()));
+        Log.d("Colesterol : ", String.valueOf(exame.getColesterol()));
 
         values.put(KEY_GLICOSE75G, exame.getGlicose75g());
         values.put(KEY_GLICOSEJEJUM, exame.getGlicoseJejum());
+        values.put(KEY_COLESTEROL, exame.getColesterol());
         values.put(KEY_DATA_EXAME, String.valueOf(exame.getDataExame()));
         values.put(KEY_PAC2, exame.getIdPac());
 
@@ -272,6 +276,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
         Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
         Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+        Log.d("Colesterol : ", String.valueOf(paciente.get_colesterol()));
 
         //agrupa dados e insere no banco
         values.put(KEY_NOME, paciente.get_nome());
@@ -349,8 +354,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 exame.setId(Integer.parseInt(cursor.getString(0)));
                 exame.setGlicose75g(Double.parseDouble(cursor.getString(1)));
                 exame.setGlicoseJejum(Double.parseDouble(cursor.getString(2)));
-                exame.setDataExame(cursor.getString(3));
-                exame.setIdPac(Integer.parseInt(cursor.getString(4)));
+                exame.setColesterol(Double.parseDouble(cursor.getString(3)));
+                exame.setDataExame(cursor.getString(4));
+                exame.setIdPac(Integer.parseInt(cursor.getString(5)));
                 exameList.add(exame);
             }while(cursor.moveToNext());
         }
@@ -427,6 +433,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
                     Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
                     Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+                    Log.d("Colesterol : ", String.valueOf(paciente.get_colesterol()));
                     Log.d("Dia atual : " , String.valueOf(paciente.getDia()));
                     Log.d("Dia inicio : " , String.valueOf(paciente.getDiaInicio()));
 

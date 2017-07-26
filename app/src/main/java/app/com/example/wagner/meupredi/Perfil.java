@@ -8,11 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.github.mikephil.charting.charts.BarChart;
 
 import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
@@ -24,10 +21,9 @@ import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 public class Perfil extends Fragment {
 
     MenuPrincipal menu;
-    TextView nome, imc, peso;
-    BarChart barChart;
-    ImageView imagemCentral;
-    Button dados;
+    TextView nome, imc, pesoValor;
+    TextView taxas, peso, desempenho, dados;
+    ImageView prancheta, grafico, engrenagem;
     Paciente paciente;
 
     @Nullable
@@ -41,8 +37,6 @@ public class Perfil extends Fragment {
         Log.d("Paciente nome : " , paciente.get_nome());
         Log.d("Paciente peso : ", String.valueOf(paciente.get_peso()));
 
-        dados = (Button) view.findViewById(R.id.btn_dados_perfil);
-
         //pega o peso atualizado no banco para exibir na tela
         paciente.set_peso(db.getPeso(paciente.get_id()));
 
@@ -50,10 +44,20 @@ public class Perfil extends Fragment {
         nome.setText(String.valueOf(paciente.get_nome()));
 
         imc = (TextView) view.findViewById(R.id.text_valor_imc);
-        imc.setText(String.valueOf(paciente.get_imc()));
+        imc.setText("IMC - " + String.valueOf(paciente.get_imc()));
 
-        peso = (TextView) view.findViewById(R.id.text_valor_peso);
-        peso.setText(String.valueOf(paciente.get_peso()));
+        prancheta = (ImageView) view.findViewById(R.id.image_prancheta_perfil);
+        pesoValor = (TextView) view.findViewById(R.id.text_valor_peso);
+        pesoValor.setText(String.valueOf(paciente.get_peso()));
+        grafico = (ImageView) view.findViewById(R.id.image_graficos_perfil);
+        engrenagem = (ImageView) view.findViewById(R.id.image_dados_perfil);
+
+        taxas = (TextView) view.findViewById(R.id.text_taxas_perfil);
+        peso = (TextView) view.findViewById(R.id.text_peso_perfil);
+        desempenho = (TextView) view.findViewById(R.id.text_desempenho_perfil);
+        dados = (TextView) view.findViewById(R.id.text_dados_perfil);
+
+
 
         //paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
 
@@ -104,12 +108,12 @@ public class Perfil extends Fragment {
 
         paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
 
-        dados.setOnClickListener(new View.OnClickListener() {
+        taxas.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), Dados.class);
+                Intent intent = new Intent(getActivity(), Taxas.class);
                 intent.putExtra("Paciente", paciente);
                 startActivity(intent);
             }
@@ -121,6 +125,75 @@ public class Perfil extends Fragment {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(), Peso.class);
+                intent.putExtra("Paciente", paciente);
+                startActivity(intent);
+            }
+        });
+
+        desempenho.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), NovoExercicio.class);
+                intent.putExtra("Paciente", paciente);
+                startActivity(intent);
+            }
+        });
+
+        dados.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), Dados.class);
+                intent.putExtra("Paciente", paciente);
+                startActivity(intent);
+            }
+        });
+
+        prancheta.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), Taxas.class);
+                intent.putExtra("Paciente", paciente);
+                startActivity(intent);
+            }
+
+        });
+
+        pesoValor.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), Peso.class);
+                intent.putExtra("Paciente", paciente);
+                startActivity(intent);
+            }
+
+        });
+
+        grafico.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), NovoExercicio.class);
+                intent.putExtra("Paciente", paciente);
+                startActivity(intent);
+            }
+
+        });
+
+        engrenagem.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), Dados.class);
                 intent.putExtra("Paciente", paciente);
                 startActivity(intent);
             }
@@ -139,8 +212,8 @@ public class Perfil extends Fragment {
         paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
 
         nome.setText(String.valueOf(paciente.get_nome()));
-        imc.setText(String.valueOf(paciente.get_imc()));
-        peso.setText(String.valueOf(paciente.get_peso()));
+        imc.setText("IMC - " + String.valueOf(paciente.get_imc()));
+        pesoValor.setText(String.valueOf(paciente.get_peso()));
     }
 
 }

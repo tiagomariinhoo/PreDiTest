@@ -184,6 +184,7 @@ public class CriarConta extends AppCompatActivity {
                         Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
                         Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
                         Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+                        Log.d("Colesterol : ", String.valueOf(paciente.get_colesterol()));
                         Log.d("Dia atual : " , String.valueOf(paciente.getDia()));
                         Log.d("Dia inicio : " , String.valueOf(paciente.getDiaInicio()));
 

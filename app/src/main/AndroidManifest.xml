@@ -41,6 +41,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Taxas"
+            android:label="Monitore suas taxas"/>
         <activity
             android:name=".Peso"
             android:label="@string/title_activity_peso" />
