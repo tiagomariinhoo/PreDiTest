@@ -22,6 +22,9 @@ android {
     repositories {
         maven { url "https://jitpack.io" }
     }
+    dependencies {
+        compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+    }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -31,7 +34,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.2.0'
-    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
     testCompile 'junit:junit:4.12'
 
     // Biblioteca adicionada
@@ -54,6 +56,7 @@ repositories {
 dependencies {
     compile 'com.sun.mail:android-mail:1.5.5'
     compile 'com.sun.mail:android-activation:1.5.5'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
 }
 dependencies {
     compile 'com.android.support.constraint:constraint-layout:+'

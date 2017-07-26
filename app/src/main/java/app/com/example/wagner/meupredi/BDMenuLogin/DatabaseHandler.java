@@ -553,4 +553,44 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return peso;
     }
 
+    //metodo chamado na classe Taxas para atualizar medicoes do paciente
+    public void atualizarTaxas(Paciente paciente){
+
+        //pega data atual
+        long date = System.currentTimeMillis();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String dateString = sdf.format(date);
+        Log.d("Data : ", dateString);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values;
+
+        //guarda dados do paciente (peso e data atual)
+        values = new ContentValues();
+        values.put(KEY_GLICOSE75G, paciente.get_glicose75g());
+        values.put(KEY_GLICOSEJEJUM, paciente.get_glicosejejum());
+        values.put(KEY_COLESTEROL, paciente.get_colesterol());
+        values.put(KEY_DATA_EXAME, dateString);
+        values.put(KEY_PAC2, paciente.get_id());
+
+        //insere dados no banco de pesos
+        long retorno;
+        retorno = db.insert(TABLE_EXAMES, null, values);
+        db.close();
+
+        if(retorno == -1){
+            Log.d("Erro ao atualizar taxas!", "DatabaseHandler");
+        } else {
+            Log.d("Taxas atualizadas!", "DatabaseHandler");
+        }
+    }
+
+    //metodo chamado na classe TelaLogin para pegar o peso atual do paciente
+    public Paciente getTaxas (int id){
+
+        Paciente paciente = new Paciente();
+
+        return paciente;
+    }
+
 }

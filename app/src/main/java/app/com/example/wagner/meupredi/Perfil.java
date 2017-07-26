@@ -11,6 +11,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+
+import java.util.ArrayList;
+
 import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 
@@ -66,34 +74,7 @@ public class Perfil extends Fragment {
 
         //imagemCentral = (ImageView) view.findViewById(R.id.image_central);
 
-       /* barChart = (BarChart) view.findViewById(R.id.bargraph);
 
-        ArrayList<BarEntry> barEntries = new ArrayList<>();
-        barEntries.add(new BarEntry(44f, 0));
-        barEntries.add(new BarEntry(88f, 1));
-        barEntries.add(new BarEntry(66f, 2));
-        barEntries.add(new BarEntry(12f, 3));
-        barEntries.add(new BarEntry(19f, 4));
-        barEntries.add(new BarEntry(91f, 5));
-
-        ArrayList<IBarDataSet> barDataSet = new ArrayList<>();
-        //BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
-        barDataSet.add((IBarDataSet) barEntries);
-
-        ArrayList<String> theDates = new ArrayList<>();
-        theDates.add("April");
-        theDates.add("May");
-        theDates.add("June");
-        theDates.add("July");
-        theDates.add("August");
-        theDates.add("September");
-
-        BarData theData = new BarData(theDates, barDataSet);
-        barChart.setData(theData);
-
-        barChart.setTouchEnabled(true);
-        barChart.setDragEnabled(true);
-        barChart.setScaleEnabled(true);*/
 
        //db.verificarData(paciente);
 
