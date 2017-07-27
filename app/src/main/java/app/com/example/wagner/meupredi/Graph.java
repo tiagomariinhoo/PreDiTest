@@ -1,9 +1,10 @@
-package app.com.example.wagner.meupredi.BDMenuLogin;
+package app.com.example.wagner.meupredi;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -11,8 +12,11 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
+import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
+import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 import app.com.example.wagner.meupredi.R;
 
 /**
@@ -23,21 +27,37 @@ public class Graph extends AppCompatActivity{
 
 
     BarChart barChart;
+    Paciente paciente;
+    ArrayList<ExercicioClass> exClass;
+    ArrayList<BarEntry> barEntries = new ArrayList<>();
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.graph_test);
-        View view =
         barChart = (BarChart) findViewById(R.id.bargraph);
+        DatabaseHandler db = new DatabaseHandler (getApplicationContext());
 
-        ArrayList<BarEntry> barEntries = new ArrayList<>();
-        barEntries.add(new BarEntry(44f, 0));
+        paciente = (Paciente) getIntent().getExtras().get("Paciente");
+        Log.d(paciente.get_nome(), " Nome do paciente");
+        try {
+            exClass = db.getAllExercicios(paciente.get_id());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if(exClass.size()>0){
+            for(int i=0;i<exClass.size();i++){
+                barEntries.add(new BarEntry((float)exClass.get(i).getTempo(),i));
+            }
+        }
+
+        /*barEntries.add(new BarEntry(44f, 0));
         barEntries.add(new BarEntry(88f, 1));
         barEntries.add(new BarEntry(66f, 2));
         barEntries.add(new BarEntry(12f, 3));
         barEntries.add(new BarEntry(19f, 4));
-        barEntries.add(new BarEntry(91f, 5));
+        barEntries.add(new BarEntry(91f, 5));*/
 
         //ArrayList<IBarDataSet> barDataSet = new ArrayList<>();
         BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");

@@ -11,14 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
-
-import java.util.ArrayList;
-
 import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 
@@ -88,13 +80,14 @@ public class Perfil extends Fragment {
         getActivity().setTitle("Perfil");
 
         paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
+        Log.d(paciente.get_nome(), " paciente nome Perfil < ");
 
         taxas.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), Taxas.class);
+                Intent intent = new Intent(getActivity(), Graph.class);
                 intent.putExtra("Paciente", paciente);
                 startActivity(intent);
             }
