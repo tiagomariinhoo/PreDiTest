@@ -84,6 +84,7 @@ public class PosLogin extends AppCompatActivity {
                 if(getCurrentFocus()!=null && getCurrentFocus() instanceof EditText){
                     InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(idade.getWindowToken(), 0);
+                    imm.hideSoftInputFromWindow(altura.getWindowToken(), 0);
                     imm.hideSoftInputFromWindow(peso.getWindowToken(), 0);
                     imm.hideSoftInputFromWindow(circunferecia.getWindowToken(), 0);
                 }

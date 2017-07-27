@@ -40,6 +40,9 @@ public class Perfil extends Fragment {
         //pega o peso atualizado no banco para exibir na tela
         paciente.set_peso(db.getPeso(paciente.get_id()));
 
+        //pega as taxas atualizadas do banco para guardar no objeto
+        paciente = db.getUltimasTaxas(paciente);
+
         nome = (TextView) view.findViewById(R.id.text_nome_perfil);
         nome.setText(String.valueOf(paciente.get_nome()));
 
@@ -56,8 +59,6 @@ public class Perfil extends Fragment {
         peso = (TextView) view.findViewById(R.id.text_peso_perfil);
         desempenho = (TextView) view.findViewById(R.id.text_desempenho_perfil);
         dados = (TextView) view.findViewById(R.id.text_dados_perfil);
-
-
 
         //paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
 

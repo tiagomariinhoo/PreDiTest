@@ -43,7 +43,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Taxas"
-            android:label="Monitore suas taxas"/>
+            android:label="Taxas"/>
         <activity
             android:name=".Peso"
             android:label="@string/title_activity_peso" />

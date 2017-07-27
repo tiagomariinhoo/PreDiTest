@@ -333,6 +333,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 //pega seu ultimo peso registrado
                 paciente.set_peso(getPeso(paciente.get_id()));
 
+                //pega suas ultimas taxas cadastradas
+                paciente = getUltimasTaxas(paciente);
+
                 pacientesList.add(paciente);
 
             }while(cursor.moveToNext());
@@ -553,7 +556,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return peso;
     }
 
-    //metodo chamado na classe Taxas para atualizar medicoes do paciente
+    //metodo chamado na classe Taxas para atualizar medicoes do paciente no banco
     public void atualizarTaxas(Paciente paciente){
 
         //pega data atual
@@ -585,11 +588,40 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
     }
 
-    //metodo chamado na classe TelaLogin para pegar o peso atual do paciente
-    public Paciente getTaxas (int id){
+    //metodo chamado na classe Taxas para pegar ultima medicao de cada taxa
+    public Paciente getUltimasTaxas (Paciente paciente){
 
-        Paciente paciente = new Paciente();
+        String selectQuery = "SELECT * FROM " + TABLE_EXAMES;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery,null);
 
+        //procura o peso pelo id do paciente
+        if(cursor.moveToFirst()){
+            do{
+                if(cursor.getString(5).equals(String.valueOf(paciente.get_id()))) {
+                    if(Double.parseDouble(cursor.getString(1)) != 0.0) {
+                        paciente.set_glicose75g(Double.parseDouble(cursor.getString(1)));
+                        Log.d("Glicose75 : ", String.valueOf(paciente.get_glicose75g()));
+                    }
+
+                    if(Double.parseDouble(cursor.getString(2)) != 0.0) {
+                        paciente.set_glicosejejum(Double.parseDouble(cursor.getString(2)));
+                        Log.d("Glicose Jejum : ", String.valueOf(paciente.get_glicosejejum()));
+                    }
+
+                    if(Double.parseDouble(cursor.getString(3)) != 0.0) {
+                        paciente.set_colesterol(Double.parseDouble(cursor.getString(3)));
+                        Log.d("Colesterol : ", String.valueOf(paciente.get_colesterol()));
+                    }
+                }
+            } while(cursor.moveToNext());
+        }
+
+        Log.d("G75 : ", String.valueOf(paciente.get_glicose75g()));
+        Log.d("GJejum : ", String.valueOf(paciente.get_glicosejejum()));
+        Log.d("Co : ", String.valueOf(paciente.get_colesterol()));
+
+        //retorna paciente com ultimas taxas cadastradas pelo usuario
         return paciente;
     }
 
