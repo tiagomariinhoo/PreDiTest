@@ -1,9 +1,17 @@
 package app.com.example.wagner.meupredi;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.graphics.ColorUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +22,9 @@ import android.widget.TextView;
 import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 
+import static android.app.Activity.RESULT_OK;
+import static app.com.example.wagner.meupredi.R.id.imageView;
+
 /**
  * Created by LeandroDias1 on 18/04/2017.
  */
@@ -21,10 +32,14 @@ import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 public class Perfil extends Fragment {
 
     MenuPrincipal menu;
+    ImageView chamadaCapa, capa, chamadaPerfil, perfil;
     TextView nome, imc, pesoValor;
     TextView taxas, peso, desempenho, dados;
     ImageView prancheta, grafico, engrenagem;
     Paciente paciente;
+    Uri imageUri;
+
+    private static int SELECTED_PICTURE = 1;
 
     @Nullable
     @Override
@@ -39,9 +54,6 @@ public class Perfil extends Fragment {
 
         //pega o peso atualizado no banco para exibir na tela
         paciente.set_peso(db.getPeso(paciente.get_id()));
-
-        //pega as taxas atualizadas do banco para guardar no objeto
-        paciente = db.getUltimasTaxas(paciente);
 
         nome = (TextView) view.findViewById(R.id.text_nome_perfil);
         nome.setText(String.valueOf(paciente.get_nome()));
@@ -59,6 +71,10 @@ public class Perfil extends Fragment {
         peso = (TextView) view.findViewById(R.id.text_peso_perfil);
         desempenho = (TextView) view.findViewById(R.id.text_desempenho_perfil);
         dados = (TextView) view.findViewById(R.id.text_dados_perfil);
+        chamadaCapa = (ImageView) view.findViewById(R.id.image_chamada_capa);
+        capa = (ImageView) view.findViewById(R.id.image_capa_perfil);
+        chamadaPerfil = (ImageView) view.findViewById(R.id.image_chamada_galeria_fotodoperfil);
+        perfil = (ImageView) view.findViewById(R.id.image_foto_perfil);
 
         //paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
 
@@ -66,8 +82,6 @@ public class Perfil extends Fragment {
         //imc.setText(String.valueOf(paciente.get_imc()));
 
         //imagemCentral = (ImageView) view.findViewById(R.id.image_central);
-
-
 
        //db.verificarData(paciente);
 
@@ -88,7 +102,7 @@ public class Perfil extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), Graph.class);
+                Intent intent = new Intent(getActivity(), Taxas.class);
                 intent.putExtra("Paciente", paciente);
                 startActivity(intent);
             }
@@ -110,8 +124,8 @@ public class Perfil extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), NovoExercicio.class);
-                intent.putExtra("Paciente", paciente);
+                Intent intent = new Intent(getActivity(), Graph.class);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                intent.putExtra("Paciente", paciente);
                 startActivity(intent);
             }
         });
@@ -156,7 +170,7 @@ public class Perfil extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), NovoExercicio.class);
+                Intent intent = new Intent(getActivity(), Graph.class);
                 intent.putExtra("Paciente", paciente);
                 startActivity(intent);
             }
@@ -174,6 +188,23 @@ public class Perfil extends Fragment {
             }
 
         });
+
+        chamadaCapa.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                abrirGaleria(1);
+            }
+        });
+
+        chamadaPerfil.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                abrirGaleria(2);
+            }
+        });
+
     }
 
     @Override
@@ -189,6 +220,27 @@ public class Perfil extends Fragment {
         nome.setText(String.valueOf(paciente.get_nome()));
         imc.setText("IMC - " + String.valueOf(paciente.get_imc()));
         pesoValor.setText(String.valueOf(paciente.get_peso()));
+    }
+
+    private void abrirGaleria(int foto){
+        Intent galeria = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        SELECTED_PICTURE = foto;
+        startActivityForResult(galeria, SELECTED_PICTURE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        Perfil.super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK && requestCode == SELECTED_PICTURE){
+            imageUri = data.getData();
+
+            if(SELECTED_PICTURE == 2){
+                perfil.setImageURI(imageUri);
+            }
+            else {
+                capa.setImageURI(imageUri);
+            }
+        }
     }
 
 }

@@ -109,7 +109,7 @@ public class TelaLogin extends AppCompatActivity {
 
                 //DEBUG: imprime lista de pacientes cadastrados
                 List<Paciente> pacList = new ArrayList<Paciente> ();
-                pacList = db.getAllPacientes();
+                pacList = db.getAllUsers();
 
                 for(int i=0;i<pacList.size();i++){
                     Log.d(pacList.get(i).get_nome()," -> Nome do paciente");

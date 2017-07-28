@@ -64,12 +64,16 @@ public class Graph extends AppCompatActivity{
         //barDataSet.add((IBarDataSet) barEntries);
 
         ArrayList<String> theDates = new ArrayList<>();
-        theDates.add("April");
+        /*theDates.add("April");
         theDates.add("May");
         theDates.add("June");
         theDates.add("July");
         theDates.add("August");
-        theDates.add("September");
+        theDates.add("September");*/
+
+        for(int i=0;i<exClass.size();i++){
+            theDates.add(String.valueOf(i+1));
+        }
 
         BarData theData = new BarData(theDates, barDataSet);
         barChart.setData(theData);

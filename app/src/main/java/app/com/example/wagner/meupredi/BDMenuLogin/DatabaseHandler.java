@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 import app.com.example.wagner.meupredi.ExercicioClass;
 
 /**
@@ -303,7 +302,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     //metodo chamado na classe TelaLogin para DEBUG
-    public List<Paciente> getAllPacientes(){
+    public List<Paciente> getAllUsers(){
 
         List<Paciente> pacientesList = new ArrayList<Paciente>();
 
@@ -372,7 +371,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public Paciente getPaciente(String email) {
 
         //pega todos os pacientes
-        List<Paciente> pacientesList = getAllPacientes();
+        List<Paciente> pacientesList = getAllUsers();
         Paciente paciente = new Paciente();
 
         //procura paciente desejado
