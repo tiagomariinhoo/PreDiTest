@@ -555,6 +555,27 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return peso;
     }
 
+    public ArrayList<Float> getAllPesos(int idPaciente){
+        ArrayList<Float> pesos = new ArrayList<>();
+        Log.d("DB, ", "GetAllPesos");
+
+        String selectQuery  = "SELECT * FROM " + TABLE_PESOS;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                if(Integer.parseInt(cursor.getString(3))==idPaciente){
+                    pesos.add(Float.valueOf(cursor.getString(1)));
+                }
+            } while(cursor.moveToNext());
+        }
+
+        return pesos;
+
+    }
+
     //metodo chamado na classe Taxas para atualizar medicoes do paciente no banco
     public void atualizarTaxas(Paciente paciente){
 

@@ -1,6 +1,7 @@
 package app.com.example.wagner.meupredi;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+
+import java.util.ArrayList;
 import java.util.Locale;
 
 import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
@@ -25,6 +32,9 @@ public class Peso extends AppCompatActivity{
     TextView peso, meta, novoPeso;
     Button atualizarPeso;
     Paciente paciente;
+    BarChart barChart;
+    ArrayList<Float> pesos;
+    ArrayList<BarEntry> barEntries = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +110,12 @@ public class Peso extends AppCompatActivity{
                         db.atualizarPaciente(paciente);
 
                         Toast.makeText(getApplicationContext(),"Peso atualizado com sucesso!",Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(Peso.this, MenuPrincipal.class);
+                        intent.putExtra("Paciente", paciente);
+                        startActivity(intent);
+
+
                     } else {
                         Toast.makeText(getApplicationContext(),"Peso inválido!",Toast.LENGTH_SHORT).show();
                     }
@@ -115,6 +131,50 @@ public class Peso extends AppCompatActivity{
                 }
             }
         });
+
+        // Calculo Meta IMC //
+        /*
+            Abaixo do peso : < 20,7
+            Peso normal : 20,7 - 26,4
+            Marginalmente acima do peso 26,4 - 27,8
+            Acima do peso ideal 27,8 - 31,1
+            Obeso > 31,1
+         */
+
+        if(paciente.get_imc() > 26.4){
+            meta.setText(String.valueOf(paciente.get_peso() - (paciente.get_peso()*0.05)));
+        } else if (paciente.get_imc() < 20.7){
+            meta.setText(String.valueOf(paciente.get_peso() + (paciente.get_peso()*0.05)));
+        } else {
+            meta.setText("Peso Ideal!");
+        }
+
+
+
+        barChart = (BarChart) findViewById(R.id.bargraph_peso);
+        DatabaseHandler db = new DatabaseHandler (getApplicationContext());
+
+        pesos = db.getAllPesos(paciente.get_id());
+
+        if(pesos.size()>0){
+            for(int i=0;i<pesos.size();i++){
+                barEntries.add(new BarEntry(Float.valueOf(pesos.get(i)),i));
+            }
+        }
+
+        BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
+        ArrayList<String> theDates = new ArrayList<>();
+
+        for(int i=0;i<pesos.size();i++){
+            theDates.add(String.valueOf(i));
+        }
+
+        BarData theData = new BarData (theDates, barDataSet);
+        barChart.setData(theData);
+
+        barChart.setTouchEnabled(true);
+        barChart.setDragEnabled(true);
+        barChart.setScaleEnabled(true);
     }
 
     @Override

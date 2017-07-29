@@ -53,14 +53,6 @@ public class cadastroExame extends AppCompatActivity {
         creatinina = (EditText) findViewById(R.id.editCretinina);
         salvar = (Button) findViewById(R.id.salvar_exame);
 
-
-        //String TextTotg = totg.getText().toString();
-        //String TextColesterolTotal = colesterolTotal.getText().toString();
-        //String TextColesterolHdl = colesterolHdl.getText().toString();
-        //String TextAcidoUrico = acidoUrico.getText().toString();
-        //String TextUreia = ureia.getText().toString();
-        //String TextCreatinina = creatinina.getText().toString();
-
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
         salvar.setOnClickListener(new View.OnClickListener() {
