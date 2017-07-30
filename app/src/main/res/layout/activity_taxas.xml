@@ -236,7 +236,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="13dp"
-        android:background="@color/colorConfirm"
+        android:background="#9b59b6"
         android:gravity="center_vertical"
         android:text="COLESTEROL"
         android:textAlignment="center"

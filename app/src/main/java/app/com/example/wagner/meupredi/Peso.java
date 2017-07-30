@@ -3,6 +3,7 @@ package app.com.example.wagner.meupredi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -169,6 +170,7 @@ public class Peso extends AppCompatActivity{
             theDates.add(String.valueOf(i));
         }
 
+        barDataSet.setColor(Color.WHITE);
         BarData theData = new BarData (theDates, barDataSet);
         barChart.setData(theData);
 

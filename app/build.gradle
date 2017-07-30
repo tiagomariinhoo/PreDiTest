@@ -22,9 +22,11 @@ android {
     repositories {
         maven { url "https://jitpack.io" }
     }
-    dependencies {
-        compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
-    }
+dependencies {
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+    compile files('C:/Users/wagne/AndroidStudioProjects/MeuPredi/PreDiTest/.idea/libraries/CircleImageView-master/gradle/wrapper/gradle-wrapper.jar')
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+}
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -35,7 +37,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.2.0'
     testCompile 'junit:junit:4.12'
-
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
     // Biblioteca adicionada
     compile 'com.github.Vatican-Cameos:CarouselPicker:v1.0'
 }

@@ -1,17 +1,11 @@
 package app.com.example.wagner.meupredi;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.graphics.ColorUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +17,6 @@ import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 
 import static android.app.Activity.RESULT_OK;
-import static app.com.example.wagner.meupredi.R.id.imageView;
 
 /**
  * Created by LeandroDias1 on 18/04/2017.
@@ -32,7 +25,8 @@ import static app.com.example.wagner.meupredi.R.id.imageView;
 public class Perfil extends Fragment {
 
     MenuPrincipal menu;
-    ImageView chamadaCapa, capa, chamadaPerfil, perfil;
+    ImageView chamadaPerfil, perfil;
+    //ImageView chamadaCapa, capa;
     TextView nome, imc, pesoValor;
     TextView taxas, peso, desempenho, dados;
     ImageView prancheta, grafico, engrenagem;
@@ -71,8 +65,8 @@ public class Perfil extends Fragment {
         peso = (TextView) view.findViewById(R.id.text_peso_perfil);
         desempenho = (TextView) view.findViewById(R.id.text_desempenho_perfil);
         dados = (TextView) view.findViewById(R.id.text_dados_perfil);
-        chamadaCapa = (ImageView) view.findViewById(R.id.image_chamada_capa);
-        capa = (ImageView) view.findViewById(R.id.image_capa_perfil);
+        //chamadaCapa = (ImageView) view.findViewById(R.id.image_chamada_capa);
+        //capa = (ImageView) view.findViewById(R.id.image_capa_perfil);
         chamadaPerfil = (ImageView) view.findViewById(R.id.image_chamada_galeria_fotodoperfil);
         perfil = (ImageView) view.findViewById(R.id.image_foto_perfil);
 
@@ -189,13 +183,13 @@ public class Perfil extends Fragment {
 
         });
 
-        chamadaCapa.setOnClickListener(new View.OnClickListener() {
+        /*chamadaCapa.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 abrirGaleria(1);
             }
-        });
+        });*/
 
         chamadaPerfil.setOnClickListener(new View.OnClickListener() {
 
@@ -238,7 +232,7 @@ public class Perfil extends Fragment {
                 perfil.setImageURI(imageUri);
             }
             else {
-                capa.setImageURI(imageUri);
+           //     capa.setImageURI(imageUri);
             }
         }
     }
