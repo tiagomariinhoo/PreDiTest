@@ -5,18 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradiente_plano_de_fundo">
+    android:background="@drawable/gradiente_azul">
 
-
-    <ImageView
-        android:id="@+id/image_capa_perfil"
-        android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:src="@drawable/capa_arvores"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView13"
@@ -32,6 +22,22 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_nome_perfil"
         app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/cover2" />
 
     <ProgressBar
         android:id="@+id/circular_progress_bar_MetaSemanal"
@@ -241,13 +247,10 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/image_capa_perfil"
-        app:layout_constraintVertical_bias="0.25"
         app:srcCompat="@mipmap/ic_editar" />
 
     <ImageView
@@ -353,17 +356,74 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:tint="@color/colorBranco"
         app:layout_constraintBottom_toTopOf="@+id/text_nome_perfil"
         app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/image_capa_perfil"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_menu_gallery"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_goals"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/circular_progress_bar_MetaSemanal"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/text_nome_perfil"
+        app:layout_constraintTop_toTopOf="@+id/circular_progress_bar_MetaSemanal"
+        android:layout_marginTop="8dp"
+        app:layout_constraintVertical_bias="0.8"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="Metas Diárias"
+        android:textSize="14dp"
+        android:textAlignment="center"
+        android:gravity="center_vertical"
+        android:textColor="@color/colorBranco"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintRight_toRightOf="@+id/imageView5"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView5" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_peso_a_perder_ganhar"
+        app:layout_constraintRight_toLeftOf="@+id/image_foto_perfil"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:text="Calcule seu Peso Ideal!"
+        android:textAlignment="center"
+        android:textColor="@color/colorBranco"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView9"
+        app:layout_constraintRight_toRightOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+
 
 
 </android.support.constraint.ConstraintLayout>

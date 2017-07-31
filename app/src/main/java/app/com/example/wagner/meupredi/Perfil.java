@@ -25,8 +25,7 @@ import static android.app.Activity.RESULT_OK;
 public class Perfil extends Fragment {
 
     MenuPrincipal menu;
-    ImageView chamadaPerfil, perfil, capaPerfil;
-    //ImageView chamadaCapa, capa;
+    ImageView chamadaPerfil, perfil;
     TextView nome, imc, pesoValor;
     TextView taxas, peso, desempenho, dados;
     ImageView prancheta, grafico, engrenagem;
@@ -65,8 +64,6 @@ public class Perfil extends Fragment {
         peso = (TextView) view.findViewById(R.id.text_peso_perfil);
         desempenho = (TextView) view.findViewById(R.id.text_desempenho_perfil);
         dados = (TextView) view.findViewById(R.id.text_dados_perfil);
-        //chamadaCapa = (ImageView) view.findViewById(R.id.image_chamada_capa);
-        capaPerfil = (ImageView) view.findViewById(R.id.image_capa_perfil);
         chamadaPerfil = (ImageView) view.findViewById(R.id.image_chamada_galeria_fotodoperfil);
         perfil = (ImageView) view.findViewById(R.id.image_foto_perfil);
 
