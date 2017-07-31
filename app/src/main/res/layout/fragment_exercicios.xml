@@ -330,43 +330,40 @@
 
     <ImageView
         android:id="@+id/btn_start_exercicios"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.861"
-        app:srcCompat="@mipmap/ic_start"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <Button
-        android:id="@+id/btn_pause_exercicios"
-        android:layout_width="46dp"
-        android:layout_height="wrap_content"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.861"
+        app:srcCompat="@mipmap/ic_start" />
+
+    <ImageView
+        android:id="@+id/btn_pause_exercicios"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:background="@android:color/transparent"
-        android:drawableRight="@mipmap/ic_stop"
-        android:textSize="14dp"
+        app:srcCompat="@mipmap/ic_stop"
         app:layout_constraintBottom_toBottomOf="@+id/btn_start_exercicios"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btn_start_exercicios"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/btn_start_exercicios"
+        android:layout_marginTop="8dp" />
 
-    <Button
+    <ImageView
         android:id="@+id/btn_reset_exercicios"
         android:layout_width="46dp"
         android:layout_height="wrap_content"
@@ -375,15 +372,14 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
-        android:drawableRight="@mipmap/ic_reset"
+        app:srcCompat="@mipmap/ic_reset"
         app:layout_constraintBottom_toBottomOf="@+id/btn_start_exercicios"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toRightOf="@+id/btn_start_exercicios"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/btn_start_exercicios"
+        android:layout_marginTop="8dp" />
 
 
 </android.support.constraint.ConstraintLayout>

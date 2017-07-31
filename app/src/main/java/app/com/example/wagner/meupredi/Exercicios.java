@@ -2,6 +2,7 @@ package app.com.example.wagner.meupredi;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
@@ -11,15 +12,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.concurrent.TimeUnit;
-
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
+
+import static android.graphics.Color.rgb;
 
 /**
  * Created by LeandroDias1 on 18/04/2017.
@@ -29,8 +29,7 @@ public class Exercicios extends Fragment {
 
     private ImageView chamadaDesempenho;
     private ImageView chamadaGinasio;
-    private ImageView start;
-    private Button reset, pause;
+    private ImageView start, reset, pause;
     private Chronometer cronometro;
     private long ultimaPausa;
     private TextView finalizar;
@@ -45,8 +44,8 @@ public class Exercicios extends Fragment {
         View view = inflater.inflate(R.layout.fragment_exercicios, container, false);
 
         start = (ImageView) view.findViewById(R.id.btn_start_exercicios);
-        pause = (Button) view.findViewById(R.id.btn_pause_exercicios);
-        reset = (Button) view.findViewById(R.id.btn_reset_exercicios);
+        pause = (ImageView) view.findViewById(R.id.btn_pause_exercicios);
+        reset = (ImageView) view.findViewById(R.id.btn_reset_exercicios);
         cronometro = (Chronometer) view.findViewById(R.id.crn_cronometro_exercicio);
         finalizar = (TextView) view.findViewById(R.id.text_finalizar_treino);
 
@@ -59,6 +58,8 @@ public class Exercicios extends Fragment {
                 else{
                     cronometro.setBase(SystemClock.elapsedRealtime());
                 }
+                start.setColorFilter(rgb(255, 64, 129));
+                pause.setColorFilter(Color.WHITE);
                 cronometro.start();
                 start.setEnabled(false);
                 pause.setEnabled(true);
@@ -70,6 +71,8 @@ public class Exercicios extends Fragment {
             public void onClick(View v) {
                 ultimaPausa = SystemClock.elapsedRealtime();
                 cronometro.stop();
+                start.setColorFilter(Color.WHITE);
+                pause.setColorFilter(Color.rgb(255, 64, 129));
                 pause.setEnabled(false);
                 start.setEnabled(true);
             }
@@ -107,7 +110,7 @@ public class Exercicios extends Fragment {
                                 ultimaPausa = 0;
                                 pause.setEnabled(false);
                                 start.setEnabled(true);
-                                Toast.makeText(getActivity(), "Xablau", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Seu treino foi finalizado com sucesso!", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .setNegativeButton("Não", new DialogInterface.OnClickListener() {
