@@ -3,13 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_consultas_fragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Consultas"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <com.github.sundeepk.compactcalendarview.CompactCalendarView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/compactcalendar_view"
+        android:layout_width="fill_parent"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_height="250dp"
+        app:compactCalendarTargetHeight="250dp"
+        app:compactCalendarTextSize="16sp"
+        app:compactCalendarBackgroundColor="@color/colorBranco"
+        app:compactCalendarTextColor="@color/colorBackground"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="@color/colorAccent"
+        app:compactCalendarCurrentDayBackgroundColor="#bdc3c7"
+        app:compactCalendarMultiEventIndicatorColor="#fff"
+        />
 
 </RelativeLayout>

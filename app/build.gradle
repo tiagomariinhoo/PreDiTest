@@ -39,6 +39,7 @@ dependencies {
     // Biblioteca adicionada
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
     compile 'com.github.Vatican-Cameos:CarouselPicker:v1.0'
+    compile 'com.github.sundeepk:compact-calendar-view:2.0.3-beta'
 }
 
 android {
