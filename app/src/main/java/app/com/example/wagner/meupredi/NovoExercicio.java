@@ -5,16 +5,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
@@ -72,7 +68,7 @@ public class NovoExercicio extends AppCompatActivity {
                     } else if (checkBoxCiclismo.isChecked()) {
                         adicionarExercicio("Ciclismo");
                     } else if (checkBoxCorrida.isChecked()) {
-                        adicionarExercicio("Outra");
+                        adicionarExercicio("Corrida");
                     } else if (checkBoxFutebol.isChecked()) {
                         adicionarExercicio("Futebol");
                     } else if (checkBoxTenis.isChecked()) {

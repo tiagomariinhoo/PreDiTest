@@ -67,8 +67,6 @@ public class Perfil extends Fragment {
         chamadaPerfil = (ImageView) view.findViewById(R.id.image_chamada_galeria_fotodoperfil);
         perfil = (ImageView) view.findViewById(R.id.image_foto_perfil);
 
-        //Bitmap bImage = BitmapFactory.decodeResource(this.getResources(), R.drawable.capa_arvores);
-        //capaPerfil.setImageBitmap(bImage);
         //paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
 
         //imc = (TextView) view.findViewById(R.id.text_imc_valor_perfil);
@@ -181,14 +179,6 @@ public class Perfil extends Fragment {
             }
 
         });
-
-        /*chamadaCapa.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                abrirGaleria(1);
-            }
-        });*/
 
         chamadaPerfil.setOnClickListener(new View.OnClickListener() {
 

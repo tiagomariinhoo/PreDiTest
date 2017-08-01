@@ -2,7 +2,6 @@ package app.com.example.wagner.meupredi;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
@@ -18,8 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
-
-import static android.graphics.Color.rgb;
 
 /**
  * Created by LeandroDias1 on 18/04/2017.
@@ -41,7 +38,7 @@ public class Exercicios extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_exercicios, container, false);
+        final View view = inflater.inflate(R.layout.fragment_exercicios, container, false);
 
         start = (ImageView) view.findViewById(R.id.btn_start_exercicios);
         pause = (ImageView) view.findViewById(R.id.btn_pause_exercicios);
@@ -58,8 +55,8 @@ public class Exercicios extends Fragment {
                 else{
                     cronometro.setBase(SystemClock.elapsedRealtime());
                 }
-                start.setColorFilter(rgb(255, 64, 129));
-                pause.setColorFilter(Color.WHITE);
+                start.setVisibility(view.INVISIBLE);
+                pause.setVisibility(view.VISIBLE);
                 cronometro.start();
                 start.setEnabled(false);
                 pause.setEnabled(true);
@@ -71,9 +68,9 @@ public class Exercicios extends Fragment {
             public void onClick(View v) {
                 ultimaPausa = SystemClock.elapsedRealtime();
                 cronometro.stop();
-                start.setColorFilter(Color.WHITE);
-                pause.setColorFilter(Color.rgb(255, 64, 129));
+                pause.setVisibility(view.INVISIBLE);
                 pause.setEnabled(false);
+                start.setVisibility(view.VISIBLE);
                 start.setEnabled(true);
             }
         });
