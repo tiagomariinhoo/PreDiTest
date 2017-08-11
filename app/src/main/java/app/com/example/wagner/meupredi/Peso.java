@@ -147,7 +147,7 @@ public class Peso extends AppCompatActivity{
         } else if (paciente.get_imc() < 20.7){
             meta.setText(String.valueOf(paciente.get_peso() + (paciente.get_peso()*0.05)));
         } else {
-            meta.setText("Peso Ideal!");
+            meta.setText("-");
         }
 
 
@@ -170,7 +170,7 @@ public class Peso extends AppCompatActivity{
             theDates.add(String.valueOf(i));
         }
 
-        barDataSet.setColor(Color.WHITE);
+        barDataSet.setColor(Color.rgb(255, 182, 193));
         BarData theData = new BarData (theDates, barDataSet);
         barChart.setData(theData);
 
