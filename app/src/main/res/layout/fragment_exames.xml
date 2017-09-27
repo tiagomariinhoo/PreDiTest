@@ -6,153 +6,28 @@
     android:layout_height="fill_parent"
     android:background="@drawable/gradiente_plano_de_fundo">
 
-    <ImageView
-        android:id="@+id/image_perfil_exames"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048"
-        app:srcCompat="@mipmap/ic_launcher_round" />
-
-    <TextView
-        android:id="@+id/text_data_proximo_exame"
-        android:layout_width="179dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#ecf0f1"
-        android:fontFamily="sans-serif"
-        android:gravity="center_vertical"
-        android:text="  26/07/2017"
-        android:textAlignment="center"
-        android:textColor="#0000FF"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_data_ultimo_exame"
-        android:layout_width="179dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#ecf0f1"
-        android:fontFamily="sans-serif"
-        android:gravity="center_vertical"
-        android:text="15/06/2017  "
-        android:textAlignment="center"
-        android:textColor="#2c3e50"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/text_proximo_exame"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.501" />
-
-    <TextView
-        android:id="@+id/text_ultimo_exame_realizado"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#16a085"
-        android:text="Último Realizado   "
-        android:textAlignment="center"
-        android:textColor="#fff"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/text_data_ultimo_exame"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/text_proximo_exame"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:background="#16a085"
-        android:text="   Próximo Exame"
-        android:textAlignment="center"
-        android:textColor="#fff"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/text_ultimo_exame_realizado" />
-
-    <TextView
-        android:id="@+id/text_novo_exame"
-        android:layout_width="115dp"
-        android:layout_height="wrap_content"
-        android:text="Novo Exame"
-        android:textAlignment="center"
-        android:textColor="#bdc3c7"
-        android:textSize="10sp"
-        android:textStyle="italic"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintBottom_toTopOf="@+id/image_nova_atividade"
-        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/text_diagnosticos"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:background="#16a085"
+        android:layout_height="150dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/gradiente_azul"
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="------ Diagnósticos ------"
+        android:text="Diagnósticos"
         android:textAlignment="center"
         android:textColor="#fff"
         android:textSize="24sp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintTop_toBottomOf="@+id/text_data_ultimo_exame" />
-
-    <ImageView
-        android:id="@+id/image_nova_atividade"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.42000002"
-        app:srcCompat="@mipmap/ic_mais_bola"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:id="@+id/scroll_exames"
         android:layout_width="0dp"
-        android:layout_height="160dp"
+        android:layout_height="225dp"
         android:layout_marginTop="0dp"
         android:fillViewport="true"
         app:layout_constraintHorizontal_bias="0.0"
@@ -163,15 +38,33 @@
         <RelativeLayout
             android:id="@+id/botoes_exames"
             android:layout_width="340dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#7f8c8d">
+
+            <TextView
+                android:id="@+id/text_nops"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="0dp"
+                android:background="#ecf0f1"
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
 
             <TextView
                 android:id="@+id/text_glicose"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="25dp"
                 android:background="#ecf0f1"
-                android:drawableLeft="@mipmap/ic_glicose"
+                android:drawableLeft="@mipmap/ic_prancheta"
                 android:drawableRight="@mipmap/ic_seta_direita"
                 android:fontFamily="sans-serif"
                 android:gravity="center_vertical"
@@ -183,13 +76,17 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="1.0"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
             <TextView
                 android:id="@+id/text_hemograma"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@+id/text_glicose"
+                android:layout_marginTop="1dp"
                 android:background="#ecf0f1"
                 android:drawableLeft="@mipmap/ic_prancheta"
                 android:drawableRight="@mipmap/ic_seta_direita"
@@ -206,6 +103,7 @@
                 android:layout_height="50dp"
                 android:layout_below="@+id/text_hemograma"
                 android:background="#ecf0f1"
+                android:layout_marginTop="1dp"
                 android:drawableLeft="@mipmap/ic_prancheta"
                 android:drawableRight="@mipmap/ic_seta_direita"
                 android:fontFamily="sans-serif"
@@ -214,12 +112,12 @@
                 android:textAlignment="center"
                 android:textColor="#000"
                 android:textSize="20sp" />
-
             <TextView
                 android:id="@+id/text_tireoide"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@+id/text_lipidograma"
+                android:layout_marginTop="1dp"
                 android:background="#ecf0f1"
                 android:drawableLeft="@mipmap/ic_prancheta"
                 android:drawableRight="@mipmap/ic_seta_direita"
@@ -230,24 +128,28 @@
                 android:textColor="#000"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/text_hba1c"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_below="@+id/text_tireoide"
-                android:background="#ecf0f1"
-                android:drawableLeft="@mipmap/ic_prancheta"
-                android:drawableRight="@mipmap/ic_seta_direita"
-                android:fontFamily="sans-serif"
-                android:gravity="center_vertical"
-                android:text="Hba1c"
-                android:textAlignment="center"
-                android:textColor="#000"
-                android:textSize="20sp" />
-
         </RelativeLayout>
 
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/image_nova_atividade"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25"
+        app:srcCompat="@mipmap/ic_mais_bola"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontal_bias="0.929" />
+
 
 
 </android.support.constraint.ConstraintLayout>
