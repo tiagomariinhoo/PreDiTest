@@ -14,6 +14,8 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import app.com.example.wagner.meupredi.ExercicioClass;
+import app.com.example.wagner.meupredi.HemogramaClass;
+import app.com.example.wagner.meupredi.LipidogramaClass;
 
 /**
  * Created by wagne on 31/03/2017.
@@ -72,6 +74,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_NOME_EXERCICIO = "nomeExercicio";
     private static final String KEY_DATA_EXERCICIO = "dataExercicio";
     private static final String KEY_PAC3 = "pac3";
+
+    //TABLE LIPIDOGRAMA
+    private static final String TABLE_LIPIDOGRAMA = "lipidograma";
+
+    //COLUNAS DO LIPIDOGRAMA
+    private static final String KEY_ID_LIPIDOGRAMA = "idLipidograma";
+    private static final String KEY_HDL = "lipHdl";
+    private static final String KEY_LDL = "lipLdl";
+    private static final String KEY_COLESTEROLTOTAL = "lipColesterolTotal";
+    private static final String KEY_TRIGLICERIDES = "lipTriglicerides";
+    private static final String KEY_PAC4 = "pac4";
+
+    //TABLE HEMOGRAMA
+    private static final String TABLE_HEMOGRAMA = "hemograma";
+
+    //COLUNAS HEMOGRAMA
+    private static final String KEY_ID_HEMOGRAMA = "idHemograma";
+    private static final String KEY_HEMOGLOBINA = "hemHemoglobina";
+    private static final String KEY_HEMATOCRITO = "hemHematocrito";
+    private static final String KEY_VGM = "hemVgm"; // Vol Glob Medio
+    private static final String KEY_CHCM = "hemChcm"; // Hem Glob Media
+    private static final String KEY_CHGM = "hemChgm"; // C.H Glob Media
+    private static final String KEY_RWD = "hemRwd";
+    private static final String KEY_PAC5 = "pac5";
+
 
     /*
         KEY_PAC -> Chave estrangeira da tabela PESOS
@@ -136,7 +163,33 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_PAC3 + " INTEGER,"
                 + " FOREIGN KEY ("+KEY_PAC3+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
         db.execSQL(CREATE_EXERCICIOS_TABLE);
+
+        String CREATE_LIPIDOGRAMA_TABLE = "CREATE TABLE IF NOT EXISTS "
+                + TABLE_LIPIDOGRAMA
+                + "("
+                + KEY_ID_LIPIDOGRAMA + " INTEGER PRIMARY KEY,"
+                + KEY_HDL + " INTEGER,"
+                + KEY_LDL + " INTEGER,"
+                + KEY_COLESTEROLTOTAL + " INTEGER,"
+                + KEY_TRIGLICERIDES + " INTEGER,"
+                + " FOREIGN KEY ("+KEY_PAC4+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
+        db.execSQL(CREATE_LIPIDOGRAMA_TABLE);
+
+        String CREATE_HEMOGRAMA_TABLE = "CREATE TABLE IF NOT EXISTS "
+                + TABLE_HEMOGRAMA
+                + "("
+                + KEY_ID_HEMOGRAMA + " INTEGER PRIMARY KEY,"
+                + KEY_HEMOGLOBINA + " REAL,"
+                + KEY_HEMATOCRITO + " REAL,"
+                + KEY_VGM + " REAL,"
+                + KEY_CHCM + " REAL,"
+                + KEY_CHGM + " REAL,"
+                + KEY_RWD + " REAL,"
+                + " FOREIGN KEY ("+KEY_PAC5+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
+        db.execSQL(CREATE_HEMOGRAMA_TABLE);
     }
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -251,6 +304,52 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             return "Registro dos exames inserido com sucesso!";
         }
 
+    }
+
+    public String addLipidograma (LipidogramaClass lipidograma){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_HDL, lipidograma.getHDL());
+        values.put(KEY_LDL, lipidograma.getLDL());
+        values.put(KEY_COLESTEROLTOTAL, lipidograma.getColesterolTotal());
+        values.put(KEY_TRIGLICERIDES, lipidograma.getTriglicerides());
+        values.put(KEY_PAC4, lipidograma.getIdPacienteLipidograma());
+
+        long retorno;
+        retorno = db.insert(TABLE_LIPIDOGRAMA, null, values);
+        db.close();
+
+        if(retorno == -1){
+            return "Erro ao inserir o lipidograma!";
+        } else {
+            return "Registro do lipidograma feito com sucesso!";
+        }
+    }
+
+    public String addHemograma (HemogramaClass hemograma){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_HEMOGLOBINA, hemograma.getHemoglobina());
+        values.put(KEY_HEMATOCRITO, hemograma.getHematocrito());
+        values.put(KEY_VGM, hemograma.getVgm());
+        values.put(KEY_CHCM, hemograma.getChcm());
+        values.put(KEY_CHGM, hemograma.getChgm());
+        values.put(KEY_RWD, hemograma.getRwd());
+        values.put(KEY_PAC5, hemograma.getIdPacienteHemograma());
+
+        long retorno;
+        retorno = db.insert(TABLE_HEMOGRAMA, null, values);
+        db.close();
+
+        if(retorno == -1){
+            return "Erro ao inserir o hemograma";
+        } else {
+            return "Registro do hemograma feito com sucesso!";
+        }
     }
 
     //metodo chamado na classe CriarConta para adicionar um novo paciente ao banco
