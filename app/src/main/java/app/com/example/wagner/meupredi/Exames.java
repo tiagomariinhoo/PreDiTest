@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 
@@ -18,6 +19,7 @@ import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
 public class Exames extends Fragment{
 
     private ImageView chamadaNovoExame;
+    private TextView chamadaLipidograma, chamadaHemograma;
 
     @Nullable
     @Override
@@ -38,6 +40,31 @@ public class Exames extends Fragment{
                 startActivity(novoExame);
             }
         });
+
+        chamadaLipidograma = (TextView) view.findViewById(R.id.text_lipidograma);
+        chamadaLipidograma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Paciente paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
+
+                Intent novoExame = new Intent(getActivity(), TelaExameLipidograma.class);
+                novoExame.putExtra("Paciente", paciente);
+                startActivity(novoExame);
+            }
+        });
+
+        chamadaHemograma = (TextView) view.findViewById(R.id.text_hemograma);
+        chamadaHemograma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Paciente paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
+
+                Intent novoExame = new Intent(getActivity(), TelaExameHemograma.class);
+                novoExame.putExtra("Paciente", paciente);
+                startActivity(novoExame);
+            }
+        });
+
 
         return view;
     }

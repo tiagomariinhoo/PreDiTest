@@ -84,6 +84,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_LDL = "lipLdl";
     private static final String KEY_COLESTEROLTOTAL = "lipColesterolTotal";
     private static final String KEY_TRIGLICERIDES = "lipTriglicerides";
+    private static final String KEY_DATA_LIPIDOGRAMA = "dataLipidograma";
     private static final String KEY_PAC4 = "pac4";
 
     //TABLE HEMOGRAMA
@@ -97,6 +98,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_CHCM = "hemChcm"; // Hem Glob Media
     private static final String KEY_CHGM = "hemChgm"; // C.H Glob Media
     private static final String KEY_RWD = "hemRwd";
+    private static final String KEY_DATA_HEMOGRAMA = "dataHemograma";
     private static final String KEY_PAC5 = "pac5";
 
 
@@ -172,6 +174,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_LDL + " INTEGER,"
                 + KEY_COLESTEROLTOTAL + " INTEGER,"
                 + KEY_TRIGLICERIDES + " INTEGER,"
+                + KEY_DATA_LIPIDOGRAMA + " DATETIME,"
+                + KEY_PAC4 + " INTEGER,"
                 + " FOREIGN KEY ("+KEY_PAC4+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
         db.execSQL(CREATE_LIPIDOGRAMA_TABLE);
 
@@ -185,6 +189,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_CHCM + " REAL,"
                 + KEY_CHGM + " REAL,"
                 + KEY_RWD + " REAL,"
+                + KEY_DATA_HEMOGRAMA + " DATETIME,"
+                + KEY_PAC5 + " INTEGER,"
                 + " FOREIGN KEY ("+KEY_PAC5+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
         db.execSQL(CREATE_HEMOGRAMA_TABLE);
     }
@@ -198,6 +204,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXIST " + TABLE_PESOS);
         db.execSQL("DROP TABLE IF EXIST " + TABLE_EXAMES);
         db.execSQL("DROP TABLE IF EXIST " + TABLE_EXERCICIOS);
+        db.execSQL("DROP TABLE IF EXIST " + TABLE_LIPIDOGRAMA);
+        db.execSQL("DROP TABLE IF EXIST " + TABLE_HEMOGRAMA);
 
         onCreate(db);
     }
@@ -315,6 +323,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_LDL, lipidograma.getLDL());
         values.put(KEY_COLESTEROLTOTAL, lipidograma.getColesterolTotal());
         values.put(KEY_TRIGLICERIDES, lipidograma.getTriglicerides());
+        values.put(KEY_DATA_LIPIDOGRAMA, lipidograma.getDataLipidograma());
         values.put(KEY_PAC4, lipidograma.getIdPacienteLipidograma());
 
         long retorno;
@@ -339,6 +348,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_CHCM, hemograma.getChcm());
         values.put(KEY_CHGM, hemograma.getChgm());
         values.put(KEY_RWD, hemograma.getRwd());
+        values.put(KEY_DATA_HEMOGRAMA, hemograma.getDataHemograma());
         values.put(KEY_PAC5, hemograma.getIdPacienteHemograma());
 
         long retorno;

@@ -1,15 +1,17 @@
 package app.com.example.wagner.meupredi;
 
+
 /**
  * Created by LeandroDias1 on 27/09/2017.
  */
 
-public class LipidogramaClass {
+public class LipidogramaClass{
     int idPacienteLipidograma;
     int HDL;
     int LDL;
     int ColesterolTotal;
     int Triglicerides;
+    String dataLipidograma;
 
     public int getIdPacienteLipidograma() {
         return idPacienteLipidograma;
@@ -49,5 +51,13 @@ public class LipidogramaClass {
 
     public void setTriglicerides(int triglicerides) {
         Triglicerides = triglicerides;
+    }
+
+    public String getDataLipidograma() {
+        return dataLipidograma;
+    }
+
+    public void setDataLipidograma(String dataLipidograma) {
+        this.dataLipidograma = dataLipidograma;
     }
 }

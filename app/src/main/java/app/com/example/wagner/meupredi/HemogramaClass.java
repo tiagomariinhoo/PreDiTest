@@ -12,6 +12,7 @@ public class HemogramaClass {
     double chcm;
     double chgm;
     double rwd;
+    String dataHemograma;
 
     public int getIdPacienteHemograma() {
         return idPacienteHemograma;
@@ -67,5 +68,13 @@ public class HemogramaClass {
 
     public void setRwd(double rwd) {
         this.rwd = rwd;
+    }
+
+    public String getDataHemograma() {
+        return dataHemograma;
+    }
+
+    public void setDataHemograma(String dataHemograma) {
+        this.dataHemograma = dataHemograma;
     }
 }

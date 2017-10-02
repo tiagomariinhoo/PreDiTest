@@ -42,7 +42,7 @@ public class Peso extends AppCompatActivity{
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peso);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
