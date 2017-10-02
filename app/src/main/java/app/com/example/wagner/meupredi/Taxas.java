@@ -33,7 +33,7 @@ public class Taxas  extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_taxas);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 

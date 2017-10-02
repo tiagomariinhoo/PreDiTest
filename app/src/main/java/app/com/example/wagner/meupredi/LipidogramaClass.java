@@ -7,11 +7,12 @@ package app.com.example.wagner.meupredi;
 
 public class LipidogramaClass{
     int idPacienteLipidograma;
-    int HDL;
-    int LDL;
-    int ColesterolTotal;
-    int Triglicerides;
+    double HDL;
+    double LDL;
+    double ColesterolTotal;
+    double Triglicerides;
     String dataLipidograma;
+    String localLipidograma;
 
     public int getIdPacienteLipidograma() {
         return idPacienteLipidograma;
@@ -21,35 +22,35 @@ public class LipidogramaClass{
         this.idPacienteLipidograma = idPacienteLipidograma;
     }
 
-    public int getHDL() {
+    public double getHDL() {
         return HDL;
     }
 
-    public void setHDL(int HDL) {
+    public void setHDL(double HDL) {
         this.HDL = HDL;
     }
 
-    public int getLDL() {
+    public double getLDL() {
         return LDL;
     }
 
-    public void setLDL(int LDL) {
+    public void setLDL(double LDL) {
         this.LDL = LDL;
     }
 
-    public int getColesterolTotal() {
+    public double getColesterolTotal() {
         return ColesterolTotal;
     }
 
-    public void setColesterolTotal(int colesterolTotal) {
+    public void setColesterolTotal(double colesterolTotal) {
         ColesterolTotal = colesterolTotal;
     }
 
-    public int getTriglicerides() {
+    public double getTriglicerides() {
         return Triglicerides;
     }
 
-    public void setTriglicerides(int triglicerides) {
+    public void setTriglicerides(double triglicerides) {
         Triglicerides = triglicerides;
     }
 
@@ -59,5 +60,13 @@ public class LipidogramaClass{
 
     public void setDataLipidograma(String dataLipidograma) {
         this.dataLipidograma = dataLipidograma;
+    }
+
+    public String getLocalLipidograma() {
+        return localLipidograma;
+    }
+
+    public void setLocalLipidograma(String localLipidograma) {
+        this.localLipidograma = localLipidograma;
     }
 }
