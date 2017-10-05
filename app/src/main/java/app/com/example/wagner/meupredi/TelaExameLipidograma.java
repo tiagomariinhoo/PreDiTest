@@ -1,11 +1,9 @@
 package app.com.example.wagner.meupredi;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -34,17 +32,17 @@ public class TelaExameLipidograma extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exame_lipidograma);
 
-        dataLipidograma = (EditText) findViewById(R.id.edit_data_exame_hemograma);
+        dataLipidograma = (EditText) findViewById(R.id.edit_data_exame_lipidograma);
         dataLipidograma.setRawInputType(Configuration.KEYBOARD_QWERTY);
-        localLipidograma = (EditText) findViewById(R.id.edit_local_exame_hemograma);
+        localLipidograma = (EditText) findViewById(R.id.edit_local_exame_lipidograma);
 
-        hdl = (EditText) findViewById(R.id.edit_hemoglobina_exame_hemograma);
+        hdl = (EditText) findViewById(R.id.edit_taxa_hdl_exame_lipidograma);
         hdl.setRawInputType(Configuration.KEYBOARD_QWERTY);
-        ldl = (EditText) findViewById(R.id.edit_hematocrito_exame_hemograma);
+        ldl = (EditText) findViewById(R.id.edit_taxa_ldl_exame_lipidograma);
         ldl.setRawInputType(Configuration.KEYBOARD_QWERTY);
-        colesterolTotal = (EditText) findViewById(R.id.edit_vgm_exame_hemograma);
+        colesterolTotal = (EditText) findViewById(R.id.edit_colesterol_total_exame_lipidograma);
         colesterolTotal.setRawInputType(Configuration.KEYBOARD_QWERTY);
-        triglicerides = (EditText) findViewById(R.id.edit_chcm_exame_hemograma);
+        //triglicerides = (EditText) findViewById(R.id.edit_chcm_exame_hemograma);
         triglicerides.setRawInputType(Configuration.KEYBOARD_QWERTY);
 
         atualizar = (Button) findViewById(R.id.btn_atualizar_exame_lipidograma);
