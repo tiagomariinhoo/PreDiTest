@@ -42,8 +42,8 @@ public class TelaExameLipidograma extends AppCompatActivity {
         ldl.setRawInputType(Configuration.KEYBOARD_QWERTY);
         colesterolTotal = (EditText) findViewById(R.id.edit_colesterol_total_exame_lipidograma);
         colesterolTotal.setRawInputType(Configuration.KEYBOARD_QWERTY);
-        //triglicerides = (EditText) findViewById(R.id.edit_chcm_exame_hemograma);
-        triglicerides.setRawInputType(Configuration.KEYBOARD_QWERTY);
+        triglicerides = (EditText) findViewById(R.id.edit_chcm_exame_hemograma);
+//        triglicerides.setRawInputType(Configuration.KEYBOARD_QWERTY);
 
         atualizar = (Button) findViewById(R.id.btn_atualizar_exame_lipidograma);
 
