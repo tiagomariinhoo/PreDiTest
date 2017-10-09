@@ -97,6 +97,7 @@ public class TelaLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent abreCriarConta = new Intent(TelaLogin.this, CriarConta.class);
+                finish();
                 startActivity(abreCriarConta);
             }
         });
@@ -145,6 +146,8 @@ public class TelaLogin extends AppCompatActivity {
 
                     Intent it = new Intent(TelaLogin.this, PosLogin.class);
                     it.putExtra("Paciente", paciente);
+                    finish();
+                    it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(it);
                 } else {
                     Toast.makeText(getApplicationContext(), "Usuário inválido!", Toast.LENGTH_LONG).show();
@@ -156,6 +159,7 @@ public class TelaLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TelaLogin.this, EsqueceuSenha.class);
+                finish();
                 startActivity(intent);
             }
         });

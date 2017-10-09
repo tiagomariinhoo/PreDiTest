@@ -114,8 +114,8 @@ public class Peso extends AppCompatActivity{
 
                         Intent intent = new Intent(Peso.this, MenuPrincipal.class);
                         intent.putExtra("Paciente", paciente);
+                        finish();
                         startActivity(intent);
-
 
                     } else {
                         Toast.makeText(getApplicationContext(),"Peso inválido!",Toast.LENGTH_SHORT).show();

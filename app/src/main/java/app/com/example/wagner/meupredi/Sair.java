@@ -64,6 +64,7 @@ public class Sair extends Fragment  implements View.OnClickListener {
                 editor.commit();
 
                 Intent intent = new Intent(getActivity(), TelaLogin.class);
+                getActivity().finish();
                 startActivity(intent);
             }
         });
