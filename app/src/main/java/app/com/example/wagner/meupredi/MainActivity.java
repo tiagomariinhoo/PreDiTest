@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             //db.addPaciente(new Paciente(0, "Shelly", 15, 12, 3));
         }
 
-        Intent intent = new Intent(MainActivity.this, TelaLogin.class);
+        Intent intent = new Intent(MainActivity.this, TelaLoginSplash.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         finish();
         startActivity(intent);

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -31,12 +32,14 @@ public class CriarConta extends AppCompatActivity {
     private EditText nome, email, data, senha, conSenha;
     private Spinner sexo;
     private ConstraintLayout tela;
-    private Button criarConta, cancelar;
+    private Button criarConta;
+    TextView cancelar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_criar_conta);
 
         boxSenha = (CheckBox) findViewById(R.id.checkedConSenha);
@@ -49,7 +52,7 @@ public class CriarConta extends AppCompatActivity {
         conSenha = (EditText) findViewById(R.id.edit_novamente_senha);
 
         criarConta = (Button) findViewById(R.id.btn_criar_conta);
-        cancelar = (Button) findViewById(R.id.btn_cancelar);
+        cancelar = (TextView) findViewById(R.id.btn_cancelar);
         tela = (ConstraintLayout) findViewById(R.id.tela_criar_conta);
 
         findViewById(R.id.tela_criar_conta).setOnClickListener(new View.OnClickListener() {
