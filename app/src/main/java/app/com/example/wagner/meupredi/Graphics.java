@@ -23,7 +23,7 @@ import app.com.example.wagner.meupredi.R;
  * Created by LeandroDias1 on 26/07/2017.
  */
 
-public class Graph extends AppCompatActivity{
+public class Graphics extends AppCompatActivity{
 
 
     BarChart barChart;

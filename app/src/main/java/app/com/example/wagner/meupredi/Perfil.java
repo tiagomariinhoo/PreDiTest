@@ -115,7 +115,7 @@ public class Perfil extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), Graph.class);
+                Intent intent = new Intent(getActivity(), Graphics.class);
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 intent.putExtra("Paciente", paciente);
                 startActivity(intent);
             }
@@ -161,7 +161,7 @@ public class Perfil extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), Graph.class);
+                Intent intent = new Intent(getActivity(), Graphics.class);
                 intent.putExtra("Paciente", paciente);
                 startActivity(intent);
             }

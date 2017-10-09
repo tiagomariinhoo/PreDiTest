@@ -20,12 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TelaLoginSplash" />
         <activity android:name=".TelaLogin" />
         <activity android:name=".CriarConta" />
         <activity android:name=".PosLogin" />
         <activity android:name=".EsqueceuSenha" />
         <activity android:name=".cadastroExame" />
-        <activity android:name=".Graph" />
+        <activity android:name=".Graphics" />
         <activity
             android:name=".Ginasio">
             <intent-filter>
@@ -58,6 +59,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TelaExameLipidograma" />
         <activity android:name=".TelaExameHemograma" />
+
     </application>
 
 </manifest>
