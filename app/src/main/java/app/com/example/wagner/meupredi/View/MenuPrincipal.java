@@ -1,4 +1,4 @@
-package app.com.example.wagner.meupredi;
+package app.com.example.wagner.meupredi.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,8 +15,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
-import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
-import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
+import app.com.example.wagner.meupredi.BDMenuLoginController.DatabaseHandler;
+import app.com.example.wagner.meupredi.Model.Paciente;
+import app.com.example.wagner.meupredi.Consultas;
+import app.com.example.wagner.meupredi.Exames;
+import app.com.example.wagner.meupredi.Exercicios;
+import app.com.example.wagner.meupredi.Medicamentos;
+import app.com.example.wagner.meupredi.Perfil;
+import app.com.example.wagner.meupredi.R;
+import app.com.example.wagner.meupredi.Sair;
 
 public class MenuPrincipal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -147,7 +154,7 @@ public class MenuPrincipal extends AppCompatActivity
         //pega dados atualizados do paciente no banco
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
         paciente = db.getPaciente(paciente.get_email());
-        paciente.calculo_diabetes(getApplicationContext());
+        //paciente.calculo_diabetes(getApplicationContext());
 
         return paciente;
     }

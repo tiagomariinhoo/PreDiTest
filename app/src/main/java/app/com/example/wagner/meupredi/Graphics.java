@@ -1,11 +1,8 @@
 package app.com.example.wagner.meupredi;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -15,9 +12,9 @@ import com.github.mikephil.charting.data.BarEntry;
 import java.text.ParseException;
 import java.util.ArrayList;
 
-import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
-import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
-import app.com.example.wagner.meupredi.R;
+import app.com.example.wagner.meupredi.BDMenuLoginController.DatabaseHandler;
+import app.com.example.wagner.meupredi.Model.ExercicioClass;
+import app.com.example.wagner.meupredi.Model.Paciente;
 
 /**
  * Created by LeandroDias1 on 26/07/2017.

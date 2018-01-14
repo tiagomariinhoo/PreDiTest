@@ -1,11 +1,10 @@
-        package app.com.example.wagner.meupredi.BDMenuLogin;
+        package app.com.example.wagner.meupredi.Model;
 
         import android.content.Context;
         import android.support.v7.app.AppCompatActivity;
         import android.util.Log;
         import android.widget.Toast;
         import java.io.Serializable;
-        import java.util.GregorianCalendar;
 
         /**
  * Created by wagne on 31/03/2017.

@@ -1,4 +1,4 @@
-package app.com.example.wagner.meupredi;
+package app.com.example.wagner.meupredi.Model;
 
 
 /**

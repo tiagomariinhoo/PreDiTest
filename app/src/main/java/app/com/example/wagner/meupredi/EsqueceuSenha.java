@@ -12,8 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
-import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
+import app.com.example.wagner.meupredi.BDMenuLoginController.DatabaseHandler;
+import app.com.example.wagner.meupredi.Model.Paciente;
 
 /**
  * Created by LeandroDias1 on 10/04/2017.

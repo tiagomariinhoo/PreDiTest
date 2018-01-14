@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Model.TelaLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".TelaLoginSplash" />
         <activity android:name=".TelaLogin" />
-        <activity android:name=".CriarConta" />
+        <activity android:name=".Model.CriarConta" />
         <activity android:name=".PosLogin" />
         <activity android:name=".EsqueceuSenha" />
         <activity android:name=".cadastroExame" />
@@ -54,7 +54,7 @@
             android:name=".Dados"
             android:label="Dados de registro" />
         <activity
-            android:name=".MenuPrincipal"
+            android:name=".View.MenuPrincipal"
             android:label="@string/title_activity_menu_principal"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TelaExameLipidograma" />

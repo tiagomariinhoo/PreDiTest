@@ -1,8 +1,12 @@
 package app.com.example.wagner.meupredi;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -15,8 +19,10 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
-import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
-import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
+import app.com.example.wagner.meupredi.BDMenuLoginController.DatabaseHandler;
+import app.com.example.wagner.meupredi.Model.CriarConta;
+import app.com.example.wagner.meupredi.Model.Paciente;
+import app.com.example.wagner.meupredi.View.MenuPrincipal;
 
 /**
  * Created by LeandroDias1 on 25/07/2017.
@@ -28,6 +34,14 @@ public class Taxas  extends AppCompatActivity {
     TextView  glicoseJejum, glicose75, colesterol;
     EditText novaGlicose75, novaGlicoseJejum, novoColesterol;
     Button atualizarTaxas;
+
+    FragmentTransaction transaction;
+    FragmentManager fragmentManager;
+
+    Class fragmentClasse = null;
+    private Fragment MyFragment;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,10 +149,18 @@ public class Taxas  extends AppCompatActivity {
                 db.atualizarTaxas(paciente);
 
                 Toast.makeText(getApplicationContext(),"Taxas atualizadas com sucesso!",Toast.LENGTH_SHORT).show();
-
+                paciente.calculo_diabetes(getApplicationContext());
                 novaGlicoseJejum.setText("");
                 novaGlicose75.setText("");
                 novoColesterol.setText("");
+
+                /*Fragment fragment = new Fragment();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.image_dados_perfil, fragment);
+                transaction.commit();
+                */
+                finish();
+
             }
         });
     }

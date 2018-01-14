@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
-import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
+import app.com.example.wagner.meupredi.BDMenuLoginController.DatabaseHandler;
+import app.com.example.wagner.meupredi.Model.Paciente;
 
 /**
  * Created by wagne on 09/07/2017.

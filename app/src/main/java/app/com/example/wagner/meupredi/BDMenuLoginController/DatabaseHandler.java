@@ -1,4 +1,4 @@
-package app.com.example.wagner.meupredi.BDMenuLogin;
+package app.com.example.wagner.meupredi.BDMenuLoginController;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -13,9 +13,11 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import app.com.example.wagner.meupredi.ExercicioClass;
-import app.com.example.wagner.meupredi.HemogramaClass;
-import app.com.example.wagner.meupredi.LipidogramaClass;
+import app.com.example.wagner.meupredi.Model.ExameClass;
+import app.com.example.wagner.meupredi.Model.ExercicioClass;
+import app.com.example.wagner.meupredi.Model.HemogramaClass;
+import app.com.example.wagner.meupredi.Model.LipidogramaClass;
+import app.com.example.wagner.meupredi.Model.Paciente;
 
 /**
  * Created by wagne on 31/03/2017.

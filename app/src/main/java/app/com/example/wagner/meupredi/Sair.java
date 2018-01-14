@@ -12,7 +12,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
+import app.com.example.wagner.meupredi.Model.Paciente;
+import app.com.example.wagner.meupredi.View.MenuPrincipal;
 
 import static app.com.example.wagner.meupredi.TelaLogin.PREFS_NAME;
 

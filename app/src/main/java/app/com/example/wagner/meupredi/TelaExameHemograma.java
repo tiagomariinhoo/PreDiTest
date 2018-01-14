@@ -11,8 +11,9 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
-import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
-import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
+import app.com.example.wagner.meupredi.BDMenuLoginController.DatabaseHandler;
+import app.com.example.wagner.meupredi.Model.HemogramaClass;
+import app.com.example.wagner.meupredi.Model.Paciente;
 
 /**
  * Created by LeandroDias1 on 28/09/2017.

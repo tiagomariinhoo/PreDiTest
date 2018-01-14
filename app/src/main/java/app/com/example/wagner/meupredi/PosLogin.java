@@ -16,8 +16,10 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
-import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
-import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
+import app.com.example.wagner.meupredi.BDMenuLoginController.DatabaseHandler;
+import app.com.example.wagner.meupredi.Model.Paciente;
+import app.com.example.wagner.meupredi.View.MenuPrincipal;
+
 /**
  * Created by Pichau on 08/04/2017.
  */

@@ -6,17 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
-import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
+import app.com.example.wagner.meupredi.BDMenuLoginController.DatabaseHandler;
+import app.com.example.wagner.meupredi.Model.ExercicioClass;
+import app.com.example.wagner.meupredi.Model.Paciente;
 
 /**
  * Created by wagne on 07/07/2017.

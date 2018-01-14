@@ -1,4 +1,4 @@
-package app.com.example.wagner.meupredi;
+package app.com.example.wagner.meupredi.Model;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
+import app.com.example.wagner.meupredi.BDMenuLoginController.DatabaseHandler;
+import app.com.example.wagner.meupredi.R;
+import app.com.example.wagner.meupredi.TelaLoginSplash;
 
-public class MainActivity extends AppCompatActivity {
+public class TelaLogin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             //db.addPaciente(new Paciente(0, "Shelly", 15, 12, 3));
         }
 
-        Intent intent = new Intent(MainActivity.this, TelaLoginSplash.class);
+        Intent intent = new Intent(TelaLogin.this, TelaLoginSplash.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         finish();
         startActivity(intent);

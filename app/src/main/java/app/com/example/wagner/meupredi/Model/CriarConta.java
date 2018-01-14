@@ -1,4 +1,4 @@
-package app.com.example.wagner.meupredi;
+package app.com.example.wagner.meupredi.Model;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import app.com.example.wagner.meupredi.BDMenuLogin.DatabaseHandler;
-import app.com.example.wagner.meupredi.BDMenuLogin.Paciente;
+import app.com.example.wagner.meupredi.*;
+import app.com.example.wagner.meupredi.BDMenuLoginController.DatabaseHandler;
 
 public class CriarConta extends AppCompatActivity {
 
@@ -195,7 +195,7 @@ public class CriarConta extends AppCompatActivity {
 
                         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
 
-                        Intent voltaLogin = new Intent(CriarConta.this, TelaLogin.class);
+                        Intent voltaLogin = new Intent(CriarConta.this, app.com.example.wagner.meupredi.TelaLogin.class);
                         startActivity(voltaLogin);
 
                     } else {
@@ -211,7 +211,7 @@ public class CriarConta extends AppCompatActivity {
         cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent voltaLogin = new Intent(CriarConta.this, TelaLogin.class);
+                Intent voltaLogin = new Intent(CriarConta.this, app.com.example.wagner.meupredi.TelaLogin.class);
                 startActivity(voltaLogin);
             }
         });
