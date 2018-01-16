@@ -161,11 +161,15 @@ public class Peso extends AppCompatActivity{
 
         pesos = db.getAllPesos(paciente.get_id());
 
+        for(int i=1;i<=10;i++) pesos.add(Float.valueOf(0));
+
         if(pesos.size()>0){
             for(int i=0;i<pesos.size();i++){
                 barEntries.add(new BarEntry(Float.valueOf(pesos.get(i)),i));
             }
         }
+
+
 
         BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
         ArrayList<String> theDates = new ArrayList<>();

@@ -13,7 +13,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import app.com.example.wagner.meupredi.BDMenuLoginController.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.Paciente;
@@ -29,6 +33,8 @@ public class MenuPrincipal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Paciente paciente;
+    private TextView nome;
+    private TextView email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +73,18 @@ public class MenuPrincipal extends AppCompatActivity
         Log.d("Hemograma : ", String.valueOf(paciente.get_hemograma()));
         Log.d("Tireoide : ", String.valueOf(paciente.get_tireoide()));
 
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        //navigationView.getBackground().setAlpha(60);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View header = navigationView.getHeaderView(0);
+
+        nome = (TextView) header.findViewById(R.id.nomePacienteNavigation);
+        nome.setText(paciente.get_nome());
+
+        email = (TextView) header.findViewById(R.id.emailPacienteNavigation);
+        email.setText((paciente.get_email()));
 
         displaySelectedScreen(R.id.nav_perfil);
     }
