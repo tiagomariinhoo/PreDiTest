@@ -12,12 +12,14 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -29,6 +31,8 @@ public class Consultas extends Fragment {
 
     CompactCalendarView compactCalendar;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM, yyyy", Locale.getDefault());
+
+    TextView dataMarcada;
 
     @Nullable
     @Override
@@ -45,6 +49,10 @@ public class Consultas extends Fragment {
 
         Event ev1 = new Event(Color.RED, 1477040400000L, "Teachers' Professional Day");
         compactCalendar.addEvent(ev1, false);
+
+        //dataMarcada = (TextView)view.findViewById(R.id.text_data_marcada);
+
+        //dataMarcada.setText(Calendar.getInstance().get(Calendar.DAY_OF_WEEK));
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
