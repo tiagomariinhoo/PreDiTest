@@ -39,31 +39,15 @@
 
         <RelativeLayout
             android:id="@+id/botoes_exames"
-            android:layout_width="340dp"
-            android:layout_height="match_parent"
-            android:background="#7f8c8d">
-
-            <TextView
-                android:id="@+id/text_nops"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginTop="0dp"
-                android:background="#ecf0f1"
-                android:fontFamily="sans-serif"
-                android:gravity="center_vertical"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            >
 
             <TextView
                 android:id="@+id/text_glicose"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="25dp"
                 android:background="#ecf0f1"
                 android:drawableLeft="@mipmap/ic_prancheta"
                 android:drawableRight="@mipmap/ic_seta_direita"
@@ -78,9 +62,9 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" />
 
             <TextView
                 android:id="@+id/text_hemograma"
@@ -113,21 +97,7 @@
                 android:textAlignment="center"
                 android:textColor="#000"
                 android:textSize="20sp" />
-            <TextView
-                android:id="@+id/text_tireoide"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_below="@+id/text_lipidograma"
-                android:layout_marginTop="1dp"
-                android:background="#ecf0f1"
-                android:drawableLeft="@mipmap/ic_prancheta"
-                android:drawableRight="@mipmap/ic_seta_direita"
-                android:fontFamily="sans-serif"
-                android:gravity="center_vertical"
-                android:text="Tireoide"
-                android:textAlignment="center"
-                android:textColor="#000"
-                android:textSize="20sp" />
+
 
         </RelativeLayout>
 
