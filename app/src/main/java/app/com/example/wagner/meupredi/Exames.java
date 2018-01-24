@@ -1,5 +1,6 @@
 package app.com.example.wagner.meupredi;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,8 +8,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import app.com.example.wagner.meupredi.Model.Paciente;
 import app.com.example.wagner.meupredi.View.MenuPrincipal;
@@ -21,6 +25,8 @@ public class Exames extends Fragment{
 
     private ImageView chamadaNovoExame;
     private TextView chamadaLipidograma, chamadaHemograma;
+    private Dialog myDialog;
+    private Button popUpBut;
 
     @Nullable
     @Override
@@ -67,8 +73,18 @@ public class Exames extends Fragment{
         });
 
 
+
+        myDialog = new Dialog(this.getContext());
+
+
         return view;
     }
+
+    public void ShowPopup(View v){
+        myDialog.setContentView(R.layout.popup_exames);
+        myDialog.show();
+    }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
