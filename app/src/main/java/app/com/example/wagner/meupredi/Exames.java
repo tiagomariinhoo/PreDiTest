@@ -28,6 +28,7 @@ public class Exames extends Fragment{
     private Dialog myDialog;
     private Button popUpBut;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -72,19 +73,36 @@ public class Exames extends Fragment{
             }
         });
 
+        popUpBut = (Button) view.findViewById(R.id.showPop);
+        popUpBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+                public void onClick(View v) {
+                TextView txtClose;
 
+                myDialog = new Dialog(getContext());
 
-        myDialog = new Dialog(this.getContext());
+                myDialog.setContentView(R.layout.popup_exames);
+                myDialog.show();
+
+                txtClose = (TextView) myDialog.findViewById(R.id.closepopUp);
+                txtClose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        myDialog.dismiss();
+                    }
+                });
+            }
+        });
 
 
         return view;
     }
-
-    public void ShowPopup(View v){
+/*
+    private void ShowPopup(View v){
         myDialog.setContentView(R.layout.popup_exames);
         myDialog.show();
     }
-
+*/
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

@@ -8,6 +8,7 @@
     android:layout_gravity="center">
     
     <TextView
+        android:id="@+id/closepopUp"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:textColor="@color/colorBranco"
@@ -35,7 +36,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/medicopopup"
+            android:src="@drawable/medico2"
             />
     </LinearLayout>
 

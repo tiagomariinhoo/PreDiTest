@@ -122,7 +122,8 @@
         app:layout_constraintHorizontal_bias="0.929" />
 
     <Button
-        android:onClick=""
+        android:onClick="ShowPopup"
+        android:id="@+id/showPop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
