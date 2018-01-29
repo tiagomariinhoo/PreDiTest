@@ -218,7 +218,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         GregorianCalendar calendar = new GregorianCalendar();
         int dia =  calendar.get(GregorianCalendar.DAY_OF_YEAR);
+
         Log.d("Dia do ano : ", String.valueOf(dia));
+        Log.d("Tempo do exercicio : ", String.valueOf(tempo));
 
         SQLiteDatabase db = this.getWritableDatabase();
 

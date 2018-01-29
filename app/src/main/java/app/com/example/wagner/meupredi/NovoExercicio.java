@@ -2,18 +2,24 @@ package app.com.example.wagner.meupredi;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import app.com.example.wagner.meupredi.BDMenuLoginController.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.Paciente;
+
+import static android.R.attr.onClick;
 
 /**
  * Created by wagne on 09/07/2017.
@@ -23,7 +29,8 @@ public class NovoExercicio extends AppCompatActivity {
 
     private Button adicionar;
     private ArrayList<String> listaExercicios;
-    private CheckBox checkBoxAcademia, checkBoxCorrida, checkBoxCiclismo, checkBoxFutebol, checkBoxNatacao, checkBoxTenis, checkBoxOutra;
+    private RadioButton checkBoxAcademia, checkBoxCorrida, checkBoxCiclismo, checkBoxFutebol, checkBoxNatacao, checkBoxTenis, checkBoxOutra;
+    private RadioGroup radioGroup;
     private EditText metaDiaria;
     private Paciente paciente;
     String metaDia;
@@ -36,14 +43,15 @@ public class NovoExercicio extends AppCompatActivity {
 
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 
-        checkBoxAcademia = (CheckBox) findViewById(R.id.checkBox_academia);
-        checkBoxCiclismo = (CheckBox) findViewById(R.id.checkBox_ciclismo);
-        checkBoxCorrida = (CheckBox) findViewById(R.id.checkBox_corrida);
-        checkBoxFutebol = (CheckBox) findViewById(R.id.checkBox_futebol);
-        checkBoxTenis = (CheckBox) findViewById(R.id.checkBox_tenis);
-        checkBoxNatacao = (CheckBox) findViewById(R.id.checkBox_natacao);
-        checkBoxOutra = (CheckBox) findViewById(R.id.checkBox_outra);
+        checkBoxAcademia = (RadioButton) findViewById(R.id.checkBox_academia);
+        checkBoxCiclismo = (RadioButton) findViewById(R.id.checkBox_ciclismo);
+        checkBoxCorrida = (RadioButton) findViewById(R.id.checkBox_corrida);
+        checkBoxFutebol = (RadioButton) findViewById(R.id.checkBox_futebol);
+        checkBoxTenis = (RadioButton) findViewById(R.id.checkBox_tenis);
+        checkBoxNatacao = (RadioButton) findViewById(R.id.checkBox_natacao);
+        checkBoxOutra = (RadioButton) findViewById(R.id.checkBox_outra);
         metaDiaria = (EditText) findViewById(R.id.edit_novo_exe_meta_diaria);
+        radioGroup = (RadioGroup) findViewById(R.id.radio_group_exercicios);
 
         Log.d("TEMA 4", " TEMA 4");
         listaExercicios = getIntent().getStringArrayListExtra("listaExercicios2");
@@ -54,6 +62,111 @@ public class NovoExercicio extends AppCompatActivity {
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
         adicionar = (Button) findViewById(R.id.btn_salvar_novo_exe);
+
+
+
+        /*if(checkBoxAcademia.isChecked()){
+            checkBoxAcademia.toggle();
+        } else if(checkBoxCiclismo.isChecked()){
+            checkBoxCiclismo.toggle();
+        } else if(checkBoxCorrida.isChecked()){
+            checkBoxCorrida.toggle();
+        }*/
+
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+
+            }
+        });
+
+        /*checkBoxAcademia.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //checkBoxAcademia.toggle();
+                checkBoxCiclismo.setChecked(false);
+                checkBoxCorrida.setChecked(false);
+                checkBoxFutebol.setChecked(false);
+                checkBoxTenis.setChecked(false);
+                checkBoxNatacao.setChecked(false);
+                checkBoxOutra.setChecked(false);
+
+            }
+        });
+
+        checkBoxCiclismo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //checkBoxCiclismo.toggle();
+               /* checkBoxAcademia.setChecked(false);
+                checkBoxCorrida.setChecked(false);
+                checkBoxFutebol.setChecked(false);
+                checkBoxTenis.setChecked(false);
+                checkBoxNatacao.setChecked(false);
+                checkBoxOutra.setChecked(false);
+            }
+        });
+
+        checkBoxCorrida.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                checkBoxCiclismo.setChecked(false);
+                checkBoxAcademia.setChecked(false);
+                checkBoxFutebol.setChecked(false);
+                checkBoxTenis.setChecked(false);
+                checkBoxNatacao.setChecked(false);
+                checkBoxOutra.setChecked(false);
+            }
+        });
+
+        checkBoxFutebol.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                checkBoxCiclismo.setChecked(false);
+                checkBoxCorrida.setChecked(false);
+                checkBoxAcademia.setChecked(false);
+                checkBoxTenis.setChecked(false);
+                checkBoxNatacao.setChecked(false);
+                checkBoxOutra.setChecked(false);
+            }
+        });
+
+        checkBoxTenis.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                checkBoxCiclismo.setChecked(false);
+                checkBoxCorrida.setChecked(false);
+                checkBoxFutebol.setChecked(false);
+                checkBoxAcademia.setChecked(false);
+                checkBoxNatacao.setChecked(false);
+                checkBoxOutra.setChecked(false);
+            }
+        });
+
+        checkBoxNatacao.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                checkBoxCiclismo.setChecked(false);
+                checkBoxCorrida.setChecked(false);
+                checkBoxFutebol.setChecked(false);
+                checkBoxTenis.setChecked(false);
+                checkBoxAcademia.setChecked(false);
+                checkBoxOutra.setChecked(false);
+            }
+        });
+
+        checkBoxOutra.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                checkBoxCiclismo.setChecked(false);
+                checkBoxCorrida.setChecked(false);
+                checkBoxFutebol.setChecked(false);
+                checkBoxTenis.setChecked(false);
+                checkBoxNatacao.setChecked(false);
+                checkBoxAcademia.setChecked(false);
+            }
+        });*/
 
         adicionar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +188,7 @@ public class NovoExercicio extends AppCompatActivity {
                         adicionarExercicio("Tenis");
                     } else if (checkBoxNatacao.isChecked()) {
                         adicionarExercicio("Natação");
-                    } else if (checkBoxCiclismo.isChecked()) {
+                    } else if (checkBoxOutra.isChecked()) {
                         adicionarExercicio("Outra");
                     }
 
@@ -85,7 +198,7 @@ public class NovoExercicio extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(getApplicationContext(),"Por favor, digite um valor válido na meta do dia!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Por favor, digite um valor válido!",Toast.LENGTH_LONG).show();
                 }
 
             }
