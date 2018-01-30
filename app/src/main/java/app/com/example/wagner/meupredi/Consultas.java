@@ -1,5 +1,7 @@
 package app.com.example.wagner.meupredi;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,12 +14,16 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,10 +35,10 @@ import java.util.Locale;
 
 public class Consultas extends Fragment {
 
-    CompactCalendarView compactCalendar;
-    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM, yyyy", Locale.getDefault());
-
-    TextView dataMarcada;
+    private DateFormat formatacaoData = DateFormat.getDateInstance();
+    private Calendar dataTime = Calendar.getInstance();
+    private TextView textoExibicao;
+    private Button btnMarcarData, btnMarcarHorario;
 
     @Nullable
     @Override
@@ -40,38 +46,58 @@ public class Consultas extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_consultas, container, false);
 
-        compactCalendar = (CompactCalendarView) view.findViewById(R.id.compactcalendar_view);
-        compactCalendar.setUseThreeLetterAbbreviation(true);
+        textoExibicao = (TextView) view.findViewById(R.id.textView_data_tela_consulta);
+        btnMarcarData = (Button) view.findViewById(R.id.btn_data_consulta_marcada);
+        btnMarcarHorario = (Button) view.findViewById(R.id.btn_horario_consulta_marcada);
 
-        //Set an event for Teachers' Professional Day 2016 which is 21st of October
-        //TODO: criar tela de criar consulta e salvar no banco
-        //TODO: metodo para pegar lista de consultas do banco e setar no calendario
-
-        Event ev1 = new Event(Color.RED, 1477040400000L, "Teachers' Professional Day");
-        compactCalendar.addEvent(ev1, false);
-
-        //dataMarcada = (TextView)view.findViewById(R.id.text_data_marcada);
-
-        //dataMarcada.setText(Calendar.getInstance().get(Calendar.DAY_OF_WEEK));
-
-        compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+        btnMarcarData .setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDayClick(Date dateClicked) {
-
-                if (dateClicked.toString().compareTo("Fri Oct 21 00:00:00 GMT-03:00 2016") == 0) {
-                    Toast.makeText(getActivity(), "Teachers' Professional Day", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(getActivity(), "Sem consultas no dia selecionado.", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onMonthScroll(Date firstDayOfNewMonth) {
-                getActivity().setTitle(dateFormatMonth.format(firstDayOfNewMonth));
+            public void onClick(View v) {
+                updateData();
             }
         });
 
+        btnMarcarHorario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateTime();
+            }
+        });
+
+        updateTextLabel(); // FUNCAO DE CAPTURAR DATA ATUAL
+
         return view;
+    }
+
+    private void updateData(){
+        new DatePickerDialog(getActivity(), d, dataTime.get(Calendar.YEAR), dataTime.get(Calendar.MONTH), dataTime.get(Calendar.DAY_OF_MONTH)).show();
+
+    }
+
+    private void updateTime(){
+        new TimePickerDialog(getActivity(), t, dataTime.get(Calendar.HOUR_OF_DAY), dataTime.get(Calendar.MINUTE), true ).show();
+
+    }
+
+    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener(){
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+        }
+    };
+
+    TimePickerDialog.OnTimeSetListener t = new TimePickerDialog.OnTimeSetListener(){
+
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+        }
+    };
+
+    private void updateTextLabel() {
+        textoExibicao.setText(formatacaoData.format(dataTime.getTime()));
+
     }
 
 
@@ -79,8 +105,6 @@ public class Consultas extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
-        Date titulo = new Date();
-        getActivity().setTitle(dateFormatMonth.format(titulo));
 
     }
 }

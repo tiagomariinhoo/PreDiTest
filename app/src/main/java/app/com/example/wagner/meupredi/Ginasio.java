@@ -1,5 +1,6 @@
 package app.com.example.wagner.meupredi;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,7 @@ import app.com.example.wagner.meupredi.Model.Paciente;
  * Created by wagne on 07/07/2017.
  */
 
-public class Ginasio extends AppCompatActivity {
+public class Ginasio extends Activity {
 
     private ImageView chamadaNovoExercicio;
     private ListView listView;
