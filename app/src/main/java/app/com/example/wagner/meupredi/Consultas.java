@@ -16,6 +16,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -37,8 +38,9 @@ public class Consultas extends Fragment {
 
     private DateFormat formatacaoData = DateFormat.getDateInstance();
     private Calendar dataTime = Calendar.getInstance();
-    private TextView textoExibicao;
-    private Button btnMarcarData, btnMarcarHorario;
+    private TextView textoExibicao, cardNomeNovaConsulta, cardDataNovaConsulta, cardHorarioNovaConsulta;
+    private Button btnMarcarData, btnMarcarHorario, agendarNovaConsulta;
+    private EditText nomeNovaConsulta;
 
     @Nullable
     @Override
@@ -49,6 +51,20 @@ public class Consultas extends Fragment {
         textoExibicao = (TextView) view.findViewById(R.id.textView_data_tela_consulta);
         btnMarcarData = (Button) view.findViewById(R.id.btn_data_consulta_marcada);
         btnMarcarHorario = (Button) view.findViewById(R.id.btn_horario_consulta_marcada);
+        nomeNovaConsulta = (EditText) view.findViewById(R.id.editText_nome_nova_consulta);
+        cardNomeNovaConsulta = (TextView) view.findViewById(R.id.textView_nome_card_nova_consulta);
+        cardDataNovaConsulta = (TextView) view.findViewById(R.id.textView_data_card_nova_consulta);
+        cardHorarioNovaConsulta = (TextView) view.findViewById(R.id.textView_horario_card_nova_consulta);
+        agendarNovaConsulta = (Button) view.findViewById(R.id.btn_agendar_nova_consulta);
+
+        agendarNovaConsulta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(nomeNovaConsulta != null){
+                    cardNomeNovaConsulta.setText( nomeNovaConsulta.getText().toString() );
+                }
+            }
+        });
 
         btnMarcarData .setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +88,7 @@ public class Consultas extends Fragment {
     private void updateData(){
         new DatePickerDialog(getActivity(), d, dataTime.get(Calendar.YEAR), dataTime.get(Calendar.MONTH), dataTime.get(Calendar.DAY_OF_MONTH)).show();
 
+
     }
 
     private void updateTime(){
@@ -83,7 +100,7 @@ public class Consultas extends Fragment {
 
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
+            cardDataNovaConsulta.setText(formatacaoData.format(dataTime.getTime()));
         }
     };
 
