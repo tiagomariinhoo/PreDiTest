@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import app.com.example.wagner.meupredi.BDMenuLoginController.DatabaseHandler;
 import app.com.example.wagner.meupredi.R;
-import app.com.example.wagner.meupredi.TelaLoginSplash;
+import app.com.example.wagner.meupredi.View.Account.TelaLoginSplash;
 
 public class TelaLogin extends AppCompatActivity {
 

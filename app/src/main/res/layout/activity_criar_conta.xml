@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradiente_branco"
-    tools:context="app.com.example.wagner.meupredi.Model.CriarConta"
+    tools:context="app.com.example.wagner.meupredi.View.Account.CriarConta"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 

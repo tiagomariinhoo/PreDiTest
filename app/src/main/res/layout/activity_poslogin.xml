@@ -5,7 +5,7 @@
     android:id="@+id/tela_pos_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="app.com.example.wagner.meupredi.PosLogin"
+    tools:context="app.com.example.wagner.meupredi.View.Account.PosLogin"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 

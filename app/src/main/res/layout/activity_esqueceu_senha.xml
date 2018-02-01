@@ -5,7 +5,7 @@
     android:background="@color/colorBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="app.com.example.wagner.meupredi.TelaLogin"
+    tools:context="app.com.example.wagner.meupredi.View.Account.TelaLogin"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp"
     android:id="@+id/tela_esqueceu_senha">
