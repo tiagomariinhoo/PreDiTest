@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import app.com.example.wagner.meupredi.Controller.ControllerPeso;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
@@ -42,13 +43,14 @@ public class Perfil extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
-        DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
+        //DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
+        ControllerPeso controllerPeso = new ControllerPeso(getActivity().getApplicationContext());
         paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
         Log.d("Paciente nome : " , paciente.get_nome());
         Log.d("Paciente peso : ", String.valueOf(paciente.get_peso()));
 
         //pega o peso atualizado no banco para exibir na tela
-        paciente.set_peso(db.getPeso(paciente.get_id()));
+        paciente.set_peso(controllerPeso.getPeso(paciente));
 
         nome = (TextView) view.findViewById(R.id.text_nome_perfil);
         nome.setText(String.valueOf(paciente.get_nome()));

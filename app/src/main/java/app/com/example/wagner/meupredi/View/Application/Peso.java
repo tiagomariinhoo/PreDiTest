@@ -22,6 +22,8 @@ import com.github.mikephil.charting.data.BarEntry;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
+import app.com.example.wagner.meupredi.Controller.ControllerPeso;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
@@ -111,9 +113,12 @@ public class Peso extends AppCompatActivity{
                         }
 
                         //atualiza o peso e o imc do paciente no banco
-                        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                        db.atualizarPeso(paciente);
-                        db.atualizarPaciente(paciente);
+                        //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                        ControllerPeso controllerPeso = new ControllerPeso(getApplicationContext());
+                        ControllerPaciente controllerPaciente = new ControllerPaciente(getApplicationContext());
+
+                        controllerPeso.atualizarPeso(paciente);
+                        controllerPaciente.atualizarPaciente(paciente);
 
                         Toast.makeText(getApplicationContext(),"Peso atualizado com sucesso!",Toast.LENGTH_SHORT).show();
 
@@ -158,9 +163,10 @@ public class Peso extends AppCompatActivity{
 
 
         barChart = (BarChart) findViewById(R.id.bargraph_peso);
-        DatabaseHandler db = new DatabaseHandler (getApplicationContext());
+        //DatabaseHandler db = new DatabaseHandler (getApplicationContext());
+        ControllerPeso controllerPeso = new ControllerPeso(getApplicationContext());
 
-        pesos = db.getAllPesos(paciente.get_id());
+        pesos = controllerPeso.getAllPesos(paciente);
 
         for(int i=1;i<=10;i++) pesos.add(Float.valueOf(0));
 

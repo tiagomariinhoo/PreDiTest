@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
+import app.com.example.wagner.meupredi.Controller.ControllerPeso;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
@@ -182,15 +184,16 @@ public class PosLogin extends AppCompatActivity {
                             " quando quiser.",Toast.LENGTH_LONG).show();
                 }
 
-                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-
+                //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                ControllerPaciente controllerPaciente = new ControllerPaciente(getApplicationContext());
+                ControllerPeso controllerPeso = new ControllerPeso(getApplicationContext());
                 //pega peso cadastrado pelo paciente na tela e insere em sua respectiva tabela no banco
                 if(pesoCadastro.length() != 0){
-                    db.atualizarPeso(paciente);
+                    controllerPeso.atualizarPeso(paciente);
                 }
 
                 //atualiza dados do usuario no banco
-                if(db.atualizarPaciente(paciente)){
+                if(controllerPaciente.atualizarPaciente(paciente)){
                     Toast.makeText(getApplicationContext(),"Sucesso ao editar!",Toast.LENGTH_LONG).show();
                     Log.d("Sucesso"," Sucesso");
                 } else {

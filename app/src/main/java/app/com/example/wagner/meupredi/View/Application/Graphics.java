@@ -12,6 +12,7 @@ import com.github.mikephil.charting.data.BarEntry;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+import app.com.example.wagner.meupredi.Controller.ControllerExercicios;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.ExercicioClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
@@ -34,12 +35,14 @@ public class Graphics extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.graph_test);
         barChart = (BarChart) findViewById(R.id.bargraph);
-        DatabaseHandler db = new DatabaseHandler (getApplicationContext());
+        //DatabaseHandler db = new DatabaseHandler (getApplicationContext());
+
+        ControllerExercicios controllerExercicios = new ControllerExercicios(getApplicationContext());
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
         Log.d(paciente.get_nome(), " Nome do paciente");
         try {
-            exClass = db.getAllExercicios(paciente.get_id());
+            exClass = controllerExercicios.getAllExercicios(paciente);
         } catch (ParseException e) {
             e.printStackTrace();
         }

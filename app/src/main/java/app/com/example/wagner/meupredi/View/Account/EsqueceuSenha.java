@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
@@ -52,11 +53,12 @@ public class EsqueceuSenha extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                ControllerPaciente controllerPaciente = new ControllerPaciente(getApplicationContext());
                 Paciente paciente = new Paciente();
 
                 //verificando existencia do email no banco de dados
-                paciente = db.verificarEmail(email.getText().toString().trim());
+                paciente = controllerPaciente.verificarEmail(email.getText().toString().trim());
 
                 if(paciente.get_id() != -1){
 

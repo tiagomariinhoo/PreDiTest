@@ -11,6 +11,8 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.com.example.wagner.meupredi.Controller.ControllerExames;
+import app.com.example.wagner.meupredi.Controller.ControllerPeso;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 
 /**
@@ -18,6 +20,13 @@ import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
  */
 
 public class ModelPaciente extends SQLiteOpenHelper {
+
+    ControllerExames controllerExames;
+    ControllerPeso controllerPeso;
+
+
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "Banco";
 
     // BANCO DE PACIENTES
     private static final String TABLE_PACIENTES = "pacientes";
@@ -38,8 +47,8 @@ public class ModelPaciente extends SQLiteOpenHelper {
     private static final String KEY_SEM_MAX = "semMax";
 
 
-    public ModelPaciente(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public ModelPaciente(Context context){
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -143,10 +152,10 @@ public class ModelPaciente extends SQLiteOpenHelper {
                 paciente.setDiaInicio(Integer.parseInt(cursor.getString(11)));
 
                 //pega seu ultimo peso registrado
-                paciente.set_peso(getPeso(paciente.get_id()));
+                paciente.set_peso(controllerPeso.getPeso(paciente));
 
                 //pega suas ultimas taxas cadastradas
-                paciente = getUltimasTaxas(paciente);
+                paciente = controllerExames.getUltimasTaxas(paciente);
 
                 pacientesList.add(paciente);
 

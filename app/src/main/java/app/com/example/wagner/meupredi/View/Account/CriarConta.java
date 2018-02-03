@@ -24,6 +24,8 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import app.com.example.wagner.meupredi.*;
+import app.com.example.wagner.meupredi.Controller.ControllerExames;
+import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 
@@ -130,10 +132,11 @@ public class CriarConta extends AppCompatActivity {
                 String conSenhaCadastro = conSenha.getText().toString();
 
                 //verificando se email ja foi cadastrado
-                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                ControllerPaciente controllerPaciente = new ControllerPaciente(getApplicationContext());
                 Paciente tempPaciente = new Paciente();
 
-                tempPaciente = db.verificarEmail(emailCadastro);
+                tempPaciente = controllerPaciente.verificarEmail(emailCadastro);
 
                 //se o id for -1, entao email nao foi cadastrado
                 if(tempPaciente.get_id() == -1) {
@@ -192,7 +195,7 @@ public class CriarConta extends AppCompatActivity {
                         Log.d("Dia atual : " , String.valueOf(paciente.getDia()));
                         Log.d("Dia inicio : " , String.valueOf(paciente.getDiaInicio()));
 
-                        String msg = db.addPaciente(paciente);
+                        String msg = controllerPaciente.addPaciente(paciente);
 
                         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
 import app.com.example.wagner.meupredi.R;
 import app.com.example.wagner.meupredi.View.Account.TelaLoginSplash;
 
@@ -17,7 +18,8 @@ public class TelaLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_login);
 
-        DatabaseHandler db = new DatabaseHandler(this);
+        //DatabaseHandler db = new DatabaseHandler(this);
+        ControllerPaciente controllerPaciente = new ControllerPaciente(getApplicationContext());
 
         final String PREFS_NAME = "Preferences";
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
@@ -27,7 +29,8 @@ public class TelaLogin extends AppCompatActivity {
         boolean debug = false;
 
         if(debug) {
-            db.deleteAllPacientes();
+            //db.deleteAllPacientes();
+            controllerPaciente.deleteAllPacientes();
             editor.clear();
             editor.commit();
         }

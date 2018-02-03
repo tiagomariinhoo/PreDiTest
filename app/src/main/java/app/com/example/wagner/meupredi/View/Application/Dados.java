@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
@@ -166,7 +167,8 @@ public class Dados extends AppCompatActivity {
 
                 //atualiza a idade, altura, circunferencia e o imc do paciente no banco
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                db.atualizarPaciente(paciente);
+                ControllerPaciente controllerPaciente = new ControllerPaciente(getApplicationContext());
+                controllerPaciente.atualizarPaciente(paciente);
 
                 Toast.makeText(getApplicationContext(),"Dados atualizados com sucesso!",Toast.LENGTH_SHORT).show();
             }

@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+import app.com.example.wagner.meupredi.Controller.ControllerExames;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
@@ -144,7 +145,8 @@ public class Taxas  extends AppCompatActivity {
 
                 //atualiza dados no banco de taxas e nos dados do paciente
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                db.atualizarTaxas(paciente);
+                ControllerExames controllerExames = new ControllerExames(getApplicationContext());
+                controllerExames.atualizarTaxas(paciente);
 
                 Toast.makeText(getApplicationContext(),"Taxas atualizadas com sucesso!",Toast.LENGTH_SHORT).show();
                 paciente.calculo_diabetes(getApplicationContext());

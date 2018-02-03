@@ -12,6 +12,7 @@ import android.widget.ListView;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+import app.com.example.wagner.meupredi.Controller.ControllerExercicios;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.ExercicioClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
@@ -33,6 +34,7 @@ public class Ginasio extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        ControllerExercicios controllerExercicios = new ControllerExercicios(getApplicationContext());
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
@@ -43,7 +45,7 @@ public class Ginasio extends Activity {
         listaExercicios = new ArrayList<>();
 
         try {
-            ExClass = db.getAllExercicios(paciente.get_id());
+            ExClass = controllerExercicios.getAllExercicios(paciente);
 
         } catch(ParseException e) {
             e.printStackTrace();

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+import app.com.example.wagner.meupredi.Controller.ControllerExames;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.HemogramaClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
@@ -120,7 +121,8 @@ public class TelaExameHemograma  extends AppCompatActivity {
                     newHemograma.setIdPacienteHemograma(paciente.get_id());
 
                     DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                    String retorno = db.addHemograma(newHemograma);
+                    ControllerExames controllerExames = new ControllerExames(getApplicationContext());
+                    String retorno = controllerExames.addHemograma(newHemograma);
 
                     Toast.makeText(getApplicationContext(), retorno,Toast.LENGTH_SHORT).show();
 

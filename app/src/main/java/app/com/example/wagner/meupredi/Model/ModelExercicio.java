@@ -13,18 +13,23 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 import app.com.example.wagner.meupredi.Model.ModelClass.ExercicioClass;
+import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 
 /**
  * Created by tico_ on 31/01/2018.
  */
 
-public class ModelExercício extends SQLiteOpenHelper{
+public class ModelExercicio extends SQLiteOpenHelper{
 
     //TABLE EXERCICIOS
     private static final String TABLE_EXERCICIOS = "exercicios";
 
     private static final String TABLE_PACIENTES = "pacientes";
     private static final String KEY_ID = "idAccount";
+
+
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "Banco";
 
     //COLUNAS DOS EXERCICIOS
     private static final String KEY_ID_EXERCICIO = "idExercicio";
@@ -33,12 +38,8 @@ public class ModelExercício extends SQLiteOpenHelper{
     private static final String KEY_DATA_EXERCICIO = "dataExercicio";
     private static final String KEY_PAC3 = "pac3";
 
-    public ModelExercício(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-    }
-
-    public ModelExercício(Context context, String name, SQLiteDatabase.CursorFactory factory, int version, DatabaseErrorHandler errorHandler) {
-        super(context, name, factory, version, errorHandler);
+    public ModelExercicio(Context context){
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -61,7 +62,8 @@ public class ModelExercício extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public String ModelAddExercicio(int tempo, String exercicio, int idPaciente){
+    public String ModelAddExercicio(int tempo, String exercicio, Paciente paciente){
+        int idPaciente = paciente.get_id();
         GregorianCalendar calendar = new GregorianCalendar();
         int dia =  calendar.get(GregorianCalendar.DAY_OF_YEAR);
 
@@ -89,7 +91,8 @@ public class ModelExercício extends SQLiteOpenHelper{
         }
     }
 
-    public ArrayList<ExercicioClass> ModelGetAllExercicios (int idPaciente) throws ParseException {
+    public ArrayList<ExercicioClass> ModelGetAllExercicios (Paciente paciente) throws ParseException {
+        int idPaciente = paciente.get_id();
         ArrayList<ExercicioClass> exList = new ArrayList<>();
 
         Log.d("DB ","entrei");

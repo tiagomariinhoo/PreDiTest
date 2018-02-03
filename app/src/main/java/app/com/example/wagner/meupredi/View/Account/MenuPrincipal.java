@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
@@ -166,8 +167,9 @@ public class MenuPrincipal extends AppCompatActivity
     public Paciente pegarPacienteMenu(){
 
         //pega dados atualizados do paciente no banco
-        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-        paciente = db.getPaciente(paciente.get_email());
+        //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        ControllerPaciente controllerPaciente = new ControllerPaciente(getApplicationContext());
+        paciente = controllerPaciente.getPaciente(paciente.get_email());
         //paciente.calculo_diabetes(getApplicationContext());
 
         return paciente;

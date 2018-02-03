@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import app.com.example.wagner.meupredi.Controller.ControllerExercicios;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
@@ -205,10 +206,10 @@ public class NovoExercicio extends AppCompatActivity {
 
     public void adicionarExercicio(String novoExercicio){
 
-        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-
+        //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        ControllerExercicios controllerExercicios = new ControllerExercicios(getApplicationContext());
         listaExercicios.add(novoExercicio);
-        String msg = db.addExercicio(Integer.parseInt(metaDia), novoExercicio, paciente.get_id());
+        String msg = controllerExercicios.addExercicio(Integer.parseInt(metaDia), novoExercicio, paciente);
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
 
         /*setContentView(R.layout.activity_ginasio);

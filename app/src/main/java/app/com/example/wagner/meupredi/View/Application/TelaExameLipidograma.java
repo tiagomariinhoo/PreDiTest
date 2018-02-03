@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+import app.com.example.wagner.meupredi.Controller.ControllerExames;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.LipidogramaClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
@@ -126,7 +127,8 @@ public class TelaExameLipidograma extends AppCompatActivity {
                     novoLipidograma.setIdPacienteLipidograma(paciente.get_id());
 
                     DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                    String retorno = db.addLipidograma(novoLipidograma);
+                    ControllerExames controllerExames = new ControllerExames(getApplicationContext());
+                    String retorno = controllerExames.addLipidograma(novoLipidograma);
 
                     Toast.makeText(getApplicationContext(), retorno,Toast.LENGTH_SHORT).show();
 

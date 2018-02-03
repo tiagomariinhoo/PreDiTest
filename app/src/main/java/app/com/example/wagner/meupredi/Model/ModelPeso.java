@@ -26,18 +26,18 @@ public class ModelPeso extends SQLiteOpenHelper {
     private static final String KEY_ID = "idAccount";
 
 
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "Banco";
+
+
     // COLUNAS DO BANCO DE PESOS
     private static final String KEY_ID_PESO = "idPeso";
     private static final String KEY_PESO = "peso";
     private static final String KEY_DATA = "dataPeso";
     private static final String KEY_PAC = "pac";
 
-    public ModelPeso(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-    }
-
-    public ModelPeso(Context context, String name, SQLiteDatabase.CursorFactory factory, int version, DatabaseErrorHandler errorHandler) {
-        super(context, name, factory, version, errorHandler);
+    public ModelPeso(Context context){
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -89,7 +89,8 @@ public class ModelPeso extends SQLiteOpenHelper {
         }
     }
 
-    public double ModelGetPeso(int id){
+    public double ModelGetPeso(Paciente paciente){
+        int id = paciente.get_id();
 
         double peso = 0;
 
@@ -112,7 +113,8 @@ public class ModelPeso extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Float> ModelGetAllPesos(int idPaciente){
+    public ArrayList<Float> ModelGetAllPesos(Paciente paciente){
+        int idPaciente = paciente.get_id();
         ArrayList<Float> pesos = new ArrayList<>();
         Log.d("DB, ", "GetAllPesos");
 

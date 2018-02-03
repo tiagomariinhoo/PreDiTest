@@ -22,6 +22,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
+import app.com.example.wagner.meupredi.Controller.ControllerPeso;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
@@ -108,13 +110,16 @@ public class TelaLogin extends AppCompatActivity {
             public void onClick(View v) {
 
                 //abre o banco e o sharedpreferences para edicao
-                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+               // DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                ControllerPaciente controllerPaciente = new ControllerPaciente(getApplicationContext());
+                ControllerPeso controllerPeso = new ControllerPeso(getApplicationContext());
+
                 SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
                 SharedPreferences.Editor editor = settings.edit();
 
                 //DEBUG: imprime lista de pacientes cadastrados
                 List<Paciente> pacList = new ArrayList<Paciente> ();
-                pacList = db.getAllUsers();
+                pacList = controllerPaciente.getAllUsers();
 
                 for(int i=0;i<pacList.size();i++){
                     Log.d(pacList.get(i).get_nome()," -> Nome do paciente");
@@ -136,13 +141,13 @@ public class TelaLogin extends AppCompatActivity {
                 pass = senha.getText().toString();
 
                 Paciente paciente = new Paciente();
-                paciente = db.verificarLogin(user,pass);
+                paciente = controllerPaciente.verificarLogin(user,pass);
 
                 //se estiverem corretas, faz o login
                 if(paciente.get_id() != -1){
 
                     //pega peso atual do paciente na tabela correspondente
-                    double peso = db.getPeso(paciente.get_id());
+                    double peso = controllerPeso.getPeso(paciente);
                     paciente.set_peso(peso);
 
                     Intent it = new Intent(TelaLogin.this, PosLogin.class);

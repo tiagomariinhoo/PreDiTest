@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import app.com.example.wagner.meupredi.Controller.ControllerExames;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.ExameClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
@@ -61,6 +62,7 @@ public class cadastroExame extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                ControllerExames controllerExame = new ControllerExames(getApplicationContext());
                 TextGlic75g = glicose75g.getText().toString();
                 TextGlicoseJejum = glicosejejum.getText().toString();
 
@@ -70,7 +72,7 @@ public class cadastroExame extends AppCompatActivity {
                     exame.setGlicose75g(Double.parseDouble(TextGlic75g));
                     exame.setGlicoseJejum(Double.parseDouble(TextGlicoseJejum));
                     exame.setIdPac(paciente.get_id());
-                    String msg = db.addExame(exame);
+                    String msg = controllerExame.addExames(exame);
 
                     if(msg.equals("Registro dos exames inserido com sucesso!")){
                         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
