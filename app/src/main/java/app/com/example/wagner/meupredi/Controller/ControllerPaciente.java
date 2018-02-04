@@ -13,9 +13,10 @@ import app.com.example.wagner.meupredi.Model.ModelPaciente;
 
 public class ControllerPaciente {
     private ModelPaciente modelPaciente;
-
+    private Context context;
     public ControllerPaciente(Context context) {
         modelPaciente = new ModelPaciente(context);
+        this.context = context;
     }
 
     public String addPaciente(Paciente paciente){
@@ -23,11 +24,11 @@ public class ControllerPaciente {
     }
 
     public List<Paciente> getAllUsers(){
-      return  modelPaciente.ModelGetAllUsers();
+      return  modelPaciente.ModelGetAllUsers(context);
     }
 
     public Paciente getPaciente(String email){
-        return modelPaciente.ModelGetPaciente(email);
+        return modelPaciente.ModelGetPaciente(email, context);
     }
 
     public void deleteAllPacientes(){

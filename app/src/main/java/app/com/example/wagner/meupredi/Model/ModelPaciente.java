@@ -125,8 +125,11 @@ public class ModelPaciente extends SQLiteOpenHelper {
         }
     }
 
-    public List<Paciente> ModelGetAllUsers(){
+    public List<Paciente> ModelGetAllUsers(Context context){
         List<Paciente> pacientesList = new ArrayList<Paciente>();
+
+        controllerExames = new ControllerExames(context);
+        controllerPeso = new ControllerPeso(context);
 
         //pega todos os dados do banco de pacientes
         String selectQuery = "SELECT * FROM " + TABLE_PACIENTES;
@@ -152,7 +155,7 @@ public class ModelPaciente extends SQLiteOpenHelper {
                 paciente.setDiaInicio(Integer.parseInt(cursor.getString(11)));
 
                 //pega seu ultimo peso registrado
-                paciente.set_peso(controllerPeso.getPeso(paciente));
+               paciente.set_peso(controllerPeso.getPeso(paciente));
 
                 //pega suas ultimas taxas cadastradas
                 paciente = controllerExames.getUltimasTaxas(paciente);
@@ -164,8 +167,8 @@ public class ModelPaciente extends SQLiteOpenHelper {
         return pacientesList;
     }
 
-    public Paciente ModelGetPaciente(String email){
-        List<Paciente> pacientesList = ModelGetAllUsers();
+    public Paciente ModelGetPaciente(String email, Context context){
+        List<Paciente> pacientesList = ModelGetAllUsers(context);
         Paciente paciente = new Paciente();
 
         //procura paciente desejado
