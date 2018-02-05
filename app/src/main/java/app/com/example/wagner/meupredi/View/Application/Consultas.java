@@ -5,30 +5,17 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import android.content.Context;
-import android.graphics.Color;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
-
-import com.github.sundeepk.compactcalendarview.CompactCalendarView;
-import com.github.sundeepk.compactcalendarview.domain.Event;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 import app.com.example.wagner.meupredi.R;
 
@@ -40,7 +27,7 @@ public class Consultas extends Fragment {
 
     private DateFormat formatacaoData = DateFormat.getDateInstance();
     private Calendar dataTime = Calendar.getInstance();
-    private TextView textoExibicao, cardNomeNovaConsulta, cardDataNovaConsulta, cardHorarioNovaConsulta;
+    private TextView textoExibicao, cardDataNovaConsulta, cardHorarioNovaConsulta;
     private Button btnMarcarData, btnMarcarHorario, agendarNovaConsulta;
     private EditText nomeNovaConsulta;
 
@@ -53,17 +40,13 @@ public class Consultas extends Fragment {
         textoExibicao = (TextView) view.findViewById(R.id.textView_data_tela_consulta);
         btnMarcarData = (Button) view.findViewById(R.id.btn_data_consulta_marcada);
         btnMarcarHorario = (Button) view.findViewById(R.id.btn_horario_consulta_marcada);
-        nomeNovaConsulta = (EditText) view.findViewById(R.id.editText_nome_nova_consulta);
-        cardNomeNovaConsulta = (TextView) view.findViewById(R.id.textView_nome_card_nova_consulta);
         cardDataNovaConsulta = (TextView) view.findViewById(R.id.textView_data_card_nova_consulta);
         cardHorarioNovaConsulta = (TextView) view.findViewById(R.id.textView_horario_card_nova_consulta);
-        agendarNovaConsulta = (Button) view.findViewById(R.id.btn_agendar_nova_consulta);
 
         agendarNovaConsulta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(nomeNovaConsulta != null){
-                    cardNomeNovaConsulta.setText( nomeNovaConsulta.getText().toString() );
                 }
             }
         });
@@ -110,7 +93,9 @@ public class Consultas extends Fragment {
 
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-
+                String horaEscolhida = Integer.toString(hourOfDay);
+                String minutosEscolhidos = Integer.toString(minute);
+                cardHorarioNovaConsulta.setText(horaEscolhida + ":" + minutosEscolhidos);
         }
     };
 
