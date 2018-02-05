@@ -25,11 +25,12 @@ public class ModelPaciente extends SQLiteOpenHelper {
     ControllerPeso controllerPeso;
 
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "Banco";
 
     // BANCO DE PACIENTES
     private static final String TABLE_PACIENTES = "pacientes";
+    private static final String TABLE_PESOS = "pesos";
 
     // COLUNAS DO BANCO DE PACIENTES
     private static final String KEY_ID = "idAccount";
@@ -75,7 +76,8 @@ public class ModelPaciente extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXIST " + TABLE_PACIENTES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PACIENTES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PESOS);
         onCreate(db);
     }
 
@@ -121,6 +123,7 @@ public class ModelPaciente extends SQLiteOpenHelper {
         if(retorno == -1){
             return "Erro ao inserir o registro!";
         } else {
+            Log.d("Paciente  : ", "Inserido com sucesso!");
             return "Registro inserido com sucesso!";
         }
     }
@@ -129,6 +132,7 @@ public class ModelPaciente extends SQLiteOpenHelper {
         List<Paciente> pacientesList = new ArrayList<Paciente>();
 
         controllerExames = new ControllerExames(context);
+
         controllerPeso = new ControllerPeso(context);
 
         //pega todos os dados do banco de pacientes
@@ -153,10 +157,10 @@ public class ModelPaciente extends SQLiteOpenHelper {
                 paciente.set_imc(Double.parseDouble(cursor.getString(9)));
                 paciente.setDia(Integer.parseInt(cursor.getString(10)));
                 paciente.setDiaInicio(Integer.parseInt(cursor.getString(11)));
-
+                Log.d("Paciente, GetAllUsers : ", paciente.get_nome());
                 //pega seu ultimo peso registrado
-               paciente.set_peso(controllerPeso.getPeso(paciente));
-
+                paciente.set_peso(controllerPeso.getPeso(paciente));
+                //paciente.set_peso(0);
                 //pega suas ultimas taxas cadastradas
                 paciente = controllerExames.getUltimasTaxas(paciente);
 

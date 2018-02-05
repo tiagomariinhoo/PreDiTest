@@ -25,7 +25,7 @@ import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "Banco";
 
     // BANCO DE PACIENTES

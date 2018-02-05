@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
@@ -26,7 +27,7 @@ public class ModelPeso extends SQLiteOpenHelper {
     private static final String KEY_ID = "idAccount";
 
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "Banco";
 
 
@@ -51,12 +52,12 @@ public class ModelPeso extends SQLiteOpenHelper {
                 + KEY_PAC + " INTEGER,"
                 + " FOREIGN KEY("+KEY_PAC+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
         db.execSQL(CREATE_PESOS_TABLE);
+        Log.v("INFOR1", "CREATING TABLE PESOS");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXIST " + TABLE_PESOS);
-
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PESOS);
         onCreate(db);
     }
 
@@ -90,27 +91,35 @@ public class ModelPeso extends SQLiteOpenHelper {
     }
 
     public double ModelGetPeso(Paciente paciente){
-        int id = paciente.get_id();
 
-        double peso = 0;
+        try{
+            int id = paciente.get_id();
 
-        String selectQuery = "SELECT * FROM " + TABLE_PESOS;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery,null);
+            double peso = 0;
+            SQLiteDatabase db = this.getReadableDatabase();
+            String selectQuery = "SELECT * FROM " + TABLE_PESOS;
+            Cursor cursor = db.rawQuery(selectQuery,null);
 
-        //procura o peso pelo id do paciente
-        if(cursor.moveToFirst()){
-            do{
-                if(cursor.getString(3).equals(String.valueOf(id))){
-                    peso = Double.parseDouble(cursor.getString(1));
-                    Log.d("Peso achado : ", String.valueOf(peso));
-                }
-            } while(cursor.moveToNext());
+            //procura o peso pelo id do paciente
+            if(cursor != null && cursor.moveToFirst()){
+                do{
+                    if(cursor.getString(3).equals(String.valueOf(id))){
+                        peso = Double.parseDouble(cursor.getString(1));
+                        Log.d("Peso achado : ", String.valueOf(peso));
+                    }
+                } while(cursor.moveToNext());
+                cursor.close();
+            }
+
+            //retorna peso atual (ou 0 se nao encontrou/ainda nao cadastrou)
+
+            return peso;
+        } catch(SQLiteException e){
+            if(e.getMessage().contains("no such table")){
+                Log.v("Model Peso : ", "Precisa criar tabela PESO!");
+            }
         }
-
-        //retorna peso atual (ou 0 se nao encontrou/ainda nao cadastrou)
-        return peso;
-
+        return 0;
     }
 
     public ArrayList<Float> ModelGetAllPesos(Paciente paciente){

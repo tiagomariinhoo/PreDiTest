@@ -6,6 +6,7 @@ import java.util.List;
 
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.Model.ModelPaciente;
+import app.com.example.wagner.meupredi.Model.ModelPeso;
 
 /**
  * Created by tico_ on 31/01/2018.
@@ -13,9 +14,11 @@ import app.com.example.wagner.meupredi.Model.ModelPaciente;
 
 public class ControllerPaciente {
     private ModelPaciente modelPaciente;
+    private ModelPeso modelPeso;
     private Context context;
     public ControllerPaciente(Context context) {
         modelPaciente = new ModelPaciente(context);
+        modelPeso = new ModelPeso(context);
         this.context = context;
     }
 

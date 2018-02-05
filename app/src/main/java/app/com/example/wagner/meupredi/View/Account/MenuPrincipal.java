@@ -169,8 +169,9 @@ public class MenuPrincipal extends AppCompatActivity
         //pega dados atualizados do paciente no banco
         //DatabaseHandler db = new DatabaseHandler(getApplicationContext());
         ControllerPaciente controllerPaciente = new ControllerPaciente(getApplicationContext());
-        paciente = controllerPaciente.getPaciente(paciente.get_email());
+//        paciente = controllerPaciente.getPaciente(paciente.get_email());
         //paciente.calculo_diabetes(getApplicationContext());
+        paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
         return paciente;
     }

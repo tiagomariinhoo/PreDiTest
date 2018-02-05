@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -26,7 +27,7 @@ public class ModelExames extends SQLiteOpenHelper {
 
 
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "Banco";
 
     // TABLE EXAMES
@@ -123,9 +124,9 @@ public class ModelExames extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL("DROP TABLE IF EXIST " + TABLE_EXAMES);
-        db.execSQL("DROP TABLE IF EXIST " + TABLE_LIPIDOGRAMA);
-        db.execSQL("DROP TABLE IF EXIST " + TABLE_HEMOGRAMA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXAMES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LIPIDOGRAMA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HEMOGRAMA);
 
         onCreate(db);
     }
@@ -261,38 +262,45 @@ public class ModelExames extends SQLiteOpenHelper {
     }
 
     public Paciente ModelGetUltimasTaxas(Paciente paciente){
-        String selectQuery = "SELECT * FROM " + TABLE_EXAMES;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery,null);
+        try{
+            String selectQuery = "SELECT * FROM " + TABLE_EXAMES;
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery,null);
 
-        //procura o peso pelo id do paciente
-        if(cursor.moveToFirst()){
-            do{
-                if(cursor.getString(5).equals(String.valueOf(paciente.get_id()))) {
-                    if(Double.parseDouble(cursor.getString(1)) != 0.0) {
-                        paciente.set_glicose75g(Double.parseDouble(cursor.getString(1)));
-                        Log.d("Glicose75 : ", String.valueOf(paciente.get_glicose75g()));
-                    }
+            //procura o peso pelo id do paciente
+            if(cursor.moveToFirst()){
+                do{
+                    if(cursor.getString(5).equals(String.valueOf(paciente.get_id()))) {
+                        if(Double.parseDouble(cursor.getString(1)) != 0.0) {
+                            paciente.set_glicose75g(Double.parseDouble(cursor.getString(1)));
+                            Log.d("Glicose75 : ", String.valueOf(paciente.get_glicose75g()));
+                        }
 
-                    if(Double.parseDouble(cursor.getString(2)) != 0.0) {
-                        paciente.set_glicosejejum(Double.parseDouble(cursor.getString(2)));
-                        Log.d("Glicose Jejum : ", String.valueOf(paciente.get_glicosejejum()));
-                    }
+                        if(Double.parseDouble(cursor.getString(2)) != 0.0) {
+                            paciente.set_glicosejejum(Double.parseDouble(cursor.getString(2)));
+                            Log.d("Glicose Jejum : ", String.valueOf(paciente.get_glicosejejum()));
+                        }
 
-                    if(Double.parseDouble(cursor.getString(3)) != 0.0) {
-                        paciente.set_colesterol(Double.parseDouble(cursor.getString(3)));
-                        Log.d("Colesterol : ", String.valueOf(paciente.get_colesterol()));
+                        if(Double.parseDouble(cursor.getString(3)) != 0.0) {
+                            paciente.set_colesterol(Double.parseDouble(cursor.getString(3)));
+                            Log.d("Colesterol : ", String.valueOf(paciente.get_colesterol()));
+                        }
                     }
-                }
-            } while(cursor.moveToNext());
+                } while(cursor.moveToNext());
+            }
+
+            Log.d("G75 : ", String.valueOf(paciente.get_glicose75g()));
+            Log.d("GJejum : ", String.valueOf(paciente.get_glicosejejum()));
+            Log.d("Co : ", String.valueOf(paciente.get_colesterol()));
+
+            //retorna paciente com ultimas taxas cadastradas pelo usuario
+            return paciente;
+        } catch(SQLException e){
+            if(e.getMessage().contains("such table")){
+                Log.v("Table Exames : ", "Precisa criar tabela exames!");
+            }
         }
-
-        Log.d("G75 : ", String.valueOf(paciente.get_glicose75g()));
-        Log.d("GJejum : ", String.valueOf(paciente.get_glicosejejum()));
-        Log.d("Co : ", String.valueOf(paciente.get_colesterol()));
-
-        //retorna paciente com ultimas taxas cadastradas pelo usuario
-        return paciente;
+        return null;
     }
 
 }

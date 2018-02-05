@@ -22,10 +22,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.com.example.wagner.meupredi.Controller.ControllerExames;
 import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
 import app.com.example.wagner.meupredi.Controller.ControllerPeso;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
+import app.com.example.wagner.meupredi.Model.ModelClass.ExameClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
+import app.com.example.wagner.meupredi.Model.ModelPeso;
 import app.com.example.wagner.meupredi.R;
 
 public class TelaLogin extends AppCompatActivity {
@@ -121,11 +124,14 @@ public class TelaLogin extends AppCompatActivity {
                 List<Paciente> pacList = new ArrayList<Paciente> ();
                 pacList = controllerPaciente.getAllUsers();
 
-                for(int i=0;i<pacList.size();i++){
-                    Log.d(pacList.get(i).get_nome()," -> Nome do paciente");
-                    Log.d(pacList.get(i).get_email()," -> Email do paciente");
-                    Log.d(pacList.get(i).get_senha(), " -> Senha do paciente");
-                }
+                Log.d("Tamanho pacList LOGIN : ", String.valueOf(pacList.size()));
+               /* if(pacList.size() > 0){
+                    for(int i=0;i<pacList.size();i++){
+                        Log.d(pacList.get(i).get_nome()," -> Nome do paciente");
+                        Log.d(pacList.get(i).get_email()," -> Email do paciente");
+                        Log.d(pacList.get(i).get_senha(), " -> Senha do paciente");
+                    }
+                }*/
 
                 //salva dados no sharedpreferences
                 if(manterConectado.isChecked()) {

@@ -49,7 +49,9 @@
         app:layout_constraintTop_toTopOf="@+id/image_exame_hemograma"
         app:layout_constraintRight_toLeftOf="@+id/image_exame_hemograma"
         android:layout_marginRight="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="637dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <EditText
         android:id="@+id/edit_local_exame_hemograma"
@@ -220,6 +222,14 @@
 
         </ScrollView>
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        tools:layout_editor_absoluteX="-31dp"
+        tools:layout_editor_absoluteY="41dp" />
 
 
 </android.support.constraint.ConstraintLayout>

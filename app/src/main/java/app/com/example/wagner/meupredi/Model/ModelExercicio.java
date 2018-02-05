@@ -28,7 +28,7 @@ public class ModelExercicio extends SQLiteOpenHelper{
     private static final String KEY_ID = "idAccount";
 
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "Banco";
 
     //COLUNAS DOS EXERCICIOS
@@ -58,7 +58,7 @@ public class ModelExercicio extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXIST " + TABLE_EXERCICIOS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXERCICIOS);
         onCreate(db);
     }
 
