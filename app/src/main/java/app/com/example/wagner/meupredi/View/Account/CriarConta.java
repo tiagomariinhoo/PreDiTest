@@ -26,6 +26,7 @@ import java.util.List;
 import app.com.example.wagner.meupredi.*;
 import app.com.example.wagner.meupredi.Controller.ControllerExames;
 import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
+import app.com.example.wagner.meupredi.Controller.ControllerPeso;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 
@@ -196,7 +197,8 @@ public class CriarConta extends AppCompatActivity {
                         Log.d("Dia inicio : " , String.valueOf(paciente.getDiaInicio()));
 
                         String msg = controllerPaciente.addPaciente(paciente);
-
+                        ControllerPeso controllerPeso = new ControllerPeso(getApplicationContext());
+                        controllerPeso.atualizarPeso(paciente);
                         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
 
                         Intent voltaLogin = new Intent(CriarConta.this, TelaLogin.class);

@@ -70,10 +70,10 @@ public class ModelPeso extends SQLiteOpenHelper {
         Log.d("Data : ", dateString);
 
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values;
 
         //guarda dados do paciente (peso e data atual)
-        values = new ContentValues();
+        ContentValues values = new ContentValues();
+
         values.put(KEY_PESO, paciente.get_peso());
         values.put(KEY_DATA, dateString);
         values.put(KEY_PAC, paciente.get_id());

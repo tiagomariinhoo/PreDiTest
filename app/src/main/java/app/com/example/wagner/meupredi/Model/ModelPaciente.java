@@ -71,6 +71,7 @@ public class ModelPaciente extends SQLiteOpenHelper {
                 + KEY_DIA_INICIO + " INTEGER"
                 + ")";
         db.execSQL(CREATE_PACIENTES_TABLE);
+        Log.v("INFOR2", "CREATING TABLE PACIENTES");
 
     }
 

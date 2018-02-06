@@ -13,8 +13,9 @@ import app.com.example.wagner.meupredi.Model.ModelPeso;
 
 public class ControllerPeso {
     ModelPeso modelPeso;
-
+    Context context;
     public ControllerPeso(Context context) {
+        this.context = context;
         modelPeso = new ModelPeso(context);
     }
 
