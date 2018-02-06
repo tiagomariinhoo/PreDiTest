@@ -171,7 +171,7 @@ public class MenuPrincipal extends AppCompatActivity
         ControllerPaciente controllerPaciente = new ControllerPaciente(getApplicationContext());
 //        paciente = controllerPaciente.getPaciente(paciente.get_email());
         //paciente.calculo_diabetes(getApplicationContext());
-        paciente = (Paciente) getIntent().getExtras().get("Paciente");
+        //paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
         return paciente;
     }

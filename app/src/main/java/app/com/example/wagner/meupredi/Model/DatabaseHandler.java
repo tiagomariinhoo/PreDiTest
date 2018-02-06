@@ -25,14 +25,16 @@ import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "Banco";
 
+
+    // ---------- TABLE PACIENTES ----------
     // BANCO DE PACIENTES
-    //private static final String TABLE_PACIENTES = "pacientes";
+    private static final String TABLE_PACIENTES = "pacientes";
 
     // COLUNAS DO BANCO DE PACIENTES
-  /*  private static final String KEY_ID = "idAccount";
+    private static final String KEY_ID = "idAccount";
     private static final String KEY_NOME = "nome";
     private static final String KEY_SENHA = "senha";
     private static final String KEY_EMAIL = "email";
@@ -44,10 +46,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_IMC = "imc";
     private static final String KEY_DIA = "diaAtual";
     private static final String KEY_DIA_INICIO = "diaInicio";
-    private static final String KEY_SEM_MAX = "semMax";*/
+    private static final String KEY_SEM_MAX = "semMax";
 
-
-   /* // BANCO DE PESOS (LINKADO AO BANCO DE PACIENTES POR ID)
+    // ---------- TABLE PESOS ----------
+    // BANCO DE PESOS (LINKADO AO BANCO DE PACIENTES POR ID)
     private static final String TABLE_PESOS = "pesos";
 
     // COLUNAS DO BANCO DE PESOS
@@ -55,9 +57,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_PESO = "peso";
     private static final String KEY_DATA = "dataPeso";
     private static final String KEY_PAC = "pac";
-    */
 
-  /*  // TABLE EXAMES
+
+    // ---------- TABLE EXAMES ----------
+    // TABLE EXAMES
     private static final String TABLE_EXAMES = "exames";
 
     //COLUNAS DOS EXAMES
@@ -66,9 +69,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_GLICOSE75G = "glicose75g";
     private static final String KEY_COLESTEROL = "colesterol";
     private static final String KEY_DATA_EXAME = "dataExame";
-    private static final String KEY_PAC2 = "pac2"; */
+    private static final String KEY_PAC2 = "pac2";
 
-  /*
+    // ---------- TABLE EXERCICIOS ----------
     //TABLE EXERCICIOS
     private static final String TABLE_EXERCICIOS = "exercicios";
 
@@ -77,9 +80,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_TEMPO = "tempo";
     private static final String KEY_NOME_EXERCICIO = "nomeExercicio";
     private static final String KEY_DATA_EXERCICIO = "dataExercicio";
-    private static final String KEY_PAC3 = "pac3";*/
+    private static final String KEY_PAC3 = "pac3";
 
-    /*
+    // ---------- TABLE LIPIDOGRAMA ----------
     //TABLE LIPIDOGRAMA
     private static final String TABLE_LIPIDOGRAMA = "lipidograma";
 
@@ -93,6 +96,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_LOCAL_LIPIDOGRAMA = "localLipidograma";
     private static final String KEY_PAC4 = "pac4";
 
+    // ---------- TABLE HEMOGRAMA ----------
     //TABLE HEMOGRAMA
     private static final String TABLE_HEMOGRAMA = "hemograma";
 
@@ -106,14 +110,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_RWD = "hemRwd";
     private static final String KEY_DATA_HEMOGRAMA = "dataHemograma";
     private static final String KEY_PAC5 = "pac5";
-    */
 
-    /*
-        KEY_PAC -> Chave estrangeira da tabela PESOS
-        KEY_PAC2 -> Chave estrangeira da tabela EXAMES
-        KEY_PAC3 -> Chave estrangeira da tebal EXERCICIOS
-        Todas referenciando a tabela paciente.
-     */
+
+
+       // KEY_PAC -> Chave estrangeira da tabela PESOS
+        // KEY_PAC2 -> Chave estrangeira da tabela EXAMES
+       // KEY_PAC3 -> Chave estrangeira da tebal EXERCICIOS
+       //   Todas referenciando a tabela paciente.
+
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -121,7 +125,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-    /*    String  CREATE_PACIENTES_TABLE = "CREATE TABLE IF NOT EXISTS "
+        String  CREATE_PACIENTES_TABLE = "CREATE TABLE IF NOT EXISTS "
                 + TABLE_PACIENTES
                 + "("
                 + KEY_ID + " INTEGER PRIMARY KEY,"
@@ -137,9 +141,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_DIA + " INTEGER,"
                 + KEY_DIA_INICIO + " INTEGER"
                 + ")";
-        db.execSQL(CREATE_PACIENTES_TABLE); */
+        db.execSQL(CREATE_PACIENTES_TABLE);
 
-        /*String  CREATE_PESOS_TABLE = "CREATE TABLE IF NOT EXISTS "
+        String  CREATE_PESOS_TABLE = "CREATE TABLE IF NOT EXISTS "
                 + TABLE_PESOS
                 + "("
                 + KEY_ID_PESO + " INTEGER PRIMARY KEY,"
@@ -147,8 +151,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_DATA + " DATETIME,"
                 + KEY_PAC + " INTEGER,"
                 + " FOREIGN KEY("+KEY_PAC+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
-        db.execSQL(CREATE_PESOS_TABLE);*/
-/*
+        db.execSQL(CREATE_PESOS_TABLE);
+
         String CREATE_EXAMES_TABLE = "CREATE TABLE IF NOT EXISTS "
                 + TABLE_EXAMES
                 + "("
@@ -159,8 +163,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_DATA_EXAME + " DATETIME,"
                 + KEY_PAC2 + " INTEGER,"
                 + " FOREIGN KEY("+KEY_PAC2+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
-        db.execSQL(CREATE_EXAMES_TABLE);*/
-    /*
+        db.execSQL(CREATE_EXAMES_TABLE);
+
         String CREATE_EXERCICIOS_TABLE = "CREATE TABLE IF NOT EXISTS "
                 + TABLE_EXERCICIOS
                 + "("
@@ -170,8 +174,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_DATA_EXERCICIO + " INTEGER,"
                 + KEY_PAC3 + " INTEGER,"
                 + " FOREIGN KEY ("+KEY_PAC3+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
-        db.execSQL(CREATE_EXERCICIOS_TABLE);*/
-/*
+        db.execSQL(CREATE_EXERCICIOS_TABLE);
+
         String CREATE_LIPIDOGRAMA_TABLE = "CREATE TABLE IF NOT EXISTS "
                 + TABLE_LIPIDOGRAMA
                 + "("
@@ -199,7 +203,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_DATA_HEMOGRAMA + " DATETIME,"
                 + KEY_PAC5 + " INTEGER,"
                 + " FOREIGN KEY ("+KEY_PAC5+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
-        db.execSQL(CREATE_HEMOGRAMA_TABLE);*/
+        db.execSQL(CREATE_HEMOGRAMA_TABLE);
     }
 
 
@@ -207,19 +211,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-     //   db.execSQL("DROP TABLE IF EXIST " + TABLE_PACIENTES);
-       // db.execSQL("DROP TABLE IF EXIST " + TABLE_PESOS);
-       // db.execSQL("DROP TABLE IF EXIST " + TABLE_EXAMES);
-     //   db.execSQL("DROP TABLE IF EXIST " + TABLE_EXERCICIOS);
-       // db.execSQL("DROP TABLE IF EXIST " + TABLE_LIPIDOGRAMA);
-       // db.execSQL("DROP TABLE IF EXIST " + TABLE_HEMOGRAMA);
+        db.execSQL("DROP TABLE IF EXIST " + TABLE_PACIENTES);
+        db.execSQL("DROP TABLE IF EXIST " + TABLE_PESOS);
+        db.execSQL("DROP TABLE IF EXIST " + TABLE_EXAMES);
+        db.execSQL("DROP TABLE IF EXIST " + TABLE_EXERCICIOS);
+        db.execSQL("DROP TABLE IF EXIST " + TABLE_LIPIDOGRAMA);
+        db.execSQL("DROP TABLE IF EXIST " + TABLE_HEMOGRAMA);
 
         onCreate(db);
     }
 
-    /*
-    public String addExercicio(int tempo, String exercicio, int idPaciente) {
 
+    public String modelAddExercicio(int tempo, String exercicio, Paciente paciente) {
+        int idPaciente = paciente.get_id();
         GregorianCalendar calendar = new GregorianCalendar();
         int dia =  calendar.get(GregorianCalendar.DAY_OF_YEAR);
 
@@ -245,11 +249,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } else {
             return "Exercicio inserido com sucesso!";
         }
-    } */
-    /*
-    public ArrayList<ExercicioClass> getAllExercicios (int idPaciente) throws ParseException {
-        ArrayList<ExercicioClass> exList = new ArrayList<>();
+    }
 
+    public ArrayList<ExercicioClass> modelGetAllExercicios (Paciente paciente) throws ParseException {
+        ArrayList<ExercicioClass> exList = new ArrayList<>();
+        int idPaciente = paciente.get_id();
         Log.d("DB ","entrei");
 
         String selectQuery = "SELECT * FROM " + TABLE_EXERCICIOS;
@@ -271,7 +275,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
 
         return exList;
-    } */
+    }
 
     public boolean verificarData(Paciente paciente){
         GregorianCalendar calendar = new GregorianCalendar();
@@ -288,15 +292,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             }
             paciente.setDiaTotal(dia - paciente.getDiaInicio());
             paciente.setDia(dia);
-            /*
-            paciente.setDiaTotal -> o calculo vai ser : o dia do ano que foi pego hoje - o dia do ano que o paciente começou o exercicio
-             */
+
+           // paciente.setDiaTotal -> o calculo vai ser : o dia do ano que foi pego hoje - o dia do ano que o paciente começou o exercicio
+
         }
 
     return true;
     }
-/*
-    public String addExame (ExameClass exame){
+
+    public String modelAddExame (ExameClass exame){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -322,9 +326,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             return "Registro dos exames inserido com sucesso!";
         }
 
-    } */
+    }
 
-   /* public String addLipidograma (LipidogramaClass lipidograma){
+    public String modelAddLipidograma (LipidogramaClass lipidograma){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -346,9 +350,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } else {
             return "Lipidograma registrado com sucesso!";
         }
-    }*/
-/*
-    public String addHemograma (HemogramaClass hemograma){
+    }
+
+    public String modelAddHemograma (HemogramaClass hemograma){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -371,10 +375,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } else {
             return "Registro do hemograma feito com sucesso!";
         }
-    } */
+    }
 
     //metodo chamado na classe CriarConta para adicionar um novo paciente ao banco
-    /*public String addPaciente(Paciente paciente){
+    public String modelAddPaciente(Paciente paciente){
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -419,10 +423,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } else {
             return "Registro inserido com sucesso!";
         }
-    } */
+    }
 
     //metodo chamado na classe TelaLogin para DEBUG
-    /*public List<Paciente> getAllUsers(){
+    public List<Paciente> modelGetAllUsers(){
 
         List<Paciente> pacientesList = new ArrayList<Paciente>();
 
@@ -450,10 +454,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 paciente.setDiaInicio(Integer.parseInt(cursor.getString(11)));
 
                 //pega seu ultimo peso registrado
-                paciente.set_peso(getPeso(paciente.get_id()));
+                paciente.set_peso(modelGetPeso(paciente));
 
                 //pega suas ultimas taxas cadastradas
-                paciente = getUltimasTaxas(paciente);
+                paciente = modelGetUltimasTaxas(paciente);
 
                 pacientesList.add(paciente);
 
@@ -461,8 +465,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return pacientesList;
     }
-*/
-   /* public List<ExameClass> getAllExames() throws ParseException {
+
+    public List<ExameClass> modelGetAllExames() throws ParseException {
         List<ExameClass> exameList = new ArrayList<>();
 
         String selectQuery = "SELECT * FROM " + TABLE_EXAMES;
@@ -485,13 +489,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return exameList;
 
-    }*/
+    }
 
     //metodo chamado na classe MenuPrincipal para manter o objeto 'paciente' sempre atualizado
-    /*public Paciente getPaciente(String email) {
+    public Paciente modelGetPaciente(String email) {
 
         //pega todos os pacientes
-        List<Paciente> pacientesList = getAllUsers();
+        List<Paciente> pacientesList = modelGetAllUsers();
         Paciente paciente = new Paciente();
 
         //procura paciente desejado
@@ -505,16 +509,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return paciente;
     }
 
-    public void deleteAllPacientes() {
+    public void modelDeletAllPacientes() {
         SQLiteDatabase db = this.getWritableDatabase();
         String selectQuery = "DELETE FROM " + TABLE_PACIENTES;
 
         db.execSQL(selectQuery);
         db.close();
-    }*/
+    }
 
     //metodo chamado na classe TelaLogin para verificar as credenciais do usuario
- /*   public Paciente verificarLogin(String email, String senha){
+    public Paciente modelVerificarLogin(String email, String senha){
 
         //pega todos os pacientes
         String selectQuery = "SELECT * FROM " + TABLE_PACIENTES;
@@ -570,9 +574,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         paciente.set_id(-1);
         return paciente;
     }
-*/
+
     //metodo chamado na classe EsqueceuSenha para verificar existencia do email no banco
-    /*public Paciente verificarEmail(String email) {
+    public Paciente modelVerificarEmail(String email) {
 
         String selectQuery = "SELECT * FROM " + TABLE_PACIENTES;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -598,10 +602,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //se nao existir, retorna objeto com id igual a -1
         paciente.set_id(-1);
         return paciente;
-    }*/
+    }
 
     //metodo chamado na classe PosLogin para atualizar dados do paciente no banco
-    /*public boolean atualizarPaciente(Paciente paciente){
+    public boolean modelAtualizarPaciente(Paciente paciente){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values;
@@ -620,11 +624,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_IMC, paciente.get_imc());
 
         return db.update(this.TABLE_PACIENTES, values, where, null) > 0;
-    }*/
+    }
 
-    /*
+
     //metodo chamado na classe PosLogin e Peso para registrar peso do paciente
-    public void atualizarPeso(Paciente paciente){
+    public void modelAtualizarPeso(Paciente paciente){
 
         //pega data atual
         long date = System.currentTimeMillis();
@@ -652,11 +656,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             Log.d("Peso atualizado!", "DatabaseHandler");
         }
     }
-    */
+
 
     //metodo chamado na classe TelaLogin para pegar o peso atual do paciente
-   /* public double getPeso (int id){
-
+    public double modelGetPeso (Paciente paciente){
+        int id = paciente.get_id();
         double peso = 0;
 
         String selectQuery = "SELECT * FROM " + TABLE_PESOS;
@@ -675,9 +679,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         //retorna peso atual (ou 0 se nao encontrou/ainda nao cadastrou)
         return peso;
-    }*/
+    }
 
- /*   public ArrayList<Float> getAllPesos(int idPaciente){
+    public ArrayList<Float> modelGetAllPesos(Paciente paciente){
+        int idPaciente = paciente.get_id();
         ArrayList<Float> pesos = new ArrayList<>();
         Log.d("DB, ", "GetAllPesos");
 
@@ -696,10 +701,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return pesos;
 
-    } */
+    }
 
     //metodo chamado na classe Taxas para atualizar medicoes do paciente no banco
-  /*  public void atualizarTaxas(Paciente paciente){
+    public void modelAtualizarTaxas(Paciente paciente){
 
         //pega data atual
         long date = System.currentTimeMillis();
@@ -728,15 +733,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } else {
             Log.d("Taxas atualizadas!", "DatabaseHandler");
         }
-    } */
+    }
 
     //metodo chamado na classe Taxas para pegar ultima medicao de cada taxa
-/*    public Paciente getUltimasTaxas (Paciente paciente){
+    public Paciente modelGetUltimasTaxas (Paciente paciente){
 
         String selectQuery = "SELECT * FROM " + TABLE_EXAMES;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery,null);
-
         //procura o peso pelo id do paciente
         if(cursor.moveToFirst()){
             do{
@@ -765,6 +769,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         //retorna paciente com ultimas taxas cadastradas pelo usuario
         return paciente;
-    } */
+    }
 
 }

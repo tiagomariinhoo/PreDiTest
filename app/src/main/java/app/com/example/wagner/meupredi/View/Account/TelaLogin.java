@@ -28,7 +28,6 @@ import app.com.example.wagner.meupredi.Controller.ControllerPeso;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.ExameClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
-import app.com.example.wagner.meupredi.Model.ModelPeso;
 import app.com.example.wagner.meupredi.R;
 
 public class TelaLogin extends AppCompatActivity {
@@ -151,16 +150,22 @@ public class TelaLogin extends AppCompatActivity {
 
                 //se estiverem corretas, faz o login
                 if(paciente.get_id() != -1){
-
+                    ControllerExames controllerExames = new ControllerExames(getApplicationContext());
                     //pega peso atual do paciente na tabela correspondente
                     double peso = controllerPeso.getPeso(paciente);
+                    Log.d("PESO PEGO NA TELA LOGIN  : ",String.valueOf(peso));
                     paciente.set_peso(peso);
+
+                    //Paciente pacTaxas = controllerExames.getUltimasTaxas(paciente);
+                    paciente = controllerExames.getUltimasTaxas(paciente);
+
 
                     Intent it = new Intent(TelaLogin.this, PosLogin.class);
                     it.putExtra("Paciente", paciente);
-                    finish();
+
                     it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(it);
+                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "Usuário inválido!", Toast.LENGTH_LONG).show();
                 }

@@ -4,30 +4,29 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
-import app.com.example.wagner.meupredi.Model.ModelPeso;
 
 /**
  * Created by tico_ on 31/01/2018.
  */
 
 public class ControllerPeso {
-    ModelPeso modelPeso;
-    Context context;
+    DatabaseHandler db;
+
     public ControllerPeso(Context context) {
-        this.context = context;
-        modelPeso = new ModelPeso(context);
+        db = new DatabaseHandler(context);
     }
 
     public void atualizarPeso(Paciente paciente){
-        modelPeso.ModelAtualizarPeso(paciente);
+        db.modelAtualizarPeso(paciente);
     }
 
     public double getPeso(Paciente paciente){
-        return modelPeso.ModelGetPeso(paciente);
+        return db.modelGetPeso(paciente);
     }
 
     public ArrayList<Float> getAllPesos(Paciente paciente){
-        return modelPeso.ModelGetAllPesos(paciente);
+        return db.modelGetAllPesos(paciente);
     }
 }

@@ -46,8 +46,24 @@ public class Perfil extends Fragment {
         //DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
         ControllerPeso controllerPeso = new ControllerPeso(getActivity().getApplicationContext());
         paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
-        Log.d("Paciente nome : " , paciente.get_nome());
-        Log.d("Paciente peso : ", String.valueOf(paciente.get_peso()));
+        Log.d("PERFIL : ", "INFORMAÇÕES");
+        Log.d("Nome : ", paciente.get_nome());
+        Log.d("Senha : ", paciente.get_senha());
+        Log.d("Email: ", paciente.get_email());
+        Log.d("Sexo: ", String.valueOf(paciente.get_sexo()));
+        Log.d("Nascimento: ", paciente.get_nascimento());
+        Log.d("Idade : ", String.valueOf(paciente.get_idade()));
+        Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
+        Log.d("Peso : ", String.valueOf(paciente.get_peso()));
+        Log.d("Altura : ", String.valueOf(paciente.get_altura()));
+        Log.d("IMC : ", String.valueOf(paciente.get_imc()));
+        Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
+        Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
+        Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+        Log.d("Colesterol : ", String.valueOf(paciente.get_colesterol()));
+        Log.d("Lipidograma : ", String.valueOf(paciente.get_lipidograma()));
+        Log.d("Hemograma : ", String.valueOf(paciente.get_hemograma()));
+        Log.d("Tireoide : ", String.valueOf(paciente.get_tireoide()));
 
         //pega o peso atualizado no banco para exibir na tela
         paciente.set_peso(controllerPeso.getPeso(paciente));

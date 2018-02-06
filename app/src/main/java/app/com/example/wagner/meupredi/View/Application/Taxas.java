@@ -1,6 +1,7 @@
 package app.com.example.wagner.meupredi.View.Application;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,7 @@ import app.com.example.wagner.meupredi.Controller.ControllerExames;
 import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
+import app.com.example.wagner.meupredi.View.Account.MenuPrincipal;
 
 /**
  * Created by LeandroDias1 on 25/07/2017.
@@ -52,6 +54,13 @@ public class Taxas  extends AppCompatActivity {
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
+        Log.d("TELA TAXAS : " , "<<<<<");
+        Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
+        Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+        Log.d("Colesterol : ", String.valueOf(paciente.get_colesterol()));
+        Log.d("Lipidograma : ", String.valueOf(paciente.get_lipidograma()));
+        Log.d("Hemograma : ", String.valueOf(paciente.get_hemograma()));
+        Log.d("Tireoide : ", String.valueOf(paciente.get_tireoide()));
 
         glicoseJejum = (TextView) findViewById(R.id.text_glicoseJejumAtual_taxas);
         glicoseJejum.setText(String.valueOf(paciente.get_glicosejejum()) + " mg/dL");
@@ -154,12 +163,17 @@ public class Taxas  extends AppCompatActivity {
                 novaGlicose75.setText("");
                 novoColesterol.setText("");
 
-                /*Fragment fragment = new Fragment();
+                Intent intent = new Intent(Taxas.this, MenuPrincipal.class);
+                intent.putExtra("Paciente", paciente);
+                startActivity(intent);
+
+                /*
+                Fragment fragment = new Fragment();
                 transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.image_dados_perfil, fragment);
                 transaction.commit();
-                */
-                finish();
+
+                finish();*/
 
             }
         });

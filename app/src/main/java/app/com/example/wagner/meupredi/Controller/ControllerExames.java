@@ -5,45 +5,45 @@ import android.content.Context;
 import java.text.ParseException;
 import java.util.List;
 
+import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.ExameClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.HemogramaClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.LipidogramaClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
-import app.com.example.wagner.meupredi.Model.ModelExames;
 
 /**
  * Created by tico_ on 31/01/2018.
  */
 
 public class ControllerExames {
-    ModelExames modelExames;
+    DatabaseHandler db;
 
     public ControllerExames(Context context) {
-        modelExames = new ModelExames(context);
+        db = new DatabaseHandler(context);
     }
 
     public String addExames(ExameClass exame){
-        return modelExames.ModelAddExame(exame);
+        return db.modelAddExame(exame);
     }
 
     public String addLipidograma(LipidogramaClass lipidograma){
-        return modelExames.ModelAddLipidograma(lipidograma);
+        return db.modelAddLipidograma(lipidograma);
     }
 
     public String addHemograma(HemogramaClass hemograma){
-        return modelExames.ModelAddHemograma(hemograma);
+        return db.modelAddHemograma(hemograma);
     }
 
     public List<ExameClass> getAllExames() throws ParseException {
-        return modelExames.ModelGetAllExames();
+        return db.modelGetAllExames();
     }
 
     public void atualizarTaxas(Paciente paciente){
-        modelExames.ModelAtualizarTaxas(paciente);
+        db.modelAtualizarTaxas(paciente);
     }
 
     public Paciente getUltimasTaxas(Paciente paciente){
-        return modelExames.ModelGetUltimasTaxas(paciente);
+        return db.modelGetUltimasTaxas(paciente);
     }
 
 }
