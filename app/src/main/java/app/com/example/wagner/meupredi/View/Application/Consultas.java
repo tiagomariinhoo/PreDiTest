@@ -1,18 +1,19 @@
 package app.com.example.wagner.meupredi.View.Application;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -23,31 +24,63 @@ import app.com.example.wagner.meupredi.R;
  * Created by LeandroDias1 on 18/04/2017.
  */
 
-public class Consultas extends Fragment {
+public class Consultas extends Activity {
 
     private DateFormat formatacaoData = DateFormat.getDateInstance();
     private Calendar dataTime = Calendar.getInstance();
-    private TextView textoExibicao, cardDataNovaConsulta, cardHorarioNovaConsulta;
-    private Button btnMarcarData, btnMarcarHorario, agendarNovaConsulta;
+    private TextView cardDataNovaConsulta, cardHorarioNovaConsulta;
+    private Button btnMarcarData, btnMarcarHorario;
+    private ImageView agendarNovaConsulta;
     private EditText nomeNovaConsulta;
+    private AlertDialog.Builder alertaNovaConsulta;
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_consultas, container, false);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_consultas);
 
-        textoExibicao = (TextView) view.findViewById(R.id.textView_data_tela_consulta);
-        btnMarcarData = (Button) view.findViewById(R.id.btn_data_consulta_marcada);
-        btnMarcarHorario = (Button) view.findViewById(R.id.btn_horario_consulta_marcada);
-        cardDataNovaConsulta = (TextView) view.findViewById(R.id.textView_data_card_nova_consulta);
-        cardHorarioNovaConsulta = (TextView) view.findViewById(R.id.textView_horario_card_nova_consulta);
+        nomeNovaConsulta = (EditText) findViewById(R.id.editText_nome_nova_consulta);
+        btnMarcarData = (Button) findViewById(R.id.btn_data_consulta_marcada);
+        btnMarcarHorario = (Button) findViewById(R.id.btn_horario_consulta_marcada);
+        agendarNovaConsulta = (ImageView) findViewById(R.id.btn_agendar_nova_consulta);
+        cardDataNovaConsulta = (TextView) findViewById(R.id.textView_data_card_nova_consulta);
+        cardHorarioNovaConsulta = (TextView) findViewById(R.id.textView_horario_card_nova_consulta);
 
         agendarNovaConsulta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(nomeNovaConsulta != null){
-                }
+
+                String nome = nomeNovaConsulta.getText().toString();
+
+                cardHorarioNovaConsulta.setText(nome);
+
+                alertaNovaConsulta = new AlertDialog.Builder( Consultas.this );
+
+                alertaNovaConsulta.setTitle("Atenção!");
+
+                alertaNovaConsulta.setMessage("Verifique as informações da sua nova consulta e confirme");
+
+                // Caso Não
+                alertaNovaConsulta.setNegativeButton("CANCELAR",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(Consultas.this, "Nova consulta cancelada", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                // Caso Sim
+                alertaNovaConsulta.setPositiveButton("CONFIRMAR",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(Consultas.this, "Nova consulta agendada!", Toast.LENGTH_SHORT).show();
+                                // FAZER FUNÇÃO DE ADICIONAR NOVA CONSULTA EM LISTA DE CONSULTAS MARCADAS
+                            }
+                        });
+
+                alertaNovaConsulta.create();
             }
         });
 
@@ -65,19 +98,14 @@ public class Consultas extends Fragment {
             }
         });
 
-        updateTextLabel(); // FUNCAO DE CAPTURAR DATA ATUAL
-
-        return view;
     }
 
     private void updateData(){
-        new DatePickerDialog(getActivity(), d, dataTime.get(Calendar.YEAR), dataTime.get(Calendar.MONTH), dataTime.get(Calendar.DAY_OF_MONTH)).show();
-
-
+        new DatePickerDialog(Consultas.this, d, dataTime.get(Calendar.YEAR), dataTime.get(Calendar.MONTH), dataTime.get(Calendar.DAY_OF_MONTH)).show();
     }
 
     private void updateTime(){
-        new TimePickerDialog(getActivity(), t, dataTime.get(Calendar.HOUR_OF_DAY), dataTime.get(Calendar.MINUTE), true ).show();
+        new TimePickerDialog(Consultas.this, t, dataTime.get(Calendar.HOUR_OF_DAY), dataTime.get(Calendar.MINUTE), true ).show();
 
     }
 
@@ -85,7 +113,11 @@ public class Consultas extends Fragment {
 
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            cardDataNovaConsulta.setText(formatacaoData.format(dataTime.getTime()));
+            String diaEscolhido, mesEscolhido, anoEscolhido;
+            diaEscolhido = Integer.toString(dayOfMonth);
+            mesEscolhido = Integer.toString(month+1);
+            anoEscolhido = Integer.toString(year);
+            cardDataNovaConsulta.setText(diaEscolhido + "/" + mesEscolhido + "/" + anoEscolhido);
         }
     };
 
@@ -93,22 +125,10 @@ public class Consultas extends Fragment {
 
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                String horaEscolhida = Integer.toString(hourOfDay);
-                String minutosEscolhidos = Integer.toString(minute);
-                cardHorarioNovaConsulta.setText(horaEscolhida + ":" + minutosEscolhidos);
+            String horaEscolhida = Integer.toString(hourOfDay);
+            String minutosEscolhidos = Integer.toString(minute);
+            cardHorarioNovaConsulta.setText(horaEscolhida + ":" + minutosEscolhidos);
         }
     };
 
-    private void updateTextLabel() {
-        textoExibicao.setText(formatacaoData.format(dataTime.getTime()));
-
-    }
-
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
-        super.onViewCreated(view, savedInstanceState);
-
-    }
 }

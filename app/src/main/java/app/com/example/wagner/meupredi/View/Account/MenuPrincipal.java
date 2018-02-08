@@ -1,5 +1,6 @@
 package app.com.example.wagner.meupredi.View.Account;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -18,7 +19,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
-import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
 import app.com.example.wagner.meupredi.View.Application.Consultas;
@@ -28,8 +28,7 @@ import app.com.example.wagner.meupredi.View.Application.Medicamentos;
 import app.com.example.wagner.meupredi.View.Application.Perfil;
 import app.com.example.wagner.meupredi.View.Application.Sair;
 
-public class MenuPrincipal extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MenuPrincipal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Paciente paciente;
     private TextView nome;
@@ -133,7 +132,9 @@ public class MenuPrincipal extends AppCompatActivity
                 fragment = new Exames();
                 break;
             case R.id.nav_consultas:
-                fragment = new Consultas();
+                Intent intent = new Intent(MenuPrincipal.this, Consultas.class);
+                intent.putExtra("Paciente", paciente);
+                startActivity(intent);
                 break;
             case R.id.nav_exercicios:
                 fragment = new Exercicios();
@@ -171,7 +172,7 @@ public class MenuPrincipal extends AppCompatActivity
         ControllerPaciente controllerPaciente = new ControllerPaciente(getApplicationContext());
 //        paciente = controllerPaciente.getPaciente(paciente.get_email());
         //paciente.calculo_diabetes(getApplicationContext());
-        //paciente = (Paciente) getIntent().getExtras().get("Paciente");
+        paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
         return paciente;
     }

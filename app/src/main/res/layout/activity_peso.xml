@@ -46,17 +46,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="-1dp"
         android:text="Peso Ideal:"
         android:textColor="@color/colorBranco"
         android:textSize="18sp"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_pesoAtual_peso" />
+        app:layout_constraintTop_toBottomOf="@+id/text_pesoAtual_peso"
+        android:layout_marginRight="0dp"
+        app:layout_constraintRight_toRightOf="@+id/text_pesoAtual_peso"
+        app:layout_constraintHorizontal_bias="0.5" />
 
     <TextView
         android:id="@+id/text_meta_valor_peso"
@@ -66,13 +66,12 @@
         android:text="val"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
+        tools:layout_editor_absoluteY="110dp"
         android:layout_marginRight="0dp"
         app:layout_constraintRight_toRightOf="@+id/text_pesoAtual_valor_peso"
         android:layout_marginLeft="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/text_pesoAtual_valor_peso"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toTopOf="@+id/text_meta_peso"
-        android:layout_marginTop="0dp" />
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <TextView
         android:id="@+id/text_registrar_peso"
@@ -104,13 +103,13 @@
         android:textColor="@color/colorAccent"
         android:textColorHint="#bdc3c7"
         android:textSize="18sp"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="0dp"
         app:layout_constraintRight_toRightOf="@+id/btn_atualizar_peso"
         android:layout_marginLeft="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/btn_atualizar_peso"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="133dp"
-        app:layout_constraintHorizontal_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.5" />
 
     <TextView
         android:id="@+id/textView21"
@@ -132,14 +131,14 @@
 
     <Button
         android:id="@+id/btn_atualizar_peso"
-        android:layout_width="100dp"
+        android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="13dp"
-        android:background="@color/colorConfirm"
+        android:background="@drawable/borda_curvada_verde"
         android:text="ATUALIZAR"
         android:textColor="@color/colorBranco"
         android:textSize="14dp"

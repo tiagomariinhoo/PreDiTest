@@ -7,5 +7,6 @@
     <color name="colorConfirm">#27ae60</color>
     <color name="colorCancel">#ff0000</color>
     <color name="colorBranco">#ecf0f1</color>
+    <color name="colorBarraTitulo">#ecf0f1</color>
     <color name="colorBackground">#2c3e50</color> //MIDNIGHT BLUE
 </resources>
