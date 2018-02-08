@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/gradiente_plano_de_fundo">
+    android:background="@color/colorBackground">
 
 
     <TextView
@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:layout_marginTop="0dp"
-        android:background="@drawable/gradiente_azul"
+        android:background="@color/colorBackground"
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
         android:text="Diagnósticos"
