@@ -1,6 +1,5 @@
 package app.com.example.wagner.meupredi.View.Account;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -15,7 +14,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
@@ -38,7 +36,6 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -126,7 +123,9 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
         //inicializa o fragmento selecionado
         switch (itemId) {
             case R.id.nav_perfil:
-                fragment = new Perfil();
+                Intent intentPerfil = new Intent(MenuPrincipal.this, Perfil.class);
+                intentPerfil.putExtra("Paciente", paciente);
+                startActivity(intentPerfil);
                 break;
             case R.id.nav_exames:
                 fragment = new Exames();

@@ -1,249 +1,46 @@
 package app.com.example.wagner.meupredi.View.Application;
 
+import android.app.ActivityGroup;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.TabHost;
 
-import app.com.example.wagner.meupredi.Controller.ControllerPeso;
-import app.com.example.wagner.meupredi.Model.DatabaseHandler;
-import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
-import app.com.example.wagner.meupredi.View.Account.MenuPrincipal;
 
-import static android.app.Activity.RESULT_OK;
+import static app.com.example.wagner.meupredi.R.layout.activity_perfil;
 
 /**
  * Created by LeandroDias1 on 18/04/2017.
  */
 
-public class Perfil extends Fragment {
 
-    MenuPrincipal menu;
-    ImageView chamadaPerfil, perfil;
-    TextView nome, imc, pesoValor;
-    TextView taxas, peso, desempenho, dados;
-    ImageView prancheta, grafico, engrenagem;
-    Paciente paciente;
-    Uri imageUri;
-
-    private static int SELECTED_PICTURE = 1;
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_perfil, container, false);
-
-        //DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
-        ControllerPeso controllerPeso = new ControllerPeso(getActivity().getApplicationContext());
-        paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
-        Log.d("PERFIL : ", "INFORMAÇÕES");
-        Log.d("Nome : ", paciente.get_nome());
-        Log.d("Senha : ", paciente.get_senha());
-        Log.d("Email: ", paciente.get_email());
-        Log.d("Sexo: ", String.valueOf(paciente.get_sexo()));
-        Log.d("Nascimento: ", paciente.get_nascimento());
-        Log.d("Idade : ", String.valueOf(paciente.get_idade()));
-        Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
-        Log.d("Peso : ", String.valueOf(paciente.get_peso()));
-        Log.d("Altura : ", String.valueOf(paciente.get_altura()));
-        Log.d("IMC : ", String.valueOf(paciente.get_imc()));
-        Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
-        Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
-        Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
-        Log.d("Colesterol : ", String.valueOf(paciente.get_colesterol()));
-        Log.d("Lipidograma : ", String.valueOf(paciente.get_lipidograma()));
-        Log.d("Hemograma : ", String.valueOf(paciente.get_hemograma()));
-        Log.d("Tireoide : ", String.valueOf(paciente.get_tireoide()));
-
-        //pega o peso atualizado no banco para exibir na tela
-        paciente.set_peso(controllerPeso.getPeso(paciente));
-
-        nome = (TextView) view.findViewById(R.id.text_nome_perfil);
-        nome.setText(String.valueOf(paciente.get_nome()));
-
-        imc = (TextView) view.findViewById(R.id.text_valor_imc);
-        imc.setText("IMC - " + String.valueOf(paciente.get_imc()));
-
-        prancheta = (ImageView) view.findViewById(R.id.image_prancheta_perfil);
-        pesoValor = (TextView) view.findViewById(R.id.text_valor_peso);
-        pesoValor.setText(String.valueOf(paciente.get_peso()));
-        grafico = (ImageView) view.findViewById(R.id.image_graficos_perfil);
-        engrenagem = (ImageView) view.findViewById(R.id.image_dados_perfil);
-
-        taxas = (TextView) view.findViewById(R.id.text_taxas_perfil);
-        peso = (TextView) view.findViewById(R.id.text_peso_perfil);
-        desempenho = (TextView) view.findViewById(R.id.text_desempenho_perfil);
-        dados = (TextView) view.findViewById(R.id.text_dados_perfil);
-        chamadaPerfil = (ImageView) view.findViewById(R.id.image_chamada_galeria_fotodoperfil);
-        perfil = (ImageView) view.findViewById(R.id.image_foto_perfil);
-
-        //paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
-
-        //imc = (TextView) view.findViewById(R.id.text_imc_valor_perfil);
-        //imc.setText(String.valueOf(paciente.get_imc()));
-
-        //imagemCentral = (ImageView) view.findViewById(R.id.image_central);
-
-       //db.verificarData(paciente);
-
-        return view;
-    }
-
+public class Perfil extends ActivityGroup {
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("Perfil");
+    protected void onCreate(Bundle savedInstanceState) {
 
-        paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
-        Log.d(paciente.get_nome(), " paciente nome Perfil < ");
+        super.onCreate(savedInstanceState);
+        setContentView(activity_perfil);
 
-        taxas.setOnClickListener(new View.OnClickListener() {
+        TabHost abas = (TabHost) findViewById(R.id.tabhost);
+        abas.setup(this.getLocalActivityManager());
 
-            @Override
-            public void onClick(View v) {
+        TabHost.TabSpec descritor = abas.newTabSpec("aba1");
+        descritor.setContent(new Intent(this, TabTaxas.class));
+        descritor.setIndicator("TAXAS");
+        abas.addTab(descritor);
 
-                Intent intent = new Intent(getActivity(), Taxas.class);
-                intent.putExtra("Paciente", paciente);
-                startActivity(intent);
-            }
-        });
+        descritor = abas.newTabSpec("aba2");
+        descritor.setContent(new Intent(this, TabCorpo.class));
+        descritor.setIndicator("CORPO");
+        abas.addTab(descritor);
 
-        peso.setOnClickListener(new View.OnClickListener() {
+        descritor = abas.newTabSpec("aba3");
+        descritor.setContent(new Intent(this, TabEvolucao.class));
+        descritor.setIndicator("EVOLUÇÃO");
+        abas.addTab(descritor);
 
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(), Peso.class);
-                intent.putExtra("Paciente", paciente);
-                startActivity(intent);
-            }
-        });
-
-        desempenho.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(), Graphics.class);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                intent.putExtra("Paciente", paciente);
-                startActivity(intent);
-            }
-        });
-
-        dados.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(), Dados.class);
-                intent.putExtra("Paciente", paciente);
-                startActivity(intent);
-            }
-        });
-
-        prancheta.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(), Taxas.class);
-                intent.putExtra("Paciente", paciente);
-                startActivity(intent);
-            }
-
-        });
-
-        pesoValor.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(), Peso.class);
-                intent.putExtra("Paciente", paciente);
-                startActivity(intent);
-            }
-
-        });
-
-        grafico.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(), Graphics.class);
-                intent.putExtra("Paciente", paciente);
-                startActivity(intent);
-            }
-
-        });
-
-        engrenagem.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(), Dados.class);
-                intent.putExtra("Paciente", paciente);
-                startActivity(intent);
-            }
-
-        });
-
-        chamadaPerfil.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                abrirGaleria(2);
-            }
-        });
 
     }
-
-    @Override
-    public void onResume() {
-
-        //esse metodo e usado para recarregar as informacoes 'dinamicas' da tela (nome, imc, peso)
-        super.onResume();
-
-        Log.d("Recarregando tela", "onResume");
-
-        paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
-
-        nome.setText(String.valueOf(paciente.get_nome()));
-        imc.setText("IMC - " + String.valueOf(paciente.get_imc()));
-        pesoValor.setText(String.valueOf(paciente.get_peso()));
-    }
-
-    private void abrirGaleria(int foto){
-        Intent galeria = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        SELECTED_PICTURE = foto;
-        startActivityForResult(galeria, SELECTED_PICTURE);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        Perfil.super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && requestCode == SELECTED_PICTURE){
-            imageUri = data.getData();
-
-            if(SELECTED_PICTURE == 2){
-                perfil.setImageURI(imageUri);
-            }
-            else {
-           //     capa.setImageURI(imageUri);
-            }
-        }
-    }
-
 }
+
