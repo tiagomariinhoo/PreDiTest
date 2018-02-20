@@ -176,8 +176,6 @@ public class Peso extends AppCompatActivity{
             }
         }
 
-
-
         BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
         ArrayList<String> theDates = new ArrayList<>();
 

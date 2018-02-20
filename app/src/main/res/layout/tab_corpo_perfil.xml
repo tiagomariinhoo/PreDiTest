@@ -2,17 +2,146 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="300dp"
-    android:id="@+id/tab2">
-
+    android:id="@+id/tab2"
+    android:padding="8dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_atualizar_peso"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:padding="8dp"
-        android:text="IMC = "
-        android:textSize="18dp"
         android:background="@color/colorBranco"
+        android:text="Atualize suas medições"
+        android:textSize="18dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textAlignment="center"
         android:gravity="center_vertical"
-        android:textColor="@color/colorBackground"/>
+        android:textColor="#3c40c6"/>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:padding="8dp"
+        android:layout_below="@+id/btn_atualizar_peso"
+        android:background="@color/colorBackground" />
+
+    <ScrollView
+        android:id="@+id/scroll_view_tab_corpo"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:paddingTop="8dp"
+        android:fillViewport="true"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBranco"
+            android:padding="8dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/text_peso_tab_corpo_perfil"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:background="@color/colorBranco"
+                android:gravity="center_vertical"
+                android:text="PESO: "
+                android:textAlignment="center"
+                android:textColor="@color/colorBackground"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/text_valor_peso_tab_corpo_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@id/text_peso_tab_corpo_perfil"
+                android:background="@color/colorBranco"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                android:text="73.56 kg"
+                android:textAlignment="center"
+                android:textColor="@color/colorBackground"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/text_altura_tab_corpo_perfil"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/text_peso_tab_corpo_perfil"
+                android:background="@color/colorBranco"
+                android:gravity="center_vertical"
+                android:text="ALTURA: "
+                android:textAlignment="center"
+                android:textColor="@color/colorBackground"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/text_valor_altura_tab_corpo_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/text_peso_tab_corpo_perfil"
+                android:layout_toRightOf="@id/text_altura_tab_corpo_perfil"
+                android:background="@color/colorBranco"
+                android:gravity="center_vertical"
+                android:text="1.70cm"
+                android:textAlignment="center"
+                android:textColor="@color/colorBackground"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/text_circunferencia_tab_corpo_perfil"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/text_altura_tab_corpo_perfil"
+                android:background="@color/colorBranco"
+                android:gravity="center_vertical"
+                android:text="CIRCUNFERÊNCIA: "
+                android:textAlignment="center"
+                android:textColor="@color/colorBackground"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/text_valor_circunferencia_tab_corpo_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/text_altura_tab_corpo_perfil"
+                android:layout_toRightOf="@id/text_circunferencia_tab_corpo_perfil"
+                android:background="@color/colorBranco"
+                android:gravity="center_vertical"
+                android:text="62.83 cm"
+                android:textAlignment="center"
+                android:textColor="@color/colorBackground"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/text_imc_tab_corpo_perfil"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/text_circunferencia_tab_corpo_perfil"
+                android:background="@color/colorBranco"
+                android:gravity="center_vertical"
+                android:text="IMC: "
+                android:textAlignment="center"
+                android:textColor="@color/colorBackground"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/text_valor_imc_tab_corpo_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/text_circunferencia_tab_corpo_perfil"
+                android:layout_toRightOf="@id/text_imc_tab_corpo_perfil"
+                android:background="@color/colorBranco"
+                android:gravity="center_vertical"
+                android:text="Sobrepeso"
+                android:textAlignment="center"
+                android:textColor="@color/colorBackground"
+                android:textSize="18dp" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </LinearLayout>

@@ -32,7 +32,7 @@ import app.com.example.wagner.meupredi.View.Account.MenuPrincipal;
 public class Taxas  extends AppCompatActivity {
 
     Paciente paciente;
-    TextView  glicoseJejum, glicose75, colesterol;
+    TextView  glicoseJejum, glicose75, hemoglobinaGlicolisada;
     EditText novaGlicose75, novaGlicoseJejum, novoColesterol;
     Button atualizarTaxas;
 
@@ -53,7 +53,7 @@ public class Taxas  extends AppCompatActivity {
 
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        paciente = (Paciente) getIntent().getExtras().get("Paciente");
+/*        paciente = (Paciente) getIntent().getExtras().get("Paciente");
         Log.d("TELA TAXAS : " , "<<<<<");
         Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
         Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
@@ -68,16 +68,16 @@ public class Taxas  extends AppCompatActivity {
         glicose75 = (TextView) findViewById(R.id.text_glicose75gAtual_taxas);
         glicose75.setText(String.valueOf(paciente.get_glicose75g()) + " mg/dL");
 
-        colesterol = (TextView) findViewById(R.id.text_colesterolAtual_taxas);
-        colesterol.setText(String.valueOf(paciente.get_colesterol()) + " mg/dL");
+        hemoglobinaGlicolisada = (TextView) findViewById(R.id.text_hemoglobina_glicolisadaAtual_taxas);
+        hemoglobinaGlicolisada.setText(String.valueOf(paciente.get_colesterol()) + " mg/dL");
 
         novaGlicoseJejum = (EditText) findViewById(R.id.edit_glicoseJejum_taxas);
         novaGlicoseJejum.setRawInputType(Configuration.KEYBOARD_QWERTY);
         novaGlicose75 = (EditText) findViewById(R.id.edit_glicose75g_taxas);
         novaGlicose75.setRawInputType(Configuration.KEYBOARD_QWERTY);
-        novoColesterol = (EditText) findViewById(R.id.edit_colesterol_taxas);
+        novoColesterol = (EditText) findViewById(R.id.edit_hemoglobina_glicolisada_taxas);
         novoColesterol.setRawInputType(Configuration.KEYBOARD_QWERTY);
-
+*/
         findViewById(R.id.tela_taxas).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +91,7 @@ public class Taxas  extends AppCompatActivity {
         });
 
         atualizarTaxas = (Button) findViewById(R.id.btn_atualizar_taxas);
-
+/*
         atualizarTaxas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,9 +142,9 @@ public class Taxas  extends AppCompatActivity {
                     String colesterolFormatado = String.format(Locale.ENGLISH, "%.2f", colesterolAtualizado);
                     Double colesterolDoPaciente = Double.parseDouble(colesterolFormatado);
 
-                    colesterol.setText(String.valueOf(colesterolDoPaciente) + " mg/dL");
+                    hemoglobinaGlicolisada.setText(String.valueOf(colesterolDoPaciente) + " mg/dL");
 
-                    Log.d("Col : ", colesterol.getText().toString());
+                    Log.d("Col : ", hemoglobinaGlicolisada.getText().toString());
 
                     paciente.set_colesterol(colesterolDoPaciente);
 
@@ -166,7 +166,7 @@ public class Taxas  extends AppCompatActivity {
                 Intent intent = new Intent(Taxas.this, MenuPrincipal.class);
                 intent.putExtra("Paciente", paciente);
                 startActivity(intent);
-
+*/
                 /*
                 Fragment fragment = new Fragment();
                 transaction = getSupportFragmentManager().beginTransaction();
@@ -174,9 +174,9 @@ public class Taxas  extends AppCompatActivity {
                 transaction.commit();
 
                 finish();*/
-
+/*
             }
-        });
+        });*/
     }
 
     @Override

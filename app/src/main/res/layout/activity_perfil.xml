@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:background="@color/colorBranco"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"

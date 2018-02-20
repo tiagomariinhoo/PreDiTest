@@ -6,27 +6,34 @@
     android:padding="8dp">
 
     <TextView
+        android:id="@+id/btn_atualizar_taxas"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="#f1f2f6"
-        android:text="Atualize suas Taxas"
+        android:background="@color/colorBranco"
+        android:text="Atualize suas taxas"
         android:textSize="18dp"
         android:textAlignment="center"
-        android:padding="8dp"
-        android:drawableLeft="@mipmap/ic_atualizar"
-        android:drawableRight="@mipmap/ic_seta_direita"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:gravity="center_vertical"
-        android:textColor="@color/colorBackground"/>
+        android:textColor="#3c40c6"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:padding="8dp"
+        android:background="@color/colorBackground" />
 
     <ScrollView
-        android:paddingTop="16dp"
-        android:layout_width="match_parent"
+        android:paddingTop="8dp"
+        android:layout_width="300dp"
         android:layout_height="200dp">
 
         <RelativeLayout
+            android:padding="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorBackground">
+            android:background="@color/colorBranco">
 
             <TextView
                 android:id="@+id/text_hemoglicada_perfil"
@@ -36,7 +43,8 @@
                 android:background="@color/colorBranco"
                 android:gravity="center_vertical"
                 android:text="Hemoglobina glicada:"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorBackground"/>
 
             <TextView
                 android:id="@+id/text_valor_hemoglobina_glicolisada_atual"
@@ -52,7 +60,7 @@
 
             <TextView
                 android:id="@+id/text_glicose_jejum_atual"
-                android:paddingTop="8dp"
+                android:paddingTop="0dp"
                 android:layout_width="260dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/text_hemoglicada_perfil"
@@ -65,7 +73,7 @@
 
             <TextView
                 android:id="@+id/text_valor_glicose_jejum_atual"
-                android:paddingTop="8dp"
+                android:paddingTop="0dp"
                 android:layout_width="84dp"
                 android:layout_height="40dp"
                 android:layout_toRightOf="@id/text_glicose_jejum_atual"
@@ -81,7 +89,7 @@
                 android:id="@+id/text_glicose_75g_atual"
                 android:layout_width="260dp"
                 android:layout_height="40dp"
-                android:paddingTop="8dp"
+                android:paddingTop="0dp"
                 android:layout_below="@id/text_glicose_jejum_atual"
                 android:text="Glicose após 75g"
                 android:drawableLeft="@mipmap/ic_gota_sangue"
@@ -92,7 +100,7 @@
 
             <TextView
                 android:id="@+id/text_valor_glicose_75g_atual"
-                android:paddingTop="8dp"
+                android:paddingTop="0dp"
                 android:layout_width="84dp"
                 android:layout_height="40dp"
                 android:layout_toRightOf="@id/text_glicose_jejum_atual"

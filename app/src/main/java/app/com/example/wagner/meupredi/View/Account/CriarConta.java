@@ -1,8 +1,11 @@
 package app.com.example.wagner.meupredi.View.Account;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +17,15 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -33,10 +39,12 @@ import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 public class CriarConta extends AppCompatActivity {
 
     private CheckBox boxSenha;
-    private EditText nome, email, data, senha, conSenha;
+    private EditText nome, email, senha, conSenha;
     private Spinner sexo;
     private ConstraintLayout tela;
     private Button criarConta;
+    private TextView data;
+    private DatePickerDialog.OnDateSetListener dataNascimento;
     TextView cancelar;
 
     @Override
@@ -50,7 +58,7 @@ public class CriarConta extends AppCompatActivity {
         nome = (EditText) findViewById(R.id.edit_nome_completo);
         email = (EditText) findViewById(R.id.edit_endereco_email);
         sexo = (Spinner) findViewById(R.id.spinner_sexo_postlogin);
-        data = (EditText) findViewById(R.id.edit_idade_criar);
+        data = (TextView) findViewById(R.id.edit_idade_criar);
         data.setRawInputType(Configuration.KEYBOARD_QWERTY);
         senha = (EditText) findViewById(R.id.edit_senha_cadastro);
         conSenha = (EditText) findViewById(R.id.edit_novamente_senha);
@@ -85,6 +93,33 @@ public class CriarConta extends AppCompatActivity {
         sexo.setAdapter(adapter);
 
         boxSenha.setChecked(false);
+
+        // ABRIR DIALOG DE INSERIR DATA DE NASCIMENTO
+        data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendario = Calendar.getInstance();
+                int ano = calendario.get(Calendar.YEAR);
+                int mes = calendario.get(Calendar.MONTH);
+                int dia = calendario.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(CriarConta.this,
+                        android.R.style.Theme_Holo_Light_Dialog,
+                        dataNascimento, ano, mes, dia);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+
+        dataNascimento = new DatePickerDialog.OnDateSetListener(){
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month += 1;
+                String dataNasc = dayOfMonth + "/" + month + "/" + year;
+                data.setText(dataNasc);
+            }
+        };
 
         conSenha.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

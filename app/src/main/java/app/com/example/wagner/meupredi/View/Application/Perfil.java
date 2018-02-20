@@ -4,6 +4,7 @@ import android.app.ActivityGroup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TabHost;
+import android.widget.TextView;
 
 import app.com.example.wagner.meupredi.R;
 
@@ -39,7 +40,6 @@ public class Perfil extends ActivityGroup {
         descritor.setContent(new Intent(this, TabEvolucao.class));
         descritor.setIndicator("EVOLUÇÃO");
         abas.addTab(descritor);
-
 
     }
 }

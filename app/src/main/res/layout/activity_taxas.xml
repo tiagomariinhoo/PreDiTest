@@ -166,7 +166,7 @@
         android:background="@color/colorBranco"
         android:gravity="center_vertical"
         android:hint="mg/dL"
-        android:nextFocusDown="@+id/edit_colesterol_taxas"
+        android:nextFocusDown="@+id/edit_hemoglobina_glicolisada_taxas"
         android:textAlignment="center"
         android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -207,7 +207,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text_glicose75_taxas" />
 
     <TextView
-        android:id="@+id/text_colesterol_taxas"
+        android:id="@+id/text_hemoglobina_glicolisada_taxas"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
@@ -234,9 +234,9 @@
         android:text="Última medição:"
         android:textAlignment="center"
         android:textColor="@color/colorBranco"
-        app:layout_constraintLeft_toLeftOf="@+id/text_colesterolAtual_taxas"
-        app:layout_constraintRight_toRightOf="@+id/text_colesterolAtual_taxas"
-        app:layout_constraintTop_toBottomOf="@+id/text_colesterol_taxas"
+        app:layout_constraintLeft_toLeftOf="@+id/text_hemoglobina_glicolisadaAtual_taxas"
+        app:layout_constraintRight_toRightOf="@+id/text_hemoglobina_glicolisadaAtual_taxas"
+        app:layout_constraintTop_toBottomOf="@+id/text_hemoglobina_glicolisada_taxas"
         app:layout_constraintHorizontal_bias="0.0"
         android:layout_marginTop="0dp" />
 
@@ -248,14 +248,14 @@
         android:text="Novo:"
         android:textAlignment="center"
         android:textColor="@color/colorBranco"
-        app:layout_constraintLeft_toLeftOf="@+id/edit_colesterol_taxas"
-        app:layout_constraintRight_toRightOf="@+id/edit_colesterol_taxas"
-        app:layout_constraintTop_toBottomOf="@+id/text_colesterol_taxas"
+        app:layout_constraintLeft_toLeftOf="@+id/edit_hemoglobina_glicolisada_taxas"
+        app:layout_constraintRight_toRightOf="@+id/edit_hemoglobina_glicolisada_taxas"
+        app:layout_constraintTop_toBottomOf="@+id/text_hemoglobina_glicolisada_taxas"
         app:layout_constraintHorizontal_bias="1.0"
         android:layout_marginTop="0dp" />
 
     <TextView
-        android:id="@+id/text_colesterolAtual_taxas"
+        android:id="@+id/text_hemoglobina_glicolisadaAtual_taxas"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
@@ -266,13 +266,13 @@
         android:textColor="#34495e"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/edit_colesterol_taxas"
+        app:layout_constraintRight_toLeftOf="@+id/edit_hemoglobina_glicolisada_taxas"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toBottomOf="@+id/text_valorAtual3_taxas"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/edit_colesterol_taxas"
+        android:id="@+id/edit_hemoglobina_glicolisada_taxas"
         android:layout_width="172dp"
         android:layout_height="40dp"
         android:background="@color/colorBranco"
