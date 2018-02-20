@@ -1,8 +1,15 @@
 package app.com.example.wagner.meupredi.View.Application;
 
 import android.app.ActivityGroup;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TabHost;
 
 import app.com.example.wagner.meupredi.R;
@@ -40,7 +47,27 @@ public class Perfil extends ActivityGroup {
         descritor.setIndicator("EVOLUÇÃO");
         abas.addTab(descritor);
 
+        Button notify = (Button) findViewById(R.id.notify_btm);
+        notify.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                notificationCall();
+            }
+        });
 
     }
+
+    public void notificationCall(){
+        NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+            .setDefaults(NotificationCompat.DEFAULT_ALL)
+                .setSmallIcon(R.mipmap.ic_coracao)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_coracao))
+                .setContentTitle("Notification from PreDi!")
+                .setContentText("Hello!! Teste teste teste teste teste");
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(1, notificationBuilder.build());
+    }
+
 }
 

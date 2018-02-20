@@ -90,4 +90,12 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/notify_btm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notify!"
+        tools:layout_editor_absoluteX="254dp"
+        tools:layout_editor_absoluteY="198dp" />
+
 </android.support.constraint.ConstraintLayout>
