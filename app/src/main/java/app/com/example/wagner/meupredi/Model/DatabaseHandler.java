@@ -111,6 +111,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_DATA_HEMOGRAMA = "dataHemograma";
     private static final String KEY_PAC5 = "pac5";
 
+    // --------- TABLE AGENDA ---------
+    private static final String TABLE_AGENDA = "agenda";
+
+    private static final String KEY_ID_AGENDA = "idAgenda";
+    private static final String KEY_DATA_AGENDA = "dataAgenda";
+    private static final String KEY_HORA_AGENDA = "horaAgenda";
+    private static final String KEY_PAC6_AGENDA = "pac6";
 
 
        // KEY_PAC -> Chave estrangeira da tabela PESOS
@@ -204,6 +211,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_PAC5 + " INTEGER,"
                 + " FOREIGN KEY ("+KEY_PAC5+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
         db.execSQL(CREATE_HEMOGRAMA_TABLE);
+
+        String CREATE_AGENDA_TABLE = "CREATE TABLE IF NOT EXISTS "
+                + TABLE_AGENDA
+                + "("
+                + KEY_ID_AGENDA + " INTEGER PRIMARY KEY,"
+                + KEY_DATA_AGENDA + " DATETIME,"
+                + KEY_PAC6_AGENDA + " INTEGER,"
+                + " FOREIGN KEY ("+KEY_PAC6_AGENDA+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
     }
 
 
@@ -217,10 +232,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXIST " + TABLE_EXERCICIOS);
         db.execSQL("DROP TABLE IF EXIST " + TABLE_LIPIDOGRAMA);
         db.execSQL("DROP TABLE IF EXIST " + TABLE_HEMOGRAMA);
+        db.execSQL("DROP TABLE IF EXIST " + TABLE_AGENDA);
 
         onCreate(db);
     }
-
 
     public String modelAddExercicio(int tempo, String exercicio, Paciente paciente) {
         int idPaciente = paciente.get_id();

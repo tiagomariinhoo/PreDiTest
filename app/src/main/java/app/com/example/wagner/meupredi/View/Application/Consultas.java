@@ -6,6 +6,7 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -50,7 +51,6 @@ public class Consultas extends Activity {
         agendarNovaConsulta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String nome = nomeNovaConsulta.getText().toString();
 
                 cardHorarioNovaConsulta.setText(nome);

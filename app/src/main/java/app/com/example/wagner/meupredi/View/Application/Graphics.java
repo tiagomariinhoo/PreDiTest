@@ -75,12 +75,14 @@ public class Graphics extends AppCompatActivity{
         for(int i=0;i<exClass.size();i++){
             theDates.add(String.valueOf(i+1));
         }
-
+/*
         BarData theData = new BarData(theDates, barDataSet);
         barChart.setData(theData);
 
         barChart.setTouchEnabled(true);
         barChart.setDragEnabled(true);
         barChart.setScaleEnabled(true);
+*/
     }
+
 }

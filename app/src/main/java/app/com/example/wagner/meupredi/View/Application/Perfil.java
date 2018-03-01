@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TabHost;
@@ -48,10 +49,13 @@ public class Perfil extends ActivityGroup {
         abas.addTab(descritor);
 
         Button notify = (Button) findViewById(R.id.notify_btm);
+        final TabHost.TabSpec finalDescritor = descritor;
         notify.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 notificationCall();
+                Intent intent = new Intent(Perfil.this, Consultas.class);
+                startActivity(intent);
             }
         });
 
@@ -67,6 +71,10 @@ public class Perfil extends ActivityGroup {
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(1, notificationBuilder.build());
+
+        Log.d("COMEÇANDO A ENTRAR", " NA TELA GRAPH TEST");
+        //Intent intent = new Intent(Perfil.this, GraphTest.class);
+        //startActivity(intent);
     }
 
 }
