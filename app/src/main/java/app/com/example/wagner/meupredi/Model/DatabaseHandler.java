@@ -10,9 +10,11 @@ import android.util.Log;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import app.com.example.wagner.meupredi.Model.ModelClass.AgendaClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.ExameClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.ExercicioClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.HemogramaClass;
@@ -116,7 +118,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String KEY_ID_AGENDA = "idAgenda";
     private static final String KEY_DATA_AGENDA = "dataAgenda";
-    private static final String KEY_HORA_AGENDA = "horaAgenda";
+    private static final String KEY_TITULO_AGENDA = "tituloAgenda";
+    private static final String KEY_LUGAR_AGENDA = "lugarAgenda";
     private static final String KEY_PAC6_AGENDA = "pac6";
 
 
@@ -216,6 +219,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + TABLE_AGENDA
                 + "("
                 + KEY_ID_AGENDA + " INTEGER PRIMARY KEY,"
+                + KEY_TITULO_AGENDA + " TEXT,"
+                + KEY_LUGAR_AGENDA + " TEXT,"
                 + KEY_DATA_AGENDA + " DATETIME,"
                 + KEY_PAC6_AGENDA + " INTEGER,"
                 + " FOREIGN KEY ("+KEY_PAC6_AGENDA+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
@@ -235,6 +240,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXIST " + TABLE_AGENDA);
 
         onCreate(db);
+    }
+
+    public String addAgenda(Paciente paciente, AgendaClass agenda){
+    //    int idPaciente = paciente.get_id();
+   //     SimpleDateFormat dateFormat = new SimpleDateFormat(dateAtual);
+  //      Date date = new Date();
+ //       ContentValues initialValues = new ContentValues();
+//
+        return "Foi!";
     }
 
     public String modelAddExercicio(int tempo, String exercicio, Paciente paciente) {
