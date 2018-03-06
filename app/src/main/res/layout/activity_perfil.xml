@@ -18,7 +18,8 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp">
+        android:layout_marginEnd="8dp"
+        android:id="@+id/relativeLayout">
 
         <TabHost
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -49,17 +50,19 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/image_perfil_coracao"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@mipmap/ic_coracao"
+        android:background="@mipmap/ic_coracao_circular"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26"
-        app:srcCompat="@mipmap/ic_coracao" />
+        app:srcCompat="@mipmap/ic_coracao"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout" />
 
     <TextView
         android:id="@+id/textView25"
@@ -67,14 +70,14 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="8dp"
         android:text="Amanda Felix"
         android:textColor="@color/colorBranco"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView9"
-        app:layout_constraintRight_toRightOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintLeft_toLeftOf="@+id/image_perfil_coracao"
+        app:layout_constraintRight_toRightOf="@+id/image_perfil_coracao"
+        app:layout_constraintTop_toBottomOf="@+id/image_perfil_coracao" />
 
     <TextView
         android:id="@+id/textView26"
@@ -91,11 +94,40 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/notify_btm"
+        android:id="@+id/notify_perfil_btm"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@mipmap/ic_notificacoes"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_perfil_dados"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@+id/textView26"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_dados" />
+
+    <TextView
+        android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Notify!"
-        tools:layout_editor_absoluteX="254dp"
-        tools:layout_editor_absoluteY="198dp" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Pressione"
+        android:textColor="@color/colorBranco"
+        app:layout_constraintBottom_toTopOf="@+id/image_perfil_coracao"
+        app:layout_constraintLeft_toLeftOf="@+id/image_perfil_coracao"
+        app:layout_constraintRight_toRightOf="@+id/image_perfil_coracao" />
+
 
 </android.support.constraint.ConstraintLayout>
