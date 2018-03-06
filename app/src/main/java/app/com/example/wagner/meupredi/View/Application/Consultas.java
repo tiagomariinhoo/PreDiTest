@@ -19,6 +19,7 @@ import android.widget.Toast;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -44,9 +45,11 @@ public class Consultas extends Activity {
     private String time;
     private String nome;
     private Paciente paciente;
+    ArrayList<AgendaClass> agendaList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultas);
@@ -91,9 +94,22 @@ public class Consultas extends Activity {
                                 Toast.makeText(Consultas.this, "Nova consulta agendada!", Toast.LENGTH_SHORT).show();
                                 // FAZER FUNÇÃO DE ADICIONAR NOVA CONSULTA EM LISTA DE CONSULTAS MARCADAS
 
-                                AgendaClass agenda = new AgendaClass(nome, "dwdij", convertDate());
-                                ControllerAgenda controllerAgenda = new ControllerAgenda();
-                                Log.d("Adicionando : ", controllerAgenda.adicionarEvento(paciente, agenda));
+                                Log.d("NOME DO PACIENTE : " , paciente.get_nome());
+                                try {
+                                    AgendaClass agenda =  new AgendaClass(nome, "dwdij", convertDate());
+
+                                    ControllerAgenda controllerAgenda = new ControllerAgenda(getApplicationContext());
+                                    controllerAgenda.adicionarEvento(paciente, agenda);
+                                    agendaList = controllerAgenda.getAllEventos(paciente);
+                                    for(int i=0;i<agendaList.size();i++){
+                                        Log.d("Nome evento : ", agendaList.get(i).getTitulo());
+                                        Log.d("Data evento : ", agendaList.get(i).getDate().toString());
+                                    }
+                                    //Log.d("Adicionando : ", controllerAgenda.adicionarEvento(paciente, agenda));
+                                } catch (ParseException e) {
+                                    Log.d("N n n n n", " N FOI POSSIVEL ADICIONAR EVENTO");
+                                    e.printStackTrace();
+                                }
                             }
                 });
 
@@ -125,17 +141,26 @@ public class Consultas extends Activity {
         new TimePickerDialog(Consultas.this, t, dataTime.get(Calendar.HOUR_OF_DAY), dataTime.get(Calendar.MINUTE), true ).show();
 
     }
-    private Date convertDate(){
-        SimpleDateFormat convertData = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+    private Date convertDate() throws ParseException {
+        SimpleDateFormat convertData = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Log.d("DATE INICIO : ", date);
+        Log.d("TIME INICIO: ", time);
+        String ans = date + " " + time;
         try{
-            Date testData = convertData.parse(date + " " + time);
+            Date testData = convertData.parse(ans);
             Log.d("Testdata : ", testData.toString());
             return testData;
         } catch (ParseException e){
             Log.d("Não foi possível transformar", " ");
         }
-        return null;
+
+        String a = "2010/00/00 00:00:00";
+        Date test = convertData.parse(a);
+
+        return test;
     }
+
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener(){
 
         @Override

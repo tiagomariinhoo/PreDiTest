@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TabHost;
 
+import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
 
 import static app.com.example.wagner.meupredi.R.layout.activity_perfil;
@@ -23,9 +24,11 @@ import static app.com.example.wagner.meupredi.R.layout.activity_perfil;
 
 
 public class Perfil extends ActivityGroup {
+    Paciente paciente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
         super.onCreate(savedInstanceState);
         setContentView(activity_perfil);
@@ -55,6 +58,7 @@ public class Perfil extends ActivityGroup {
             public void onClick(View v) {
                 notificationCall();
                 Intent intent = new Intent(Perfil.this, Consultas.class);
+                intent.putExtra("Paciente", paciente);
                 startActivity(intent);
             }
         });
