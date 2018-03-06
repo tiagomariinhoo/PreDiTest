@@ -7,12 +7,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import app.com.example.wagner.meupredi.Model.ModelClass.AgendaClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.ExameClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.ExercicioClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.HemogramaClass;
@@ -111,6 +114,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_DATA_HEMOGRAMA = "dataHemograma";
     private static final String KEY_PAC5 = "pac5";
 
+    // --------- TABLE AGENDA ---------
+    private static final String TABLE_AGENDA = "agenda";
+
+    private static final String KEY_ID_AGENDA = "idAgenda";
+    private static final String KEY_DATA_AGENDA = "dataAgenda";
+    private static final String KEY_TITULO_AGENDA = "tituloAgenda";
+    private static final String KEY_LUGAR_AGENDA = "lugarAgenda";
+    private static final String KEY_PAC6_AGENDA = "pac6";
 
 
        // KEY_PAC -> Chave estrangeira da tabela PESOS
@@ -204,6 +215,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_PAC5 + " INTEGER,"
                 + " FOREIGN KEY ("+KEY_PAC5+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
         db.execSQL(CREATE_HEMOGRAMA_TABLE);
+
+        String CREATE_AGENDA_TABLE = "CREATE TABLE IF NOT EXISTS "
+                + TABLE_AGENDA
+                + "("
+                + KEY_ID_AGENDA + " INTEGER PRIMARY KEY,"
+                + KEY_TITULO_AGENDA + " TEXT,"
+                + KEY_LUGAR_AGENDA + " TEXT,"
+                + KEY_DATA_AGENDA + " DATETIME,"
+                + KEY_PAC6_AGENDA + " INTEGER,"
+                + " FOREIGN KEY ("+KEY_PAC6_AGENDA+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
+        db.execSQL(CREATE_AGENDA_TABLE);
     }
 
 
@@ -217,10 +239,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXIST " + TABLE_EXERCICIOS);
         db.execSQL("DROP TABLE IF EXIST " + TABLE_LIPIDOGRAMA);
         db.execSQL("DROP TABLE IF EXIST " + TABLE_HEMOGRAMA);
+        db.execSQL("DROP TABLE IF EXIST " + TABLE_AGENDA);
 
         onCreate(db);
     }
 
+    public String modelAddAgenda(Paciente paciente, AgendaClass agenda){
+        Log.d("Paciente : ", paciente.get_nome());
+        Log.d("Evento : ", agenda.getTitulo());
+
+        int idPaciente = paciente.get_id();
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_TITULO_AGENDA, agenda.getTitulo());
+        values.put(KEY_LUGAR_AGENDA, "Teste");
+        values.put(KEY_DATA_AGENDA, agenda.getDate().toString());
+        values.put(KEY_PAC6_AGENDA, paciente.get_id());
+
+        long retorno;
+        retorno = db.insert(TABLE_AGENDA, null, values);
+
+        if(retorno == -1){
+            return "Erro ao inserir o registro da agenda!";
+        } else {
+            return "Evento inserido com sucesso na agenda!";
+        }
+    }
 
     public String modelAddExercicio(int tempo, String exercicio, Paciente paciente) {
         int idPaciente = paciente.get_id();
@@ -249,6 +293,35 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } else {
             return "Exercicio inserido com sucesso!";
         }
+    }
+
+    public ArrayList<AgendaClass> modelGetAllAgendas (Paciente paciente){
+        ArrayList<AgendaClass> agendaList = new ArrayList<>();
+        int idPaciente = paciente.get_id();
+
+        String selectQuery = "SELECT * FROM " + TABLE_AGENDA;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                if(Integer.parseInt(cursor.getString(4)) == idPaciente){
+                    String date = cursor.getString(3);
+                    DateFormat simpleDate = new SimpleDateFormat("2010/00/00 00:00:00");
+                    Date dateAns = new Date();
+                    try {
+                        dateAns = simpleDate.parse(date);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    AgendaClass agendaClass = new AgendaClass(cursor.getString(1), "Teste", dateAns);
+                    agendaList.add(agendaClass);
+                }
+            } while(cursor.moveToNext());
+        }
+
+        return agendaList;
     }
 
     public ArrayList<ExercicioClass> modelGetAllExercicios (Paciente paciente) throws ParseException {

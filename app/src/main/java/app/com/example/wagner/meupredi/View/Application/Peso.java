@@ -184,12 +184,13 @@ public class Peso extends AppCompatActivity{
         }
 
         barDataSet.setColor(Color.rgb(255, 182, 193));
-        BarData theData = new BarData (theDates, barDataSet);
+       /* BarData theData = new BarData (theDates, barDataSet);
         barChart.setData(theData);
 
         barChart.setTouchEnabled(true);
         barChart.setDragEnabled(true);
         barChart.setScaleEnabled(true);
+        */
     }
 
     @Override

@@ -27,12 +27,18 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
 }
 
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.2.0'
     testCompile 'junit:junit:4.12'
@@ -40,6 +46,7 @@ dependencies {
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
     compile 'com.github.Vatican-Cameos:CarouselPicker:v1.0'
     compile 'com.github.sundeepk:compact-calendar-view:2.0.3-beta'
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 }
 
 android {
