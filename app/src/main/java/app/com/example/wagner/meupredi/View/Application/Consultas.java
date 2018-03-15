@@ -22,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import app.com.example.wagner.meupredi.Controller.ControllerAgenda;
 import app.com.example.wagner.meupredi.Model.ModelClass.AgendaClass;
@@ -100,10 +101,11 @@ public class Consultas extends Activity {
 
                                     ControllerAgenda controllerAgenda = new ControllerAgenda(getApplicationContext());
                                     controllerAgenda.adicionarEvento(paciente, agenda);
-                                    agendaList = controllerAgenda.getAllEventos(paciente);
+                                    //agendaList = controllerAgenda.getAllEventos(paciente);
+                                    controllerAgenda.printAllEventos(paciente);
                                     for(int i=0;i<agendaList.size();i++){
-                                        Log.d("Nome evento : ", agendaList.get(i).getTitulo());
-                                        Log.d("Data evento : ", agendaList.get(i).getDate().toString());
+                                    //    Log.d("Nome evento : ", agendaList.get(i).getTitulo());
+                                      //  Log.d("Data evento : ", agendaList.get(i).getDate().toString());
                                     }
                                     //Log.d("Adicionando : ", controllerAgenda.adicionarEvento(paciente, agenda));
                                 } catch (ParseException e) {
@@ -143,7 +145,7 @@ public class Consultas extends Activity {
     }
 
     private Date convertDate() throws ParseException {
-        SimpleDateFormat convertData = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        SimpleDateFormat convertData = new SimpleDateFormat("yyyy/mm/dd hh:mm:ss", Locale.US);
         Log.d("DATE INICIO : ", date);
         Log.d("TIME INICIO: ", time);
         String ans = date + " " + time;

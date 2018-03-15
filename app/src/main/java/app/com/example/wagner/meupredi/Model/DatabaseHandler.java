@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import app.com.example.wagner.meupredi.Model.ModelClass.AgendaClass;
 import app.com.example.wagner.meupredi.Model.ModelClass.ExameClass;
@@ -233,13 +234,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL("DROP TABLE IF EXIST " + TABLE_PACIENTES);
-        db.execSQL("DROP TABLE IF EXIST " + TABLE_PESOS);
-        db.execSQL("DROP TABLE IF EXIST " + TABLE_EXAMES);
-        db.execSQL("DROP TABLE IF EXIST " + TABLE_EXERCICIOS);
-        db.execSQL("DROP TABLE IF EXIST " + TABLE_LIPIDOGRAMA);
-        db.execSQL("DROP TABLE IF EXIST " + TABLE_HEMOGRAMA);
-        db.execSQL("DROP TABLE IF EXIST " + TABLE_AGENDA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PACIENTES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PESOS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXAMES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXERCICIOS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LIPIDOGRAMA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HEMOGRAMA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_AGENDA);
 
         onCreate(db);
     }
@@ -307,11 +308,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             do{
                 if(Integer.parseInt(cursor.getString(4)) == idPaciente){
                     String date = cursor.getString(3);
-                    DateFormat simpleDate = new SimpleDateFormat("2010/00/00 00:00:00");
+                    Log.d("Pegando date : " , date);
+                    DateFormat simpleDate = new SimpleDateFormat("yyyy/mm/dd hh:mm:ss", Locale.US);
                     Date dateAns = new Date();
                     try {
                         dateAns = simpleDate.parse(date);
                     } catch (ParseException e) {
+                        Log.d("NÃO FOI POSSIVEL TRANSFORMAR MODELGETALLAGENDAS", " modelgETaLLaGENDAS");
                         e.printStackTrace();
                     }
 

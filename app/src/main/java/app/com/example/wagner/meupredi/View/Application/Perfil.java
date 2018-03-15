@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TabHost;
 
+import app.com.example.wagner.meupredi.Controller.ControllerAgenda;
+import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
+import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
 
 import static app.com.example.wagner.meupredi.R.layout.activity_perfil;
@@ -32,6 +35,12 @@ public class Perfil extends ActivityGroup {
         coracao = (ImageView) findViewById(R.id.image_perfil_coracao);
         configuracoes = (ImageView) findViewById(R.id.image_perfil_dados);
         notificacoes = (Button) findViewById(R.id.notify_perfil_btm);
+
+       // Paciente paciente = new Paciente();
+       /// paciente = (Paciente) paciente.getIntent().getExtras().get("Paciente");
+
+       // ControllerAgenda controllerAgenda = new ControllerAgenda(getApplicationContext());
+        // controllerAgenda.printAllEventos(paciente);
 
         coracao.setOnClickListener(new View.OnClickListener() {
             @Override
