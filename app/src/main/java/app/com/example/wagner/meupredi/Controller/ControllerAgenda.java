@@ -2,7 +2,6 @@ package app.com.example.wagner.meupredi.Controller;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,28 +25,31 @@ public class ControllerAgenda {
     public String adicionarEvento(Paciente paciente, AgendaClass evento){
         Log.d("ADICIONANDO PACIENTE : ", paciente.get_nome());
         Log.d("EVENTO INFO: ", evento.getTitulo() + " " + evento.getDate().toString());
-        return db.modelAddAgenda(paciente, evento);
+        return db.modelAddDate(paciente, evento);
     }
 
-    public ArrayList<AgendaClass> getAllEventos(Paciente paciente){
-        return db.modelGetAllAgendas(paciente);
-    }
-
-    public void printAllEventos(Paciente paciente){
-        ArrayList<AgendaClass> printEventos = db.modelGetAllAgendas(paciente);
-        for(int i=0;i<printEventos.size();i++){
-            for(int j=0;j<printEventos.size() - 1;j++){
-                if(printEventos.get(j).getDate().after(printEventos.get(j+1).getDate())){
-                    Collections.swap(printEventos, j, j+1 );
+    public ArrayList<AgendaClass> printAllEventos(Paciente paciente){
+        ArrayList<AgendaClass> consultas = db.modelGetAllAgendas(paciente);
+        Log.d("Consultas do ", paciente.get_nome());
+        for(int i=0;i<consultas.size();i++){
+            for(int j=0;j<consultas.size()-1;j++){
+                int com = consultas.get(j).getDate().compareTo(consultas.get(j+1).getDate());
+                if(com == -1){
+                    Collections.swap(consultas, j,j+1);
+                } else if(com == 0){
+                    int com2 = consultas.get(j).getTime().compareTo(consultas.get(j+1).getTime());
+                    if(com2 == -1){
+                        Collections.swap(consultas, j, j+1);
+                    }
                 }
             }
         }
-        Log.d("Eventos do ", paciente.get_nome());
-        for(int i=0;i<printEventos.size();i++){
-            Log.d("Local : ", printEventos.get(i).getLocal());
-            Log.d("Data : ", printEventos.get(i).getDate().toString());
+        for(int i=0;i<consultas.size();i++){
+            Log.d("Consulta : ", consultas.get(i).getTitulo());
+            Log.d(consultas.get(i).getDate(), consultas.get(i).getTime());
         }
 
+        return consultas;
     }
 
 }

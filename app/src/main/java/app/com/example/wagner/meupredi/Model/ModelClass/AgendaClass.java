@@ -9,12 +9,14 @@ import java.util.Date;
 public class AgendaClass {
     private String titulo;
     private String local;
-    private Date date;
+    private String date;
+    private String time;
 
-    public AgendaClass(String titulo, String local, Date date) {
+    public AgendaClass(String titulo, String local, String date, String time) {
         this.titulo = titulo;
         this.local = local;
         this.date = date;
+        this.time = time;
     }
 
     public AgendaClass(){
@@ -37,11 +39,19 @@ public class AgendaClass {
         this.local = local;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

@@ -120,6 +120,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String KEY_ID_AGENDA = "idAgenda";
     private static final String KEY_DATA_AGENDA = "dataAgenda";
+    private static final String KEY_TIME_AGENDA = "timeAgenda";
     private static final String KEY_TITULO_AGENDA = "tituloAgenda";
     private static final String KEY_LUGAR_AGENDA = "lugarAgenda";
     private static final String KEY_PAC6_AGENDA = "pac6";
@@ -223,7 +224,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_ID_AGENDA + " INTEGER PRIMARY KEY,"
                 + KEY_TITULO_AGENDA + " TEXT,"
                 + KEY_LUGAR_AGENDA + " TEXT,"
-                + KEY_DATA_AGENDA + " DATETIME,"
+                + KEY_DATA_AGENDA + " TEXT,"
+                + KEY_TIME_AGENDA + " TEXT,"
                 + KEY_PAC6_AGENDA + " INTEGER,"
                 + " FOREIGN KEY ("+KEY_PAC6_AGENDA+") REFERENCES "+TABLE_PACIENTES+"("+KEY_ID+"));";
         db.execSQL(CREATE_AGENDA_TABLE);
@@ -245,7 +247,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public String modelAddAgenda(Paciente paciente, AgendaClass agenda){
+    public String modelAddDate(Paciente paciente, AgendaClass agenda){
         Log.d("Paciente : ", paciente.get_nome());
         Log.d("Evento : ", agenda.getTitulo());
 
@@ -254,7 +256,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_TITULO_AGENDA, agenda.getTitulo());
         values.put(KEY_LUGAR_AGENDA, "Teste");
-        values.put(KEY_DATA_AGENDA, agenda.getDate().toString());
+        values.put(KEY_DATA_AGENDA, agenda.getDate());
+        values.put(KEY_TIME_AGENDA, agenda.getTime());
         values.put(KEY_PAC6_AGENDA, paciente.get_id());
 
         long retorno;
@@ -306,19 +309,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         if(cursor.moveToFirst()){
             do{
-                if(Integer.parseInt(cursor.getString(4)) == idPaciente){
-                    String date = cursor.getString(3);
+                if(Integer.parseInt(cursor.getString(5)) == idPaciente){
+                    String date = cursor.getString(4);
+                    String time = cursor.getString(3);
                     Log.d("Pegando date : " , date);
-                    DateFormat simpleDate = new SimpleDateFormat("yyyy/mm/dd hh:mm:ss", Locale.US);
-                    Date dateAns = new Date();
-                    try {
-                        dateAns = simpleDate.parse(date);
-                    } catch (ParseException e) {
-                        Log.d("NÃO FOI POSSIVEL TRANSFORMAR MODELGETALLAGENDAS", " modelgETaLLaGENDAS");
-                        e.printStackTrace();
-                    }
 
-                    AgendaClass agendaClass = new AgendaClass(cursor.getString(1), "Teste", dateAns);
+                    AgendaClass agendaClass = new AgendaClass(cursor.getString(1), "Teste", date, time);
                     agendaList.add(agendaClass);
                 }
             } while(cursor.moveToNext());

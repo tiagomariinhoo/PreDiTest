@@ -97,18 +97,15 @@ public class Consultas extends Activity {
 
                                 Log.d("NOME DO PACIENTE : " , paciente.get_nome());
                                 try {
-                                    AgendaClass agenda =  new AgendaClass(nome, "dwdij", convertDate());
+                                    AgendaClass agenda = new AgendaClass(nome, "3293", date, time);
 
                                     ControllerAgenda controllerAgenda = new ControllerAgenda(getApplicationContext());
-                                    controllerAgenda.adicionarEvento(paciente, agenda);
+                                    Log.d(controllerAgenda.adicionarEvento(paciente, agenda), "");
                                     //agendaList = controllerAgenda.getAllEventos(paciente);
                                     controllerAgenda.printAllEventos(paciente);
-                                    for(int i=0;i<agendaList.size();i++){
-                                    //    Log.d("Nome evento : ", agendaList.get(i).getTitulo());
-                                      //  Log.d("Data evento : ", agendaList.get(i).getDate().toString());
-                                    }
+
                                     //Log.d("Adicionando : ", controllerAgenda.adicionarEvento(paciente, agenda));
-                                } catch (ParseException e) {
+                                } catch (Exception e) {
                                     Log.d("N n n n n", " N FOI POSSIVEL ADICIONAR EVENTO");
                                     e.printStackTrace();
                                 }
@@ -144,24 +141,24 @@ public class Consultas extends Activity {
 
     }
 
-    private Date convertDate() throws ParseException {
-        SimpleDateFormat convertData = new SimpleDateFormat("yyyy/mm/dd hh:mm:ss", Locale.US);
+   /* private Date convertDate() throws ParseException {
+        SimpleDateFormat convertData = new SimpleDateFormat("dd/mm/yyyy hh:mm:ss", Locale.US);
         Log.d("DATE INICIO : ", date);
         Log.d("TIME INICIO: ", time);
         String ans = date + " " + time;
         try{
-            Date testData = convertData.parse(ans);
-            Log.d("Testdata : ", testData.toString());
-            return testData;
+            //Date testData = convertData.parse(ans);
+            //Log.d("Testdata : ", testData.toString());
+            //return testData;
         } catch (ParseException e){
             Log.d("Não foi possível transformar", " ");
         }
 
-        String a = "2010/00/00 00:00:00";
+        String a = "dd/mm/yyyy hh:mm:ss";
         Date test = convertData.parse(a);
 
         return test;
-    }
+    }*/
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener(){
 
