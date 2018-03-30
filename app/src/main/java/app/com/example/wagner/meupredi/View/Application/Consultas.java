@@ -17,12 +17,8 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 import app.com.example.wagner.meupredi.Controller.ControllerAgenda;
 import app.com.example.wagner.meupredi.Model.ModelClass.AgendaClass;
@@ -102,7 +98,7 @@ public class Consultas extends Activity {
                                     ControllerAgenda controllerAgenda = new ControllerAgenda(getApplicationContext());
                                     Log.d(controllerAgenda.adicionarEvento(paciente, agenda), "");
                                     //agendaList = controllerAgenda.getAllEventos(paciente);
-                                    controllerAgenda.printAllEventos(paciente);
+                                    controllerAgenda.getAllEventos(paciente);
 
                                     //Log.d("Adicionando : ", controllerAgenda.adicionarEvento(paciente, agenda));
                                 } catch (Exception e) {
