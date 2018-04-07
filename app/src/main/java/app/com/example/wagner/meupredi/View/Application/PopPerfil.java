@@ -34,5 +34,24 @@ public class PopPerfil extends Activity{
 
         getWindow().setLayout((int) ( width*.8), (int) (height*.55));
 
+        consultas = (TextView) findViewById(R.id.text_pop_consultas);
+        academia = (TextView) findViewById(R.id.text_pop_academia);
+
+        consultas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chamadaConsultas = new Intent(PopPerfil.this, Consultas.class);
+                startActivity(chamadaConsultas);
+            }
+        });
+
+        academia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chamadaAcademia = new Intent(PopPerfil.this, Exercicios.class);
+                startActivity(chamadaAcademia);
+            }
+        });
+
     }
 }

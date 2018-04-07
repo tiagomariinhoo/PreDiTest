@@ -5,35 +5,36 @@
     android:background="@drawable/gradiente_branco">
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/text_pop_consultas"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:background="@drawable/gradiente_azul"
         android:gravity="center_vertical"
         android:text="CONSULTAS"
         android:textAlignment="center"
         android:textColor="@color/colorBranco"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
-        android:id="@+id/textView27"
+        android:id="@+id/text_pop_peso"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_below="@+id/textView16"
+        android:layout_below="@+id/text_pop_consultas"
         android:layout_centerHorizontal="true"
         android:background="@drawable/gradiente_salmao"
         android:gravity="center_vertical"
-        android:text="AGENDAR"
+        android:text="PESO"
         android:textAlignment="center"
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/textView28"
+        android:id="@+id/text_pop_academia"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_below="@+id/textView27"
+        android:layout_below="@+id/text_pop_peso"
         android:layout_centerHorizontal="true"
         android:background="@drawable/gradiente_roxo"
         android:gravity="center_vertical"
@@ -42,10 +43,10 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/textView31"
+        android:id="@+id/text_pop_metas"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_below="@+id/textView28"
+        android:layout_below="@+id/text_pop_academia"
         android:layout_centerHorizontal="true"
         android:background="@drawable/gradiente_cinza"
         android:gravity="center_vertical"
@@ -54,7 +55,7 @@
         android:textSize="18sp" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/image_close_pop"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentEnd="true"

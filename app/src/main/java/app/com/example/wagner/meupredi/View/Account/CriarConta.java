@@ -25,16 +25,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import app.com.example.wagner.meupredi.*;
-import app.com.example.wagner.meupredi.Controller.ControllerExames;
 import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
 import app.com.example.wagner.meupredi.Controller.ControllerPeso;
-import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
+import app.com.example.wagner.meupredi.R;
 
 public class CriarConta extends AppCompatActivity {
 
@@ -191,7 +188,7 @@ public class CriarConta extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
 
                         //configuracao padrao de usuario
-                        Paciente paciente = new Paciente (0, nomeCompleto, senhaCadastro, emailCadastro, "M", 0, 0 , 0, 0);
+                        Paciente paciente = new Paciente (0, nomeCompleto, senhaCadastro, emailCadastro, "", 0, 0 , 0, 0);
 
                         //verifica opcao de sexo selecionada
                         String selected = sexo.getSelectedItem().toString();

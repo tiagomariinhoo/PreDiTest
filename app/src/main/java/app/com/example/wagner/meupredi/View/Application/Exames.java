@@ -48,7 +48,7 @@ public class Exames extends Fragment{
             }
         });
 
-        chamadaLipidograma = (TextView) view.findViewById(R.id.text_lipidograma);
+        chamadaLipidograma = (TextView) view.findViewById(R.id.text_tab_corpo_peso);
         chamadaLipidograma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +60,7 @@ public class Exames extends Fragment{
             }
         });
 
-        chamadaHemograma = (TextView) view.findViewById(R.id.text_hemograma);
+        chamadaHemograma = (TextView) view.findViewById(R.id.text_tab_corpo_imc);
         chamadaHemograma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
