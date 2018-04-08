@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import app.com.example.wagner.meupredi.R;
@@ -17,8 +16,7 @@ import app.com.example.wagner.meupredi.R;
 
 public class PopPerfil extends Activity{
 
-    private ImageView close;
-    private TextView consultas, agenda, metas, academia;
+    private TextView consultas, academia;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,7 +30,7 @@ public class PopPerfil extends Activity{
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int) ( width*.8), (int) (height*.55));
+        getWindow().setLayout((int) ( width*.8), (int) (height*.75));
 
         consultas = (TextView) findViewById(R.id.text_pop_consultas);
         academia = (TextView) findViewById(R.id.text_pop_academia);

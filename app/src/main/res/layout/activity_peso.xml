@@ -10,9 +10,7 @@
     <TextView
         android:id="@+id/text_registrar_peso"
         android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
+        android:layout_height="30dp"
         android:layout_marginTop="8dp"
         android:background="@color/colorBarraTituloRoxa"
         android:gravity="center_vertical"
@@ -29,20 +27,15 @@
 
     <EditText
         android:id="@+id/text_registrar_valor_peso"
-        android:layout_width="120dp"
+        android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="0dp"
         android:background="@color/colorBranco"
         android:ems="10"
         android:gravity="center_vertical"
-        android:hint="Nova pesagem"
+        android:hint="em kg"
         android:inputType="textPersonName"
         android:textAlignment="center"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorBackground"
         android:textColorHint="@color/colorBackground"
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -154,8 +147,7 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="0dp"
+        android:layout_height="30dp"
         android:background="@color/colorBarraTituloRoxa"
         android:gravity="center_vertical"
         android:text="-  -  -  -  -  -  Circunferência  -  -  -  -  -  -"
@@ -164,59 +156,27 @@
         android:textColor="@color/colorBranco"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_registrar_valor_peso"
-        app:layout_constraintHorizontal_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/text_registrar_valor_peso" />
 
     <EditText
         android:id="@+id/editText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:background="@color/colorBranco"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="em cm"
-        android:textColorHint="#bdc3c7"
+        android:inputType="textPersonName"
         android:textAlignment="center"
+        android:textColorHint="@color/colorBackground"
         android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:id="@+id/text_pesoAtual_valor_peso"
-        android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
-        android:layout_marginTop="0dp"
-        android:background="@color/colorBranco"
-        android:gravity="center_vertical"
-        android:text=" Recente: 68.90 kg"
-        android:textAlignment="viewStart"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/text_registrar_valor_peso"
-        app:layout_constraintTop_toBottomOf="@+id/text_registrar_peso" />
-
-    <TextView
-        android:id="@+id/text_meta_valor_peso"
-        android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="0dp"
-        android:background="@color/colorBranco"
-        android:gravity="center_vertical"
-        android:text="Meta: 70.00 kg"
-        android:textAlignment="textEnd"
-        app:layout_constraintLeft_toRightOf="@+id/text_registrar_valor_peso"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_registrar_peso" />
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

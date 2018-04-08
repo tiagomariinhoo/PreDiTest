@@ -9,14 +9,15 @@
         android:id="@+id/btn_atualizar_taxas"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/colorBranco"
-        android:text="Atualize suas taxas"
-        android:textSize="18dp"
-        android:textAlignment="center"
+        android:background="@drawable/gradiente_azul"
+        android:gravity="center_vertical"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:gravity="center_vertical"
-        android:textColor="#3c40c6"/>
+        android:text="Atualize suas taxas"
+        android:textAlignment="center"
+        android:textColor="@color/colorBranco"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
     <ImageView
         android:layout_width="match_parent"

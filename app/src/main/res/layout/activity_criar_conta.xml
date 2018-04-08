@@ -236,7 +236,7 @@ Faça todo esforço valer a pena!"
 
     <TextView
         android:id="@+id/edit_idade_criar"
-        android:layout_width="130dp"
+        android:layout_width="140dp"
         android:layout_height="20dp"
         android:layout_marginStart="8dp"
         android:ems="10"

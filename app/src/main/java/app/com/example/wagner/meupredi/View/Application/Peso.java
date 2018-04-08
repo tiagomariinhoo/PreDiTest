@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
@@ -24,7 +23,6 @@ import java.util.Locale;
 
 import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
 import app.com.example.wagner.meupredi.Controller.ControllerPeso;
-import app.com.example.wagner.meupredi.Model.DatabaseHandler;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
 import app.com.example.wagner.meupredi.View.Account.MenuPrincipal;
@@ -53,13 +51,13 @@ public class Peso extends AppCompatActivity{
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
-        peso = (TextView) findViewById(R.id.text_pesoAtual_valor_peso);
+        //peso = (TextView) findViewById(R.id.text_pesoAtual_valor_peso);
         peso.setText(String.valueOf(paciente.get_peso()) + " kg");
 
         //TODO: criar calculo de meta
         //TODO: criar atributo de meta para guardar o peso que o paciente devera alcancar
 
-        meta = (TextView) findViewById(R.id.text_meta_valor_peso);
+        //meta = (TextView) findViewById(R.id.text_meta_valor_peso);
 
         //pega novo peso digitado pelo usuario
         novoPeso = (TextView) findViewById(R.id.text_registrar_valor_peso);

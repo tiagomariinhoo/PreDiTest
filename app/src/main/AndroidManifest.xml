@@ -65,8 +65,9 @@
         <activity android:name=".View.Application.TabEvolucao" />
         <activity android:name=".View.Application.PopPerfil"
             android:theme="@style/AppTheme.CustomTheme"
-
             />
+        <activity android:name=".View.Application.TabelaImc"
+            android:theme="@style/AppTheme.CustomTheme"/>
 
     </application>
 
