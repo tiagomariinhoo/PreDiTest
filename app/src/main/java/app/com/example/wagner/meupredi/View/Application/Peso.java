@@ -50,9 +50,9 @@ public class Peso extends AppCompatActivity{
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
-
+        paciente.getInfo();
         //peso = (TextView) findViewById(R.id.text_pesoAtual_valor_peso);
-        peso.setText(String.valueOf(paciente.get_peso()) + " kg");
+        //peso.setText(String.valueOf(paciente.get_peso()) + " kg");
 
         //TODO: criar calculo de meta
         //TODO: criar atributo de meta para guardar o peso que o paciente devera alcancar
@@ -155,7 +155,7 @@ public class Peso extends AppCompatActivity{
         } else if (paciente.get_imc() < 20.7){
             meta.setText(String.valueOf(paciente.get_peso() + (paciente.get_peso()*0.05)));
         } else {
-            meta.setText("-");
+            meta.setText(String.valueOf('-'));
         }
 
 

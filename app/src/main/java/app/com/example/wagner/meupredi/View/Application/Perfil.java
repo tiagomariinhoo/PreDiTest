@@ -19,7 +19,7 @@ import java.util.Date;
 import app.com.example.wagner.meupredi.Controller.ControllerAgenda;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
-import app.com.example.wagner.meupredi.View.Account.MenuPrincipal;
+import app.com.example.wagner.meupredi.View.Account.TelaLogin;
 
 import static app.com.example.wagner.meupredi.R.layout.activity_perfil;
 
@@ -33,7 +33,7 @@ public class Perfil extends ActivityGroup {
     private ImageView coracao, configuracoes;
     private Button notificacoes;
     private ControllerAgenda controllerAgenda;
-    private MenuPrincipal menuPrincipal;
+    //private MenuPrincipal menuPrincipal;
     private Paciente paciente;
 
     @Override
@@ -61,7 +61,9 @@ public class Perfil extends ActivityGroup {
         coracao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Perfil.this, PopPerfil.class));
+                Intent intent = new Intent(Perfil.this, PopPerfil.class);
+                intent.putExtra("Paciente", paciente);
+                startActivity(intent);
             }
         });
 
@@ -69,17 +71,29 @@ public class Perfil extends ActivityGroup {
         abas.setup(this.getLocalActivityManager());
 
         TabHost.TabSpec descritor = abas.newTabSpec("aba1");
-        descritor.setContent(new Intent(this, TabTaxas.class));
+
+        Intent intent = new Intent(this, TabTaxas.class);
+        intent.putExtra("Paciente", paciente);
+
+        descritor.setContent(intent);
         descritor.setIndicator("TAXAS");
         abas.addTab(descritor);
 
         descritor = abas.newTabSpec("aba2");
-        descritor.setContent(new Intent(this, TabCorpo.class));
+
+        intent = new Intent(this, TabCorpo.class);
+        intent.putExtra("Paciente", paciente);
+
+        descritor.setContent(intent);
         descritor.setIndicator("CORPO");
         abas.addTab(descritor);
 
         descritor = abas.newTabSpec("aba3");
-        descritor.setContent(new Intent(this, TabEvolucao.class));
+
+        intent = new Intent(this, TabEvolucao.class);
+        intent.putExtra("Paciente", paciente);
+
+        descritor.setContent(intent);
         descritor.setIndicator("EVOLUÇÃO");
         abas.addTab(descritor);
 
@@ -96,6 +110,12 @@ public class Perfil extends ActivityGroup {
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(1, notificationBuilder.build());
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(Perfil.this, TelaLogin.class);
+        startActivity(intent);
     }
 }
 

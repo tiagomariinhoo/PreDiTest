@@ -64,6 +64,12 @@ public class Paciente extends AppCompatActivity implements Serializable {
 
             }
 
+            public void getInfo(){
+                Log.d("Get info: ", get_nome());
+                Log.d("Nome: ", get_nome());
+                Log.d("Peso: ", String.valueOf(get_peso()));
+            }
+
             public int get_id() {
                 return _id;
             }

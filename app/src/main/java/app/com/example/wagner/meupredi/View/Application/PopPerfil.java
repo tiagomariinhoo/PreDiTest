@@ -8,6 +8,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
 
+import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
 
 /**
@@ -17,12 +18,14 @@ import app.com.example.wagner.meupredi.R;
 public class PopPerfil extends Activity{
 
     private TextView consultas, academia;
+    private Paciente paciente;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.pop_perfil);
+        paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -39,6 +42,7 @@ public class PopPerfil extends Activity{
             @Override
             public void onClick(View v) {
                 Intent chamadaConsultas = new Intent(PopPerfil.this, Consultas.class);
+                chamadaConsultas.putExtra("Paciente", paciente);
                 startActivity(chamadaConsultas);
             }
         });

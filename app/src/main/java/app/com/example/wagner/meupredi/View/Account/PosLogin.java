@@ -19,6 +19,7 @@ import app.com.example.wagner.meupredi.Controller.ControllerPaciente;
 import app.com.example.wagner.meupredi.Controller.ControllerPeso;
 import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
+import app.com.example.wagner.meupredi.View.Application.Perfil;
 
 /**
  * Created by Pichau on 08/04/2017.
@@ -215,7 +216,7 @@ public class PosLogin extends AppCompatActivity {
                 Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
                 Log.d("Colesterol : ", String.valueOf(paciente.get_colesterol()));
 
-                Intent intent = new Intent(PosLogin.this, MenuPrincipal.class);
+                Intent intent = new Intent(PosLogin.this, Perfil.class);
                 intent.putExtra("Paciente", paciente);
                 finish();
                 startActivity(intent);

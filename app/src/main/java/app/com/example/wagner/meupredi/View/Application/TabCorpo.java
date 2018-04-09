@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import app.com.example.wagner.meupredi.Model.ModelClass.Paciente;
 import app.com.example.wagner.meupredi.R;
 
 import static app.com.example.wagner.meupredi.R.layout.tab_corpo_perfil;
@@ -18,12 +19,15 @@ import static app.com.example.wagner.meupredi.R.layout.tab_corpo_perfil;
 
     private TextView pesoAtual, chamadaPeso, ultimaMedicao, imcAtual;
     private TextView informativoIMC, pesoIdeal;
+    private Paciente paciente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(tab_corpo_perfil);
+
+        paciente = (Paciente) getIntent().getExtras().get("Paciente");
 
         pesoAtual = (TextView) findViewById(R.id.text_tab_corpo_peso_atual);
         chamadaPeso = (TextView) findViewById(R.id.text_tab_corpo_atualizar_peso);
@@ -36,6 +40,7 @@ import static app.com.example.wagner.meupredi.R.layout.tab_corpo_perfil;
             @Override
             public void onClick(View v) {
                 Intent chamadaPeso = new Intent(TabCorpo.this, Peso.class);
+                chamadaPeso.putExtra("Paciente", paciente);
                 startActivity(chamadaPeso);
             }
         });
@@ -44,6 +49,7 @@ import static app.com.example.wagner.meupredi.R.layout.tab_corpo_perfil;
             @Override
             public void onClick(View v) {
                 Intent chamadaPeso = new Intent(TabCorpo.this, Peso.class);
+                chamadaPeso.putExtra("Paciente", paciente);
                 startActivity(chamadaPeso);
             }
         });
@@ -52,6 +58,7 @@ import static app.com.example.wagner.meupredi.R.layout.tab_corpo_perfil;
             @Override
             public void onClick(View v) {
                 Intent chamadaTabelaImc = new Intent(TabCorpo.this, TabelaImc.class);
+                chamadaTabelaImc.putExtra("Paciente", paciente);
                 startActivity(chamadaTabelaImc);
             }
         });

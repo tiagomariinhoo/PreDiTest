@@ -79,7 +79,7 @@ public class cadastroExame extends AppCompatActivity {
                         paciente.set_glicose75g(exame.getGlicose75g());
                         paciente.set_glicosejejum(exame.getGlicoseJejum());
 
-                        Intent intent = new Intent(cadastroExame.this, MenuPrincipal.class);
+                        Intent intent = new Intent(cadastroExame.this, Perfil.class);
                         intent.putExtra("Paciente", paciente);
                         startActivity(intent);
 
