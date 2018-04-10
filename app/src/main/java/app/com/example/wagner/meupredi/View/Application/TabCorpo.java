@@ -63,5 +63,14 @@ import static app.com.example.wagner.meupredi.R.layout.tab_corpo_perfil;
             }
         });
 
+        pesoIdeal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chamadaPesoIdeal = new Intent(TabCorpo.this, PesoIdeal.class);
+                chamadaPesoIdeal.putExtra("Paciente", paciente);
+                startActivity(chamadaPesoIdeal);
+            }
+        });
+
         }
     }
