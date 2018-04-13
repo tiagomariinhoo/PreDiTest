@@ -22,7 +22,6 @@ import app.com.example.wagner.meupredi.View.Account.MenuPrincipal;
 
 public class Exames extends Fragment{
 
-    private ImageView chamadaNovoExame;
     private TextView chamadaLipidograma, chamadaHemograma;
     private Dialog myDialog;
     private Button popUpBut;
@@ -35,18 +34,6 @@ public class Exames extends Fragment{
         //change R.layout.yourlayoutfilename for each of your fragments
 
         View view = inflater.inflate(R.layout.fragment_exames, container, false);
-
-        chamadaNovoExame = (ImageView) view.findViewById(R.id.image_nova_atividade);
-        chamadaNovoExame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Paciente paciente = ((MenuPrincipal)getActivity()).pegarPacienteMenu();
-
-                Intent novoExame = new Intent(getActivity(), cadastroExame.class);
-                novoExame.putExtra("Paciente", paciente);
-                startActivity(novoExame);
-            }
-        });
 
         chamadaLipidograma = (TextView) view.findViewById(R.id.text_tab_corpo_peso);
         chamadaLipidograma.setOnClickListener(new View.OnClickListener() {

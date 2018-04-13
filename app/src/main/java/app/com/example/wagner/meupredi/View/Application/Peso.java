@@ -150,15 +150,13 @@ public class Peso extends AppCompatActivity{
             Obeso > 31,1
          */
 
-        if(paciente.get_imc() > 26.4){
+        /*if(paciente.get_imc() > 26.4){
             meta.setText(String.valueOf(paciente.get_peso() - (paciente.get_peso()*0.05)));
         } else if (paciente.get_imc() < 20.7){
             meta.setText(String.valueOf(paciente.get_peso() + (paciente.get_peso()*0.05)));
         } else {
             meta.setText(String.valueOf('-'));
-        }
-
-
+        }*/
 
         barChart = (BarChart) findViewById(R.id.bargraph_peso);
         //DatabaseHandler db = new DatabaseHandler (getApplicationContext());

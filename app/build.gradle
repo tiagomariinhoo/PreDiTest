@@ -47,6 +47,7 @@ dependencies {
     compile 'com.github.Vatican-Cameos:CarouselPicker:v1.0'
     compile 'com.github.sundeepk:compact-calendar-view:2.0.3-beta'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    compile 'com.michaelmuenzer.android:ScrollableNumberPicker:0.2.2'
 }
 
 android {
