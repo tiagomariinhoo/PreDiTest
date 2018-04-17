@@ -97,7 +97,7 @@
         android:layout_height="60dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/gradiente_amarelo"
+        android:background="@drawable/gradiente_cinza"
         android:gravity="center_vertical"
         android:text="29,94"
         android:textAlignment="center"

@@ -72,6 +72,7 @@
             android:theme="@style/AppTheme.CustomTheme"/>
         <activity android:name=".View.Application.tabelaPredi" />
         <activity android:name=".View.Application.NumberPickerPeso" />
+        <activity android:name=".View.Application.Dicas" />
 
     </application>
 

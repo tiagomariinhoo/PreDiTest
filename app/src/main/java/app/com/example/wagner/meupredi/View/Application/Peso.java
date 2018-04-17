@@ -33,7 +33,7 @@ import app.com.example.wagner.meupredi.View.Account.MenuPrincipal;
 
 public class Peso extends AppCompatActivity{
 
-    TextView peso, meta, novoPeso;
+    TextView peso, novoPeso;
     Button atualizarPeso;
     Paciente paciente;
     BarChart barChart;
@@ -61,6 +61,10 @@ public class Peso extends AppCompatActivity{
 
         //pega novo peso digitado pelo usuario
         novoPeso = (TextView) findViewById(R.id.text_registrar_valor_peso);
+
+        Double peso_atual = paciente.get_peso();
+        novoPeso.setText(peso_atual+"");
+
         novoPeso.setRawInputType(Configuration.KEYBOARD_QWERTY);
 
         findViewById(R.id.tela_peso).setOnClickListener(new View.OnClickListener() {
@@ -180,13 +184,7 @@ public class Peso extends AppCompatActivity{
         }
 
         barDataSet.setColor(Color.rgb(255, 182, 193));
-       /* BarData theData = new BarData (theDates, barDataSet);
-        barChart.setData(theData);
 
-        barChart.setTouchEnabled(true);
-        barChart.setDragEnabled(true);
-        barChart.setScaleEnabled(true);
-        */
     }
 
     @Override

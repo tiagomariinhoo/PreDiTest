@@ -17,7 +17,7 @@ import app.com.example.wagner.meupredi.R;
 
 public class PopPerfil extends Activity{
 
-    private TextView consultas, academia;
+    private TextView consultas, academia, dicas;
     private Paciente paciente;
 
     @Override
@@ -37,6 +37,7 @@ public class PopPerfil extends Activity{
 
         consultas = (TextView) findViewById(R.id.text_pop_consultas);
         academia = (TextView) findViewById(R.id.text_pop_academia);
+        dicas = (TextView) findViewById(R.id.text_pop_dicas);
 
         consultas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +55,15 @@ public class PopPerfil extends Activity{
                 startActivity(chamadaAcademia);
             }
         });
+
+        dicas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chamadaDicas = new Intent(PopPerfil.this, Dicas.class);
+                startActivity(chamadaDicas);
+            }
+        });
+
 
     }
 }

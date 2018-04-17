@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/gradiente_plano_de_fundo"
     android:id="@+id/tela_peso"
     android:layout_width="match_parent"
@@ -33,6 +32,7 @@
         android:ems="10"
         android:gravity="center_vertical"
         android:hint="85,7"
+        android:backgroundTint="@android:color/white"
         android:inputType="numberDecimal"
         android:textAlignment="center"
         android:textColor="@color/colorBranco"
@@ -113,13 +113,14 @@
 
     <EditText
         android:id="@+id/text_registrar_valor_circunferencia"
-        android:layout_width="50dp"
+        android:layout_width="80dp"
         android:layout_height="35dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="0dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:ems="10"
-        android:hint="em cm"
+        android:hint="0,70 cm"
+        android:backgroundTint="@android:color/white"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="@color/colorBranco"

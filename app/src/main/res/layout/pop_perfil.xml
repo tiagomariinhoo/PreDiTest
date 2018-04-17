@@ -21,7 +21,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/text_pop_peso"
+        android:id="@+id/text_pop_dicas"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_alignParentLeft="true"
@@ -102,7 +102,7 @@
         android:textColor="@color/colorBranco"
         android:paddingBottom="8dp"
         android:textAlignment="center"
-        android:layout_above="@+id/text_pop_peso"
+        android:layout_above="@+id/text_pop_dicas"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
@@ -116,7 +116,7 @@
         android:textAlignment="center"
         android:paddingBottom="8dp"
         android:textColor="@color/colorBranco"
-        android:layout_alignBottom="@+id/text_pop_peso"
+        android:layout_alignBottom="@+id/text_pop_dicas"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

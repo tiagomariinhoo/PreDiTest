@@ -58,6 +58,16 @@ public class Perfil extends ActivityGroup {
         }
 
 
+        configuracoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Perfil.this, Dados.class);
+                intent.putExtra("Paciente", paciente);
+                startActivity(intent);
+            }
+        });
+
+
         coracao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
