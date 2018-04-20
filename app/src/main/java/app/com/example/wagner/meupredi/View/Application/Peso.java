@@ -28,7 +28,7 @@ import app.com.example.wagner.meupredi.R;
 import app.com.example.wagner.meupredi.View.Account.MenuPrincipal;
 
 /**
- * Created by Allan on 27/06/2017.
+ * Created by Tiago on 27/06/2017.
  */
 
 public class Peso extends AppCompatActivity{
@@ -98,7 +98,12 @@ public class Peso extends AppCompatActivity{
 
                     if(pesoDoPaciente > 0) {
                         //atualiza valor na tela
-                        peso.setText(String.valueOf(pesoDoPaciente) + " kg");
+                        if(pesoDoPaciente == null){
+                            peso.setText(String.valueOf(0));
+                        } else {
+
+                           //  peso.setText(String.valueOf(pesoDoPaciente) + " kg");
+                        }
 
                         //atualiza peso no objeto
                         paciente.set_peso(pesoDoPaciente);

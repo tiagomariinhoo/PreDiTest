@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />﻿
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -72,7 +72,8 @@
             android:theme="@style/AppTheme.CustomTheme"/>
         <activity android:name=".View.Application.tabelaPredi" />
         <activity android:name=".View.Application.NumberPickerPeso" />
-        <activity android:name=".View.Application.Dicas" />
+        <activity android:name=".View.Application.Dicas"
+            android:theme="@style/AppTheme.CustomTheme"/>
 
     </application>
 

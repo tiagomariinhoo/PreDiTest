@@ -53,7 +53,7 @@ public class Taxas  extends AppCompatActivity {
 
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-/*        paciente = (Paciente) getIntent().getExtras().get("Paciente");
+        paciente = (Paciente) getIntent().getExtras().get("Paciente");
         Log.d("TELA TAXAS : " , "<<<<<");
         Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
         Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
@@ -77,7 +77,7 @@ public class Taxas  extends AppCompatActivity {
         novaGlicose75.setRawInputType(Configuration.KEYBOARD_QWERTY);
         novoColesterol = (EditText) findViewById(R.id.edit_hemoglobina_glicolisada_taxas);
         novoColesterol.setRawInputType(Configuration.KEYBOARD_QWERTY);
-*/
+
         findViewById(R.id.tela_taxas).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +91,7 @@ public class Taxas  extends AppCompatActivity {
         });
 
         atualizarTaxas = (Button) findViewById(R.id.btn_atualizar_taxas);
-/*
+
         atualizarTaxas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,10 +163,10 @@ public class Taxas  extends AppCompatActivity {
                 novaGlicose75.setText("");
                 novoColesterol.setText("");
 
-                Intent intent = new Intent(Taxas.this, MenuPrincipal.class);
+                Intent intent = new Intent(Taxas.this, Perfil.class);
                 intent.putExtra("Paciente", paciente);
                 startActivity(intent);
-*/
+
                 /*
                 Fragment fragment = new Fragment();
                 transaction = getSupportFragmentManager().beginTransaction();
@@ -174,9 +174,9 @@ public class Taxas  extends AppCompatActivity {
                 transaction.commit();
 
                 finish();*/
-/*
+
             }
-        });*/
+        });
     }
 
     @Override

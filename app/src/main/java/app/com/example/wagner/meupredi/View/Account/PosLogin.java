@@ -55,25 +55,27 @@ public class PosLogin extends AppCompatActivity {
 
         nomeUsuario.setText("Sr(a). " + paciente.get_nome());
 
-        //se o usuario ja fez o cadastro dos dados, pula esta tela
-        if(paciente.get_idade() > 0) {
+        //DEBUG: imprime dados do usuario pegos do banco
+        Log.d("Se ja existe: ", "poslogin");
+        Log.d("Nome : ", paciente.get_nome());
+        Log.d("Senha : ", paciente.get_senha());
+        Log.d("Email: ", paciente.get_email());
+        Log.d("Sexo: ", String.valueOf(paciente.get_sexo()));
+        Log.d("Nascimento: ", paciente.get_nascimento());
+        Log.d("Idade : ", String.valueOf(paciente.get_idade()));
+        Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
+        Log.d("Peso : ", String.valueOf(paciente.get_peso()));
+        Log.d("Altura : ", String.valueOf(paciente.get_altura()));
+        Log.d("IMC : ", String.valueOf(paciente.get_imc()));
+        Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
+        Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
+        Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
+        Log.d("Colesterol : ", String.valueOf(paciente.get_colesterol()));
 
-            //DEBUG: imprime dados do usuario pegos do banco
-            Log.d("Se ja existe: ", "poslogin");
-            Log.d("Nome : ", paciente.get_nome());
-            Log.d("Senha : ", paciente.get_senha());
-            Log.d("Email: ", paciente.get_email());
-            Log.d("Sexo: ", String.valueOf(paciente.get_sexo()));
-            Log.d("Nascimento: ", paciente.get_nascimento());
-            //Log.d("Idade : ", String.valueOf(paciente.get_idade()));
-            Log.d("Circunferencia : ", String.valueOf(paciente.get_circunferencia()));
-            Log.d("Peso : ", String.valueOf(paciente.get_peso()));
-            Log.d("Altura : ", String.valueOf(paciente.get_altura()));
-            Log.d("IMC : ", String.valueOf(paciente.get_imc()));
-            Log.d("HBA1C : ", String.valueOf(paciente.get_hba1c()));
-            Log.d("GlicoseJejum : ", String.valueOf(paciente.get_glicosejejum()));
-            Log.d("Glicose75g : ", String.valueOf(paciente.get_glicose75g()));
-            Log.d("Colesterol : ", String.valueOf(paciente.get_colesterol()));
+        //se o usuario ja fez o cadastro dos dados, pula esta tela
+        if(paciente.get_peso() > 0 && paciente.get_altura() > 0 && paciente.get_circunferencia() > 0) {
+
+
 
             Intent intent = new Intent(PosLogin.this, MenuPrincipal.class);
             intent.putExtra("Paciente", paciente);
@@ -105,8 +107,6 @@ public class PosLogin extends AppCompatActivity {
                 String circunferenciaCadastro = circunferecia.getText().toString();
 
                 //se o usuario nao preencheu algum dado, deixa como -1
-
-                paciente.set_idade(-1);
 
                 if (alturaCadastro.length()==0){
                     paciente.set_altura(-1);

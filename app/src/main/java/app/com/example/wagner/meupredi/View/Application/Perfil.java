@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -50,7 +51,11 @@ public class Perfil extends ActivityGroup {
 
 
         controllerAgenda = new ControllerAgenda(getApplicationContext());
-        controllerAgenda.getAllEventos(paciente);
+        try{
+            controllerAgenda.getAllEventos(paciente);
+        } catch(Exception e){
+            Log.d("Sem eventos", " Disponiveis!");
+        }
 
         Date notifyDate = controllerAgenda.eventNotify(paciente);
         if(notifyDate != null){

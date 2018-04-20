@@ -42,6 +42,9 @@ public class CriarConta extends AppCompatActivity {
     private Button criarConta;
     private TextView data;
     private DatePickerDialog.OnDateSetListener dataNascimento;
+    private int ano, dia, mes;
+    private int IdadeAux;
+    private Calendar calendario;
     TextView cancelar;
 
     @Override
@@ -63,6 +66,7 @@ public class CriarConta extends AppCompatActivity {
         criarConta = (Button) findViewById(R.id.btn_criar_conta);
         cancelar = (TextView) findViewById(R.id.btn_cancelar);
         tela = (ConstraintLayout) findViewById(R.id.tela_criar_conta);
+        Calendar.getInstance();
 
         findViewById(R.id.tela_criar_conta).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,10 +99,10 @@ public class CriarConta extends AppCompatActivity {
         data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar calendario = Calendar.getInstance();
-                int ano = calendario.get(Calendar.YEAR);
-                int mes = calendario.get(Calendar.MONTH);
-                int dia = calendario.get(Calendar.DAY_OF_MONTH);
+                calendario = Calendar.getInstance();
+                ano = calendario.get(Calendar.YEAR);
+                mes = calendario.get(Calendar.MONTH);
+                dia = calendario.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(CriarConta.this,
                         android.R.style.Theme_Holo_Light_Dialog,
@@ -114,6 +118,7 @@ public class CriarConta extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month += 1;
                 String dataNasc = dayOfMonth + "/" + month + "/" + year;
+                IdadeAux = Calendar.getInstance().get(Calendar.YEAR) - year;
                 data.setText(dataNasc);
             }
         };
@@ -187,8 +192,9 @@ public class CriarConta extends AppCompatActivity {
                     } else if(senhaCadastro.equals(conSenhaCadastro)) {
                         Toast.makeText(getApplicationContext(), "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
 
+                        Log.d("Idade Criar Conta: ", String.valueOf(Calendar.getInstance().get(Calendar.YEAR) - ano));
                         //configuracao padrao de usuario
-                        Paciente paciente = new Paciente (0, nomeCompleto, senhaCadastro, emailCadastro, "", 0, 0 , 0, 0);
+                        Paciente paciente = new Paciente (0, nomeCompleto, senhaCadastro, emailCadastro, "", IdadeAux, 0 , 0, 0);
 
                         //verifica opcao de sexo selecionada
                         String selected = sexo.getSelectedItem().toString();

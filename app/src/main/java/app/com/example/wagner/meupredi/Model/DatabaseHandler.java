@@ -309,13 +309,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         if(cursor.moveToFirst()){
             do{
-                if(Integer.parseInt(cursor.getString(5)) == idPaciente){
-                    String date = cursor.getString(3);
-                    String time = cursor.getString(4);
-                    Log.d("Pegando date : " , date);
+                if(cursor.getString(5) != null){
+                    if(Integer.parseInt(cursor.getString(5)) == idPaciente){
+                        String date = cursor.getString(3);
+                        String time = cursor.getString(4);
+                        Log.d("Pegando date : " , date);
 
-                    AgendaClass agendaClass = new AgendaClass(cursor.getString(1), "Teste", date, time);
-                    agendaList.add(agendaClass);
+                        AgendaClass agendaClass = new AgendaClass(cursor.getString(1), "Teste", date, time);
+                        agendaList.add(agendaClass);
+                    }
                 }
             } while(cursor.moveToNext());
         }
