@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://F:\Desktop e Download\CC\PIBIC\PreDiTest\PreDiTesta.iml" filepath="F:\Desktop e Download\CC\PIBIC\PreDiTest\PreDiTesta.iml" />
       <module fileurl="file://$PROJECT_DIR$/PreDiTest.iml" filepath="$PROJECT_DIR$/PreDiTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/PreDiTest.iml" filepath="$PROJECT_DIR$/PreDiTest.iml" />
+      <module fileurl="file://F:/Desktop e Download/CC/PIBIC/PreDiTest/PreDiTesta.iml" filepath="F:/Desktop e Download/CC/PIBIC/PreDiTest/PreDiTesta.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

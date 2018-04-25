@@ -34,9 +34,8 @@ public class Consultas extends Activity {
     private DateFormat formatacaoData = DateFormat.getDateInstance();
     private Calendar dataTime = Calendar.getInstance();
     private TextView cardDataNovaConsulta, cardHorarioNovaConsulta;
-    private Button btnMarcarData, btnMarcarHorario;
     private ImageView agendarNovaConsulta;
-    private EditText nomeNovaConsulta;
+    private EditText nomeNovaConsulta, btnMarcarData, btnMarcarHorario;
     private AlertDialog.Builder alertaNovaConsulta;
     private String date;
     private String time;
@@ -52,8 +51,8 @@ public class Consultas extends Activity {
         setContentView(R.layout.activity_consultas);
 
         nomeNovaConsulta = (EditText) findViewById(R.id.editText_nome_nova_consulta);
-        btnMarcarData = (Button) findViewById(R.id.btn_data_consulta_marcada);
-        btnMarcarHorario = (Button) findViewById(R.id.btn_horario_consulta_marcada);
+        btnMarcarData = (EditText) findViewById(R.id.btn_data_consulta_marcada);
+        btnMarcarHorario = (EditText) findViewById(R.id.btn_horario_consulta_marcada);
         agendarNovaConsulta = (ImageView) findViewById(R.id.btn_agendar_nova_consulta);
         cardDataNovaConsulta = (TextView) findViewById(R.id.textView_data_card_nova_consulta);
         cardHorarioNovaConsulta = (TextView) findViewById(R.id.textView_horario_card_nova_consulta);
