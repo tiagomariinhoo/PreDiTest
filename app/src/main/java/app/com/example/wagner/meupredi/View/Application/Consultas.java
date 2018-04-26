@@ -8,16 +8,20 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 import app.com.example.wagner.meupredi.Controller.ControllerAgenda;
@@ -33,15 +37,25 @@ public class Consultas extends Activity {
 
     private DateFormat formatacaoData = DateFormat.getDateInstance();
     private Calendar dataTime = Calendar.getInstance();
-    private TextView cardDataNovaConsulta, cardHorarioNovaConsulta;
+    private TextView btnMarcarData, btnMarcarHorario;
     private ImageView agendarNovaConsulta;
-    private EditText nomeNovaConsulta, btnMarcarData, btnMarcarHorario;
+    private EditText nomeNovaConsulta;
     private AlertDialog.Builder alertaNovaConsulta;
-    private String date;
-    private String time;
-    private String nome;
+    private String date = "-", time = "-", nome = "-";
+    private String diaEscolhido = "", mesEscolhido = "", anoEscolhido = "";
     private Paciente paciente;
     ArrayList<AgendaClass> agendaList = new ArrayList<>();
+
+    private ListView listaDeConsultas;
+
+    private ArrayList<String> arraylist;
+    private ArrayAdapter<String> adapter;
+    private String[] items = {};
+
+    private ArrayList<String> arraylistDatas;
+    private ArrayAdapter<String> adapterD;
+    private String[] itemsDatas = {};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +65,17 @@ public class Consultas extends Activity {
         setContentView(R.layout.activity_consultas);
 
         nomeNovaConsulta = (EditText) findViewById(R.id.editText_nome_nova_consulta);
-        btnMarcarData = (EditText) findViewById(R.id.btn_data_consulta_marcada);
-        btnMarcarHorario = (EditText) findViewById(R.id.btn_horario_consulta_marcada);
+        btnMarcarData = (TextView) findViewById(R.id.btn_data_consulta_marcada);
+        btnMarcarHorario = (TextView) findViewById(R.id.btn_horario_consulta_marcada);
         agendarNovaConsulta = (ImageView) findViewById(R.id.btn_agendar_nova_consulta);
-        cardDataNovaConsulta = (TextView) findViewById(R.id.textView_data_card_nova_consulta);
-        cardHorarioNovaConsulta = (TextView) findViewById(R.id.textView_horario_card_nova_consulta);
+        listaDeConsultas = (ListView) findViewById(R.id.lista_consultas);
+
+        arraylist = new ArrayList<>(Arrays.asList(items));
+        arraylist = new ArrayList<>(Arrays.asList(itemsDatas));
+        adapter = new ArrayAdapter<String>(this, R.layout.lista_consultas_item, R.id.text_consulta_item, arraylist);
+        adapterD = new ArrayAdapter<String>(this, R.layout.lista_consultas_item, R.id.text_consulta_data_item, arraylistDatas);
+        listaDeConsultas.setAdapter(adapter);
+//        listaDeConsultas.setAdapter(adapterD);
 
         paciente = (Paciente) getIntent().getExtras().get("Paciente");
         nome = "";
@@ -63,15 +83,17 @@ public class Consultas extends Activity {
             @Override
             public void onClick(View v) {
                 nome = nomeNovaConsulta.getText().toString();
-                Log.d("Date :  ", date);
-                Log.d("Time : " , time);
-                cardHorarioNovaConsulta.setText(nome);
+                //date = btnMarcarData.getText().toString();
+                //time = btnMarcarHorario.getText().toString();
+                /*Log.d("Date :  ", date);
+                Log.d("Time : " , time);*/
 
                 alertaNovaConsulta = new AlertDialog.Builder( Consultas.this );
 
                 alertaNovaConsulta.setTitle("Atenção!");
 
-                alertaNovaConsulta.setMessage("Verifique as informações da sua nova consulta e confirme");
+                alertaNovaConsulta.setMessage("Verifique as informações da sua nova consulta e confirme"+
+                "\n"+"Nova Consulta em " + nome + ", " + date + ", as "+ time + ".");
 
                 // Caso Não
                 alertaNovaConsulta.setNegativeButton("CANCELAR",
@@ -89,15 +111,22 @@ public class Consultas extends Activity {
                             public void onClick(DialogInterface dialog, int which) {
                                 Toast.makeText(Consultas.this, "Nova consulta agendada!", Toast.LENGTH_SHORT).show();
                                 // FAZER FUNÇÃO DE ADICIONAR NOVA CONSULTA EM LISTA DE CONSULTAS MARCADAS
+                                nomeNovaConsulta.setText("");
+                                btnMarcarData.setText("");
+                                btnMarcarHorario.setText("");
+                                arraylist.add(nome);
+                                arraylistDatas.add(date);
+                                adapter.notifyDataSetChanged();
+                                adapterD.notifyDataSetChanged();
 
                                 Log.d("NOME DO PACIENTE : " , paciente.get_nome());
                                 try {
-                                    AgendaClass agenda = new AgendaClass(nome, "3293", date, time);
+                                    //AgendaClass agenda = new AgendaClass(nome, "3293", date, time);
 
-                                    ControllerAgenda controllerAgenda = new ControllerAgenda(getApplicationContext());
-                                    Log.d(controllerAgenda.adicionarEvento(paciente, agenda), "");
+                                    //ControllerAgenda controllerAgenda = new ControllerAgenda(getApplicationContext());
+                                    //Log.d(controllerAgenda.adicionarEvento(paciente, agenda), "");
                                     //agendaList = controllerAgenda.getAllEventos(paciente);
-                                    controllerAgenda.getAllEventos(paciente);
+                                    //controllerAgenda.getAllEventos(paciente);
 
                                     //Log.d("Adicionando : ", controllerAgenda.adicionarEvento(paciente, agenda));
                                 } catch (Exception e) {
@@ -160,14 +189,13 @@ public class Consultas extends Activity {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
             date = "";
-            String diaEscolhido = "", mesEscolhido = "", anoEscolhido = "";
             if(dayOfMonth < 10) diaEscolhido = "0";
             if(month < 10) mesEscolhido = "0";
             diaEscolhido = diaEscolhido + Integer.toString(dayOfMonth);
             mesEscolhido = mesEscolhido + Integer.toString(month+1);
             anoEscolhido = anoEscolhido + Integer.toString(year);
             date = anoEscolhido + "/" + mesEscolhido + "/" + diaEscolhido;
-            cardDataNovaConsulta.setText(diaEscolhido + "/" + mesEscolhido + "/" + anoEscolhido);
+            btnMarcarData.setText(diaEscolhido + "/" + mesEscolhido + "/" + anoEscolhido);
         }
     };
 
@@ -183,7 +211,7 @@ public class Consultas extends Activity {
             horaEscolhida = horaEscolhida + Integer.toString(hourOfDay);
             minutosEscolhidos = minutosEscolhidos + Integer.toString(minute);
             time = horaEscolhida + ":" + minutosEscolhidos + ":00";
-            cardHorarioNovaConsulta.setText(horaEscolhida + ":" + minutosEscolhidos);
+            btnMarcarHorario.setText(horaEscolhida + ":" + minutosEscolhidos);
         }
     };
 

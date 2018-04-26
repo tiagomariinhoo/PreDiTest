@@ -107,34 +107,45 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:gravity="center_vertical"
         android:hint="Clínica / Hospital"
+        android:backgroundTint="@android:color/white"
+        android:textColorHint="@color/colorBranco"
+        android:textColor="@color/colorBranco"
+        android:textSize="18dp"
         android:textAlignment="center"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView47"
         app:layout_constraintTop_toBottomOf="@+id/textView51" />
 
-    <EditText
+    <TextView
         android:id="@+id/btn_data_consulta_marcada"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="dd/mm/aaaa"
+        android:textSize="18dp"
+        android:gravity="center_vertical"
+        android:textColorHint="@color/colorBranco"
         android:textAlignment="center"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/editText_nome_nova_consulta"
         app:layout_constraintStart_toStartOf="@+id/editText_nome_nova_consulta"
         app:layout_constraintTop_toBottomOf="@+id/editText_nome_nova_consulta" />
 
-    <EditText
+    <TextView
         android:id="@+id/btn_horario_consulta_marcada"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="HH : MM"
+        android:gravity="center_vertical"
         android:textAlignment="center"
+        android:textColorHint="@color/colorBranco"
+        android:textSize="18dp"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/btn_data_consulta_marcada"
         app:layout_constraintStart_toStartOf="@+id/btn_data_consulta_marcada"
@@ -197,5 +208,21 @@
         android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/textView_data_card_nova_consulta"
         app:layout_constraintTop_toBottomOf="@+id/textView52" />
+
+    <ListView
+        android:padding="8dp"
+        android:id="@+id/lista_consultas"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView18">
+
+    </ListView>
 
 </android.support.constraint.ConstraintLayout>

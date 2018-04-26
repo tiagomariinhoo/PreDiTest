@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text_consulta_item"
+        android:layout_width="291dp"
+        android:layout_height="50dp"
+        android:background="@drawable/gradiente_branco"
+        android:gravity="center_vertical"
+        android:text="TESTE"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorBackground"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/text_consulta_data_item"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/gradiente_branco"
+        android:gravity="center_vertical"
+        android:text="25/04"
+        android:textColor="@color/colorBackground"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
